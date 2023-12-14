@@ -10,6 +10,7 @@ book:
   chapters:
     - index.qmd
     - lab01.qmd
+    - lab02.qmd
 comments:
   hypothesis: true
 
