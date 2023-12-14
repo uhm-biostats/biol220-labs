@@ -24,15 +24,14 @@ For this course, you won't need *R* and *RStudio* installed on your own device b
 
 ![](images/rstudio-cloud-08.png)
 
-Each item listed under "All Projects" is a "Project" within the lab01-00# Workspace. Each week I will create a Project template that you will copy and work from (you cannot edit the original). 
+Each item listed under "All Projects" is a "Project" within the lab01-section Workspace. Each week I will create a Project template that you will copy and work from (you cannot edit the original). 
 
 4. To create your own, click "START" to the left of "lab01".
 
 ![](images/rstudio-cloud-10.png)
 
-5. Once the Project is copied and deployed, rename the Project from "lab01" to include your name like this: 
-
-"lab01-muir-chris"
+5. Once the Project is copied and deployed, rename the Project from "lab01" to include your name like this: `lab01-muir-chris`
 
 ![](images/rstudio-cloud-09.png)
 
+**Disclaimer: These labs rely heavily on those developed by Mike Whitlock for his BIOL 300 course at UBC <https://www.zoology.ubc.ca/~whitlock/bio300/>.** In some cases the materials has been used *verbatim*, in other cases Chris Muir, and/or Andy Rominger have heavily modified them.
