@@ -9,7 +9,7 @@
 <meta name="author" content="Mike Whitlock (original material), Chris Muir (modifications), Andy Rominger (modifications and web design), Renata Diaz (web design)">
 <meta name="dcterms.date" content="2023-12-20">
 
-<title>Lab Materials for an Introduction to Biostatistics</title>
+<title>Labs for Intro Biostatistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./lab01.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -75,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Setup</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -90,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Lab Materials for an Introduction to Biostatistics</a> 
+      <a href="./">Labs for Intro Biostatistics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -103,7 +104,19 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lab 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab 2</span></span></a>
   </div>
 </li>
     </ul>
@@ -116,10 +129,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a>
   <ul class="collapse">
-  <li><a href="#software-and-cloud-services" id="toc-software-and-cloud-services" class="nav-link" data-scroll-target="#software-and-cloud-services"><span class="header-section-number">1.1</span> Software and Cloud Services</a></li>
-  <li><a href="#using-posit-cloud" id="toc-using-posit-cloud" class="nav-link" data-scroll-target="#using-posit-cloud"><span class="header-section-number">1.2</span> Using <em>Posit Cloud</em></a></li>
+  <li><a href="#software-and-cloud-services" id="toc-software-and-cloud-services" class="nav-link" data-scroll-target="#software-and-cloud-services">Software and Cloud Services</a></li>
+  <li><a href="#using-posit-cloud" id="toc-using-posit-cloud" class="nav-link" data-scroll-target="#using-posit-cloud">Using <em>Posit Cloud</em></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -129,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab Materials for an Introduction to Biostatistics</h1>
+<h1 class="title">Labs for Intro Biostatistics</h1>
 </div>
 
 
@@ -156,17 +169,17 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<section id="software-and-cloud-services" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="software-and-cloud-services"><span class="header-section-number">1.1</span> Software and Cloud Services</h2>
+<section id="setup" class="level1 unnumbered">
+<h1 class="unnumbered">Setup</h1>
+<section id="software-and-cloud-services" class="level2">
+<h2 class="anchored" data-anchor-id="software-and-cloud-services">Software and Cloud Services</h2>
 <p>All labs will use <em>R</em>, <em>RStudio</em>, and <em>Posit Cloud</em>.</p>
 <p><em>R</em> is a computer program that allows an extraordinary range of statistical calculations. It is a free program, mainly written by volunteer contributors from around the world.</p>
 <p><em>RStudio</em> is a separate program, also free, that allows you to easily organize separate tabs for <em>R</em> code files, graphic, help docs, and more.</p>
 <p>For this course, you won’t need <em>R</em> and <em>RStudio</em> installed on your own device because we will work in <em>Posit Cloud</em>. However, if you wish to install them on your device, go to <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a> for instructions about getting set up.</p>
 </section>
-<section id="using-posit-cloud" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="using-posit-cloud"><span class="header-section-number">1.2</span> Using <em>Posit Cloud</em></h2>
+<section id="using-posit-cloud" class="level2">
+<h2 class="anchored" data-anchor-id="using-posit-cloud">Using <em>Posit Cloud</em></h2>
 <ol type="1">
 <li><p>We have setup Workspaces for each lab assignment and each lab section. For example, the workspace for lab01 materials for section 001 is lab01-001. Join the Workspace for each lab by clicking on the appropriate link in Google Classroom (e.g.&nbsp;“Lab 01-005 Posit Cloud Link” for the first week’s materials for section 005)</p></li>
 <li><p><strong>Important</strong>: Login with your userid@hawaii.edu account, not a personal gmail account. If you accidentally use your personal account, let me know. I will delete it while you register with the university account.</p></li>
@@ -177,16 +190,16 @@ ul.task-list li input[type="checkbox"] {
 <li>Once you’re logged in, the lab01 Workspace will looking something like this (<em>note: where it says “-monday” in the picture should be your section number</em>):</li>
 </ol>
 <p><img src="images/rstudio-cloud-08.png" class="img-fluid"></p>
-<p>Each item listed under “All Projects” is a “Project” within the lab01-00# Workspace. Each week I will create a Project template that you will copy and work from (you cannot edit the original).</p>
+<p>Each item listed under “All Projects” is a “Project” within the lab01-section Workspace. Each week I will create a Project template that you will copy and work from (you cannot edit the original).</p>
 <ol start="4" type="1">
 <li>To create your own, click “START” to the left of “lab01”.</li>
 </ol>
 <p><img src="images/rstudio-cloud-10.png" class="img-fluid"></p>
 <ol start="5" type="1">
-<li>Once the Project is copied and deployed, rename the Project from “lab01” to include your name like this:</li>
+<li>Once the Project is copied and deployed, rename the Project from “lab01” to include your name like this: <code>lab01-muir-chris</code></li>
 </ol>
-<p>“lab01-muir-chris”</p>
 <p><img src="images/rstudio-cloud-09.png" class="img-fluid"></p>
+<p><strong>Disclaimer: These labs rely heavily on those developed by Mike Whitlock for his BIOL 300 course at UBC <a href="https://www.zoology.ubc.ca/~whitlock/bio300/" class="uri">https://www.zoology.ubc.ca/~whitlock/bio300/</a>.</strong> In some cases the materials has been used <em>verbatim</em>, in other cases Chris Muir, and/or Andy Rominger have heavily modified them.</p>
 
 
 </section>
@@ -426,6 +439,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lab01.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lab 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
