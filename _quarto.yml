@@ -9,6 +9,7 @@ book:
   date: "12/20/2023"
   chapters:
     - index.qmd
+    - lab01.qmd
 comments:
   hypothesis: true
 
