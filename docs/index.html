@@ -118,10 +118,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
   <ul class="collapse">
-  <li><a href="#notes-for-asychronous-use" id="toc-notes-for-asychronous-use" class="nav-link" data-scroll-target="#notes-for-asychronous-use"><span class="header-section-number">1.1</span> Notes for asychronous use</a></li>
-  <li><a href="#workshop-outline" id="toc-workshop-outline" class="nav-link" data-scroll-target="#workshop-outline"><span class="header-section-number">1.2</span> Workshop outline</a></li>
-  <li><a href="#group-photo" id="toc-group-photo" class="nav-link" data-scroll-target="#group-photo"><span class="header-section-number">1.3</span> Group Photo</a></li>
-  <li><a href="#funding-acknowledgements" id="toc-funding-acknowledgements" class="nav-link" data-scroll-target="#funding-acknowledgements"><span class="header-section-number">1.4</span> Funding acknowledgements</a></li>
+  <li><a href="#software-and-cloud-services" id="toc-software-and-cloud-services" class="nav-link" data-scroll-target="#software-and-cloud-services"><span class="header-section-number">1.1</span> Software and Cloud Services</a></li>
+  <li><a href="#using-posit-cloud" id="toc-using-posit-cloud" class="nav-link" data-scroll-target="#using-posit-cloud"><span class="header-section-number">1.2</span> Using <em>Posit Cloud</em></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -160,83 +158,35 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<section id="notes-for-asychronous-use" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="notes-for-asychronous-use"><span class="header-section-number">1.1</span> Notes for asychronous use</h2>
-<p>These are the materials for the second 2 days of the “Multidimensional Biodiversity Data” workshop first offered in Albequerque, NM in June 2023 by the RoLE Model team. For the first two days’ materials, see <a href="https://role-model.github.io/multidim-biodiv-data">the course website here.</a></p>
-<p>To work through these materials asynchronously, you will need some software packages installed on your computer. We have provided a Docker image with the necessary packages already set up. To get going with this, see the <a href="software_setup.qmd">setup instructions</a>.</p>
-<p>The first days’ materials (from “Theory/conceptual motivation for process models” through to “Intro to machine learning inference with neutral simulations”) are also available as video lectures on YouTube:</p>
+<section id="software-and-cloud-services" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="software-and-cloud-services"><span class="header-section-number">1.1</span> Software and Cloud Services</h2>
+<p>All labs will use <em>R</em>, <em>RStudio</em>, and <em>Posit Cloud</em>.</p>
+<p><em>R</em> is a computer program that allows an extraordinary range of statistical calculations. It is a free program, mainly written by volunteer contributors from around the world.</p>
+<p><em>RStudio</em> is a separate program, also free, that allows you to easily organize separate tabs for <em>R</em> code files, graphic, help docs, and more.</p>
+<p>For this course, you won’t need <em>R</em> and <em>RStudio</em> installed on your own device because we will work in <em>Posit Cloud</em>. However, if you wish to install them on your device, go to <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a> for instructions about getting set up.</p>
+</section>
+<section id="using-posit-cloud" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="using-posit-cloud"><span class="header-section-number">1.2</span> Using <em>Posit Cloud</em></h2>
 <ol type="1">
-<li><a href="https://youtu.be/s6RwgGlIop8">Theory and motivation of process modeling</a></li>
-<li><a href="https://youtu.be/fuijMa_hTwo">The Unified Neutral Theory of Biodiversity as a process model</a></li>
-<li><a href="https://youtu.be/F8T007EdiHQ">Inferring the parameters of neutral theory from model outcomes</a></li>
+<li><p>We have setup Workspaces for each lab assignment and each lab section. For example, the workspace for lab01 materials for section 001 is lab01-001. Join the Workspace for each lab by clicking on the appropriate link in Google Classroom (e.g.&nbsp;“Lab 01-005 Posit Cloud Link” for the first week’s materials for section 005)</p></li>
+<li><p><strong>Important</strong>: Login with your userid@hawaii.edu account, not a personal gmail account. If you accidentally use your personal account, let me know. I will delete it while you register with the university account.</p></li>
 </ol>
-</section>
-<section id="workshop-outline" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="workshop-outline"><span class="header-section-number">1.2</span> Workshop outline</h2>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Time</th>
-<th>Day 1</th>
-<th>Day 2</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>9-9:30</td>
-<td>Review of part I and follow-up questions</td>
-<td>Review of previous days topics (Discuss dreamed of ideas)</td>
-</tr>
-<tr class="even">
-<td>9:30-10:30</td>
-<td><a href="https://role-model.github.io/multidim-biodiv-data/finding_data.html">Finding multidimensional biodiversity data and</a> and <a href="slides/day1_slides.pdf">Theory/conceptual motivation for process models</a></td>
-<td><a href="intro_mess.html">Intro to the MESS model</a> &amp; <a href="mess_getting_started.html">Getting started with MESS simulations</a></td>
-</tr>
-<tr class="odd">
-<td>10:30-10:45</td>
-<td>Coffee Break</td>
-<td>Coffee Break (Group photo)</td>
-</tr>
-<tr class="even">
-<td>10:45-12</td>
-<td><a href="slides/day1_slides.pdf">Coding exercise: A simple neutral model of biodiversity</a></td>
-<td><a href="mess_simulations.html">Simulation exercise: Using MESS API mode in RStudio to develop and test theoretical intuition</a></td>
-</tr>
-<tr class="odd">
-<td>12-1</td>
-<td>Lunch Break</td>
-<td>Lunch Break</td>
-</tr>
-<tr class="even">
-<td>1-2:30</td>
-<td><a href="slides/day1_slides.pdf">Simulation Exercise: Exploring neutral model behavior</a></td>
-<td><a href="ml_inference_classification.html">Simulation based machine learning inference (Classification)</a></td>
-</tr>
-<tr class="odd">
-<td>2:30-2:45</td>
-<td>Coffee Break</td>
-<td>Coffee Break</td>
-</tr>
-<tr class="even">
-<td>2:45-4:00</td>
-<td><a href="slides/day1_slides.pdf">Intro to machine learning inference with neutral simulations</a></td>
-<td><a href="ml_inference_regression.html">Simulation based machine learning inference (Regression)</a>, small group discussions about empirical applications &amp; <a href="wrapup.qmd">Wrap-up</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="group-photo" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="group-photo"><span class="header-section-number">1.3</span> Group Photo</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/RoLE-Workshop-GroupPhoto.jpeg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">RoLE Workshop Group Photo</figcaption>
-</figure>
-</div>
-</section>
-<section id="funding-acknowledgements" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="funding-acknowledgements"><span class="header-section-number">1.4</span> Funding acknowledgements</h2>
-<p>We gratefully acknowledge funding support from NSF awards DBI-2208901 to Renata Diaz and DBI-2104147 to the RoLE model team.</p>
+<p><strong>Note</strong>: Wherever images say “lab02”, replace that with the actual lab number you will be completing (e.g.&nbsp;“lab01” or “lab11”).</p>
+<p><img src="images/rstudio-cloud-11.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>Once you’re logged in, the lab01 Workspace will looking something like this (<em>note: where it says “-monday” in the picture should be your section number</em>):</li>
+</ol>
+<p><img src="images/rstudio-cloud-08.png" class="img-fluid"></p>
+<p>Each item listed under “All Projects” is a “Project” within the lab01-00# Workspace. Each week I will create a Project template that you will copy and work from (you cannot edit the original).</p>
+<ol start="4" type="1">
+<li>To create your own, click “START” to the left of “lab01”.</li>
+</ol>
+<p><img src="images/rstudio-cloud-10.png" class="img-fluid"></p>
+<ol start="5" type="1">
+<li>Once the Project is copied and deployed, rename the Project from “lab01” to include your name like this:</li>
+</ol>
+<p>“lab01-muir-chris”</p>
+<p><img src="images/rstudio-cloud-09.png" class="img-fluid"></p>
 
 
 </section>

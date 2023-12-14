@@ -7,31 +7,17 @@
     "text": "1 Introduction"
   },
   {
-    "objectID": "index.html#notes-for-asychronous-use",
-    "href": "index.html#notes-for-asychronous-use",
+    "objectID": "index.html#software-and-cloud-services",
+    "href": "index.html#software-and-cloud-services",
     "title": "Lab Materials for an Introduction to Biostatistics",
-    "section": "1.1 Notes for asychronous use",
-    "text": "1.1 Notes for asychronous use\nThese are the materials for the second 2 days of the “Multidimensional Biodiversity Data” workshop first offered in Albequerque, NM in June 2023 by the RoLE Model team. For the first two days’ materials, see the course website here.\nTo work through these materials asynchronously, you will need some software packages installed on your computer. We have provided a Docker image with the necessary packages already set up. To get going with this, see the setup instructions.\nThe first days’ materials (from “Theory/conceptual motivation for process models” through to “Intro to machine learning inference with neutral simulations”) are also available as video lectures on YouTube:\n\nTheory and motivation of process modeling\nThe Unified Neutral Theory of Biodiversity as a process model\nInferring the parameters of neutral theory from model outcomes"
+    "section": "1.1 Software and Cloud Services",
+    "text": "1.1 Software and Cloud Services\nAll labs will use R, RStudio, and Posit Cloud.\nR is a computer program that allows an extraordinary range of statistical calculations. It is a free program, mainly written by volunteer contributors from around the world.\nRStudio is a separate program, also free, that allows you to easily organize separate tabs for R code files, graphic, help docs, and more.\nFor this course, you won’t need R and RStudio installed on your own device because we will work in Posit Cloud. However, if you wish to install them on your device, go to https://rstudio.com/products/rstudio/download/ for instructions about getting set up."
   },
   {
-    "objectID": "index.html#workshop-outline",
-    "href": "index.html#workshop-outline",
+    "objectID": "index.html#using-posit-cloud",
+    "href": "index.html#using-posit-cloud",
     "title": "Lab Materials for an Introduction to Biostatistics",
-    "section": "1.2 Workshop outline",
-    "text": "1.2 Workshop outline\n\n\n\nTime\nDay 1\nDay 2\n\n\n\n\n9-9:30\nReview of part I and follow-up questions\nReview of previous days topics (Discuss dreamed of ideas)\n\n\n9:30-10:30\nFinding multidimensional biodiversity data and and Theory/conceptual motivation for process models\nIntro to the MESS model & Getting started with MESS simulations\n\n\n10:30-10:45\nCoffee Break\nCoffee Break (Group photo)\n\n\n10:45-12\nCoding exercise: A simple neutral model of biodiversity\nSimulation exercise: Using MESS API mode in RStudio to develop and test theoretical intuition\n\n\n12-1\nLunch Break\nLunch Break\n\n\n1-2:30\nSimulation Exercise: Exploring neutral model behavior\nSimulation based machine learning inference (Classification)\n\n\n2:30-2:45\nCoffee Break\nCoffee Break\n\n\n2:45-4:00\nIntro to machine learning inference with neutral simulations\nSimulation based machine learning inference (Regression), small group discussions about empirical applications & Wrap-up"
-  },
-  {
-    "objectID": "index.html#group-photo",
-    "href": "index.html#group-photo",
-    "title": "Lab Materials for an Introduction to Biostatistics",
-    "section": "1.3 Group Photo",
-    "text": "1.3 Group Photo\n\n\n\nRoLE Workshop Group Photo"
-  },
-  {
-    "objectID": "index.html#funding-acknowledgements",
-    "href": "index.html#funding-acknowledgements",
-    "title": "Lab Materials for an Introduction to Biostatistics",
-    "section": "1.4 Funding acknowledgements",
-    "text": "1.4 Funding acknowledgements\nWe gratefully acknowledge funding support from NSF awards DBI-2208901 to Renata Diaz and DBI-2104147 to the RoLE model team."
+    "section": "1.2 Using Posit Cloud",
+    "text": "1.2 Using Posit Cloud\n\nWe have setup Workspaces for each lab assignment and each lab section. For example, the workspace for lab01 materials for section 001 is lab01-001. Join the Workspace for each lab by clicking on the appropriate link in Google Classroom (e.g. “Lab 01-005 Posit Cloud Link” for the first week’s materials for section 005)\nImportant: Login with your userid@hawaii.edu account, not a personal gmail account. If you accidentally use your personal account, let me know. I will delete it while you register with the university account.\n\nNote: Wherever images say “lab02”, replace that with the actual lab number you will be completing (e.g. “lab01” or “lab11”).\n\n\nOnce you’re logged in, the lab01 Workspace will looking something like this (note: where it says “-monday” in the picture should be your section number):\n\n\nEach item listed under “All Projects” is a “Project” within the lab01-00# Workspace. Each week I will create a Project template that you will copy and work from (you cannot edit the original).\n\nTo create your own, click “START” to the left of “lab01”.\n\n\n\nOnce the Project is copied and deployed, rename the Project from “lab01” to include your name like this:\n\n“lab01-muir-chris”"
   }
 ]
