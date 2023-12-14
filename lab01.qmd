@@ -39,7 +39,7 @@ From [here](https://docs.rstudio.com/other/rstudio-cloud/):
 
 ### Getting started with *Posit Cloud*
 
-Follow the instructions on the ["Introduction"](index.qmd) page for setting yourself up with *Posit Cloud*.
+Follow the instructions on the ["Setup"](index.qmd) page for setting yourself up with *Posit Cloud*.
 
 Once done, proceed with the rest of the lab below.
 
@@ -311,7 +311,7 @@ For examples in this tutorial, let’s use a data set about the passengers of th
 To import a CSV file into *R*, use the `read_csv()` function as in the following command. (This assumes that you have set the working directory to the labs folder, as we described above.)
 
 ```{r, echo = TRUE, eval = TRUE}
-titanic_data <- read_csv("data/titanic.csv")
+titanic_data <- read.csv("data/titanic.csv")
 ```
 
 This looks for the file called `titanic.csv` in the folder called `Data`. Here we have given the name `titanic_data` to the object in *R* that contains all this passenger data. Of course, if you wanted to load a different data set, you would be better off giving it a more apt name than "`titanic_data`".

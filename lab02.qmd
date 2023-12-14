@@ -33,7 +33,7 @@ A histogram represents the frequency distribution of a numerical variable in a s
 Let’s see how to make a basic histogram using the age data from the Titanic data set. Make sure you have loaded the data (using `read_csv()`) into a data frame called `titanic_data` (hint: if you get an error, remember that you need to load the **readr** package using the `library()` function before `read_csv()` will work).
 
 ```{r, echo = TRUE, eval = TRUE}
-titanic_data <- read_csv("data/titanic.csv")
+titanic_data <- read.csv("data/titanic.csv")
 ```
 
 Here’s the code to make a simple histogram of age:
@@ -113,7 +113,7 @@ The last graphical style that we will cover here is the scatter plot, which show
 The titanic data set does not have two numerical variables, so let’s use a different data set—the example 2.3B from p. 43 of Whitlock and Schluter, showing the relationship between the ornamentation of father guppies and the sexual attractiveness of their sons. You can load the data for that example with:
 
 ```{r, echo = TRUE, eval = TRUE}
-guppy_father_son_data <- read_csv("data/chap02e3bGuppyFatherSonAttractiveness.csv")
+guppy_father_son_data <- read.csv("data/chap02e3bGuppyFatherSonAttractiveness.csv")
 ```
 
 To make a scatter plot of the variables `fatherOrnamentation` and `sonAttractiveness` with **ggplot**, you need to specify the $x$ and $y$ variables, and use `geom_point()`:
