@@ -34,4 +34,4 @@ Each item listed under "All Projects" is a "Project" within the lab01-section Wo
 
 ![](images/rstudio-cloud-09.png)
 
-**Disclaimer: These labs rely heavily on those developed by Mike Whitlock for his BIOL 300 course at UBC <https://www.zoology.ubc.ca/~whitlock/bio300/>.** In some cases the materials has been used *verbatim*, in other cases Chris Muir, and/or Andy Rominger have heavily modified them.
+**Disclaimer: These labs rely heavily on those developed by Mike Whitlock for his BIOL 300 course at UBC <https://www.zoology.ubc.ca/~whitlock/bio300/>.** In some cases the materials have been used *verbatim*, in other cases Chris Muir, and/or Andy Rominger have heavily modified them.
