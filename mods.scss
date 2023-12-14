@@ -1,0 +1,8 @@
+/*-- scss:rules --*/
+.chapter-number::before {
+  content: "Lab ";
+}
+
+.chapter-number::after {
+  content: ":";
+}
