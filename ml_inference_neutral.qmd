@@ -1,0 +1,59 @@
+# Inferring the parameters of UNTB from outcomes
+
+## Key questions
+
+1. How do we use the outcomes of a process model to guess at underlying processes (parameter values)?
+1. How can we leverage machine learning (random forest) to infer parameter values from the outcomes of a neutral model?
+1. What are the limiting factors in inferring process from outcome in a process model?
+
+## Learning objectives
+
+1. Understand the outcome-to-parameter inference model.
+1. Fit and evaluate a random forest model to our UNTB data.
+1. Identify the limiting features of this approach (particularly model identifiability) and brainstorm possible solutions. 
+
+## Lesson outline
+
+[Slides](slides/day1_slides.pdf)
+
+Video lecture: [Inferring the parameters of neutral theory from model outcomes](https://youtu.be/F8T007EdiHQ)
+
+### (Lecture/discussion) Going from outcome to parameters
+
+Key question:
+
+1. How could we _use_ a process model to better understand actual data?
+
+Key points:
+
+1. As a starting point, we can see if we can recover generative parameters when we know how they were produced. 
+
+### (Lecture/discussion) Random forest regression
+
+Key points:
+
+1. To guess at the parameters that generated some outcome data, we're writing a model of the general form `parameter ~ results`. This isn't necessarily a linear or otherwise tidy relationship, so we'll use machine learning.
+1. Random forest can do regression with many parameters predicting nonlinear relationships.
+1. We will begin by using a random forest to try to recover parameter values for known sims.
+
+### (Lecture) Fitting a random forest to our neutral data
+
+### (Discussion) What problems arise in the random forest?
+
+Key points: 
+
+1. Multiple sets of parameters can lead to the same outcomes, making it difficult to infer backwards.
+
+
+### (Discussion) How might we address these challenges?
+
+Key points:
+
+1. More data dimensions can break a many-to-one mapping.
+1. It remains critical that the underlying process be appropriate.
+
+
+<!-- [Andy's neutral theory / random forest page](ml_neutral_test.qmd) -->
+
+<!-- 1. Lecture: [Random Forest for Machine Learning Inference](https://docs.google.com/presentation/d/16-S_72HA-xjC-Ed_UYEs6Oc-D7zMElI-/edit#slide=id.p37) -->
+<!-- 2. Lecture: [How does machine learning work with RoLE simulations?](https://docs.google.com/presentation/d/17vOgbzpcYFPT7Tbo4EWBK_A-nJ82_kCU9dpMhrEWQkE/edit#slide=id.g3fc652ed98_0_30) -->

@@ -1,0 +1,36 @@
+# Introduction
+
+## Notes for asychronous use
+
+These are the materials for the second 2 days of the "Multidimensional Biodiversity Data" workshop first offered in Albequerque, NM in June 2023 by the RoLE Model team. For the first two days' materials, see [the course website here.](https://role-model.github.io/multidim-biodiv-data) 
+
+To work through these materials asynchronously, you will need some software packages installed on your computer. We have provided a Docker image with the necessary packages already set up. To get going with this, see the [setup instructions](software_setup.qmd).
+
+The first days' materials (from "Theory/conceptual motivation for process models" through to "Intro to machine learning inference with neutral simulations") are also available as video lectures on YouTube:
+
+1. [Theory and motivation of process modeling](https://youtu.be/s6RwgGlIop8)
+2. [The Unified Neutral Theory of Biodiversity as a process model](https://youtu.be/fuijMa_hTwo)
+3. [Inferring the parameters of neutral theory from model outcomes](https://youtu.be/F8T007EdiHQ)
+
+
+
+## Workshop outline
+
+| Time | Day 1 | Day 2 |
+|------|-------|-------|
+| 9-9:30 | Review of part I and follow-up questions | Review of previous days topics (Discuss dreamed of ideas) |
+| 9:30-10:30 | [Finding multidimensional biodiversity data and](https://role-model.github.io/multidim-biodiv-data/finding_data.html) and [Theory/conceptual motivation for process models](slides/day1_slides.pdf) | [Intro to the MESS model](intro_mess.html) & [Getting started with MESS simulations](mess_getting_started.html) |
+| 10:30-10:45 | Coffee Break | Coffee Break (Group photo) |
+| 10:45-12 | [Coding exercise: A simple neutral model of biodiversity](slides/day1_slides.pdf) | [Simulation exercise: Using MESS API mode in RStudio to develop and test theoretical intuition](mess_simulations.html) |
+| 12-1 | Lunch Break | Lunch Break |
+| 1-2:30 | [Simulation Exercise: Exploring neutral model behavior](slides/day1_slides.pdf) | [Simulation based machine learning inference (Classification)](ml_inference_classification.html) |
+| 2:30-2:45 | Coffee Break | Coffee Break | 
+| 2:45-4:00 | [Intro to machine learning inference with neutral simulations](slides/day1_slides.pdf) | [Simulation based machine learning inference (Regression)](ml_inference_regression.html), small group discussions about empirical applications & [Wrap-up](wrapup.qmd) |
+
+## Group Photo
+
+![RoLE Workshop Group Photo](images/RoLE-Workshop-GroupPhoto.jpeg)
+
+## Funding acknowledgements
+
+We gratefully acknowledge funding support from NSF awards DBI-2208901 to Renata Diaz and DBI-2104147 to the RoLE model team. 

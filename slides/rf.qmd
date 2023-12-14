@@ -1,0 +1,201 @@
+---
+title: "Untitled"
+format: pptx
+---
+```{r setup, include = F}
+library(ggplot2)
+theme_set(theme_bw())
+library(multipanelfigure)
+library(randomForest)
+library(dplyr)
+```
+
+# Run neutral simulations over a range of parameters
+
+```{r}
+source(here::here("neut_mod", "neutral_mod.R"))
+set.seed(1989)
+
+nrep = 10000
+
+allNus <- runif(nrep, 0, 0.6)
+allMs <- runif(nrep, 0, 0.6)
+
+sims <- list()
+hills <- list()
+
+```
+
+```{r, fig.dim = c(6,4)}
+
+params <- data.frame(v = allNus, m = allMs)
+
+ggplot(params, aes(m, v)) +
+  geom_point(size = .5) +
+  ggtitle("Parameters sampled", subtitle = "10000 combinations") +
+  xlab("M") +
+  ylab("Nu")
+
+constant_params <- data.frame(Parameter = c("Jm", "Sm", "J", "Timesteps"), Value = c(10000, 1000, 1000, 1000))
+
+constant_params
+```
+
+```{r}
+# 
+# for(i in 1:nrep) {
+# 
+#   sims[[i]] <- untb(Jm = 10000,
+#                     Sm = 1000,
+#                     J = 1000,
+#                     m = allMs[i],
+#                     nu = allNus[i],
+#                     niter = 1000)
+# 
+#   hills[[i]] <- untb_hill(sims[[i]])
+# }
+# 
+# all_hills <- do.call(rbind, hills)
+# 
+# all_hills$Nu = allNus
+# all_hills$M = allMs
+# 
+# all_hills$Jm = 10000
+# all_hills$Sm = 1000
+# all_hills$J = 1000
+# all_hills$timesteps = 1000
+# 
+ #write.csv(all_hills, here::here("neut_mod", "sim_results.csv"), row.names = F)
+
+
+all_hills <- read.csv(here::here("neut_mod", "sim_results.csv"))
+
+all_hills_small <- round(all_hills, digits = 2) %>%
+  select(Jm, Sm, J, timesteps, Nu, M, hill0, hill1, hill2)
+```
+
+# Collect results
+
+```{r}
+
+head(all_hills_small)
+```
+
+# Visualize results
+
+```{r, fig.dim = c(8, 3)}
+
+
+h0_plot <- ggplot(all_hills, aes(M, Nu, color = hill0)) +
+  geom_point(size = .5) +
+  scale_color_viridis_c() +
+  ggtitle("Hill order 0") +
+  theme(legend.position = "bottom")
+
+
+h1_plot <- ggplot(all_hills, aes(M, Nu, color = hill1)) +
+  geom_point(size = .5) + 
+  ggtitle("Hill order 1") +
+  scale_color_viridis_c() +
+  theme(legend.position = "bottom")
+
+
+
+
+h2_plot <- ggplot(all_hills, aes(M, Nu, color = hill2)) +
+  geom_point(size = .5) + 
+  ggtitle("Hill order 2") +
+  scale_color_viridis_c() +
+  theme(legend.position = "bottom")
+
+
+multi_panel_figure(columns = 3, rows = 1) %>%
+  fill_panel(h0_plot) %>%
+  fill_panel(h1_plot) %>%
+  fill_panel(h2_plot)
+```
+
+# Relating outcomes to parameters
+
+```{r, fig.dim = c(7, 3.5)}
+
+h0_m_plot <- ggplot(all_hills, aes(hill0, M)) +
+  geom_point(size = .5) +
+  ggtitle("M ~ hill0")
+
+
+h0_nu_plot <- ggplot(all_hills, aes(hill0, Nu)) +
+  geom_point(size = .5) +
+  ggtitle("Nu ~ hill0")
+
+multi_panel_figure(columns = 2, rows = 1) %>%
+  fill_panel(h0_m_plot) %>%
+  fill_panel(h0_nu_plot)
+
+```
+
+
+```{r, echo = T}
+
+m_rf_model <- randomForest(M ~ hill0 + hill1 + hill2, data = all_hills)
+
+m_rf_model
+
+```
+
+
+```{r, echo = T}
+
+nu_rf_model <- randomForest(Nu ~ hill0 + hill1 + hill2, data = all_hills)
+
+nu_rf_model
+
+```
+
+
+```{r, fig.dim = c(5,3)}
+
+all_hills$M_predicted <- m_rf_model$predicted
+
+ggplot(all_hills, aes(M, M_predicted)) +
+  geom_point(size = .5) +
+  geom_abline(slope = 1, intercept = 0, color = "yellow") +
+  ggtitle("M: Predicted vs. observed")
+
+
+```
+
+
+
+```{r, fig.dim = c(5,3)}
+
+all_hills$Nu_predicted <- nu_rf_model$predicted
+
+ggplot(all_hills, aes(Nu, Nu_predicted)) +
+  geom_point(size = .5) +
+  geom_abline(slope = 1, intercept = 0, color = "yellow") +
+  ggtitle("Nu: Predicted vs. observed")
+
+
+```
+
+# Run a new simulation
+
+```{r, echo = T}
+
+new_M <- runif(1, 0, 0.6)
+new_Nu <- runif(1, 0, 0.6)
+
+new_sim <- untb(Jm = 10000, Sm = 1000, J = 1000, m =new_M, nu = new_Nu, niter = 1000)
+new_hills <- untb_hill(new_sim)
+
+predicted_M <- predict(m_rf_model, newdata = new_hills)
+predicted_Nu <- predict(nu_rf_model, newdata = new_hills)
+
+predicted_M
+new_M
+
+predicted_Nu
+new_Nu
+
+```

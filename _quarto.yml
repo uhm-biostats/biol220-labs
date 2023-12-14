@@ -1,0 +1,36 @@
+project:
+  type: book
+  output-dir: docs
+
+
+book:
+  title: "process-models-workshop"
+  author: "Renata Diaz, Isaac Overcast, Andy Rominger, Connor French, Jacob Idec, and Rilquer Mascarenhas"
+  date: "5/2/2023"
+  chapters:
+    - index.qmd
+    - software_setup.qmd
+    - intro_process_models.qmd
+    - coding_neutral_theory.qmd
+    - neutral_theory_sims.qmd
+    - ml_inference_neutral.qmd
+    - day_1_wrapup.qmd
+    - intro_mess.qmd
+    - mess_getting_started.qmd
+    - mess_simulations.qmd
+    - ml_inference_classification.qmd
+    - ml_inference_regression.qmd
+    - wrapup.qmd
+comments:
+  hypothesis: true
+
+
+bibliography: references.bib
+
+
+format:
+  html:
+    theme: cosmo
+
+
+

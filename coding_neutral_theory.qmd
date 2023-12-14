@@ -1,0 +1,23 @@
+# Coding exercise: A simple neutral model of biodiversity
+
+## Key questions
+
+1. How do we implement a process model in R?
+1. How do we use this model to explore how parameter settings affect outcomes?
+
+## Lesson objectives
+
+1. Code up UNTB in R.
+1. Change parameter settings and inspect the outcomes. 
+
+## Lesson outline
+
+
+### (Group project) Code up UNTB in R!
+
+### (Backup) 
+
+Source the pre-coded UNTB located [here](https://raw.githubusercontent.com/role-model/process-models-workshop/main/neut_mod/neutral_mod.R)
+
+### (Breakout groups or individual) Change parameter settings manually and visualize outcomes. 
+

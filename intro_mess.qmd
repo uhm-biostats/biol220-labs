@@ -1,0 +1,44 @@
+# Introduction to the MESS Model
+
+## Key questions
+
+1. What is the MESS Model?
+1. How does MESS differ from other biodiversity models?
+1. What are some example applications of MESS?
+1. Where can I get a cool MESS logo sticker?
+
+## Lesson objectives
+
+After this lesson, learners should be able to...
+
+1. Describe the (high-level) concept for MESS.
+1. Situate MESS in the wider process modeling state space.
+1. Formulate scientific questions and decide if/how MESS can be used to
+explore them.
+
+## Planned exercises
+
+### [Process-based modeling with the Massive Eco-evolutionary Synthesis Simulations (MESS) Model](https://docs.google.com/presentation/d/1xu2aVlV8sFLJB65rxAN0thclrvGgS-rNFJL8WPeR5jQ/edit?usp=sharing)
+
+![Neutral Assembly Process](images/Forward_Time_Neutral_Assembly.png)
+
+### Overview of MESS simulation and analysis workflow
+
+The basic steps of MESS model simulation-based machine learning inference
+are as follows:
+
+* Step 1 - Set model parameters based on prior knowledge of empirical system
+* Step 2 - Run many, many simulations
+* Step 3 - Use ML to infer community assembly process (neutral/competition/filtering)
+* Setp 4 - Use ML to estimate key community assembly parameters
+* Step 5 - ???
+* Step 6 - Profit!!
+
+## Key points
+
+* MESS is a process-based model in the direct lineage of Island Biogeograpy
+Theory and Neutral Biodiversity Theory.
+* MESS models the 4 fundamental biodiversity processes: dispersal, speciation,
+selection, and drift.
+* MESS generates joint predictions of multiple biodiversity patterns:
+abundances, trait values, genetic diversities, and phylogenies.

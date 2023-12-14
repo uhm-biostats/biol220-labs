@@ -1,0 +1,116 @@
+# How does ML work for Neutral Theory params?
+
+Make a neutral theory simulator 
+
+```{r}
+#| eval: false
+
+library(randomForest)
+library(parallel)
+
+# function to simulate UNTB
+untb <- function(Jm, # num individuals in the metacomm
+                 Sm, # num spp in the metacomm
+                 J,  # num individuals in local comm
+                 m,  # immigration prob
+                 nu, # speciation prob
+                 niter) { # number of time steps
+  metaSAD <- roleR:::.lseriesFromSN(Sm, Jm)
+  
+  # initialize local comm with 1 spp from meta
+  locs <- rep(sample(Sm, 1, prob = metaSAD), J)
+  
+  # counter to keep track of max sp ID
+  Smax <- Sm
+  
+  for(i in 1:niter) {
+    # death
+    idead <- sample(J, 1)
+    
+    # birth or imm
+    s <- runif(1)
+    if(s < m) { # immigration
+      newSp <- sample(Sm, 1, prob = metaSAD)
+    } else { # local birth
+      newSp <- sample(locs, 1)
+    }
+    
+    # speciation?
+    s <- runif(1)
+    if(s < nu) {
+      Smax <- Smax + 1 # increment max sp ID
+      newSp <- Smax
+    }
+    
+    # replacement
+    locs[idead] <- newSp
+  }
+  
+  # calc species abundances
+  nn <- tabulate(locs)
+  
+  return(nn[nn > 0])
+}
+
+
+# num timesteps
+nt <- 10000
+
+# local comm size
+j <- 100
+
+# number of simulations
+nrep <- 100
+
+# params
+allNus <- runif(nrep, 0, 0.1)
+allMs <- runif(nrep, 0, 0.5)
+
+# loop over params (could be done in parallel with parallels::mclapply)
+# this (non-parallel version) takes 1+ minutes depending on machine
+sims <- lapply(1:nrep, function(i) {
+  # `oneSim` is a vector of abunds
+  oneSim <- untb(Jm = 100, Sm = 50, J = 100, 
+                 m = allMs[i], nu = allNus[i], 
+                 niter = nt)
+  
+  # return the hill numbers rather than abunds
+  return(roleR:::.hillDivSAD(oneSim, 0:4))
+})
+
+# combine output into a matrix (rows for sims, cols for hill q's 0 through 4)
+sims <- do.call(rbind, sims)
+```
+
+Explore relationships between parameters and patterns in the sum stats
+```{r}
+#| eval: false
+
+plot(sims[, 1], allMs, 
+     col = socorro::quantCol(allNus, 
+                             pal = viridis::viridis(nrep)))
+
+plot(sims[, 1], allNus, 
+     col = socorro::quantCol(allMs, 
+                             pal = viridis::viridis(nrep)))
+
+
+plot(allMs, allNus, pch = 16, 
+     col = socorro::quantCol(sims[, 4], 
+                             pal = viridis::viridis(nrep)))
+```
+
+Now fit a random forest for each param
+
+```{r}
+#| eval: false
+rfNu <- randomForest(sims, allNus)
+rfM <- randomForest(sims, allMs)
+
+# see how good prediction works
+plot(allMs, rfM$predicted) # pretty good
+plot(allNus, rfNu$predicted) # less good
+```
+
+
+

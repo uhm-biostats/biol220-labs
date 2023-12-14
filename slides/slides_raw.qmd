@@ -1,0 +1,145 @@
+---
+title: "Process modeling day 1 slides"
+author: "Renata Diaz"
+format: pptx
+---
+
+# Theory and motivation of process modeling
+
+
+# (Lecture + discussion) What do we _mean_ by process modeling, anyway?
+
+Key points:
+
+## In a process model, we play a "game", with a set of entities following a system of defined rules, and see how the outcomes of the game vary as we change the rules. 
+## These models are often nondeterministic and often do not have closed-form, analytical solutions. 
+
+# (Lecture + discussion) What are the applications of process modeling for eco-evo?
+
+Key points:
+
+## A process model offers almost unlimited flexibility for modeling complex, interacting processes.
+## Everything depends on the rules we define! So it is very important to understand the rules of the game we are playing.
+
+Discussion/brainstorm:
+
+## What are some possible applications of process modeling in your area of interest?
+
+# (Lecture + discussion) What are the _constraints_ we encounter in a process modeling approach?
+
+Key points:
+
+## Process models are computationally expensive! Modern computing strategies help, but high dimensionality is a serious constraint. 
+## Issues like model identifiability and correlation != causation. Just because our mechanism produces results that match some data, doesn't _necessarily_ mean our mechanism is the same mechanism that produced that data. 
+## Process models are themselves nondeterministic, so must be run many times.
+
+# (Example) The Unified Neutral Theory of Biodiversity
+
+Key points:
+
+## Hubbell's UNTB is a process model. Simply put, it is a game played with a set of simple rules, with emergent properties that we find interesting. 
+## For the rest of today, we'll be using UNTB as an example process model. 
+
+
+# (Lecture + game of chance) Playing neutral theory
+
+Key points:
+
+## The rules of neutral theory
+## We can play neutral theory manually. However, computers would make it considerably faster!
+
+# Coding exercise: A simple neutral model of biodiversity
+
+
+# (Group project) Code up UNTB in R!
+
+# (Backup) 
+
+Source the pre-coded UNTB located at https://github.com/role-model/process-models-workshop/neut_mod/neutral_mod.R. 
+
+# (Breakout groups or individual) Change parameter settings manually and visualize outcomes. 
+
+# Simulation Exercise: Exploring neutral model behavior
+
+
+# (Coding exercise) Set up the infrastructure to explore ranges of parameters
+
+As a group, write a wrapper to run our `untb` code over ranges of values for M and nu.
+
+Or (backup) source the script at https://github.com/role-model/process-models-workshop/neut_mod/run_neutmod.R. 
+
+# (Breakout groups) Explore ranges of parameters
+
+
+Or (backup) source the script at https://github.com/role-model/process-models-workshop/neut_mod/run_neutmod.R. 
+
+
+# (Dicussion) Interpret outcomes
+
+Discussion questions:
+
+1. Each group describe their outcomes
+1. Did each simulation come out the same?
+1. Do we see unique mapping of M, Nu to Hill numbers? What relationships do we see?
+1. How long did it take to run?
+
+
+Key points:
+
+1. Individual simulations come out differently, but the overall behaviors are consistent.
+1. A single outcome variable (e.g. hill0) can come about from multiple combinations of parameters.
+1. Running lots of models as a for loop is _slow_!
+
+# Inferring the parameters of UNTB from outcomes
+
+## Key questions
+
+1. How do we use the outcomes of a process model to guess at underlying processes?
+1. How can we leverage machine learning (random forest) to infer parameter values from the outcomes of a neutral model?
+1. What are the limiting factors in inferring process from outcome in a process model?
+
+## Learning objectives
+
+1. Understand the outcome-to-parameter inference model.
+1. Fit and evaluate a random forest model to our UNTB data.
+1. Identify the limiting features of this approach (particularly model identifiability) and brainstorm possible solutions. 
+
+## Lesson outline
+
+# (Lecture/discussion) Going from outcome to process
+
+Key question:
+
+1. How could we _use_ a process model to better understand actual data?
+
+Key points:
+
+1. We might have empirical data and we want to know how it was generated. We could compare the observed data (e.g. Hill numbers) to a process model to see which outcomes are (in)consistent.
+1. _Consistent_ is not the same as _confirming_! 
+1. As a starting point, we can see if we can recover generative parameters when we know how they were produced. 
+
+# (Lecture/discussion) Random forest regression
+
+Key points:
+
+1. To guess at the parameters that generated some outcome data, we're writing a model of the general form `parameter ~ results`. This isn't necessarily a linear or otherwise tidy relationship, so we'll use machine learning.
+1. Random forest can do regression with many parameters predicting nonlinear relationships.
+1. We will begin by using a random forest to try to recover parameter values for known sims.
+
+# (Coding exercise) Fitting a random forest to our neutral data
+
+# (Discussion) What problems arise in the random forest?
+
+Key points: 
+
+1. Multiple sets of parameters can lead to the same outcomes, making it difficult to infer backwards.
+
+
+# (Discussion) How might we address these challenges?
+
+Key points:
+
+1. More data dimensions can break a many-to-one mapping.
+1. Leaves unanswered, or assumes/works conditional on UNTB being the correct underlying game
+
+

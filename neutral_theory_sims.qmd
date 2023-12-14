@@ -1,0 +1,45 @@
+# Simulation Exercise: Exploring neutral model behavior
+
+## Key questions
+
+1. How do we systematically explore parameter space for a process model?
+1. How do the outcomes of UNTB simulations change over wide ranges of parameter space?
+
+
+## Lesson objectives
+
+1. Write code to explore parameter space for UNTB.
+1. Visualize and interpret plots of outcomes (Hill numbers) for exploratory neutral simulations.
+
+## Lesson outline
+
+[Slides](slides/day1_slides.pdf)
+
+### (Coding exercise) Set up the infrastructure to explore ranges of parameters
+
+
+Or (backup) source the script [here](https://raw.githubusercontent.com/role-model/process-models-workshop/main/neut_mod/neutral_mod.R)
+
+As a group, write a wrapper to run our `untb` code over ranges of values for M and nu.
+
+Or (backup) source the script [here](https://raw.githubusercontent.com/role-model/process-models-workshop/main/neut_mod/run_neutmod.R)
+
+### (Breakout groups) Explore ranges of parameters
+
+
+
+### (Dicussion) Interpret outcomes
+
+Discussion questions:
+
+1. Each group describe their outcomes
+1. Did each simulation come out the same?
+1. Do we see unique mapping of M, Nu to Hill numbers? What relationships do we see?
+1. How long did it take to run?
+
+
+Key points:
+
+1. Individual simulations come out differently, but the overall behaviors are consistent.
+1. A single outcome variable (e.g. hill0) can come about from multiple combinations of parameters.
+1. Running lots of models as a for loop is _slow_!

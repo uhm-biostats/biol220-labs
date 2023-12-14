@@ -1,0 +1,460 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.400
+Okay, so now we're going to discuss process modeling within the framework of Hubbell's neutral theory.
+
+00:00:06.400 --> 00:00:15.160
+And if you're not familiar with Hubbell's neutral theory, it's fully called the Unified Neutral Theory of Biodiversity and Biogeography.
+
+00:00:15.160 --> 00:00:27.440
+And it's a process model that describes how the diversity of ecological systems can change over time according to a very simple set of rules.
+
+00:00:27.440 --> 00:00:34.000
+So we're going to discuss UNTB (which is how we'll refer to neutral theory) as a process model. 
+
+00:00:34.400 --> 00:00:40.400
+Then we're going to get into the specific rules of neutral theory and the outcomes that we pay attention to.
+
+00:00:40.400 --> 00:00:45.120
+And this will set us up to play the game interactively. 
+
+00:00:45.120 --> 00:00:52.160
+We can do this with a set of die, or coded up as a set of functions in R.
+
+00:00:52.160 --> 00:00:57.200
+Those pre-written functions are available on the course website.
+
+00:00:57.200 --> 00:01:11.000
+So the Unified Neutral Theory has a fundamentally process modeling approach. In it, we're looking at a set of entities, which are ecological communities,
+
+00:01:11.000 --> 00:01:22.320
+That are made up of a fixed number of individuals. So like the trees in the forest. And as the model plays out, individuals die, give birth,
+
+00:01:22.320 --> 00:01:31.520
+immigrate (or arrive in the system from outside the system) and speciate into new species according to a set of rules and parameters.
+
+00:01:31.520 --> 00:01:41.040
+And the outcomes of neutral theory are what I kind of call semi-deterministic in that the specific outcome of any given single run of this model
+
+00:01:41.040 --> 00:01:51.200
+can't be predicted with detail - but that it exhibits dependable, consistent behaviors. Given enough runs with the same set of parameters,
+
+00:01:51.200 --> 00:01:58.200
+we can be confident that we're going to end up with a general set of patterns that are consistent with what we have seen before.
+
+00:02:01.350 --> 00:02:05.880
+So let's talk about the rules and then the outcomes of neutral theory.
+
+00:02:05.880 --> 00:02:15.080
+The structure of a neutral model, or if a process model in general, is that we have a  playing field, or the board of the board game, 
+
+00:02:15.080 --> 00:02:19.120
+we have the set of rules or processes by which the model proceeds 
+
+00:02:19.120 --> 00:02:25.000
+and then we have a set of outcomes that are what we pay attention to and interpret as the model results.
+
+00:02:26.000 --> 00:02:29.160
+In neutral theory the playing field has 3 parts. 
+
+00:02:29.160 --> 00:02:33.280
+Mostly we focus on this piece in the middle, the local community.
+
+00:02:33.280 --> 00:02:40.040
+I like to use the example of a patch of garden plot in your backyard. 
+
+00:02:40.040 --> 00:02:47.040
+Your garden plot in your backyard has some number of spots where things can grow.
+
+00:02:47.040 --> 00:02:51.000
+And so the local community has a consistent size over time. 
+
+00:02:51.000 --> 00:02:56.560
+And it's made up of different species of things that are growing in your garden.
+
+00:02:56.560 --> 00:03:00.600
+We also have the meta community which I like to describe as your whole backyard 
+
+00:03:00.600 --> 00:03:02.760
+or maybe your whole neighborhood 
+
+00:03:02.760 --> 00:03:06.400
+and all of the plants that are growing in your backyard or your neighborhood.
+
+00:03:06.400 --> 00:03:13.920
+The meta community acts as a source of new species that may land in your local garden plot
+
+00:03:13.920 --> 00:03:16.720
+ or land in the local community and might start growing there.
+
+00:03:17.801 --> 00:03:24.439
+And lastly we have - this is largely a bookkeeping piece but we do to keep track of it -
+
+00:03:24.439 --> 00:03:28.960
+All of the species that we have ever had occur in our model.
+
+00:03:30.305 --> 00:03:37.040
+And this may be different from all of the species that are still present in the system by the end of the model 
+
+00:03:37.040 --> 00:03:40.480
+because in neutral theory species can go extinct, 
+
+00:03:40.480 --> 00:03:43.320
+And so we have to keep track of everything we've ever seen 
+
+00:03:43.320 --> 00:03:46.360
+because we may not still be seeing it by the end of the model.
+
+00:03:48.353 --> 00:03:50.720
+Okay, so the process. 
+
+00:03:50.720 --> 00:03:52.720
+What happens in a neutral model? 
+
+00:03:54.113 --> 00:03:58.680
+So the defining feature of each time step in a neutral model is
+
+00:03:58.680 --> 00:04:02.720
+ an individual from the local community has to die.
+
+00:04:03.464 --> 00:04:07.719
+They are then replaced either through what's called a local birth -  
+
+00:04:07.719 --> 00:04:14.400
+which is to say one of the other individuals in the local community has an offspring -
+
+00:04:14.400 --> 00:04:15.680
+or via immigration, 
+
+00:04:15.680 --> 00:04:20.200
+which would be when an individual from the wider meta community has, 
+
+00:04:20.200 --> 00:04:27.480
+you can think of it as a seed or a juvenile that arrives in the local community and takes up living there.
+
+00:04:29.641 --> 00:04:34.640
+Sometimes in this birth process, a speciation event can occur. 
+
+00:04:34.640 --> 00:04:43.280
+The individual that establishes in the local community is of a never before seen species that is different from the parent species.
+
+00:04:43.280 --> 00:04:52.600
+In the real world you can think of this as a mutation event where the offspring is now a new species separate from the parent.
+
+00:04:54.209 --> 00:04:55.720
+And then this just repeats. 
+
+00:04:55.720 --> 00:04:59.280
+And it can repeat for a set number of time steps.
+
+00:04:59.280 --> 00:05:07.440
+ Often with neutral theory we'll repeat it until the model has reached some state that we can define as an equilibrium.
+
+00:05:07.440 --> 00:05:10.080
+And it can be tricky to define an equilibrium in a process model, 
+
+00:05:10.080 --> 00:05:15.160
+but for our purposes here, we'll say we can run it until it stops sort of changing a whole bunch.
+
+00:05:17.129 --> 00:05:24.800
+And so neutral theory has a series of parameters that can be used to modify the outcomes of the model. 
+
+00:05:24.800 --> 00:05:31.520
+These are the number of individuals in the meta community or the size of the meta community 
+
+00:05:31.520 --> 00:05:34.440
+and the number of species in the meta community.
+
+00:05:34.440 --> 00:05:38.720
+You can imagine that if there's only one species in the whole meta community, 
+
+00:05:38.720 --> 00:05:43.200
+it's gonna be hard to get diversity in the local community drawing from that meta community.
+
+00:05:45.722 --> 00:05:50.960
+At the local scale, we have also the number of individuals that are present in the local community.
+
+00:05:50.960 --> 00:05:54.880
+For this little toy visual, that's there's 5 individuals in the local community. 
+
+00:05:54.880 --> 00:05:58.080
+This parameter can also be really important.
+
+00:05:58.080 --> 00:06:03.880
+You can get sometimes more idiosyncratic behaviors with very small local communities.
+
+00:06:03.880 --> 00:06:09.880
+And it can become much harder computationally model as you have a really huge local community.
+
+00:06:09.880 --> 00:06:23.200
+Then there are 2 more parameters that we can  tune like dials in a radio and explore how changing those parameters affects the models behavior.
+
+00:06:23.200 --> 00:06:28.040
+And those are, the probability of an integration event occurring. 
+
+00:06:28.040 --> 00:06:30.040
+So M. 
+
+00:06:30.040 --> 00:06:38.160
+This is the probability that when a new individual is born, that individual's parent is coming from the meta community.
+
+00:06:38.160 --> 00:06:43.320
+And if the individual's parent is not coming from the meta community, it's what we call a local birth.
+
+00:06:43.320 --> 00:06:47.200
+So the individual's parent is coming from the local community. 
+
+00:06:48.233 --> 00:06:50.240
+And lastly we have the parameter Nu.
+
+00:06:50.840 --> 00:06:54.760
+Which is the probability that when that birth event occurs, 
+
+00:06:54.760 --> 00:06:59.280
+whether the parent is from the meta community or from the local community,
+
+00:06:59.280 --> 00:07:03.560
+the probability that that birth event is also a speciation event 
+
+00:07:03.560 --> 00:07:08.280
+where the offspring is of a different species than its parent species
+
+00:07:08.280 --> 00:07:14.080
+and it's a new species that we have never before encountered because it has never existed before.
+
+00:07:16.578 --> 00:07:21.440
+So let's work through the process in a little bit more exacting detail. 
+
+00:07:22.521 --> 00:07:28.800
+Every time step, the first thing that happens is an individual is chosen at random to die.
+
+00:07:28.800 --> 00:07:34.360
+The probability of any particular individual being the individual who has to die 
+
+00:07:34.360 --> 00:07:38.480
+is going to be 1 / however many individuals there are
+
+00:07:38.480 --> 00:07:42.560
+because every individual has an equal probability of dying.
+
+00:07:42.560 --> 00:07:46.040
+That's part of what makes this a neutral model.
+
+00:07:47.697 --> 00:07:55.080
+By losing the orange individual here, we have created a gap in the local community 
+
+00:07:55.080 --> 00:07:59.320
+and we need to fill that slot by having a birth event 
+
+00:07:59.320 --> 00:08:01.320
+and filling that slot in with a new individual.
+
+00:08:03.440 --> 00:08:10.560
+We need to have either a local birth event or an immigration event to start to fill in this slot.
+
+00:08:10.560 --> 00:08:12.680
+So again, we'll roll the die. 
+
+00:08:12.680 --> 00:08:16.400
+With probability 1-M, 
+
+00:08:16.400 --> 00:08:23.040
+that birth event will be a local birth where the parent is chosen at random from the local community.
+
+00:08:23.688 --> 00:08:27.280
+And if it's a local birth event, every individual in the local community 
+
+00:08:27.280 --> 00:08:32.297
+has an equal probability of being the lucky parent. 
+
+00:08:32.297 --> 00:08:36.840
+Again, this is neutral. No individual has a leg up and any other individual
+
+00:08:36.840 --> 00:08:41.000
+around winning the birth lottery.
+
+00:08:41.000 --> 00:08:45.360
+And the other way this can happen is if it's an immigration event 
+
+00:08:45.360 --> 00:08:46.920
+so with probability M
+
+00:08:46.920 --> 00:08:50.480
+a parent individual is chosen, again at random, 
+
+00:08:50.480 --> 00:08:51.680
+from the meta community.
+
+00:08:51.680 --> 00:08:58.400
+Again, no individual in the meta community has any advantage over any other individual in winning that lottery.
+
+00:09:00.513 --> 00:09:04.720
+Finally, before we can fill in that slot with our new individual, 
+
+00:09:04.720 --> 00:09:09.280
+we do have to check if there's a speciation event happening at this time step.
+
+00:09:09.280 --> 00:09:16.720
+With probability Nu, the birth will not simply be a new individual of the exact same species.
+
+00:09:16.720 --> 00:09:18.640
+It will be a new individual of a novel species. 
+
+00:09:18.640 --> 00:09:26.920
+If that happens, we need to update the species of the offspring to a brand new species
+
+00:09:26.920 --> 00:09:30.800
+ and we have to make a note in our all-time species list
+
+00:09:31.103 --> 00:09:36.880
+that we have added a brand new species to the all time list.
+
+00:09:38.243 --> 00:09:41.080
+And if there's no speciation, we don't have to bother with any of that.
+
+00:09:41.869 --> 00:09:45.440
+Once we've worked through these, like, decision trees, 
+
+00:09:45.440 --> 00:09:52.800
+we can replace the individual who died with this new baby individual in the local community.
+
+00:09:53.733 --> 00:09:56.840
+And then we're gonna do that indefinitely 
+
+00:09:56.840 --> 00:10:01.920
+or until we've iterated over all the time steps that we're going to iterate over.
+
+00:10:04.049 --> 00:10:07.400
+And so, say we've run this a whole bunch of times, then what do we do? 
+
+00:10:07.400 --> 00:10:11.360
+Well, we're going to want to be looking at the outcomes of this model and 
+
+00:10:11.360 --> 00:10:17.680
+with neutral theory we're interested in - or, for now, let's say, since there's many applications of neutral theory - 
+
+00:10:17.680 --> 00:10:27.600
+but we're going to look at  the diversity and structure of that local community after we've run this model for a while.
+
+00:10:27.600 --> 00:10:30.080
+So we can take the local community. 
+
+00:10:30.080 --> 00:10:33.520
+And a common way of looking at abundance 
+
+00:10:33.520 --> 00:10:37.560
+which you'll be very familiar with if you've worked through the previous 2 days of this workshop 
+
+00:10:37.560 --> 00:10:40.840
+is to plot what's called a species abundance distribution, 
+
+00:10:40.840 --> 00:10:46.520
+which is a means of visualizing how diversity is distributed within a system.
+
+00:10:46.520 --> 00:10:54.000
+So for a quick primer, if you've skipped the past couple of days or just want a primer on species abundance distributions...
+
+00:10:54.000 --> 00:11:00.680
+Here we've plotted on the x-axis the rank of species in the system 
+
+00:11:00.680 --> 00:11:03.960
+if we rank them from the most to least abundant.
+
+00:11:03.960 --> 00:11:07.760
+And on the y-axis we plotted how abundant each species is. 
+
+00:11:07.760 --> 00:11:13.040
+This plot is telling us that the very most abundant species in the system has 3 individuals.
+
+00:11:13.040 --> 00:11:14.720
+That's the green species. 
+
+00:11:14.720 --> 00:11:19.600
+And the second most abundant species has one individual. And so does the third.
+
+00:11:19.600 --> 00:11:21.760
+Those are the blue and the purple species. 
+
+00:11:22.549 --> 00:11:28.440
+When we have a more realistically sized community with more species and more individuals
+
+00:11:28.440 --> 00:11:34.200
+the shape of this distribution can tell us a lot about the structure of a system
+
+00:11:34.200 --> 00:11:38.440
+whether we've got a whole bunch of species and they're all relatively equally abundant 
+
+00:11:38.440 --> 00:11:43.080
+or whether we have maybe still a whole bunch of species but really all of the individuals
+
+00:11:43.080 --> 00:11:46.640
+are accounted for by one really, really abundant species. 
+
+00:11:47.597 --> 00:11:52.400
+And so the shape of the species abundance distribution tells us a lot about community structure.
+
+00:11:52.831 --> 00:11:59.760
+We can also quantify this evenness and diversity using what's called Hill numbers. 
+
+00:11:59.760 --> 00:12:06.160
+For more information on Hill numbers, I encourage you to look at the materials from the previous two days of the workshop
+
+00:12:06.160 --> 00:12:13.640
+because we work through applications of Hill numbers to all sorts of different biodiversity data, including abundance data like this.
+
+00:12:13.640 --> 00:12:16.920
+For now we can say that if we calculate the Hill number 
+
+00:12:16.920 --> 00:12:25.040
+it's a diversity index that will capture different aspects of this species abundance distribution 
+
+00:12:25.040 --> 00:12:28.280
+based on this parameter q.
+
+00:12:28.280 --> 00:12:35.200
+A hill number that's calculated using the parameter q of 0 is going to give us species richness.
+
+00:12:35.200 --> 00:12:40.960
+And if we use q values, increasing q values, so q = 1 or q = 2 
+
+00:12:40.960 --> 00:12:46.600
+we're going to be shifting the amount of weight that we put on
+
+00:12:46.600 --> 00:12:50.640
+the shape of the species abundance distribution. 
+
+00:12:50.640 --> 00:12:57.480
+And we're going to be taking into account more and more of the presence and representation of rare species in the system.
+
+00:13:00.804 --> 00:13:09.240
+At this stage in the workshop, we worked through the neutral model a few times using an
+
+00:13:09.240 --> 00:13:13.960
+interactive hands-on approach of a whiteboard and running the die.
+
+00:13:13.960 --> 00:13:17.440
+If you would like to play that game a few times on your own, 
+
+00:13:17.440 --> 00:13:24.280
+we've got this slide that you can refer to.
+
+00:13:24.280 --> 00:13:32.460
+It can be informative to work through this manually by choosing parameters for J, M, and Nu 
+
+00:13:32.460 --> 00:13:35.640
+and then playing through the cycle a few times.
+
+00:13:36.334 --> 00:13:42.600
+There are also materials available on our website for running code
+
+00:13:42.600 --> 00:13:46.800
+ to play neutral games on your own computer.
+
+00:13:47.470 --> 00:13:51.920
+And we'll link to those materials along with these video lectures 
+
+00:13:51.920 --> 00:14:00.280
+so that you can gain a little bit of intuition for how the neutral model behaves.
+

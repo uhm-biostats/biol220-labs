@@ -1,0 +1,29 @@
+# Lesson template
+
+## Section title:
+
+## Key questions
+
+_List 1-3 key questions to motivate this section of the workshop._
+
+## Lesson objectives
+
+_List 1-3 lesson objectives, filling in the prompt "After this section of the workshop, participants should be able to...."_
+
+## Planned exercises
+
+_List planned activities for this section of the workshop. Examples could include (but not limited to) lectures, live-coding demos, breakout sessions, group discussions, etc._
+
+## Supporting materials
+
+_Describe, and where possible link to, lesson materials that will be needed for this section of the workshop. These could include code for live coding, code documentation, book chapters, videos/animations, etc._
+
+_For bonus points organize these according to whether they already exist or we need to create them!_
+
+### Extant
+
+### To create
+
+## Key points
+
+_List 1-3 key takeaways from this section of the workshop._
