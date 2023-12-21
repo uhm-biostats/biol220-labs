@@ -322,16 +322,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="saving-your-code"><span class="header-section-number">1.3.2</span> Saving your code</h3>
 <p>When you analyze your own data, we strongly recommend that you keep a record of all commands used, along with copious notes, so that weeks or years later you can retrace the steps of your earlier analysis.</p>
 <p>In <em>RStudio Cloud</em>, you can create a plain text file (sometimes called a script), which contains <em>R</em> commands that can be reloaded and used at a later date. We have created a scratch file where you can enter and save your commands while you’re learning the tools. Click on “scratch.R” in the lower-right:</p>
-<p><img src="../images/rstudio-cloud-05.png" class="img-fluid"></p>
+<p><img src="images/rstudio-cloud-05.png" class="img-fluid"></p>
 <p>That will open a mostly blank text file above the Console that looks like this:</p>
-<p><img src="../images/rstudio-cloud-06.png" class="img-fluid"></p>
-<p>You can copy and paste any commands that you want from the Console, or type directly here. (When you copy and paste, it’s better to not include the <code>&gt;</code> prompt in the script.) If you want to keep this script for later, just hit “Save” under the “File” menu. In the future you can open this file in all the normal ways to have those commands available for use again.</p>
-<p>It is best to type all your commands in the script window and run them from there, rather than typing directly into the console. This lets you save a record of your session so that you can more easily re-create what you have done later.</p>
-<p>FYI, if you want to create a new, blank <em>R</em> script, here’s how. Under the menu at the top, choose “File”, then “New File”, and then “R Script”. This will create a new section in <em>RStudio Cloud</em> with the temporary name “Untitled1” (or similar).</p>
+<p><img src="images/rstudio-cloud-06.png" class="img-fluid"></p>
+<p>You can copy and paste any commands that you want from the Console, or type directly here. (When you copy and paste, do not include the <code>&gt;</code> prompt in the script.) Save this script for later reference by hitting “Save” under the “File” menu. In the future you can open this file to have those commands available for use again.</p>
+<p>It is a good habit to type all your commands in the script window and run them from there, rather than typing directly into the console. This lets you save a record of your session so that you can more easily re-create what you have done later.</p>
+<p>FYI, if you want to create a new, blank <em>R</em> script, here’s how: under the menu at the top, choose “File”, then “New File”, and then “R Script”. Follow the prompts to save the new file.</p>
 </section>
 <section id="comments" class="level3" data-number="1.3.3">
 <h3 data-number="1.3.3" class="anchored" data-anchor-id="comments"><span class="header-section-number">1.3.3</span> Comments</h3>
-<p>In scripts, it can be very useful to save a bit of text which is not to be evaluated by <em>R</em>. You can leave a note to yourself (or a colleague) about what the next line is supposed to do, what its strengths and limitations are, or anything else you want to remember later. To leave a note, we use “comments”, which are a line of text that starts with the hash symbol <code>#</code>. Anything on a line after a # will be ignored by <em>R</em>.</p>
+<p>In scripts, it can be very useful to save a bit of text which is not to be evaluated by <em>R</em>. You can leave a note to yourself (or a collaborator) about what the next line is supposed to do, what its strengths and limitations are, or anything else you want to remember later. To leave a note, we use “comments”, which are a line of text that starts with the hash symbol <code>#</code>. Anything on a line after a <code>#</code> will be ignored by <em>R</em>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a comment. Running this in R will </span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># have no effect.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -354,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The middle bit of this – a less than sign and a hyphen typed together to make something that looks a little like a left-facing arrow – tells <em>R</em> to assign the value on the right to the variable on the left. After running the command above, whenever we use <code>x</code> in a command it would be replaced by its value <code>4</code>. For example, if we add <code>3</code> to <code>x</code>, we would expect to get <code>7</code>.</p>
+<p>The middle bit of this—a less than sign and a hyphen typed together to make something that looks a little like a left-facing arrow – tells <em>R</em> to assign the value on the right to the variable on the left. After running the command above, whenever we use <code>x</code> in a command it would be replaced by its value <code>4</code>. For example, if we add <code>3</code> to <code>x</code>, we would expect to get <code>7</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -377,14 +377,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="names" class="level3" data-number="1.3.6">
 <h3 data-number="1.3.6" class="anchored" data-anchor-id="names"><span class="header-section-number">1.3.6</span> Names</h3>
 <p>Naming variables and functions in <em>R</em> is pretty flexible.</p>
-<p>A name has to start with a letter, but that can be followed by letters or numbers. There can’t be any spaces, though.</p>
+<p>A name has to start with a letter, but that can be followed by any combination of letters, numbers, and underscores (<code>_</code>). Names cannot have spaces or any character other than letters, numbers, and underscores, for example <code>$</code>, <code>-</code>, and <code>%</code> are not allowed. Technically, periods (<code>.</code>) are allowed in names, but not reccomended excpet for specific uses outside the scope of this course.</p>
 <p>Names in <em>R</em> are case-sensitive, which means that <code>Weights</code> and <code>weights</code> are completely different things to <em>R</em>. This is a common and incredibly frustrating source of errors in <em>R</em>.</p>
 <p>It’s a good idea to have your names be as descriptive as possible, so that you will know what you meant later on when looking at it. (However, if they get too long, it becomes painful and error prone to type them each time we use them, so this, as with all things, requires moderation.)</p>
 <p>Sometimes clear naming means that it is best to have multiple words in the name, but we can’t have spaces. Therefore a common approach is like we saw in the previous section, to chain the words with underscores (not hyphens!), as in <code>weights_before_hospital</code>. (Another solution to make separate words stand out in a variable name is to vary the case: <code>weightsBeforeHospital</code>. This is called “Camel Case” because the capital letters are like camel humps.)</p>
 </section>
 <section id="vectors" class="level3" data-number="1.3.7">
 <h3 data-number="1.3.7" class="anchored" data-anchor-id="vectors"><span class="header-section-number">1.3.7</span> Vectors</h3>
-<p>One useful feature of <em>R</em> is the ability to sometimes apply functions to an entire collection of numbers. The technical term for a set of numbers is “vector”. For example, the following code will create a vector of five numbers:</p>
+<p>One useful feature of <em>R</em> is the ability to apply functions to an entire collection of numbers. The technical term for a set of numbers is “vector”. For example, the following code will create a vector of six numbers:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">c</span>(<span class="dv">78</span>, <span class="dv">85</span>, <span class="dv">64</span>, <span class="dv">54</span>, <span class="dv">102</span>, <span class="fl">98.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -397,14 +397,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>temperatureF <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">78</span>, <span class="dv">85</span>, <span class="dv">64</span>, <span class="dv">54</span>, <span class="dv">102</span>, <span class="fl">98.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The combination of the less than sign and the hyphen makes an arrow pointing from right to left—this tells <em>R</em> to assign the stuff on the right to the name on the left. In this case we are assigning a vector to the variable <code>temperatureF</code>.</p>
-<p>Inputting this to <em>R</em> causes no obvious output, but <em>R</em> will now remember this vector of temperatures under the name <code>temperatureF</code>. We can view the contents of the vector <code>temperatureF</code> by simply typing its name:</p>
+<p>Inputting this into <em>R</em> causes no obvious output, but <em>R</em> will now remember this vector of temperatures under the name <code>temperatureF</code>. We can view the contents of the vector <code>temperatureF</code> by simply typing its name:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>temperatureF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  78.0  85.0  64.0  54.0 102.0  98.6</code></pre>
 </div>
 </div>
-<p>The power of vectors is that sometimes <em>R</em> can do the same calculation on all elements of a vector with one command. For example, to convert a temperature in Fahrenheit to Celsius, we would want to subtract <code>32</code> and multiply times <code>5/9</code>. We can do that for all the numbers in this vector at once:</p>
+<p>The power of vectors is that <em>R</em> can do the same calculation on all elements of a vector with one command. For example, to convert a temperature in Fahrenheit to Celsius, we would want to subtract <code>32</code> and multiply times <code>5/9</code>. We can do that for all the numbers in this vector at once:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>temperatureC <span class="ot">&lt;-</span> (temperatureF <span class="sc">-</span> <span class="dv">32</span>) <span class="sc">*</span> <span class="dv">5</span> <span class="sc">/</span> <span class="dv">9</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>temperatureC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -412,14 +412,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 25.55556 29.44444 17.77778 12.22222 38.88889 37.00000</code></pre>
 </div>
 </div>
-<p>To pull out one of the numbers in this vector, we add square brackets after the vector name, and inside those brackets put the index of the element we want. (The “index” is just a number giving the relative location in the vector of the item we want. The first item has index <code>1</code>, etc.) For example, the second element of the vector <code>temperatureC</code> is</p>
+<p>To pull out one of the numbers in this vector, we add square brackets after the vector name, and inside those brackets put the index of the element we want. (The “index” is just a number giving the location in the vector of the item we want. The first item has index <code>1</code>, etc.) For example, the second element of the vector <code>temperatureC</code> is</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>temperatureC[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 29.44444</code></pre>
 </div>
 </div>
-<p>One of the ways to slip up in <em>R</em> is to confuse the [square brackets] which pull out an element of a vector, with the (parentheses) , which is used to enclose the arguments of a function.</p>
+<p>One of the ways to slip up in <em>R</em> is to confuse the [square brackets] which pull out an element of a vector, with the (parentheses), which is used to enclose the arguments of a function.</p>
 <p>Vectors can also operate mathematically with other vectors. For example, imagine you have a vector of the body weights of patients before entering hospital (<code>weight_before_hospital</code>) and another vector with the same patient’s weights after leaving hospital (<code>weight_after_hospital</code>). You can calculate the change in weight for all these patients in one command, using vector subtraction:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>weight_before_hospital <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">102</span>)</span>
@@ -466,7 +466,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- There is another package that we will use in this course (and briefly today) called **dplyr**. I will always pre-install packages in the workspace prior to doing the lab, but I am showing you how to install additional packages for future references. -->
 <!-- ### Loading a package -->
 <!-- Once a package is installed, it needs to be loaded into *R* during a session if you want to use it. You do this with a function called `library()`. -->
-<!-- For this week’s labs, we will use the packages **dplyr** and **readr**. **dplyr** allows for easy modification of data frames; **readr** reads data into *R*. Before using the functions in these packages, we need to load them. We do this with the `library()` function. In the console, enter this -->
+<!-- For this week's labs, we will use the packages **dplyr** and **readr**. **dplyr** allows for easy modification of data frames; **readr** reads data into *R*. Before using the functions in these packages, we need to load them. We do this with the `library()` function. In the console, enter this -->
 <!-- ```{r, message = FALSE} -->
 <!-- library(dplyr) -->
 <!-- library(readr) -->
@@ -479,14 +479,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- ```{r, echo = FALSE, eval = TRUE} -->
 <!-- "/cloud/project" -->
 <!-- ``` -->
-<!-- FYI, it is convenient to tell *R* which directory to look for files at the beginning of a session, to minimize typing later. You can also set the working directory for *RStudio Cloud* from *RStudio Cloud*’s menu (the same directions apply to the Desktop version of *RStudio*). From the "Session" tab in the menu bar, choose "Set Working Directory", and then "Choose Directory..." This will open a dialog box that will let you find and select the directory you want. -->
+<!-- FYI, it is convenient to tell *R* which directory to look for files at the beginning of a session, to minimize typing later. You can also set the working directory for *RStudio Cloud* from *RStudio Cloud*'s menu (the same directions apply to the Desktop version of *RStudio*). From the "Session" tab in the menu bar, choose "Set Working Directory", and then "Choose Directory..." This will open a dialog box that will let you find and select the directory you want. -->
 </section>
 <section id="reading-a-file" class="level3" data-number="1.3.9">
 <h3 data-number="1.3.9" class="anchored" data-anchor-id="reading-a-file"><span class="header-section-number">1.3.9</span> Reading a file</h3>
 <p>In this course, we have saved the data in a “comma-separated variable” format. All files in this format ought to have “.csv” as the end of their file name. A CSV file is a plain text file, easily read by a wide variety of programs. Each row in the file (besides the first row) is the data for a given individual, and for each individual each variable is listed in the same order, separated by commas. It’s important to note that you can’t have commas anywhere else in the file, besides the separators.</p>
 <p>The first row of a CSV file should be a “header” row, which gives the names of each variable, again separated by commas.</p>
 <p>For examples in this tutorial, let’s use a data set about the passengers of the <em>RMS Titanic</em>. One of the data sets in the folder of data attached to this lab is called “titanic.csv”. This is a data set of 1313 passengers from the voyage of this ship, which contains information about some personal info about each passenger as well as whether they survived the accident or not.</p>
-<p>To import a CSV file into <em>R</em>, use the <code>read_csv()</code> function as in the following command. (This assumes that you have set the working directory to the labs folder, as we described above.)</p>
+<p>To import a CSV file into <em>R</em>, use the <code>read.csv()</code> function as in the following command. (This assumes that you have set the working directory to the labs folder, as we described above.)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>titanic_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/titanic.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -518,1500 +518,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="intro-to-data-frames" class="level3" data-number="1.3.10">
 <h3 data-number="1.3.10" class="anchored" data-anchor-id="intro-to-data-frames"><span class="header-section-number">1.3.10</span> Intro to data frames</h3>
 <p>A data frame is a way that <em>R</em> can store a data set on a number of individuals. A data frame is a collection of columns; each column contains the values of a single variable for all individuals. The values of each individual occur in the same order in all the columns, so the first value for one variable represents the same individual as the first value in the lists of all other variables.</p>
-<p>The function <code>read_csv()</code> loads the data it reads into a data frame.</p>
+<p>The function <code>read.csv()</code> loads the data it reads into a data frame.</p>
 <p>The data frame is usually given a name, which is used to tell <em>R</em>’s functions which data set to use. For example, in the previous section we read in a data set to a data frame that we called <code>titanic_data</code>. This data frame now contains information about each of the passengers on the <em>Titanic.</em> This data frame has seven variables, so it has seven columns (<code>passenger_class</code>, <code>name</code>, <code>age</code>, <code>embarked</code>, <code>home_destination</code>, <code>sex</code>, and <code>survive</code>).</p>
 <p>Very importantly, we can grab one of the columns from a data frame by itself. We write the name of the data frame, followed by a <code>$</code>, and then the name of the variable.</p>
 <p>For example, to show a list of the age of all the passengers on the <em>Titanic</em>, use</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>titanic_data<span class="sc">$</span>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>This will show a vector that has the values for this variable <code>age</code>, one for each individual in the data set.</p>
+<p>Note, when looking at long vectors or data frames, it’s convenient to use the <code>head</code> function, which only shows the first 6 elements, not the whole huge vector or data frame.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(titanic_data<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 29.0000  2.0000 30.0000 25.0000  0.9167 47.0000</code></pre>
 </div>
 </div>
-<p>This will show a vector that has all the values for this variable <code>age</code>, one for each individual in the data set.</p>
 </section>
 <section id="adding-a-new-column" class="level3" data-number="1.3.11">
 <h3 data-number="1.3.11" class="anchored" data-anchor-id="adding-a-new-column"><span class="header-section-number">1.3.11</span> Adding a new column</h3>
 <p>Sometimes we would like to add a new column to a data frame. The easiest way to do this is to simply assign a new vector to a new column name, using the <code>$</code>.</p>
 <p>For example, to add the log of age as a column in the <code>titanic_data</code> data frame, we can write</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>titanic_data<span class="sc">$</span>log_age <span class="ot">&lt;-</span> <span class="fu">log</span>(titanic_data<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>titanic_data<span class="sc">$</span>log_age <span class="ot">&lt;-</span> <span class="fu">log</span>(titanic_data<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can run the command <code>head(titanic_data)</code> to see that <code>log_age</code> is now a column in <code>titanic_data</code>.</p>
 </section>
 <section id="choosing-subsets-of-data" class="level3" data-number="1.3.12">
 <h3 data-number="1.3.12" class="anchored" data-anchor-id="choosing-subsets-of-data"><span class="header-section-number">1.3.12</span> Choosing subsets of data</h3>
-<p>Sometimes we want to do an analysis only on some of the data that fit certain criteria. For example, we might want to analyze the data from the <em>Titanic</em> using only the information from females.</p>
-<p>The easiest way to do this is to use the <code>filter()</code> function from the package <strong>dplyr</strong>. Reminder: make sure you have loaded <strong>dplyr</strong> it into <em>R</em> using <code>library()</code>:</p>
+<p>Sometimes we want to do an analysis only on some of the data that fit certain criteria. For example, we might want to analyze the data from the <em>Titanic</em> using only the information from females. The easiest way to do this is to use the <code>subset</code> function.</p>
+<p>In the titanic data set there is a variable named <code>sex</code>. We can create a new data frame that includes only the data from passengers recorded as female with the following command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-</div>
-<p>In the titanic data set there is a variable named <code>sex</code>, and an individual is female if that variable has value “<code>female</code>”. We can create a new data frame that includes only the data from females with the following command:</p>
-<div class="cell" data-rows.print="5">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(titanic_data, sex <span class="sc">==</span> <span class="st">"female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>titanic_female_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(titanic_data, sex <span class="sc">==</span> <span class="st">"female"</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(titanic_female_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    passenger_class                                                      name
-1               1st                                 Allen,MissElisabethWalton
-2               1st                                  Allison,MissHelenLoraine
-3               1st                 Allison,MrsHudsonJ.C.(BessieWaldoDaniels)
-4               1st                             Andrews,MissKorneliaTheodosia
-5               1st                   Appleton,MrsEdwardDale(CharlotteLamson)
-6               1st                Astor,MrsJohnJacob(MadeleineTalmadgeForce)
-7               1st                                 Aubert,MrsLeontinePauline
-8               1st                 Baxter,MrsJames(HeleneDeLaudeniereChaput)
-9               1st                Beckwith,MrsRichardLeonard(SallieMonypeny)
-10              1st                        Bishop,MrsDickinsonH.(HelenWalton)
-11              1st                                      Bonnell,MissCaroline
-12              1st                                     Bonnell,MissElizabeth
-13              1st                                      Bowen,MissGraceScott
-14              1st                                   Bowerman,MissElsieEdith
-15              1st              Brown,MrsJamesJoseph(MargaretMolly"Tobin)"""
-16              1st                   Brown,MrsJohnMurray(CarolineLaneLamson)
-17              1st                  Bucknell,MrsWilliamRobert(EmmaElizaWard)
-18              1st                Candee,MrsEdward(HelenChurchillHungerford)
-19              1st   Cardeza,MrsJamesWarburtonMartinez(CharlotteWardleDrake)
-20              1st                       Carter,MrsWilliamErnest(LucilePolk)
-21              1st                                     Carter,MissLucilePolk
-22              1st              Cassebeer,MrsHenryArthurjr(GenevieveFosdick)
-23              1st             Cavendish,MrsTyrellWilliamJuliaFlorenceSiegel
-24              1st          Chaffee,MrsHerbertFuller(CarrieConstanceToogood)
-25              1st                  Chambers,MrsNormanCampbell(BerthaGriggs)
-26              1st                                         Cherry,MissGladys
-27              1st                         Chibnall(Bowerman),MrsEdithMartha
-28              1st                   Clark,MrsWalterMiller(VirginiaMcDowell)
-29              1st            Compton,MrsAlexanderTaylor(MaryElizaIngersoll)
-30              1st                                   Compton,MissSaraRebecca
-31              1st             Cornell,MrsRobertClifford(MalvinaHelenLamson)
-32              1st       Crosby,MrsEdwardGifford(CatherineElizabethHalstead)
-33              1st                                      Crosby,MissHarrietR.
-34              1st              Cumings,MrsJohnBradley(FlorenceBriggsThayer)
-35              1st                           Davidson,MrsThornton(OrianHays)
-36              1st                                   deVilliers,MadameBerthe
-37              1st                         Dick,MrsAlbertAdrianVeraGillespie
-38              1st                          Dodge,MrsWashington(RuthVidaver)
-39              1st                Douglas,MrsFrederickCharles(SuzetteBaxter)
-40              1st                     Douglas,MrsWalterDonald(MahalaDutton)
-41              1st                 DuffGordon,Lady(LucilleWallaceSutherland)
-42              1st                          Earnshaw,MrsBoulton(OlivePotter)
-43              1st                                Eustis,MissElizabethMussey
-44              1st                                      Evans,MissEdithCorse
-45              1st                          Flegenheim,MrsAlfred(Antoinette)
-46              1st                                Fortune,MissAliceElizabeth
-47              1st                                    Fortune,MissEthelFlora
-48              1st                                         Fortune,MissMabel
-49              1st                            Fortune,MrsMark(MaryMcDougald)
-50              1st              Frauenthal,MrsHenryWilliam(ClaraHeinsheimer)
-51              1st                                  Frolicher,MissMarguerite
-52              1st Frolicher-Stehli,MrsMaxmillian(MargarethaEmerentiaStehli)
-53              1st                              Futrelle,MrsJacques(MayPeel)
-54              1st                                        Gibson,MissDorothy
-55              1st                        Gibson,MrsLeonard(PaulineC.Boeson)
-56              1st                   Goldenberg,MrsSamuelL.(EdwigaGrabowsko)
-57              1st                                  Graham,MissMargaretEdith
-58              1st                   Graham,MrsWilliamThompson(EdithJunkins)
-59              1st                    Greenfield,MrsLeoDavid(BlancheStrouse)
-60              1st                    Harder,MrsGeorgeAchilles(DorothyAnnan)
-61              1st                        Harper,MrsHenrySleeper(MynaHaxtun)
-62              1st                    Harris,MrsHenryBirkhardt(IreneWallach)
-63              1st               Hays,MrsCharlesMelville(ClaraJenningsGregg)
-64              1st                                Hays,MissMargaretBechstein
-65              1st                                  Hippach,MissJeanGertrude
-66              1st                  Hippach,MrsLouisAlbert(IdaSophiaFischer)
-67              1st                           Hogeboom,MrsJohnC.(AnnaAndrews)
-68              1st              Holverson,MrsAlexanderOskar(MaryAlineTowner)
-69              1st                  Hoyt,MrsFrederickMaxfield(JaneAnneForby)
-70              1st                                   Isham,MissAnneElizabeth
-71              1st                             Kenyon,MrsFrederickR.(Marion)
-72              1st                Kimball,MrsEdwinNelsonJr.(GertrudeParsons)
-73              1st                                     Leader,DrAliceFarnham
-74              1st                       Lindstrom,MrsCarlJohan(SigridPosse)
-75              1st                  Lines,MrsErnestH.(ElizabethLindseyJames)
-76              1st                                     Lines,MissMaryConover
-77              1st                                 Longley,MissGretchenFiske
-78              1st                             Madill,MissGeorgetteAlexandra
-79              1st    Marvin,MrsDanielWarner(MaryGrahamCarmichaelFarquarson)
-80              1st                           Meyer,MrsEdgarJoseph(LeilaSaks)
-81              1st                                       Minahan,MissDaisyE.
-82              1st                 Minahan,MrsWilliamEdward(LillianE.Thorpe)
-83              1st                                      Newell,MissMadeleine
-84              1st                                       Newell,MissMarjorie
-85              1st                                  Newsom,MissHelenMonypeny
-86              1st                                   Ostby,MissHelenRaghnild
-87              1st                                    Pears,MrsThomas(Edith)
-88              1st                   Penasco,MrsVictordeSatode(JosefadeSoto)
-89              1st                  Potter,MrsThomas,Jr.(LilyAlexeniaWilson)
-90              1st            Robert,MrsEdwardScott(ElisabethWaltonMcMillan)
-91              1st                        Rosenbaum(Russell),MissEdithLouise
-92              1st         Rothes,theCountessof(NoelLucyMarthaDyer-Edwardes)
-93              1st                  Rothschild,MrsMartin(ElizabethL.Barrett)
-94              1st                  Ryerson,MrsArthurLarned(EmilyMariaBorie)
-95              1st                                    Ryerson,MissEmilyBorie
-96              1st                          Ryerson,MissSusan(Suzette)Parker
-97              1st                                Schabert,MrsPaul(EmmaMock)
-98              1st                                    Shutes,MissElizabethW.
-99              1st                       Silvey,MrsWilliamBaird(AliceMunger)
-100             1st                    Smith,MrsLucienPhilip(MaryEloiseHughes
-101             1st                   Snyder,MrsJohnPillsbury(NelleStevenson)
-102             1st        Spedden,MrsFrederickOakley(MargarettaCorningStone)
-103             1st                  Spencer,MrsWilliamAugustus(MarieEugenie)
-104             1st               Stengel,MrsCharlesEmilHenry(AnnieMayMorris)
-105             1st                 Stephenson,MrsWalterBertram(MarthaEustis)
-106             1st                           Stone,MrsGeorgeNelson(MarthaE.)
-107             1st                                 Straus,MrsIsidor(IdaBlun)
-108             1st              Swift,MrsFrederickJoel(MargaretWellesBarron)
-109             1st                         Taussig,MrsEmil(TillieMandelbaum)
-110             1st                                          Taussig,MissRuth
-111             1st                Taylor,MrsElmerZebley(JulietCumminsWright)
-112             1st             Thayer,MrsJohnBorland(MarianLongstrethMorris)
-113             1st                                Thorne,MrsGertrudeMaybelle
-114             1st                     Warren,MrsFrankManley(AnnaS.Atkinson)
-115             1st                             White,MrsJ.Stuart(EllaHolmes)
-116             1st                    Wick,MrsGeorgeDennick(MarthaHitchcock)
-117             1st                                      Wick,MissMaryNatalie
-118             1st                    Widener,MrsGeorgeDunton(EleanorElkins)
-119             1st                                     Willard,MissConstance
-120             1st                                      Young,MissMarieGrice
-121             1st                                                 Barber,Ms
-122             1st                                          Bazzani,MsAlbina
-123             1st                                        Bidois,MissRosalie
-124             1st                                              Bird,MsEllen
-125             1st                                         Bissetti,MsAmelia
-126             1st                                 Burns,MsElizabethMargaret
-127             1st                                             Chaudanson,Ms
-128             1st                                           Cleaver,MsAlice
-129             1st                                           Daniels,MsSarah
-130             1st                                 Endres,MissCarolineLouise
-131             1st                                        Fleming,MsMargaret
-132             1st                                  Francatelli,MsLauraMabel
-133             1st                                          Geiger,MissEmily
-134             1st                                         Icabad(Icabod),Ms
-135             1st                                          Kenchen,MsAmelia
-136             1st                                          LeRoy,MissBerthe
-137             1st                                                Maloney,Ms
-138             1st                                                Oliva,Mlle
-139             1st                                              Pericault,Ms
-140             1st                                        Segesser,Mlle.Emma
-141             1st                                               Seredeca,Ms
-142             1st                                               Ward,MsAnna
-143             1st                                            Wilson,MsHelen
-144             2nd                                   Abelson,MrsSamuel(Anna)
-145             2nd                              Angle,MrsWilliamA.(Florence)
-146             2nd                                        Balls,MrsAdaE.Hall
-147             2nd                              Beane,MrsEdward(EthelClarke)
-148             2nd                Becker,MrsAllenOliver(NellieE.Baumgardner)
-149             2nd                                   Becker,MissMarionLouise
-150             2nd                                  Becker,MissRuthElizabeth
-151             2nd                                      Bentham,MissLilianW.
-152             2nd                                         Brown,MissEdithE.
-153             2nd                Brown,MrsThomasWilliamSolomon(ElizabethC.)
-154             2nd                                          Bryhl,MissDagmar
-155             2nd                                             Buss,MissKate
-156             2nd                                       Bystrom,MrsCarolina
-157             2nd              Caldwell,MrsAlbertFrancis(SylviaMaeHarbaugh)
-158             2nd                                         Cameron,MissClear
-159             2nd                  Carter,MrsErnestCourtenay(LillianHughes)
-160             2nd                      Chapman,MrsJohnHenry(ElizabethLawry)
-161             2nd                                   Christy,MrsAliceFrances
-162             2nd                                         Christy,MissJulie
-163             2nd                             Clarke,MrsCharlesV.(AdaMaria)
-164             2nd                          Collyer,MrsHarvey(CharlotteTate)
-165             2nd                                      Collyer,MissMarjorie
-166             2nd                                      Cook,MrsSelenaRogers
-167             2nd                          Corbett,MrsWalterH.(IreneColvin)
-168             2nd              Corey,MrsPercyC.(MaryPhyllisElizabethMiller)
-169             2nd                                            Davis,MrsAgnes
-170             2nd                                            Davis,MissMary
-171             2nd                   delCarlo,MrsSebastiano(ArgeniaGenovese)
-172             2nd                                             Doling,MrsAda
-173             2nd                                          Doling,MissElsie
-174             2nd                  Drew,MrsJamesVivian(LuluThorneChristian)
-175             2nd                                   DuranyMore,MissAsuncion
-176             2nd                                 DuranyMore,MissFlorentina
-177             2nd                     Faunthorpe,MrsLizzie(seeWilkinson,E.)
-178             2nd                                          Funk,MissAnnieC.
-179             2nd                                         Garside,MissEthel
-180             2nd                               Hamalainen,MrsWilliam(Anna)
-181             2nd                                           Harper,MissNina
-182             2nd                                  Hart,MrsBenjamin(Esther)
-183             2nd                                        Hart,MissEvaMiriam
-184             2nd                                          Herman,MissAlice
-185             2nd                                           Herman,MissKate
-186             2nd                               Herman,MrsSamuel(JaneLaver)
-187             2nd                                         Hewlett,MrsMaryD.
-188             2nd                                        Hiltunen,MissMarta
-189             2nd                                      Hocking,MrsElizabeth
-190             2nd                                 Hocking,MissEllen(Nellie)
-191             2nd                            Hold,MrsStephen(AnnieMargaret)
-192             2nd                         Howard,MrsBenjamin(EllenTruelove)
-193             2nd                                          Ilett,MissBertha
-194             2nd              Jacobsohn,MrsSidneySamuel(AmyFrancesChristy)
-195             2nd                          Jerwan,MrsAminS.(MarieThuillard)
-196             2nd                            Kantor,MrsSinai(MiriamSternim)
-197             2nd                          Karnes,MrsJ.Frank(ClaireBennett)
-198             2nd                                          Keane,MissNoraA.
-199             2nd                                 Kelly,MrsFlorence(Fannie)
-200             2nd                           Lahtinen,MrsWilliam(AnnaSylvan)
-201             2nd                                          Lemore,MrsAmelia
-202             2nd                                 LaRoche,MrsJoseph(Juliet)
-203             2nd                                        LaRoche,MissLouise
-204             2nd                                       LaRoche,MissSimonne
-205             2nd                                        Lehmann,MissBertha
-206             2nd                                         Leitch,MissJessie
-207             2nd                  Louch,MrsCharlesAlexander(AliceAdelaide)
-208             2nd                                              Mack,MrsMary
-209             2nd                              Mallet,MrsAlbert(Antoinette)
-210             2nd                            Marshall,MrsKateLouisePhillips
-211             2nd                                Mellenger,MrsElizabethAnne
-212             2nd                             Mellenger,MissMadeleineViolet
-213             2nd                             Nasser(Nasrallah),MrsNicholas
-214             2nd                                    Nye,MrsElizabethRamell
-215             2nd                                     Parrish,MrsLutieDavis
-216             2nd                                        Phillips,MissAlice
-217             2nd                                           Pinsky,MissRosa
-218             2nd                        Quick,MrsFrederickC.(JaneRichards)
-219             2nd                                      Quick,MissPhyllisMay
-220             2nd                                    Quick,MissWinifredVera
-221             2nd                     Renouf,MrsPeterHenry(LillianJefferys)
-222             2nd                                   Reynaldo,MrsEncarnacion
-223             2nd                          Richards,MrsSidney(EmilyHocking)
-224             2nd                                         Ridsdale,MissLucy
-225             2nd                                            Rugg,MissEmily
-226             2nd                               Shelley,MrsWilliam(Imanita)
-227             2nd                                          Silven,MissLyyli
-228             2nd                                         Sincock,MissMaude
-229             2nd                                        Siukonnen,MissAnna
-230             2nd                                     Slayter,MissHildaMary
-231             2nd                                          Smith,MissMarion
-232             2nd                                          Toomey,MissEllen
-233             2nd                              Trout,MrsWilliamH.(JessieL.)
-234             2nd                                    Troutt,MissEdwinaCelia
-235             2nd               Turpin,MrsWilliamJohn(DorothyAnneWonnacott)
-236             2nd                                       Walcroft,MissNellie
-237             2nd                     Ware,MrsJohnJames(FlorenceLouiseLong)
-238             2nd                                           Watt,MissBertha
-239             2nd                          Watt,MrsJames(BessieInglisMilne)
-240             2nd                                          Webber,MissSusan
-241             2nd                                Weisz,MrsLeopold(Mathilde)
-242             2nd                         Wells,MrsArthurH.(AddieTrevaskis)
-243             2nd                                            Wells,MissJoan
-244             2nd                                        West,MissBarbaraJ.
-245             2nd                                  West,MissConstanceMirium
-246             2nd                               West,MrsEdwyArthur(AdaMary)
-247             2nd                                Wilkinson,MrsElizabethAnne
-248             2nd                                         Wright,MissMarion
-249             2nd                                       Yrois,MissHenriette
-250             2nd                                         Brown,MissMildred
-251             3rd                                   Abbott,MrsStanton(Rosa)
-252             3rd                                    Abelseth,MissAnnaKaren
-253             3rd                             Abraham,MrsJoseph(SophieEasu)
-254             3rd                                Ahlin,MrsJohannaPersdotter
-255             3rd                                     Aks,MrsSam(LeahRosen)
-256             3rd                Andersson,MrsAndersJohan(AlfridaK.Brogren)
-257             3rd                                    Andersson,MissEbbaIris
-258             3rd                              Andersson,MissEllisAnnaMaria
-259             3rd                                        Andersson,MissErna
-260             3rd                         Andersson,MissIdaAugustaMargareta
-261             3rd                          Andersson,MissIngeborgConstancia
-262             3rd                             Andersson,MissSigridElizabeth
-263             3rd                           Arnold,MrsJosef(JosephineFrank)
-264             3rd               Asplund,MrsCarlOscar(SelmaAugustaJohansson)
-265             3rd                                Asplund,MissLillianGertrud
-266             3rd                                          Assaf,MrsMariana
-267             3rd                                        Attalah,MissMalaka
-268             3rd          Backstrom,MrsKarlAlfred(MariaMathildaGustafsson)
-269             3rd                                       Baclini,MissEugenie
-270             3rd                                        Baclini,MissHelene
-271             3rd                                         Baclini,MissMaria
-272             3rd                                Baclini,MrsSolomon(Latifa)
-273             3rd                                    Badman,MissEmilyLouisa
-274             3rd                                         Banoura,MissAyout
-275             3rd                                      Barbara,MrsCatherine
-276             3rd                                         Barbara,MissSaude
-277             3rd                                           Barry,MissJulia
-278             3rd                                 Boulos,MrsJoseph(Sultana)
-279             3rd                                          Boulos,MissLaura
-280             3rd                                 Bourke,MrsJohn(Catherine)
-281             3rd                                           Bourke,MissMary
-282             3rd                                  Bradley,MissBridgetDelia
-283             3rd                                   Braf,MissElinEsterMaria
-284             3rd                                     Buckley,MissKatherine
-285             3rd                                       Burns,MissMaryDelia
-286             3rd                                          Canavan,MissMary
-287             3rd                       Caram(Kareem),MrsJoseph(MariaElias)
-288             3rd                                            Carr,MissHelen
-289             3rd                                          Carr,MissJeannie
-290             3rd                                         Connolly,MissKate
-291             3rd                                         Connolly,MissKate
-292             3rd                                 Coutts,MrsWilliam(Minnie)
-293             3rd                                      Cribb,MissLauraAlice
-294             3rd                                  Dahlberg,MissGerdaUlrika
-295             3rd                                         Daly,MissMarcella
-296             3rd            Danbom,MrsErnstGilbert(AnnaSigridMariaBrogren)
-297             3rd                         Davison,MrsThomasHenry(MaryFinck)
-298             3rd                                      Dean,MrsBertram(Eva)
-299             3rd                        Dean,MissElizabethGladys(Millvena)
-300             3rd                      DeMessemaeker,MrsWilliamJoseph(Anna)
-301             3rd                                      Devaney,MissMargaret
-302             3rd                                     Dowdell,MissElizabeth
-303             3rd                                       Doyle,MissElizabeth
-304             3rd                                        Drapkin,MissJennie
-305             3rd                                      Driscoll,MissBridget
-306             3rd       Dyker,MrsAdolfFredrik(AnnaElizabethJudithAndersson)
-307             3rd                                 Emanuel,MissVirginiaEthel
-308             3rd                                  Ford,MissDoolinaMargaret
-309             3rd                                           Ford,MissMaggie
-310             3rd                               Ford,MrsEdward(MargaretAnn)
-311             3rd                                  Georges,MrsShahiniWeappi
-312             3rd                                         Gilnagh,MissKatie
-313             3rd                                      Glynn,MissMaryAgatha
-314             3rd                      Goldsmith,MrsFrankJohn(EmilyA.Brown)
-315             3rd                             Goodwin,MrsFrederick(Augusta)
-316             3rd                                     Goodwin,MissLillianA.
-317             3rd                                      Goodwin,MissJessieA.
-318             3rd                                          Haas,MissAloisia
-319             3rd                                         Hagardon,MissKate
-320             3rd                               Hakkarainen,MrsPekkoPietari
-321             3rd                                      Hansen,MrsClausPeter
-322             3rd                                        Harknett,MissAlice
-323             3rd                                            Healy,MissNora
-324             3rd                                          Hegarty,MissNora
-325             3rd                                       Heikkinen,MissLaina
-326             3rd                                  Heininen,MissWendlaMaria
-327             3rd                                      Hellstrom,HildaMaria
-328             3rd                                          Hemming,MissNora
-329             3rd                                              Henery,Delia
-330             3rd                                    Henriksson,JennyLovisa
-331             3rd                                     Hirvonen,MrsAlexander
-332             3rd                                     Hirvonen,MissHildurE.
-333             3rd                                        Honkanen,MissEluna
-334             3rd                                            Howard,MissMay
-335             3rd                                  Ilmakangas,MissIdaLivija
-336             3rd                                 Ilmakangas,MissPietaSofia
-337             3rd                                 Jensen,MissCarlaChristine
-338             3rd                                          Jermyn,MissAnnie
-339             3rd                                  Johnson,MissEleanorIleen
-340             3rd                                        Johnson,MrsOscarW.
-341             3rd                                      Johnston,MrsAndrewG.
-342             3rd                                  Johnston,MissCatherineH.
-343             3rd                                     Jussila,MissAinaMaria
-344             3rd                                      Jussila,MissKatriina
-345             3rd                                        Karun,MissAnnaMary
-346             3rd                                        Kelly,MissAnnaKate
-347             3rd                                            Kelly,MissMary
-348             3rd                                          Khalil,MrsBetros
-349             3rd                             Kink,MrsAnton(LouiseHeilmann)
-350             3rd                                   Kink,MissLouiseGretchen
-351             3rd                                            Kink,MissMaria
-352             3rd                                  Klasen,MissGertrudEmilia
-353             3rd                                   Klasen,MrsHuldaKristina
-354             3rd                                 Laitinen,MissKritinaSofia
-355             3rd                                Landegren,MissAuroraAdelia
-356             3rd                                          Lefebre,MrsFrank
-357             3rd                                           Lefebre,MissIda
-358             3rd                                       Lefebre,MissJeannie
-359             3rd                                      Lefebre,MissMathilde
-360             3rd                                            Lemon,MissMary
-361             3rd                                        Lindahl,MissAgdaV.
-362             3rd                             Lindblom,MissAugustaCharlotta
-363             3rd                                Lindell,MrsEdvardBengtsson
-364             3rd                                     Lobb,MrsWilliamArthur
-365             3rd                                      Lundin,MissOlgaElida
-366             3rd                                      Madigan,MissMargaret
-367             3rd                                           Mahon,MissDelia
-368             3rd                                           Mangan,MissMary
-369             3rd                                     Mannion,MissMargareth
-370             3rd                                      Masselmany,MrsFatima
-371             3rd                                        McCarthy,MissKatie
-372             3rd                                           McCoy,MissAgnes
-373             3rd                                           McCoy,MissAlice
-374             3rd                                       McDermott,MissDelia
-375             3rd                                          McGovern,MrsHugh
-376             3rd                                          McGowan,MissAnna
-377             3rd                                     McGowan,MissKatherine
-378             3rd                                           McNamee,MrsNeal
-379             3rd                                  Meanwell,MissMarionOgden
-380             3rd                                            Meek,MrsThomas
-381             3rd                                      Melkebuk,MrsPhilemon
-382             3rd                                    Mocklare,MissHelenMary
-383             3rd                                             Moor,MrsBeila
-384             3rd                                          Moran,MissBertha
-385             3rd                                        Moubarek,MrsGeorge
-386             3rd                                 Moussa,MrsMantouraBaloics
-387             3rd                                         Mullins,MissKatie
-388             3rd                                    Mulvihill,MissBerthaE.
-389             3rd                                      Murphy,MissKatherine
-390             3rd                                       Murphy,MissMargaret
-391             3rd                                           Murphy,MissNora
-392             3rd                                          Nackid,MissMaria
-393             3rd                                            Nackid,MrsSaid
-394             3rd                                     Najib,MissAdeleKiamie
-395             3rd                                       Naughton,MissHannah
-396             3rd                                  Nicola-Yarred,MissJamila
-397             3rd                                Nieminen,MissMantaJosefina
-398             3rd                                   Nilsson,MissBertaOlivia
-399             3rd                               Nilsson,MissHelminaJosefina
-400             3rd                                           Nysten,MissAnna
-401             3rd                                         O'Brien,MrsThomas
-402             3rd                                        O'Dwyer,MissNellie
-403             3rd                                           Ohman,MissVelin
-404             3rd                                          OLeary,MissNorah
-405             3rd                                          Olsson,MissElida
-406             3rd                                       O'Neill,MissBridget
-407             3rd                                           Osman,MissMaria
-408             3rd                                    O'Sullivan,MissBridget
-409             3rd                                            Panula,MrsJohn
-410             3rd                                          Paulsson,MrsNils
-411             3rd                                   Paulsson,MissStinaViola
-412             3rd                                Paulsson,MissTorborgDanira
-413             3rd                                       Peacock,MrsBenjamin
-414             3rd                                    Peacock,MissTreasteall
-415             3rd                                    Peter(Joseph),MissMary
-416             3rd                                Peter(Joseph),MrsCatherine
-417             3rd                                          Peters,MissKatie
-418             3rd                                      Petranec,MissMatilda
-419             3rd                               Pettersson,MissEllenNatalia
-420             3rd                                           Rice,MrsWilliam
-421             3rd                                     Riihiivouri,MissSanni
-422             3rd                                        Riordan,MissHannah
-423             3rd                                          Risien,MrsSamuel
-424             3rd                                     Robins,MrsAlexanderA.
-425             3rd                                         Rosblom,MrsViktor
-426             3rd                                   Rosblom,MissSalliHelena
-427             3rd                                            Roth,MissSarah
-428             3rd                                              Sage,MissAda
-429             3rd                                        Sage,MissConstance
-430             3rd                                          Sage,MissDorothy
-431             3rd                                              Sage,MrsJohn
-432             3rd                                           Sage,MissStella
-433             3rd                                      Salkjelsvik,MissAnna
-434             3rd                                     Sandstrom,MissHjalmar
-435             3rd                               Sandstrom,MissBeatriceIrene
-436             3rd                               Sandstrom,MissMargueriteRut
-437             3rd                                           Shine,MissEllen
-438             3rd                                     Sjoblom,MissAnnaSofia
-439             3rd                                           Skoog,MissMabel
-440             3rd                                          Skoog,MissMargit
-441             3rd                                          Skoog,MrsWilliam
-442             3rd                                           Smyth,MissJulia
-443             3rd                                   Solvang,MrsLenaJacobsen
-444             3rd                                 Stanley,MissAmyZillaElsie
-445             3rd                                   Strandberg,MissIdaSofia
-446             3rd                                          Strom,MrsWilhelm
-447             3rd                             Strom,MissTelma(Selma)Matilda
-448             3rd                                       Thomas,MrsAlexander
-449             3rd                                  Thorneycroft,MrsPercival
-450             3rd                                   Touma(Thomas),MrsDarwin
-451             3rd                                  Touma(Thomas),MissHannah
-452             3rd                                       Turja,MissAnnaSofia
-453             3rd                                         Turkula,MrsHedvig
-454             3rd                                  VanderPlanke,MissAugusta
-455             3rd                                     VanderPlanke,MrsJules
-456             3rd                                     VanImpe,MissCatharine
-457             3rd                                   VanImpe,MrsJeanBaptiste
-458             3rd                           Vestrom,MissHuldaAmandaAdolfina
-459             3rd                                           Wilkes,MrsEllen
-460             3rd                                         Yasbeck,MrsAntoni
-461             3rd                                         Zabour,MissHileni
-462             3rd                                         Zabour,MissTamini
-463             3rd                                              Zievens,Rene
-        age    embarked                             home_destination    sex
-1   29.0000 Southampton                                   StLouis,MO female
-2    2.0000 Southampton                  Montreal,PQ/Chesterville,ON female
-3   25.0000 Southampton                  Montreal,PQ/Chesterville,ON female
-4   63.0000 Southampton                                    Hudson,NY female
-5   58.0000 Southampton                            Bayside,Queens,NY female
-6   19.0000   Cherbourg                                   NewYork,NY female
-7        NA   Cherbourg                                 Paris,France female
-8   50.0000   Cherbourg                                  Montreal,PQ female
-9   47.0000 Southampton                                   NewYork,NY female
-10  19.0000   Cherbourg                                  Dowagiac,MI female
-11  30.0000 Southampton                                Youngstown,OH female
-12  58.0000 Southampton               Birkdale,EnglandCleveland,Ohio female
-13  45.0000   Cherbourg                               Cooperstown,NY female
-14  22.0000 Southampton                StLeonards-on-Sea,EnglandOhio female
-15  44.0000   Cherbourg                                    Denver,CO female
-16  59.0000 Southampton                                   Belmont,MA female
-17  60.0000   Cherbourg                              Philadelphia,PA female
-18  53.0000   Cherbourg                                Washington,DC female
-19  58.0000   Cherbourg                   Germantown,Philadelphia,PA female
-20  36.0000 Southampton                                  BrynMawr,PA female
-21  14.0000 Southampton                                  BrynMawr,PA female
-22       NA   Cherbourg                                   NewYork,NY female
-23       NA Southampton                         LittleOnnHall,Staffs female
-24  47.0000 Southampton                                    Amenia,ND female
-25  31.0000 Southampton                         NewYork,NY/Ithaca,NY female
-26       NA Southampton                               London,England female
-27       NA Southampton                StLeonards-on-Sea,EnglandOhio female
-28  26.0000   Cherbourg                                LosAngeles,CA female
-29  64.0000   Cherbourg                                  Lakewood,NJ female
-30  39.0000   Cherbourg                                  Lakewood,NJ female
-31  55.0000 Southampton                                   NewYork,NY female
-32  69.0000 Southampton                                 Milwaukee,WI female
-33  36.0000 Southampton                                 Milwaukee,WI female
-34  38.0000   Cherbourg                                   NewYork,NY female
-35  27.0000 Southampton                                  Montreal,PQ female
-36       NA   Cherbourg                           BelgiumMontreal,PQ female
-37  17.0000   Cherbourg                                   Calgary,AB female
-38       NA Southampton                              SanFrancisco,CA female
-39  27.0000   Cherbourg                                  Montreal,PQ female
-40  48.0000   Cherbourg                  Deephaven,MN/CedarRapids,IA female
-41  48.0000   Cherbourg                                 London/Paris female
-42  23.0000   Cherbourg                       MtAiry,Philadelphia,PA female
-43  53.0000   Cherbourg                                 Brookline,MA female
-44  36.0000   Cherbourg                                   NewYork,NY female
-45       NA   Cherbourg                                   NewYork,NY female
-46  24.0000 Southampton                                  Winnipeg,MB female
-47  28.0000 Southampton                                  Winnipeg,MB female
-48  23.0000 Southampton                                  Winnipeg,MB female
-49  60.0000 Southampton                                  Winnipeg,MB female
-50       NA   Cherbourg                                   NewYork,NY female
-51  22.0000   Cherbourg                           Zurich,Switzerland female
-52  48.0000   Cherbourg                           Zurich,Switzerland female
-53  35.0000 Southampton                                  Scituate,MA female
-54  22.0000   Cherbourg                                   NewYork,NY female
-55  45.0000   Cherbourg                                   NewYork,NY female
-56       NA   Cherbourg                      Paris,France/NewYork,NY female
-57  19.0000 Southampton                                 Greenwich,CT female
-58  58.0000 Southampton                                 Greenwich,CT female
-59  45.0000   Cherbourg                                   NewYork,NY female
-60  21.0000   Cherbourg                                  Brooklyn,NY female
-61  49.0000   Cherbourg                                   NewYork,NY female
-62  36.0000 Southampton                                   NewYork,NY female
-63  52.0000 Southampton                                  Montreal,PQ female
-64  24.0000 Southampton                                   NewYork,NY female
-65  16.0000   Cherbourg                                   Chicago,IL female
-66  44.0000   Cherbourg                                   Chicago,IL female
-67  51.0000 Southampton                                    Hudson,NY female
-68  35.0000 Southampton                                   NewYork,NY female
-69  35.0000 Southampton                        NewYork,NY/StamfordCT female
-70  50.0000   Cherbourg                       Paris,FranceNewYork,NY female
-71       NA Southampton                         Southington/Noank,CT female
-72  40.0000 Southampton                                    Boston,MA female
-73       NA Southampton                                   NewYork,NY female
-74  55.0000   Cherbourg                             Stockholm,Sweden female
-75  50.0000   Cherbourg                                 Paris,France female
-76  16.0000   Cherbourg                                 Paris,France female
-77  21.0000 Southampton                                    Hudson,NY female
-78  15.0000 Southampton                                   StLouis,MO female
-79       NA Southampton                                   NewYork,NY female
-80       NA   Cherbourg                                   NewYork,NY female
-81  33.0000  Queenstown                                  GreenBay,WI female
-82  37.0000  Queenstown                                 FondduLac,WI female
-83  31.0000   Cherbourg                                 Lexington,MA female
-84  23.0000   Cherbourg                                 Lexington,MA female
-85  19.0000 Southampton                                   NewYork,NY female
-86  22.0000   Cherbourg                                Providence,RI female
-87       NA Southampton                            Isleworth,England female
-88  17.0000   Cherbourg                                 Madrid,Spain female
-89  56.0000   Cherbourg                       MtAiry,Philadelphia,PA female
-90  43.0000 Southampton                                   StLouis,MO female
-91  33.0000   Cherbourg                                 Paris,France female
-92  27.0000 Southampton                           LondonVancouver,BC female
-93  54.0000   Cherbourg                                   NewYork,NY female
-94  48.0000   Cherbourg                  Haverford,PA/Cooperstown,NY female
-95  18.0000   Cherbourg                  Haverford,PA/Cooperstown,NY female
-96  21.0000   Cherbourg                  Haverford,PA/Cooperstown,NY female
-97       NA   Cherbourg                                   NewYork,NY female
-98  40.0000 Southampton                       NewYork,NY/GreenwichCT female
-99  39.0000                                                Duluth,MN female
-100 18.0000 Southampton                                Huntington,WV female
-101 23.0000 Southampton                               Minneapolis,MN female
-102 40.0000   Cherbourg                                TuxedoPark,NY female
-103      NA   Cherbourg                                 Paris,France female
-104 43.0000   Cherbourg                                    Newark,NJ female
-105 52.0000                                             Haverford,PA female
-106 62.0000                                            Cincinatti,OH female
-107 63.0000 Southampton                                   NewYork,NY female
-108 46.0000 Southampton                                  Brooklyn,NY female
-109 39.0000 Southampton                                   NewYork,NY female
-110 18.0000 Southampton                                   NewYork,NY female
-111      NA Southampton                         London/EastOrange,NJ female
-112 39.0000   Cherbourg                                 Haverford,PA female
-113      NA   Cherbourg                                   NewYork,NY female
-114 60.0000   Cherbourg                                  Portland,OR female
-115 55.0000   Cherbourg                 NewYork,NY/BriarcliffManorNY female
-116 45.0000 Southampton                                Youngstown,OH female
-117 31.0000 Southampton                                Youngstown,OH female
-118 50.0000   Cherbourg                                ElkinsPark,PA female
-119 20.0000 Southampton                                    Duluth,MN female
-120 36.0000   Cherbourg                     NewYork,NY/Washington,DC female
-121      NA Southampton                                              female
-122      NA   Cherbourg                                              female
-123      NA   Cherbourg                                              female
-124      NA Southampton                                              female
-125      NA   Cherbourg                                              female
-126      NA   Cherbourg                                              female
-127      NA                                                Cherbourg female
-128      NA Southampton                                              female
-129      NA Southampton                                              female
-130      NA   Cherbourg                                   NewYork,NY female
-131      NA   Cherbourg                                              female
-132      NA   Cherbourg                                              female
-133      NA   Cherbourg                                              female
-134      NA                                                          female
-135      NA Southampton                                              female
-136      NA   Cherbourg                                              female
-137      NA Southampton                                              female
-138      NA   Cherbourg                                              female
-139      NA Southampton                                              female
-140      NA   Cherbourg                                              female
-141      NA Southampton                                              female
-142      NA   Cherbourg                                              female
-143      NA   Cherbourg                                              female
-144 28.0000   Cherbourg                             RussiaNewYork,NY female
-145 32.0000 Southampton                              Warwick,England female
-146 36.0000 Southampton                 Bristol,Avon/Jacksonville,FL female
-147 19.0000 Southampton                           Norwich/NewYork,NY female
-148 36.0000 Southampton                Guntur,India/BentonHarbour,MI female
-149  4.0000 Southampton                Guntur,India/BentonHarbour,MI female
-150 12.0000 Southampton                Guntur,India/BentonHarbour,MI female
-151 19.0000 Southampton                                 Rochester,NY female
-152 15.0000 Southampton              CapeTown,SouthAfrica/Seattle,WA female
-153 40.0000 Southampton              CapeTown,SouthAfrica/Seattle,WA female
-154 20.0000 Southampton                     Skara,Sweden/Rockford,IL female
-155 36.0000 Southampton            Sittingbourne,England/SanDiego,CA female
-156 42.0000 Southampton                                   NewYork,NY female
-157 26.0000 Southampton                Bangkok,Thailand/Roseville,IL female
-158 31.0000 Southampton                                Mamaroneck,NY female
-159 44.0000 Southampton                                       London female
-160 30.0000 Southampton                          Cornwall/Spokane,WA female
-161      NA Southampton                                       London female
-162      NA Southampton                                       London female
-163      NA Southampton                      England/SanFrancisco,CA female
-164 31.0000 Southampton           Bishopstoke,Hants/FayetteValley,ID female
-165  8.0000 Southampton           Bishopstoke,Hants/FayetteValley,ID female
-166 22.0000 Southampton                                 Pennsylvania female
-167 30.0000 Southampton                                     Provo,UT female
-168      NA Southampton                UpperBurma,IndiaPittsburgh,PA female
-169 49.0000 Southampton                   StIves,Cornwall/Hancock,MI female
-170 28.0000 Southampton                       London/StatenIsland,NY female
-171 22.0000   Cherbourg                       Lucca,Italy/California female
-172 32.0000 Southampton                                  Southampton female
-173 18.0000 Southampton                                  Southampton female
-174 34.0000 Southampton                                 Greenport,NY female
-175      NA   Cherbourg                  Barcelona,Spain/Havana,Cuba female
-176      NA   Cherbourg                  Barcelona,Spain/Havana,Cuba female
-177      NA                                                          female
-178 38.0000 Southampton                   Janjgir,India/Pennsylvania female
-179 24.0000 Southampton                                  Brooklyn,NY female
-180 23.0000 Southampton                                   Detroit,MI female
-181  6.0000 Southampton                   DenmarkHill,Surrey/Chicago female
-182 45.0000 Southampton                     Ilford,Essex/Winnipeg,MB female
-183  7.0000 Southampton                     Ilford,Essex/Winnipeg,MB female
-184 24.0000 Southampton                    Somerset/Bernardsville,NJ female
-185 24.0000 Southampton                    Somerset/Bernardsville,NJ female
-186 48.0000 Southampton                    Somerset/Bernardsville,NJ female
-187      NA Southampton                           India/RapidCity,SD female
-188 18.0000 Southampton               Kontiolahti,Finland/Detroit,MI female
-189 53.0000 Southampton                            Cornwall/Akron,OH female
-190 21.0000 Southampton                            Cornwall/Akron,OH female
-191 36.0000 Southampton                        England/Sacramento,CA female
-192      NA Southampton                              Swindon,England female
-193 17.0000 Southampton                                     Guernsey female
-194      NA Southampton                                       London female
-195 23.0000   Cherbourg                                   NewYork,NY female
-196      NA Southampton                              Moscow/Bronx,NY female
-197 22.0000 Southampton                          India/Pittsburgh,PA female
-198      NA  Queenstown                                Harrisburg,PA female
-199 45.0000 Southampton                            London/NewYork,NY female
-200 26.0000 Southampton                               Minneapolis,MN female
-201 34.0000 Southampton                                   Chicago,IL female
-202 22.0000   Cherbourg                                  Paris/Haiti female
-203  1.0000   Cherbourg                                  Paris/Haiti female
-204  3.0000   Cherbourg                                  Paris/Haiti female
-205      NA   Cherbourg             Berne,Switzerland/CentralCity,IA female
-206      NA Southampton                            London/Chicago,IL female
-207      NA Southampton                   Weston-Super-Mare,Somerset female
-208 57.0000 Southampton                       Southampton/NewYork,NY female
-209      NA   Cherbourg                            Paris/Montreal,PQ female
-210 19.0000 Southampton                            Worcester,England female
-211 41.0000 Southampton                        England/Bennington,VT female
-212 13.0000 Southampton                        England/Bennington,VT female
-213 18.0000   Cherbourg                                   NewYork,NY female
-214 29.0000 Southampton                    Folkstone,Kent/NewYork,NY female
-215 50.0000 Southampton                            WoodfordCounty,KY female
-216 42.0000 Southampton                             Ilfracombe,Devon female
-217 32.0000 Southampton                                       Russia female
-218 33.0000 Southampton                    Plymouth,Devon/Detroit,MI female
-219  2.0000 Southampton                    Plymouth,Devon/Detroit,MI female
-220  8.0000 Southampton                    Plymouth,Devon/Detroit,MI female
-221 30.0000 Southampton                                 Elizabeth,NJ female
-222 28.0000 Southampton                                        Spain female
-223 25.0000 Southampton                            Cornwall/Akron,OH female
-224 50.0000 Southampton  London,England/Marietta,OhioandMilwaukee,WI female
-225 21.0000 Southampton                       Guernsey/Wilmington,DE female
-226 25.0000 Southampton                                 DeerLodge,MT female
-227 18.0000 Southampton                       Finland/Minneapolis,MN female
-228 20.0000 Southampton                          Cornwall/Hancock,MI female
-229 30.0000 Southampton                        Finland/Washington,DC female
-230 30.0000  Queenstown                                   Halifax,NS female
-231      NA Southampton                                              female
-232 50.0000 Southampton                              Indianapolis,IN female
-233      NA Southampton                                  Columbus,OH female
-234 27.0000 Southampton                   Bath,England/Massachusetts female
-235 27.0000 Southampton                             Plymouth,England female
-236 35.0000 Southampton                                Mamaroneck,NY female
-237 28.0000 Southampton                Bristol,England/NewBritain,CT female
-238 12.0000 Southampton                         Aberdeen/Portland,OR female
-239 40.0000 Southampton                         Aberdeen/Portland,OR female
-240 36.0000 Southampton                          England/Hartford,CT female
-241 32.0000 Southampton               Bromsgrove,England/Montreal,PQ female
-242 29.0000 Southampton                            Cornwall/Akron,OH female
-243  4.0000 Southampton                            Cornwall/Akron,OH female
-244      NA Southampton                           Bournmouth,England female
-245      NA Southampton                           Bournmouth,England female
-246 33.0000 Southampton                           Bournmouth,England female
-247      NA Southampton                           Manchester,England female
-248 26.0000 Southampton               Yoevil,England/CottageGrove,OR female
-249      NA Southampton                                        Paris female
-250 24.0000 Southampton                           London/Montreal,PQ female
-251 35.0000 Southampton                            EastProvidence,RI female
-252 16.0000 Southampton                          NorwayLosAngeles,CA female
-253 18.0000   Cherbourg                                Greensburg,PA female
-254 40.0000 Southampton                              SwedenAkeley,MN female
-255 18.0000 Southampton                     London,EnglandNorfolk,VA female
-256 39.0000 Southampton                            SwedenWinnipeg,MN female
-257  6.0000 Southampton                            SwedenWinnipeg,MN female
-258  2.0000 Southampton                            SwedenWinnipeg,MN female
-259 17.0000 Southampton             Ruotsinphyhtaa,FinlandNewYork,NY female
-260 38.0000 Southampton                    Vadsbro,SwedenMinistee,MI female
-261  9.0000 Southampton                            SwedenWinnipeg,MN female
-262 11.0000 Southampton                            SwedenWinnipeg,MN female
-263 18.0000 Southampton                          Altdorf,Switzerland female
-264 38.0000 Southampton                           SwedenWorcester,MA female
-265  5.0000 Southampton                           SwedenWorcester,MA female
-266 45.0000   Cherbourg                                    Ottawa,ON female
-267 17.0000   Cherbourg                                              female
-268 33.0000 Southampton              Ruotsinphytaa,FinlandNewYork,NY female
-269  3.0000   Cherbourg                              SyriaNewYork,NY female
-270      NA   Cherbourg                              SyriaNewYork,NY female
-271      NA   Cherbourg                              SyriaNewYork,NY female
-272      NA   Cherbourg                              SyriaNewYork,NY female
-273 18.0000 Southampton                          LondonSkanteales,NY female
-274 15.0000   Cherbourg                           SyriaYoungstown,OH female
-275 45.0000   Cherbourg                               SyriaOttawa,ON female
-276 18.0000   Cherbourg                               SyriaOttawa,ON female
-277 27.0000  Queenstown                                   NewYork,NY female
-278      NA   Cherbourg                                 SyriaKent,ON female
-279  9.0000   Cherbourg                                 SyriaKent,ON female
-280 32.0000  Queenstown                            IrelandChicago,IL female
-281      NA  Queenstown                            IrelandChicago,IL female
-282 18.0000  Queenstown Kingwilliamstown,CoCork,IrelandGlensFalls,NY female
-283 20.0000 Southampton                   Medeltorp,SwedenChicago,IL female
-284 20.0000  Queenstown                     CoCork,IrelandRoxbury,MA female
-285 18.0000  Queenstown                    CoSligo,IrelandNewYork,NY female
-286 21.0000  Queenstown                                              female
-287      NA   Cherbourg                                    Ottawa,ON female
-288 16.0000  Queenstown                 CoLongford,IrelandNewYork,NY female
-289 37.0000  Queenstown                   CoSligo,IrelandHartford,CT female
-290 30.0000  Queenstown                                      Ireland female
-291 22.0000  Queenstown                                      Ireland female
-292 36.0000 Southampton                           EnglandBrooklyn,NY female
-293 17.0000 Southampton                 Bournemouth,EnglandNewark,NJ female
-294 22.0000 Southampton                     Norrlot,SwedenChicago,IL female
-295 30.0000  Queenstown                  CoAthlone,IrelandNewYork,NY female
-296 28.0000 Southampton                                   Stanton,IA female
-297      NA Southampton                  Liverpool,EnglandBedford,OH female
-298 33.0000 Southampton                      Devon,EnglandWichita,KS female
-299  0.1667 Southampton                      Devon,EnglandWichita,KS female
-300 36.0000 Southampton                                   Tampico,MT female
-301 19.0000  Queenstown         Kilmacowen,CoSligo,IrelandNewYork,NY female
-302 30.0000 Southampton                                 UnionHill,NJ female
-303 24.0000  Queenstown                            IrelandNewYork,NY female
-304 23.0000 Southampton                             LondonNewYork,NY female
-305 24.0000  Queenstown          Ballydehob,CoCork,IrelandNewYork,NY female
-306 22.0000 Southampton                                 WestHaven,CT female
-307  5.0000 Southampton                                   NewYork,NY female
-308 21.0000 Southampton         Rotherfield,Sussex,EnglandEssexCo,MA female
-309  9.0000 Southampton         Rotherfield,Sussex,EnglandEssexCo,MA female
-310 48.0000 Southampton         Rotherfield,Sussex,EnglandEssexCo,MA female
-311      NA   Cherbourg                                Youngstown,OH female
-312 16.0000  Queenstown                 CoLongford,IrelandNewYork,NY female
-313      NA  Queenstown                 CoClare,IrelandWashington,DC female
-314      NA Southampton                Strood,Kent,EnglandDetroit,MI female
-315 43.0000 Southampton             Wiltshire,EnglandNiagaraFalls,NY female
-316 16.0000 Southampton             Wiltshire,EnglandNiagaraFalls,NY female
-317 10.0000 Southampton             Wiltshire,EnglandNiagaraFalls,NY female
-318      NA                                                          female
-319      NA                                                          female
-320      NA                                                          female
-321      NA                                                          female
-322      NA                                                          female
-323      NA                                                          female
-324      NA                                                          female
-325      NA                                                          female
-326      NA                                                          female
-327      NA                                                          female
-328      NA                                                          female
-329      NA                                                          female
-330      NA                                                          female
-331      NA                                                          female
-332      NA                                                          female
-333      NA                                                          female
-334      NA                                                          female
-335      NA                                                          female
-336      NA                                                          female
-337      NA                                                          female
-338      NA                                                          female
-339      NA                                                          female
-340      NA                                                          female
-341      NA                                                          female
-342      NA                                                          female
-343      NA                                                          female
-344      NA                                                          female
-345      NA                                                          female
-346      NA                                                          female
-347      NA                                                          female
-348      NA                                                          female
-349      NA                                                          female
-350      NA                                                          female
-351      NA                                                          female
-352      NA                                                          female
-353      NA                                                          female
-354      NA                                                          female
-355      NA                                                          female
-356      NA                                                          female
-357      NA                                                          female
-358      NA                                                          female
-359      NA                                                          female
-360      NA                                                          female
-361      NA                                                          female
-362      NA                                                          female
-363      NA                                                          female
-364      NA                                                          female
-365      NA                                                          female
-366      NA                                                          female
-367      NA                                                          female
-368      NA                                                          female
-369      NA                                                          female
-370      NA                                                          female
-371      NA                                                          female
-372      NA                                                          female
-373      NA                                                          female
-374      NA                                                          female
-375      NA                                                          female
-376      NA                                                          female
-377      NA                                                          female
-378      NA                                                          female
-379      NA                                                          female
-380      NA                                                          female
-381      NA                                                          female
-382      NA                                                          female
-383      NA                                                          female
-384      NA                                                          female
-385      NA                                                          female
-386      NA                                                          female
-387      NA                                                          female
-388      NA                                                          female
-389      NA                                                          female
-390      NA                                                          female
-391      NA                                                          female
-392      NA                                                          female
-393      NA                                                          female
-394      NA                                                          female
-395      NA                                                          female
-396      NA                                                          female
-397      NA                                                          female
-398      NA                                                          female
-399      NA                                                          female
-400      NA                                                          female
-401      NA                                                          female
-402      NA                                                          female
-403      NA                                                          female
-404      NA                                                          female
-405      NA                                                          female
-406      NA                                                          female
-407      NA                                                          female
-408      NA                                                          female
-409      NA                                                          female
-410      NA                                                          female
-411      NA                                                          female
-412      NA                                                          female
-413      NA                                                          female
-414      NA                                                          female
-415      NA                                                          female
-416      NA                                                          female
-417      NA                                                          female
-418      NA                                                          female
-419      NA                                                          female
-420      NA                                                          female
-421      NA                                                          female
-422      NA                                                          female
-423      NA                                                          female
-424      NA                                                          female
-425      NA                                                          female
-426      NA                                                          female
-427      NA                                                          female
-428      NA                                                          female
-429      NA                                                          female
-430      NA                                                          female
-431      NA                                                          female
-432      NA                                                          female
-433      NA                                                          female
-434      NA                                                          female
-435      NA                                                          female
-436      NA                                                          female
-437      NA                                                          female
-438      NA                                                          female
-439      NA                                                          female
-440      NA                                                          female
-441      NA                                                          female
-442      NA                                                          female
-443      NA                                                          female
-444      NA                                                          female
-445      NA                                                          female
-446      NA                                                          female
-447      NA                                                          female
-448      NA                                                          female
-449      NA                                                          female
-450      NA                                                          female
-451      NA                                                          female
-452      NA                                                          female
-453      NA                                                          female
-454      NA                                                          female
-455      NA                                                          female
-456      NA                                                          female
-457      NA                                                          female
-458      NA                                                          female
-459      NA                                                          female
-460      NA                                                          female
-461      NA                                                          female
-462      NA                                                          female
-463      NA                                                          female
-    survive    log_age
-1       yes  3.3672958
-2        no  0.6931472
-3        no  3.2188758
-4       yes  4.1431347
-5       yes  4.0604430
-6       yes  2.9444390
-7       yes         NA
-8       yes  3.9120230
-9       yes  3.8501476
-10      yes  2.9444390
-11      yes  3.4011974
-12      yes  4.0604430
-13      yes  3.8066625
-14      yes  3.0910425
-15      yes  3.7841896
-16      yes  4.0775374
-17      yes  4.0943446
-18      yes  3.9702919
-19      yes  4.0604430
-20      yes  3.5835189
-21      yes  2.6390573
-22      yes         NA
-23      yes         NA
-24      yes  3.8501476
-25      yes  3.4339872
-26      yes         NA
-27      yes         NA
-28      yes  3.2580965
-29      yes  4.1588831
-30      yes  3.6635616
-31      yes  4.0073332
-32      yes  4.2341065
-33      yes  3.5835189
-34      yes  3.6375862
-35      yes  3.2958369
-36      yes         NA
-37      yes  2.8332133
-38      yes         NA
-39      yes  3.2958369
-40      yes  3.8712010
-41      yes  3.8712010
-42      yes  3.1354942
-43      yes  3.9702919
-44       no  3.5835189
-45      yes         NA
-46      yes  3.1780538
-47      yes  3.3322045
-48      yes  3.1354942
-49      yes  4.0943446
-50      yes         NA
-51      yes  3.0910425
-52      yes  3.8712010
-53      yes  3.5553481
-54      yes  3.0910425
-55      yes  3.8066625
-56      yes         NA
-57      yes  2.9444390
-58      yes  4.0604430
-59      yes  3.8066625
-60      yes  3.0445224
-61      yes  3.8918203
-62      yes  3.5835189
-63      yes  3.9512437
-64      yes  3.1780538
-65      yes  2.7725887
-66      yes  3.7841896
-67      yes  3.9318256
-68      yes  3.5553481
-69      yes  3.5553481
-70       no  3.9120230
-71      yes         NA
-72      yes  3.6888795
-73      yes         NA
-74      yes  4.0073332
-75      yes  3.9120230
-76      yes  2.7725887
-77      yes  3.0445224
-78      yes  2.7080502
-79      yes         NA
-80      yes         NA
-81      yes  3.4965076
-82      yes  3.6109179
-83      yes  3.4339872
-84      yes  3.1354942
-85      yes  2.9444390
-86      yes  3.0910425
-87      yes         NA
-88      yes  2.8332133
-89      yes  4.0253517
-90      yes  3.7612001
-91      yes  3.4965076
-92      yes  3.2958369
-93      yes  3.9889840
-94      yes  3.8712010
-95      yes  2.8903718
-96      yes  3.0445224
-97      yes         NA
-98      yes  3.6888795
-99      yes  3.6635616
-100     yes  2.8903718
-101     yes  3.1354942
-102     yes  3.6888795
-103     yes         NA
-104     yes  3.7612001
-105     yes  3.9512437
-106     yes  4.1271344
-107      no  4.1431347
-108     yes  3.8286414
-109     yes  3.6635616
-110     yes  2.8903718
-111     yes         NA
-112     yes  3.6635616
-113     yes         NA
-114     yes  4.0943446
-115     yes  4.0073332
-116     yes  3.8066625
-117     yes  3.4339872
-118     yes  3.9120230
-119     yes  2.9957323
-120     yes  3.5835189
-121     yes         NA
-122     yes         NA
-123     yes         NA
-124     yes         NA
-125     yes         NA
-126     yes         NA
-127     yes         NA
-128     yes         NA
-129     yes         NA
-130     yes         NA
-131      no         NA
-132     yes         NA
-133     yes         NA
-134     yes         NA
-135     yes         NA
-136     yes         NA
-137     yes         NA
-138      no         NA
-139     yes         NA
-140     yes         NA
-141      no         NA
-142      no         NA
-143     yes         NA
-144     yes  3.3322045
-145     yes  3.4657359
-146     yes  3.5835189
-147     yes  2.9444390
-148     yes  3.5835189
-149     yes  1.3862944
-150     yes  2.4849066
-151     yes  2.9444390
-152     yes  2.7080502
-153     yes  3.6888795
-154     yes  2.9957323
-155     yes  3.5835189
-156     yes  3.7376696
-157     yes  3.2580965
-158     yes  3.4339872
-159      no  3.7841896
-160      no  3.4011974
-161     yes         NA
-162     yes         NA
-163     yes         NA
-164     yes  3.4339872
-165     yes  2.0794415
-166      no  3.0910425
-167      no  3.4011974
-168      no         NA
-169     yes  3.8918203
-170     yes  3.3322045
-171     yes  3.0910425
-172     yes  3.4657359
-173     yes  2.8903718
-174     yes  3.5263605
-175     yes         NA
-176     yes         NA
-177     yes         NA
-178      no  3.6375862
-179     yes  3.1780538
-180     yes  3.1354942
-181     yes  1.7917595
-182     yes  3.8066625
-183     yes  1.9459101
-184     yes  3.1780538
-185     yes  3.1780538
-186     yes  3.8712010
-187     yes         NA
-188      no  2.8903718
-189     yes  3.9702919
-190     yes  3.0445224
-191     yes  3.5835189
-192      no         NA
-193     yes  2.8332133
-194     yes         NA
-195     yes  3.1354942
-196     yes         NA
-197      no  3.0910425
-198     yes         NA
-199     yes  3.8066625
-200      no  3.2580965
-201     yes  3.5263605
-202     yes  3.0910425
-203     yes  0.0000000
-204     yes  1.0986123
-205     yes         NA
-206     yes         NA
-207     yes         NA
-208      no  4.0430513
-209     yes         NA
-210     yes  2.9444390
-211     yes  3.7135721
-212     yes  2.5649494
-213     yes  2.8903718
-214     yes  3.3672958
-215     yes  3.9120230
-216     yes  3.7376696
-217     yes  3.4657359
-218     yes  3.4965076
-219     yes  0.6931472
-220     yes  2.0794415
-221     yes  3.4011974
-222     yes  3.3322045
-223     yes  3.2188758
-224     yes  3.9120230
-225     yes  3.0445224
-226     yes  3.2188758
-227     yes  2.8903718
-228     yes  2.9957323
-229     yes  3.4011974
-230     yes  3.4011974
-231     yes         NA
-232     yes  3.9120230
-233     yes         NA
-234     yes  3.2958369
-235      no  3.2958369
-236     yes  3.5553481
-237     yes  3.3322045
-238     yes  2.4849066
-239     yes  3.6888795
-240     yes  3.5835189
-241     yes  3.4657359
-242     yes  3.3672958
-243     yes  1.3862944
-244     yes         NA
-245     yes         NA
-246     yes  3.4965076
-247     yes         NA
-248     yes  3.2580965
-249      no         NA
-250     yes  3.1780538
-251     yes  3.5553481
-252     yes  2.7725887
-253     yes  2.8903718
-254      no  3.6888795
-255     yes  2.8903718
-256      no  3.6635616
-257      no  1.7917595
-258      no  0.6931472
-259     yes  2.8332133
-260      no  3.6375862
-261      no  2.1972246
-262      no  2.3978953
-263      no  2.8903718
-264     yes  3.6375862
-265     yes  1.6094379
-266     yes  3.8066625
-267      no  2.8332133
-268     yes  3.4965076
-269     yes  1.0986123
-270     yes         NA
-271     yes         NA
-272     yes         NA
-273     yes  2.8903718
-274     yes  2.7080502
-275      no  3.8066625
-276      no  2.8903718
-277      no  3.2958369
-278      no         NA
-279      no  2.1972246
-280      no  3.4657359
-281      no         NA
-282     yes  2.8903718
-283      no  2.9957323
-284      no  2.9957323
-285      no  2.8903718
-286      no  3.0445224
-287      no         NA
-288     yes  2.7725887
-289      no  3.6109179
-290      no  3.4011974
-291     yes  3.0910425
-292     yes  3.5835189
-293     yes  2.8332133
-294      no  3.0910425
-295     yes  3.4011974
-296      no  3.3322045
-297     yes         NA
-298     yes  3.4965076
-299     yes -1.7915595
-300     yes  3.5835189
-301     yes  2.9444390
-302     yes  3.4011974
-303      no  3.1780538
-304     yes  3.1354942
-305     yes  3.1780538
-306     yes  3.0910425
-307     yes  1.6094379
-308      no  3.0445224
-309      no  2.1972246
-310      no  3.8712010
-311     yes         NA
-312     yes  2.7725887
-313     yes         NA
-314     yes         NA
-315      no  3.7612001
-316      no  2.7725887
-317      no  2.3025851
-318      no         NA
-319      no         NA
-320     yes         NA
-321     yes         NA
-322      no         NA
-323      no         NA
-324      no         NA
-325     yes         NA
-326      no         NA
-327     yes         NA
-328      no         NA
-329      no         NA
-330      no         NA
-331     yes         NA
-332      no         NA
-333     yes         NA
-334     yes         NA
-335      no         NA
-336      no         NA
-337     yes         NA
-338     yes         NA
-339     yes         NA
-340      no         NA
-341      no         NA
-342      no         NA
-343      no         NA
-344      no         NA
-345     yes         NA
-346     yes         NA
-347     yes         NA
-348      no         NA
-349      no         NA
-350     yes         NA
-351      no         NA
-352      no         NA
-353      no         NA
-354      no         NA
-355     yes         NA
-356      no         NA
-357      no         NA
-358      no         NA
-359      no         NA
-360      no         NA
-361      no         NA
-362      no         NA
-363      no         NA
-364      no         NA
-365     yes         NA
-366     yes         NA
-367      no         NA
-368      no         NA
-369     yes         NA
-370     yes         NA
-371     yes         NA
-372      no         NA
-373      no         NA
-374      no         NA
-375     yes         NA
-376      no         NA
-377      no         NA
-378      no         NA
-379      no         NA
-380      no         NA
-381      no         NA
-382     yes         NA
-383     yes         NA
-384     yes         NA
-385      no         NA
-386      no         NA
-387     yes         NA
-388      no         NA
-389      no         NA
-390      no         NA
-391      no         NA
-392     yes         NA
-393      no         NA
-394     yes         NA
-395      no         NA
-396     yes         NA
-397      no         NA
-398     yes         NA
-399      no         NA
-400      no         NA
-401     yes         NA
-402      no         NA
-403      no         NA
-404      no         NA
-405      no         NA
-406      no         NA
-407     yes         NA
-408      no         NA
-409      no         NA
-410      no         NA
-411      no         NA
-412      no         NA
-413      no         NA
-414      no         NA
-415      no         NA
-416      no         NA
-417      no         NA
-418      no         NA
-419      no         NA
-420      no         NA
-421      no         NA
-422     yes         NA
-423      no         NA
-424      no         NA
-425      no         NA
-426      no         NA
-427     yes         NA
-428      no         NA
-429      no         NA
-430      no         NA
-431      no         NA
-432      no         NA
-433     yes         NA
-434     yes         NA
-435      no         NA
-436      no         NA
-437     yes         NA
-438     yes         NA
-439      no         NA
-440      no         NA
-441      no         NA
-442     yes         NA
-443      no         NA
-444     yes         NA
-445      no         NA
-446      no         NA
-447      no         NA
-448     yes         NA
-449     yes         NA
-450      no         NA
-451      no         NA
-452     yes         NA
-453      no         NA
-454      no         NA
-455      no         NA
-456      no         NA
-457      no         NA
-458      no         NA
-459     yes         NA
-460     yes         NA
-461      no         NA
-462      no         NA
-463      no         NA</code></pre>
+<pre><code>   passenger_class                                       name age    embarked
+1              1st                  Allen,MissElisabethWalton  29 Southampton
+2              1st                   Allison,MissHelenLoraine   2 Southampton
+4              1st  Allison,MrsHudsonJ.C.(BessieWaldoDaniels)  25 Southampton
+7              1st              Andrews,MissKorneliaTheodosia  63 Southampton
+9              1st    Appleton,MrsEdwardDale(CharlotteLamson)  58 Southampton
+12             1st Astor,MrsJohnJacob(MadeleineTalmadgeForce)  19   Cherbourg
+              home_destination    sex survive   log_age
+1                   StLouis,MO female     yes 3.3672958
+2  Montreal,PQ/Chesterville,ON female      no 0.6931472
+4  Montreal,PQ/Chesterville,ON female      no 3.2188758
+7                    Hudson,NY female     yes 4.1431347
+9            Bayside,Queens,NY female     yes 4.0604430
+12                  NewYork,NY female     yes 2.9444390</code></pre>
 </div>
 </div>
 <p>This new data fame will include all the same columns as the original <code>titanic_data</code>, but it will only include the rows for which the <code>sex</code> was “<code>female</code>”.</p>
-<p>Note that the syntax here requires a double <code>==</code> sign. In <em>R</em> (and many other computer languages), the double equal sign creates a statement that can be evaluated as <code>TRUE</code> or <code>FALSE</code>, while a single equal sign may change the value of the first variable to the value on the right-hand side of the equal sign. Here we are asking, for each individual, whether <code>sex</code> is “<code>female</code>”, not assigning the value “<code>female</code>” to the variable sex. So we use a double equal sign <code>==</code>.</p>
+<p>Note that the syntax here requires a double <code>==</code> sign. In <em>R</em> (and many other computer languages), the double equal sign creates a statement that can be evaluated as <code>TRUE</code> or <code>FALSE</code>. Here we are asking, for each individual, whether <code>sex</code> is “<code>female</code>”.</p>
 </section>
 </section>
 <section id="questions-for-lab-report" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="questions-for-lab-report"><span class="header-section-number">1.4</span> Questions for Lab Report</h2>
 <p>Your lab report is due <strong>before the start of next week’s lab</strong>. When you’re finished, save it, and your TA can access it on the Cloud.</p>
 <ol type="1">
-<li>For each week, use the <em>R</em> script called “report.R” to save the commands that you use to answer the questions. Use a <code>#</code> at the beginning of each comment line to record written answers.</li>
-</ol>
+<li>For each week, use the <em>R</em> script called “report.R” to save the commands that you use to answer the questions, as well as the answers themselves.
 <ol type="a">
-<li>Open the report.R file. Start by editing comments with your name at the top.</li>
-</ol>
-<p><img src="images/rstudio-cloud-07.png" class="img-fluid"></p>
-<ol start="2" type="a">
-<li>Save the script regularly as you work! To save, go to “File &gt; Save” or use command-S shortcut.</li>
-</ol>
-<p><img src="images/rstudio-cloud-save1.png" class="img-fluid"></p>
-<ol start="3" type="a">
-<li>For each of the questions below, write the question number as a comment, followed by any <em>R</em> code you use to do the question, and give the answers as comments. It might look something like this</li>
+<li>Open the report.R file. Start by editing comments with your name at the top. <img src="images/rstudio-cloud-07.png" class="img-fluid"></li>
+<li>Save the script regularly as you work! To save, go to “File &gt; Save” or use command-S shortcut. <img src="images/rstudio-cloud-save1.png" class="img-fluid"></li>
+<li>For each of the questions below, write the question number as a comment, followed by any <em>R</em> code you use to do the question, and give the answers as comments. It might look something like this:</li>
+</ol></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chris Muir</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># BIOL 220 Lab 01</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2021-01-12</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Questions</span></span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. I followed directions to set up my lab report </span></span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Yes, I got the same answers!</span></span>
-<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Only text answers, no code</span></span>
-<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer part 1</span></span>
-<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer part 2</span></span>
-<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Text and code</span></span>
-<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a><span class="co"># R does not like complex numbers</span></span>
-<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. More text and code, interleaved</span></span>
-<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a><span class="co"># a. </span></span>
-<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># you can also comment like this</span></span>
-<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a><span class="co"># b. </span></span>
-<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
-<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a><span class="co"># The mean of c(1, 2, 3) is 2. Here's what that means...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Student's name</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># BIOL 220 Lab 11</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2023-01-12</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Questions</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. I followed directions to set up my lab report</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Yes, I got the same answers!</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Only text answers, no code</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer part 1</span></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer part 2</span></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Text and code</span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># you can also comment like this</span></span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a><span class="co"># The mean of c(1, 2, 3) is 2. Here's what that means...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li><p>Run the <strong>Learning the tools</strong> commands in <em>R</em> from your “scratch.R” script. Did you get the same answers as shown in the text? (Answer “yes”, “no”, or a more detailed explanation. You don’t need to re-run all the code and output here.)</p></li>
@@ -2044,33 +637,15 @@ Attaching package: 'dplyr'</code></pre>
 </tbody>
 </table>
 <ol start="4" type="1">
-<li>Use <em>R</em> to calculate:</li>
-</ol>
+<li><p>Use <em>R</em> to calculate:</p>
 <ol type="a">
 <li><span class="math inline">\(15 \times 17\)</span></li>
 <li><span class="math inline">\(13^3\)</span></li>
 <li><span class="math inline">\(\text{log}_e(14)\)</span> (natural log)</li>
 <li><span class="math inline">\(\text{log}_{10}(100)\)</span> (base 10 log)</li>
 <li><span class="math inline">\(\sqrt{81}\)</span></li>
-</ol>
-<ol start="5" type="1">
-<li>People are notoriously dishonest about revealing how often they perform antisocial behaviors like peeing in swimming pools. (In addition to being disgusting, the nitrogenous chemicals in urine combine with the pool’s chlorine to produce some toxic chemicals like trichloramine, the source of most skin irritations for swimmers.) A group of researchers (Jmaiff Blackstock <em>et al</em>. 2017) recently realized that an artificial sweetener called ACE passes out in urine unmetabolized and in known average quantities, and therefore by measuring ACE concentrations we can measure the amount of urine in a pool.</li>
-</ol>
-<p>Here is a list of measurements, each from a different pool, of the concentration of ACE (measured in ng/L) for 23 different pools in Canada.</p>
-<blockquote class="blockquote">
-<p>640, 1070, 780, 70, 160, 130, 60, 50, 2110, 70, 350, 30, 210, 90, 470, 580, 250, 310, 460, 430, 140, 1070, 130</p>
-</blockquote>
-<ol type="a">
-<li>In <em>R</em>, create a vector of these data, and name it appropriately.</li>
-<li>What is the mean ACE concentration of these 23 pools?</li>
-<li>Urine on average has 4000 ng ACE/ ml. Therefore to convert these measurements of ng ACE / L pool water to ml urine / L pool water we need to divide each by 4000. Make a new vector showing the concentration of urine per liter in these 23 pools. Give it a suitable name.</li>
-<li>What is the mean concentration of urine per liter? How did this change relative to the mean measurement of ng ACE / L?</li>
-<li>The arithmetic mean is calculated by adding up all the numbers and dividing by how many numbers there are. Calculate the mean of these numbers using <code>sum()</code> and <code>length()</code>. Did you get the same answer as with using <code>mean()</code>?</li>
-<li>Use <em>R</em> to calculate the average amount of urine (in ml) in a 500,000 L pool.</li>
-</ol>
-<ol start="6" type="1">
-<li>Weddell seals live in Antarctic waters and take long strenuous dives in order to find fish to feed upon. Researchers (Williams <em>et al</em>. 2004) wanted to know whether these feeding dives were more energetically expensive than regular dives (perhaps because they are deeper, or the seal has to swim further or faster). They measured the metabolic costs of dives using the oxygen consumption of 10 animals (in ml O<span class="math inline">\(_2\)</span> / kg) during a feeding dive. Here are the data:</li>
-</ol>
+</ol></li>
+<li><p>Weddell seals live in Antarctic waters and take long strenuous dives in order to find fish to feed upon. Researchers (Williams <em>et al</em>. 2004) wanted to know whether these feeding dives were more energetically expensive than regular dives (perhaps because they are deeper, or the seal has to swim further or faster). They measured the metabolic costs of dives using the oxygen consumption of 10 animals (in ml O<span class="math inline">\(_2\)</span> / kg) during a feeding dive. Here are the data:</p>
 <blockquote class="blockquote">
 <p>71.0, 77.3, 82.6, 96.1, 106.6, 112.8, 121.2, 126.4, 127.5, 143.1</p>
 </blockquote>
@@ -2083,21 +658,19 @@ Attaching package: 'dplyr'</code></pre>
 <li>Confirm (using <em>R</em>) that both of your vectors have the same number of individuals in them.</li>
 <li>Create a vector called <code>metabolism_difference</code> by calculating the difference in oxygen consumption between feeding dives and nonfeeding dives for each animal.</li>
 <li>What is the average difference between feeding dives and nonfeeding dives in oxygen consumption?</li>
+<li>The arithmetic mean is calculated by adding up all the numbers and dividing by how many numbers there are. Calculate the mean of these numbers using <code>sum()</code> and <code>length()</code>. Did you get the same answer as with using <code>mean()</code>?</li>
 <li>Another appropriate way to represent the relationship between these two numbers would be to take the ratio of O<span class="math inline">\(_2\)</span> consumption for feeding dives over the O<span class="math inline">\(_2\)</span> consumption of nonfeeding dives. Make a vector which gives this ratio for each seal.</li>
 <li>Sometimes ratios are easier to analyze when we look at the log of the ratio. Create a vector which gives the log of the ratios from the previous step. (Use the natural log.) What is the mean of this log-ratio?</li>
-</ol>
-<ol start="7" type="1">
-<li>The data file called “countries.csv” in the data folder contains information about all the countries on Earth<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Each row is a country, and each column contains a variable.</li>
-</ol>
+</ol></li>
+<li><p>The data file called “countries.csv” in the data folder contains information about all the countries on Earth<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Each row is a country, and each column contains a variable.</p>
 <ol type="a">
-<li>Use <code>read_csv()</code> to read the data from this file into a data frame called <code>countries</code>.</li>
+<li>Use <code>read.csv()</code> to read the data from this file into a data frame called <code>countries</code>.</li>
 <li>Use <code>summary()</code> to get a quick description of this data set. What are the first three variables?</li>
 <li>Using the output of <code>summary()</code>, how many countries are from Africa in this data set?</li>
 <li>What kinds of variables (i.e., categorical or numerical) are continents, <code>cell_phone_subscriptions_per_100_people_2012</code>, <code>total_population_in_thousands_2015</code>, and <code>fines_for_tobacco_advertising_2014</code>? (Don’t go by their variable names – look at the data in the summary results to decide.)</li>
 <li>Add a new column to your countries data frame that has the difference in ecological footprint between 2012 and 2000. What is the mean of this difference? (Note: this variable will have “missing data”, which means that some of the countries do not have data in this file for one or the other of the years of ecological footprint. By default, <em>R</em> doesn’t calculate a mean unless all the data are present. To tell R to ignore the missing data, add an option to the <code>mean()</code> command that says <code>na.rm=TRUE</code>. We’ll learn more about this later.)</li>
-</ol>
-<ol start="8" type="1">
-<li>Using the countries data again, create a new data frame called <code>africa_data</code>, that only includes data for countries in Africa. What is the sum of the <code>total_population_in_thousands_2015</code> for this new data frame?</li>
+</ol></li>
+<li><p>Using the countries data again, create a new data frame called <code>africa_data</code>, that only includes data for countries in Africa. What is the sum of the <code>total_population_in_thousands_2015</code> for this new data frame?</p></li>
 </ol>
 
 
