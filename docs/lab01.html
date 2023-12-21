@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#names" id="toc-names" class="nav-link" data-scroll-target="#names"><span class="header-section-number">1.3.6</span> Names</a></li>
   <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors"><span class="header-section-number">1.3.7</span> Vectors</a></li>
   <li><a href="#basic-calculation-examples" id="toc-basic-calculation-examples" class="nav-link" data-scroll-target="#basic-calculation-examples"><span class="header-section-number">1.3.8</span> Basic calculation examples</a></li>
-  <li><a href="#reading-a-file" id="toc-reading-a-file" class="nav-link" data-scroll-target="#reading-a-file"><span class="header-section-number">1.3.9</span> Reading a file</a></li>
+  <li><a href="#reading-a-data-file" id="toc-reading-a-data-file" class="nav-link" data-scroll-target="#reading-a-data-file"><span class="header-section-number">1.3.9</span> Reading a data file</a></li>
   <li><a href="#intro-to-data-frames" id="toc-intro-to-data-frames" class="nav-link" data-scroll-target="#intro-to-data-frames"><span class="header-section-number">1.3.10</span> Intro to data frames</a></li>
   <li><a href="#adding-a-new-column" id="toc-adding-a-new-column" class="nav-link" data-scroll-target="#adding-a-new-column"><span class="header-section-number">1.3.11</span> Adding a new column</a></li>
   <li><a href="#choosing-subsets-of-data" id="toc-choosing-subsets-of-data" class="nav-link" data-scroll-target="#choosing-subsets-of-data"><span class="header-section-number">1.3.12</span> Choosing subsets of data</a></li>
@@ -217,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Learning how to start with <em>Posit Cloud</em></li>
 <li>Use the command line</li>
-<li>Use functions in <em>R</em> <!-- * Learn how to increase the power *R* with packages --></li>
+<li>Use functions in <em>R</em></li>
 <li>Use vectors</li>
 <li>Use data frames</li>
 </ul>
@@ -232,22 +232,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-is-rstudio" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="what-is-rstudio"><span class="header-section-number">1.2.2</span> What is <em>RStudio</em>?</h3>
 <p><em>RStudio</em> is a separate program, also free, that provides a more elegant front end for <em>R</em>. <em>RStudio</em> allows you to easily organize separate windows for <em>R</em> commands, graphic, help, etc. in one place.</p>
-<p>For this course, you won’t need <em>R</em> and <em>RStudio</em> installed on your own device because we will work in <em>RStudio Cloud</em>. However, if you wish to install them on your device, go to <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a> for instructions about getting set up.</p>
+<p>For this course, you won’t need <em>R</em> and <em>RStudio</em> installed on your own device because we will work in <em>Posit Cloud</em>. However, if you wish to install them on your device, go to <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a> for instructions about getting set up.</p>
 </section>
 <section id="what-is-posit-cloud" class="level3" data-number="1.2.3">
 <h3 data-number="1.2.3" class="anchored" data-anchor-id="what-is-posit-cloud"><span class="header-section-number">1.2.3</span> What is <em>Posit Cloud</em>?</h3>
-<p>From <a href="https://docs.rstudio.com/other/rstudio-cloud/">here</a>:</p>
-<blockquote class="blockquote">
-<p><em>RStudio Cloud</em> is a hosted version of <em>RStudio</em> in the cloud that makes it easy for professionals, hobbyists, trainers, teachers and students to do, share, teach and learn data science using R.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Create your analyses using <em>RStudio</em> directly from your browser - there is no software to install and nothing to configure on your computer.</p>
-</blockquote>
+<p><em>Posit Cloud</em> allows you to run a hosted version of <em>RStudio</em> in the cloud that allows you to run R without having to download anything on your personal computer or confirgure your personal computer. You access <em>Posit Cloud</em> from your browser, and conveniently you can access from <em>any</em> computer, not just your personal device.</p>
 </section>
 <section id="resources" class="level3" data-number="1.2.4">
 <h3 data-number="1.2.4" class="anchored" data-anchor-id="resources"><span class="header-section-number">1.2.4</span> Resources</h3>
 <blockquote class="blockquote">
-<p><a href="https://rstudio.cloud"><em>RStudio Cloud</em></a> provides many learning materials: <a href="https://rstudio.cloud/learn/primers">interactive tutorials</a> covering the basics of data science, <a href="https://rstudio.cloud/learn/cheat-sheets">cheatsheets</a> for working with popular <em>R</em> packages and a <a href="https://rstudio.cloud/learn/guide">guide to using <em>RStudio Cloud</em></a>.</p>
+<p><em>Posit Cloud</em> provides many learning materials: <a href="https://posit.cloud/learn/recipes">interactive tutorials</a> covering the basics of data science, <a href="https://posit.co/resources/cheatsheets/">cheatsheets</a>, and a <a href="https://posit.cloud/learn/guide">guide to using <em>Posit Cloud</em></a>.</p>
 </blockquote>
 </section>
 <section id="getting-started-with-posit-cloud" class="level3" data-number="1.2.5">
@@ -258,12 +252,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="learning-the-tools" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">1.3</span> Learning the Tools</h2>
-<p>When you start <em>RStudio Cloud</em>, it will automatically start <em>R</em> as well. You run <em>R</em> inside <em>RStudio Cloud</em>.</p>
-<p>After you have started <em>RStudio Cloud</em>, you should see a new window with a menu bar at the top and three main sections. One of the sections is called the “Console” – this is where you type commands to give instructions to <em>R</em> and typically where you see <em>R</em>’s answers to you.</p>
+<p>When you start <em>Posit Cloud</em>, it will automatically start <em>RStudio</em> as well. You run <em>R</em> inside <em>RStudio</em>, itself inside <em>Posit Cloud</em>.</p>
+<p>After you have started <em>Posit Cloud</em>, you should see a new window with a menu bar at the top and three main sections. One of the sections is called the “Console” – this is where you type commands to give instructions to <em>R</em> and typically where you see <em>R</em>’s answers to you.</p>
 <p>Another important corner of this window can show a variety of information. Most importantly to us, this is where graphics will appear, under the tab marked “Plots”.</p>
 <section id="the-command-line" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="the-command-line"><span class="header-section-number">1.3.1</span> The command line</h3>
-<p>When you start <em>RStudio Cloud</em>, you’ll see a corner of the window called the “Console.” By the default the console window is in the bottom left of the <em>RStudio</em> screen.</p>
+<p>When you start <em>Posit Cloud</em>, you’ll see a corner of the window called the “Console.” By the default the console window is in the bottom left of the <em>RStudio</em> screen.</p>
 <p>You can type commands in this window where there is a prompt (which will look like a <code>&gt;</code> sign at the bottom of the window). The Console has to be the selected window. (Clicking anywhere in the Console selects it.)</p>
 <p>The <code>&gt;</code> prompt is <em>R</em>’s way of inviting you to give it instructions. You communicate with <em>R</em> by typing commands after the <code>&gt;</code> prompt.</p>
 <p>Type “<code>2+2</code>” at the <code>&gt;</code> prompt, and hit return. You’ll see that <em>R</em> can work like a calculator (among its many other powers). It will give you the answer, <code>4</code>, and it will label that answer with <code>[1]</code> to indicate that it is the first element in the answer. (This is sort of annoying when the answers are simple like this, but can be very valuable when the answers become more complex.)</p>
@@ -321,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="saving-your-code" class="level3" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="saving-your-code"><span class="header-section-number">1.3.2</span> Saving your code</h3>
 <p>When you analyze your own data, we strongly recommend that you keep a record of all commands used, along with copious notes, so that weeks or years later you can retrace the steps of your earlier analysis.</p>
-<p>In <em>RStudio Cloud</em>, you can create a plain text file (sometimes called a script), which contains <em>R</em> commands that can be reloaded and used at a later date. We have created a scratch file where you can enter and save your commands while you’re learning the tools. Click on “scratch.R” in the lower-right:</p>
+<p>In <em>Posit Cloud</em>, you can create a plain text file (sometimes called a script), which contains <em>R</em> commands that can be reloaded and used at a later date. We have created a scratch file where you can enter and save your commands while you’re learning the tools. Click on “scratch.R” in the lower-right:</p>
 <p><img src="images/rstudio-cloud-05.png" class="img-fluid"></p>
 <p>That will open a mostly blank text file above the Console that looks like this:</p>
 <p><img src="images/rstudio-cloud-06.png" class="img-fluid"></p>
@@ -454,35 +448,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This shows that there are 6 temperature values in the vector that make up the vector <code>temperatureC</code>.</p>
-<!-- ### Extending *R*'s capabilities -->
-<!-- *R* has a lot of power in its basic form, but one of the most important parts about *R* is that it is expandable by the work of other people. These expansions are usually released in "packages". -->
-<!-- Each package needs to be installed on your computer only once, but to be used it has to be loaded into *R* during each session. -->
-
-<!-- To install a package in *RStudio Cloud*, click on the packages tab from the sub-window with tables for Files, Plots, Packages, Help, and Viewer. Immediately below that will be a button labeled "Install" -- click that and a window will open. -->
-<!-- ![](images/rstudio-cloud-install.png) -->
-<!-- In the second row (labeled "Packages"), type **ggplot2** (without the quotation marks). Make sure the box for "Install dependencies" near the bottom is clicked, and then click the "Install" button at bottom right. This will install the graphics package **ggplot2**. -->
-<!-- ![](images/rstudio-cloud-ggplot2.png) -->
-<!-- This only needs to be done once on a given computer or *RStudio Cloud* Workspace, and that package is permanently available. -->
-<!-- There is another package that we will use in this course (and briefly today) called **dplyr**. I will always pre-install packages in the workspace prior to doing the lab, but I am showing you how to install additional packages for future references. -->
-<!-- ### Loading a package -->
-<!-- Once a package is installed, it needs to be loaded into *R* during a session if you want to use it. You do this with a function called `library()`. -->
-<!-- For this week's labs, we will use the packages **dplyr** and **readr**. **dplyr** allows for easy modification of data frames; **readr** reads data into *R*. Before using the functions in these packages, we need to load them. We do this with the `library()` function. In the console, enter this -->
-<!-- ```{r, message = FALSE} -->
-<!-- library(dplyr) -->
-<!-- library(readr) -->
-<!-- ``` -->
-<!-- ### Set the working directory -->
-<!-- The files on your workspace and computers are organized hierarchically into folders, or "directories." Conveniently, in an *RStudio Cloud* Project, the Working Directory is the "project" folder where all your files are (wherever the folder "project.Rproj" is). You can check the the current directory using the `getwd()` command. -->
-<!-- ```{r, echo = TRUE, eval = FALSE} -->
-<!-- getwd() -->
-<!-- ``` -->
-<!-- ```{r, echo = FALSE, eval = TRUE} -->
-<!-- "/cloud/project" -->
-<!-- ``` -->
-<!-- FYI, it is convenient to tell *R* which directory to look for files at the beginning of a session, to minimize typing later. You can also set the working directory for *RStudio Cloud* from *RStudio Cloud*'s menu (the same directions apply to the Desktop version of *RStudio*). From the "Session" tab in the menu bar, choose "Set Working Directory", and then "Choose Directory..." This will open a dialog box that will let you find and select the directory you want. -->
 </section>
-<section id="reading-a-file" class="level3" data-number="1.3.9">
-<h3 data-number="1.3.9" class="anchored" data-anchor-id="reading-a-file"><span class="header-section-number">1.3.9</span> Reading a file</h3>
+<section id="reading-a-data-file" class="level3" data-number="1.3.9">
+<h3 data-number="1.3.9" class="anchored" data-anchor-id="reading-a-data-file"><span class="header-section-number">1.3.9</span> Reading a data file</h3>
 <p>In this course, we have saved the data in a “comma-separated variable” format. All files in this format ought to have “.csv” as the end of their file name. A CSV file is a plain text file, easily read by a wide variety of programs. Each row in the file (besides the first row) is the data for a given individual, and for each individual each variable is listed in the same order, separated by commas. It’s important to note that you can’t have commas anywhere else in the file, besides the separators.</p>
 <p>The first row of a CSV file should be a “header” row, which gives the names of each variable, again separated by commas.</p>
 <p>For examples in this tutorial, let’s use a data set about the passengers of the <em>RMS Titanic</em>. One of the data sets in the folder of data attached to this lab is called “titanic.csv”. This is a data set of 1313 passengers from the voyage of this ship, which contains information about some personal info about each passenger as well as whether they survived the accident or not.</p>
@@ -490,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>titanic_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/titanic.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This looks for the file called <code>titanic.csv</code> in the folder called <code>Data</code>. Here we have given the name <code>titanic_data</code> to the object in <em>R</em> that contains all this passenger data. Of course, if you wanted to load a different data set, you would be better off giving it a more apt name than “<code>titanic_data</code>”.</p>
+<p>This looks for the file called <code>titanic.csv</code> in the folder called <code>data</code>. Here we have given the name <code>titanic_data</code> to the object in <em>R</em> that contains all this passenger data. Of course, if you wanted to load a different data set, you would be better off giving it a more apt name than “<code>titanic_data</code>”.</p>
 <p>To see if the data loads appropriately, you might want to run the command</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(titanic_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
