@@ -1,5 +1,7 @@
 # Getting started
 
+Please complete this lab using *Posit Cloud* (more on what that is below). Here is the *Posit Cloud* workspace link for this lab: https://posit.cloud/spaces/463390/content/all?sort=name_asc. 
+
 ## Goals
 
 * Learning how to start with *Posit Cloud*
