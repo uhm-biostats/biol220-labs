@@ -1,0 +1,198 @@
+# Workikng with data
+
+## Goals
+
+* Learn to create data files
+* Explore the importance of random sampling
+* Understand variance and standard deviation
+* Understand mean and median
+
+As will be the case with all labs, this lab will be completed using *Posit Cloud*. If needed, refer back to ["Setup"](index.qmd) and ["Lab 1"](lab01.qmd) for instructions on access and setting up your workspace for this lab. Here is the direct link to the *Posit Cloud* shared workspace for Lab 2: xyz.
+
+## Learning the Tools
+
+### Structure of a good data file
+
+Data files appear in many formats, and different formats are sometimes preferable for different tasks. But there is one way to structure data — called “long” format — that is extremely useful for most things that you will want to do in statistics and *R*.
+
+Long format is actually very simple. Every row in the data set is a unique individual. Every column is a variable being measured on those individuals.
+
+For example, last week in Question 4 we looked at some data about the tongue and palate lengths of several species of bats. There were three variables in that data set, the species name, tongue length, and palate length. Here each “individual” is a species. Here is that data in long format—each row is an individual. There are three columns, one for each variable:
+
+```{r, echo = FALSE, eval = TRUE}
+bat_tongues <- read.csv("data/BatTongues.csv")
+knitr::kable(bat_tongues)
+# knitr::knit(bat_tongue)
+```
+
+### Creating a data file
+
+When you have new data that you want to get into the computer in a format that *R* can read, it is often easiest to do this outside of *R*. A spreadsheet program like Excel (or a freely available program like Google Sheets) is a straightforward way to create a .csv file that *R* can read. For the lab today, we'll use Google Sheets.
+
+1. Log into Google Drive using your userid@hawaii.edu credentials.
+
+2. Create a new Google Sheet
+
+![](images/google-sheets-1.png)
+
+3. Name the new sheet "BatTongues2"
+
+![](images/google-sheets-2.png)
+
+4. Enter data
+
+In the first row of your new spreadsheet, write your variable names, one for each column. (Be sure to give them good names that will work in *R* following principles of spreadsheet organized in Broman & Woo (2018). Mainly, don't have any spaces in a variable name and make sure that it doesn't start with a number or contain punctuation marks. See Lab 01 for more about naming variables.)
+
+On the rows immediately below that first row, enter the data for each individual, in the correct column. Here’s what the spreadsheet would look like for the bat data after they are entered:
+
+![](images/google-sheets-3.png)
+
+5. Download as a .csv file. Go to "File > Download > Comma-spearate values (.csv, current sheet)"
+
+![](images/google-sheets-4.png)
+Save to the Desktop (or elsewhere that is convenient) as "BatTongues2.csv"
+
+![](images/google-sheets-5.png)
+
+Saving a spreadsheet in a format that *R* can read is very straightforward. In these tutorials, we are using .csv files (which stands for **c**omma **s**eparated **v**alues).
+
+6. Upload file to *RStudio Cloud*
+
+In your lab03 project, click on the "data" directory under the Files tab:
+
+![](images/google-sheets-6.png)
+
+Then click the Upload option:
+
+![](images/google-sheets-7.png)
+
+You should see the following dialog box:
+
+![](images/google-sheets-8.png)
+
+Click "Choose File" and navigate to where you saved "BatTongues2.csv" and select it. 
+
+![](images/google-sheets-9.png)
+
+Click OK. Then you should see "BatTongues2.csv" in your data directory.
+
+![](images/google-sheets-10.png)
+
+Look at "BatTongues2.csv" in the *RStudio Cloud* viewer by clicking the file name and selecting "View File"
+
+![](images/google-sheets-11.png)
+
+It should something like this:
+
+![](images/google-sheets-12.png)
+
+
+## Questions
+
+1. Review: Import "BatTongues2.csv" using the `read.csv()`, name the data.frame `bat_tongues`, and make a scatterplot using the **ggplot2** package. It should look the same as last week unless you made a typo.
+
+2. Calculate the sample variance and standard deviation.
+
+    The variance and standard deviation are common descriptions of the variability in a population. If we're plotting the data in a histogram, these are associated with the spread of histogram. By convention the *population* variance and standard deviations are often denoted $\sigma ^ 2$ and $\sigma$, respectively ($\sigma$, pronounced "sig-ma", is a lowercase Greek letter). The *sample* variance and standard deviations are often denoted $s^2$ and $s$, respectively. In both cases, the standard deviation is simply the square root of the variance.
+    
+    The equations for the sample variance and standard deviation are:
+    
+    $$ s ^ 2 = \frac{\Sigma^{n}_{i=1} (Y_i - \bar{Y}) ^ 2}{n - 1} $$
+    $$ s = \sqrt{\frac{\Sigma^{n}_{i=1} (Y_i - \bar{Y}) ^ 2}{n - 1}} $$
+    
+    a.  Calculate the sample variance of the `palate_length` variable. Note that if you named the column something other than `palate_length`, you will have to use your name. Here's a couple hints to get started:
+    
+        ```r
+        # Create a vector and call it Y
+        Y <- bat_tongues$palate_length
+        
+        # Calculate the mean of Y
+        Y_bar <- mean(Y)
+        
+        # Calculate the sample size, n
+        n <- length(Y)
+        
+        # Calculate the squared deviations (Y_i - Y_bar) ^ 2
+        squared_devs <- (Y - Y_bar) ^ 2
+        ```
+        
+        Once you're done, you can check your answer using the `var()` function in *R*
+        
+        ```r
+        var(bat_tongues$palate_length)
+        ```
+    
+    b. Now calculate the standard deviation and check your result using the `sd()` function.
+    
+    
+```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
+
+leafsize <- read.csv("data/wright_etal_2017.csv")
+
+library(ggplot2)
+
+lsize <- ggplot(leafsize, aes(x = leafsize_cm2)) +
+  geom_histogram()
+
+loglsize <- ggplot(leafsize, aes(x = leafsize_cm2)) +
+  geom_histogram() +
+  scale_x_log10()
+
+ggsave("images/lab03-q3b.png", lsize)
+ggsave("images/lab03-q3d.png", loglsize)
+```
+
+3. Learning when to use mean versus median. For this exercise, we'll use a data set on leaf area from [Wright *et al.* 2017](https://doi.org/10.1126/science.aal4760). 
+
+    a. Import the file "wright_etal_2017.csv" from the data directory using the `read.csv()` function. Call the data.frame `leafsize`.
+    b. Make a histogram of leaf size (units of cm$^2$) using **ggplot2**. The variable name is `leafsize_cm2`. It should look something like this: 
+        ![](images/lab03-q3b.png)
+    
+    c. Describe the distribution of leaf size. Do you expect the mean or median to be larger? Check your answer using the `mean()` and `median()` functions. Make sure to use the `na.rm = TRUE` argument to ignore missing data. Which value would you use to describe the location (aka central tendency) of leaf size in this data set?
+  
+    d. Now let's look at the power of log-transformation. First, use the `+ scale_x_log10()` function in **ggplot2** to plot leaf size on a log$_{10}$-transformed scale. Modify your previous histogram using this function. The output should look something like this: 
+        ![](images/lab03-q3d.png)
+
+    d. Now describe the shape of this distribution. Would you expect the mean or median to be higher? Check your guesses by first creating a new column called `log10_leafsize_cm2`. Hint: you'll need to use the `$` operator and the `log(..., base = 10)` or `log10(...)` functions. Then use `mean()` and `median()` on the new column.
+
+    e. Now, would you still use the same function (`mean()` or `median()`) you selected in part c. to describe the location of the *log-transformed* leaf size? Explain your answer.
+
+
+```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
+leafsize1 <- subset(leafsize, !is.na(leafsize_cm2))
+n_leaves <- nrow(leafsize1)
+```
+
+4. Make a random sample.
+
+    Let's assume that the data set represents the entire population of leaf sizes in the world (it doesn't, but let's just assume). Now we'll look at the property of random samples from this population. 
+        
+    a. To make our lives simpler, let's first filter out the missing values using the `subset()` function.
+        
+        ```r
+        leafsize1 <- subset(leafsize, !is.na(leafsize_cm2))
+        ```
+        
+        Note how we now have two data frames, `leafsize` and `leafsize1`. `leafsize1` has all the same columns as the original, but without rows containing missing values. The command `!is.na()` (pronounced "bang! is-dot-na") tells `subset` which values are NOT `NA`. In *R*, `!` ("bang!") means NOT.
+
+    b. What is the sample size now? You can use the `nrow()` function to figure this out. Assign the output of `nrow` to a variable named `n_leaves`.
+    c. To take a random sample, all members of the population must have the same chance of being chosen for our sample. In *R*, the function `sample()` can randomly choose integers from a given range. For example, to randomly sample 5 individuals from 25 possibilities, we can use: 
+        
+        ```r
+        sample(25, size = 5)
+        ```
+        Now randomly sample 5 leaf sizes and assign the output to a vector called `i`: 
+        
+        ```r
+        i <- sample(n_leaves, size = 5)
+        ```
+
+    d. The square brackets `[ ]` in *R* let you extract portions of a vector. Extract the values of the random leaves you sampled using the square brackets and assign the output as `leafsize1_sample`; you can run the following code:
+        
+        ```r
+        leafsize1_sample <- leafsize1$leafsize_cm2[i]
+        ```
+    
+    e. Use *R* to calculate the mean of the leaf sizes for these 5 leaves in your random sample. The result is an estimate of the mean leaf size in your population.
+    
+    f. Make another random sample of 5 leaves, and calculate the mean of this sample. Did you get a different number from the mean of the first sample? Why do you think the second sample mean is different from the first?
