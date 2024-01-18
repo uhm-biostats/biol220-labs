@@ -141,28 +141,30 @@ Useful when:
 
 Scatterplots shows the relationship between two numerical variables.
 
-The titanic data set does not have two numerical variables, so let's use a different data set---the example 2.3B from p. 43 of Whitlock and Schluter, showing the relationship between the ornamentation of father guppies and the sexual attractiveness of their sons. You can load the data for that example with:
+The titanic data set does not have two numerical variables, so let's use a different data set. We will plot the relationship between sea surface temperature and species richness of reef fishes as compiled by [Barneche et. al (2019)](https://onlinelibrary.wiley.com/doi/10.1111/geb.12851). These data come from many different published fish surveys conducted by many different researchers all around the world. Barneche and colleagues compiled those data to try to understand what environmental variables predict the species richness of reef fish.  Let's find out!
+
+You can load the data with:
 
 ```{r, echo = TRUE, eval = TRUE}
-guppy_father_son_data <- read.csv("data/chap02e3bGuppyFatherSonAttractiveness.csv")
+reef_fish <- read.csv("data/global-reef-fish.csv")
 ```
 
-To make a scatter plot of the variables `fatherOrnamentation` and `sonAttractiveness` with **ggplot**, you need to specify the $x$ and $y$ variables, and use `geom_point()`:
+To make a scatter plot of the variables `temp_C` and `spp_richness` with **ggplot**, you need to specify the $x$ and $y$ variables, and use `geom_point()`:
 
 ```{r, echo = TRUE, eval = FALSE}
 # Side note:  I've added a line break between arguments in ggplot()
 # This has no effect on the code, but makes it easier to read IMO
-ggplot(guppy_father_son_data, 
-       aes(x = fatherOrnamentation, y = sonAttractiveness)) +
-geom_point()
+ggplot(reef_fish, 
+       aes(x = temp_C, y = spp_richness)) +
+  geom_point()
 ```
 
 The result look like this:
 
 ```{r, echo = FALSE, eval = TRUE}
-ggplot(guppy_father_son_data, 
-       aes(x = fatherOrnamentation, y = sonAttractiveness)) +
-geom_point()
+ggplot(reef_fish, 
+       aes(x = temp_C, y = spp_richness)) +
+  geom_point()
 ```
 
 ### Better looking graphics with options
@@ -172,21 +174,21 @@ The code we have listed here for graphics barely scratches the surface of what *
 Let's dig a little deeper into just a couple of options that you can add to any of the forgoing graphs to make them look a little better. For example, you can change the text of the $x$-axis label or the $y$-axis label by using `xlab()` or `ylab()`. Let's do that for the scatterplot, to make the labels a little nicer to read for humans.
 
 ```{r, echo = TRUE, eval = FALSE}
-ggplot(guppy_father_son_data, 
-       aes(x = fatherOrnamentation, y = sonAttractiveness)) +
+ggplot(reef_fish, 
+       aes(x = temp_C, y = spp_richness)) +
   geom_point() +
-  xlab("Father's ornamentation") +
-  ylab("Son's attractiveness")
+  xlab("Temperature (degrees C)") +
+  ylab("Species richness")
 ```
 
 The labels that we want to add are included in quotes inside the `xlab()` and `ylab()` functions. Here is what appears:
 
 ```{r, echo = FALSE, eval = TRUE}
-ggplot(guppy_father_son_data, 
-       aes(x = fatherOrnamentation, y = sonAttractiveness)) +
+ggplot(reef_fish, 
+       aes(x = temp_C, y = spp_richness)) +
   geom_point() +
-  xlab("Father's ornamentation") +
-  ylab("Son's attractiveness")
+  xlab("Temperature (degrees C)") +
+  ylab("Species richness")
 ```
 
 It can also be nice to remove the default gray background, to make what some feel is a cleaner graph. Try adding
@@ -262,7 +264,7 @@ This will cause the contents of the manual page for this function to appear in t
 ## Questions
 
 1. Use the data from "countries.csv" to practice making some graphs.
-    a. Read the data from the file "countries.csv" in the "data" folder. (Hint: we did this in the last lab - you need to use `read_csv()`, use the correct path, and give the object a name.)
+    a. Read the data from the file "countries.csv" in the "data" folder. (Hint: we did this in the last lab - you need to use `read.csv()`, use the correct path, and give the object a name.)
     b. Make sure that you have run `library(ggplot2)`. Why is this necessary for the remainder of this question?
     c. Make a histogram to show the frequency distribution of values for `measles_immunization_oneyearolds`, a numerical variable. (This variable gives the percentage of 1-year-olds that have been vaccinated against measles.) Describe the pattern that you see.
     d. Make a bar graph to show the numbers of countries in each of the continents. (The categorical variable continent indicates the continent to which countries belong.)

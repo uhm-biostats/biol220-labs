@@ -12,9 +12,9 @@ For this course, you won't need *R* and *RStudio* installed on your own device b
 
 ## Using *Posit Cloud*
 
-1. We have setup Workspaces for each lab assignment and each lab section.  For example, the workspace for lab01 materials for section 001 is lab01-001. Join the Workspace for each lab by clicking on the appropriate link in Google Classroom (e.g. "Lab 01-005 Posit Cloud Link" for the first week's materials for section 005)
+We have setup Workspaces for each lab assignment and each lab section.  For example, the workspace for lab01 materials for section 001 is lab01-001. Join the Workspace for each lab by clicking on the appropriate link in Google Classroom (e.g. "Lab 01-005 Posit Cloud Link" for the first week's materials for section 005)
 
-2. **Important**: Login with your userid@hawaii.edu account, not a personal gmail account. If you accidentally use your personal account, let me know. I will delete it while you register with the university account.
+**Important**: Login with your userid@hawaii.edu account, not a personal gmail account. If you accidentally use your personal account, let me know. I will delete it while you register with the university account.
 
 **Note**: Wherever images say "lab02", replace that with the actual lab number you will be completing (e.g. "lab01" or "lab11").
 
