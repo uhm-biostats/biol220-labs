@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./lab03.html" rel="next">
 <link href="./lab01.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -151,6 +152,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./lab02.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphics in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Workikng with data</span></span></a>
   </div>
 </li>
     </ul>
@@ -321,17 +328,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Response variable is numerical</li>
 </ul>
 <p>Scatterplots shows the relationship between two numerical variables.</p>
-<p>The titanic data set does not have two numerical variables, so let’s use a different data set—the example 2.3B from p.&nbsp;43 of Whitlock and Schluter, showing the relationship between the ornamentation of father guppies and the sexual attractiveness of their sons. You can load the data for that example with:</p>
+<p>The titanic data set does not have two numerical variables, so let’s use a different data set. We will plot the relationship between sea surface temperature and species richness of reef fishes as compiled by <a href="https://onlinelibrary.wiley.com/doi/10.1111/geb.12851">Barneche et. al (2019)</a>. These data come from many different published fish surveys conducted by many different researchers all around the world. Barneche and colleagues compiled those data to try to understand what environmental variables predict the species richness of reef fish. Let’s find out!</p>
+<p>You can load the data with:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>guppy_father_son_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/chap02e3bGuppyFatherSonAttractiveness.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>reef_fish <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/global-reef-fish.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To make a scatter plot of the variables <code>fatherOrnamentation</code> and <code>sonAttractiveness</code> with <strong>ggplot</strong>, you need to specify the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> variables, and use <code>geom_point()</code>:</p>
+<p>To make a scatter plot of the variables <code>temp_C</code> and <code>spp_richness</code> with <strong>ggplot</strong>, you need to specify the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> variables, and use <code>geom_point()</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Side note:  I've added a line break between arguments in ggplot()</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This has no effect on the code, but makes it easier to read IMO</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(guppy_father_son_data, </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> fatherOrnamentation, <span class="at">y =</span> sonAttractiveness)) <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(reef_fish, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> temp_C, <span class="at">y =</span> spp_richness)) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The result look like this:</p>
 <div class="cell">
@@ -345,11 +353,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The code we have listed here for graphics barely scratches the surface of what <strong>ggplot2</strong>, and <em>R</em> as a whole, are capable of. Not only are there far more choices about the kinds of plots available, but there are many, many options for customizing the look and feel of each graph. You can choose the font, the font size, the colors, the style of the axes labels, etc., and you can customize the legends and axes legends nearly as much as you want.</p>
 <p>Let’s dig a little deeper into just a couple of options that you can add to any of the forgoing graphs to make them look a little better. For example, you can change the text of the <span class="math inline">\(x\)</span>-axis label or the <span class="math inline">\(y\)</span>-axis label by using <code>xlab()</code> or <code>ylab()</code>. Let’s do that for the scatterplot, to make the labels a little nicer to read for humans.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(guppy_father_son_data, </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> fatherOrnamentation, <span class="at">y =</span> sonAttractiveness)) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(reef_fish, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> temp_C, <span class="at">y =</span> spp_richness)) <span class="sc">+</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Father's ornamentation"</span>) <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Son's attractiveness"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Temperature (degrees C)"</span>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Species richness"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The labels that we want to add are included in quotes inside the <code>xlab()</code> and <code>ylab()</code> functions. Here is what appears:</p>
 <div class="cell">
@@ -463,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p>Use the data from “countries.csv” to practice making some graphs.</p>
 <ol type="a">
-<li>Read the data from the file “countries.csv” in the “data” folder. (Hint: we did this in the last lab - you need to use <code>read_csv()</code>, use the correct path, and give the object a name.)</li>
+<li>Read the data from the file “countries.csv” in the “data” folder. (Hint: we did this in the last lab - you need to use <code>read.csv()</code>, use the correct path, and give the object a name.)</li>
 <li>Make sure that you have run <code>library(ggplot2)</code>. Why is this necessary for the remainder of this question?</li>
 <li>Make a histogram to show the frequency distribution of values for <code>measles_immunization_oneyearolds</code>, a numerical variable. (This variable gives the percentage of 1-year-olds that have been vaccinated against measles.) Describe the pattern that you see.</li>
 <li>Make a bar graph to show the numbers of countries in each of the continents. (The categorical variable continent indicates the continent to which countries belong.)</li>
@@ -732,6 +740,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./lab03.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Workikng with data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
