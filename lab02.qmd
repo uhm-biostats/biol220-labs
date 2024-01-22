@@ -28,7 +28,7 @@ In the second row (labeled "Packages"), type **ggplot2**. Make sure the box for 
 Alternatively, you can also use a function to install packages:
 
 ```{r eval = FALSE}
-install.pacakges("ggplot2")
+install.packages("ggplot2")
 ```
 
 
