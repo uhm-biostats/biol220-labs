@@ -251,7 +251,7 @@ sample_dist1024 <- leafsize |>
   rep_slice_sample(n = 1024, reps = 1e3) |>
   mutate(sample_size = 1024)
 
-sample_dists <- bind_rows(sample_dist64, sample_dist256, sample_dist1024) 
+sample_dists <- rbind(sample_dist64, sample_dist256, sample_dist1024) 
 
 sample_dists <- sample_dists |>
   group_by(sample_size, replicate) |>
