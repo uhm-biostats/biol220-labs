@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Labs for Intro Biostatistics - 1&nbsp; Getting started</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lab02.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Labs for Intro Biostatistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab01.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphics in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Workikng with data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Sampling Distribution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 coding, data, graphics</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">1.1</span> Goals</a></li>
+  <li><a href="#r-rstudio-and-posit-cloud" id="toc-r-rstudio-and-posit-cloud" class="nav-link" data-scroll-target="#r-rstudio-and-posit-cloud"><span class="header-section-number">1.2</span> <em>R</em>, <em>RStudio</em>, and <em>Posit Cloud</em></a>
+  <ul class="collapse">
+  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r"><span class="header-section-number">1.2.1</span> What is <em>R</em>?</a></li>
+  <li><a href="#what-is-rstudio" id="toc-what-is-rstudio" class="nav-link" data-scroll-target="#what-is-rstudio"><span class="header-section-number">1.2.2</span> What is <em>RStudio</em>?</a></li>
+  <li><a href="#what-is-posit-cloud" id="toc-what-is-posit-cloud" class="nav-link" data-scroll-target="#what-is-posit-cloud"><span class="header-section-number">1.2.3</span> What is <em>Posit Cloud</em>?</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">1.2.4</span> Resources</a></li>
+  <li><a href="#getting-started-with-posit-cloud" id="toc-getting-started-with-posit-cloud" class="nav-link" data-scroll-target="#getting-started-with-posit-cloud"><span class="header-section-number">1.2.5</span> Getting started with <em>Posit Cloud</em></a></li>
+  </ul></li>
+  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">1.3</span> Learning the Tools</a>
+  <ul class="collapse">
+  <li><a href="#the-command-line" id="toc-the-command-line" class="nav-link" data-scroll-target="#the-command-line"><span class="header-section-number">1.3.1</span> The command line</a></li>
+  <li><a href="#saving-your-code" id="toc-saving-your-code" class="nav-link" data-scroll-target="#saving-your-code"><span class="header-section-number">1.3.2</span> Saving your code</a></li>
+  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments"><span class="header-section-number">1.3.3</span> Comments</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">1.3.4</span> Functions</a></li>
+  <li><a href="#defining-variables" id="toc-defining-variables" class="nav-link" data-scroll-target="#defining-variables"><span class="header-section-number">1.3.5</span> Defining variables</a></li>
+  <li><a href="#names" id="toc-names" class="nav-link" data-scroll-target="#names"><span class="header-section-number">1.3.6</span> Names</a></li>
+  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors"><span class="header-section-number">1.3.7</span> Vectors</a></li>
+  <li><a href="#basic-calculation-examples" id="toc-basic-calculation-examples" class="nav-link" data-scroll-target="#basic-calculation-examples"><span class="header-section-number">1.3.8</span> Basic calculation examples</a></li>
+  <li><a href="#reading-a-data-file" id="toc-reading-a-data-file" class="nav-link" data-scroll-target="#reading-a-data-file"><span class="header-section-number">1.3.9</span> Reading a data file</a></li>
+  <li><a href="#intro-to-data-frames" id="toc-intro-to-data-frames" class="nav-link" data-scroll-target="#intro-to-data-frames"><span class="header-section-number">1.3.10</span> Intro to data frames</a></li>
+  <li><a href="#adding-a-new-column" id="toc-adding-a-new-column" class="nav-link" data-scroll-target="#adding-a-new-column"><span class="header-section-number">1.3.11</span> Adding a new column</a></li>
+  <li><a href="#choosing-subsets-of-data" id="toc-choosing-subsets-of-data" class="nav-link" data-scroll-target="#choosing-subsets-of-data"><span class="header-section-number">1.3.12</span> Choosing subsets of data</a></li>
+  </ul></li>
+  <li><a href="#questions-for-lab-report" id="toc-questions-for-lab-report" class="nav-link" data-scroll-target="#questions-for-lab-report"><span class="header-section-number">1.4</span> Questions for Lab Report</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Please complete this lab using <em>Posit Cloud</em> (more on what that is below). Here is the <em>Posit Cloud</em> workspace link for this lab: <a href="https://posit.cloud/spaces/463390/content/all?sort=name_asc" class="uri">https://posit.cloud/spaces/463390/content/all?sort=name_asc</a>.</p>
+<section id="goals" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">1.1</span> Goals</h2>
+<ul>
+<li>Learning how to start with <em>Posit Cloud</em></li>
+<li>Use the command line</li>
+<li>Use functions in <em>R</em></li>
+<li>Use vectors</li>
+<li>Use data frames</li>
+</ul>
+</section>
+<section id="r-rstudio-and-posit-cloud" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="r-rstudio-and-posit-cloud"><span class="header-section-number">1.2</span> <em>R</em>, <em>RStudio</em>, and <em>Posit Cloud</em></h2>
+<section id="what-is-r" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="what-is-r"><span class="header-section-number">1.2.1</span> What is <em>R</em>?</h3>
+<p><em>R</em> is a computer program that allows an extraordinary range of statistical calculations. It is a free program, mainly written by voluntary contributions from statisticians around the world. <em>R</em> is available on most operating systems, including Windows, Mac OS, and Linux.</p>
+<p><em>R</em> can make graphics and do statistical calculations. It is also a full-fledged computing language. In this manual, we will only scratch the surface of what <em>R</em> can do.</p>
+</section>
+<section id="what-is-rstudio" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="what-is-rstudio"><span class="header-section-number">1.2.2</span> What is <em>RStudio</em>?</h3>
+<p><em>RStudio</em> is a separate program, also free, that provides a more elegant front end for <em>R</em>. <em>RStudio</em> allows you to easily organize separate windows for <em>R</em> commands, graphic, help, etc. in one place.</p>
+<p>For this course, you won’t need <em>R</em> and <em>RStudio</em> installed on your own device because we will work in <em>Posit Cloud</em>. However, if you wish to install them on your device, go to <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a> for instructions about getting set up.</p>
+</section>
+<section id="what-is-posit-cloud" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="what-is-posit-cloud"><span class="header-section-number">1.2.3</span> What is <em>Posit Cloud</em>?</h3>
+<p><em>Posit Cloud</em> allows you to run a hosted version of <em>RStudio</em> in the cloud that allows you to run R without having to download anything on your personal computer or confirgure your personal computer. You access <em>Posit Cloud</em> from your browser, and conveniently you can access from <em>any</em> computer, not just your personal device.</p>
+</section>
+<section id="resources" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="resources"><span class="header-section-number">1.2.4</span> Resources</h3>
+<blockquote class="blockquote">
+<p><em>Posit Cloud</em> provides many learning materials: <a href="https://posit.cloud/learn/recipes">interactive tutorials</a> covering the basics of data science, <a href="https://posit.co/resources/cheatsheets/">cheatsheets</a>, and a <a href="https://posit.cloud/learn/guide">guide to using <em>Posit Cloud</em></a>.</p>
+</blockquote>
+</section>
+<section id="getting-started-with-posit-cloud" class="level3" data-number="1.2.5">
+<h3 data-number="1.2.5" class="anchored" data-anchor-id="getting-started-with-posit-cloud"><span class="header-section-number">1.2.5</span> Getting started with <em>Posit Cloud</em></h3>
+<p>Follow the instructions on the <a href="./index.html">“Setup”</a> page for setting yourself up with <em>Posit Cloud</em>.</p>
+<p>Once done, proceed with the rest of the lab below.</p>
+</section>
+</section>
+<section id="learning-the-tools" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">1.3</span> Learning the Tools</h2>
+<p>When you start <em>Posit Cloud</em>, it will automatically start <em>RStudio</em> as well. You run <em>R</em> inside <em>RStudio</em>, itself inside <em>Posit Cloud</em>.</p>
+<p>After you have started <em>Posit Cloud</em>, you should see a new window with a menu bar at the top and three main sections. One of the sections is called the “Console” – this is where you type commands to give instructions to <em>R</em> and typically where you see <em>R</em>’s answers to you.</p>
+<p>Another important corner of this window can show a variety of information. Most importantly to us, this is where graphics will appear, under the tab marked “Plots”.</p>
+<section id="the-command-line" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="the-command-line"><span class="header-section-number">1.3.1</span> The command line</h3>
+<p>When you start <em>Posit Cloud</em>, you’ll see a corner of the window called the “Console.” By the default the console window is in the bottom left of the <em>RStudio</em> screen.</p>
+<p>You can type commands in this window where there is a prompt (which will look like a <code>&gt;</code> sign at the bottom of the window). The Console has to be the selected window. (Clicking anywhere in the Console selects it.)</p>
+<p>The <code>&gt;</code> prompt is <em>R</em>’s way of inviting you to give it instructions. You communicate with <em>R</em> by typing commands after the <code>&gt;</code> prompt.</p>
+<p>Type “<code>2+2</code>” at the <code>&gt;</code> prompt, and hit return. You’ll see that <em>R</em> can work like a calculator (among its many other powers). It will give you the answer, <code>4</code>, and it will label that answer with <code>[1]</code> to indicate that it is the first element in the answer. (This is sort of annoying when the answers are simple like this, but can be very valuable when the answers become more complex.)</p>
+<p>Remember, you don’t type the <code>&gt;</code> sign. The <code>&gt;</code> is the prompt that <em>R</em> gives saying it is ready for input. We reproduce it here so you can see which is input (in blue) and which is output (in black or red).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>You can use a wide variety of math functions to make calculations here, e.g., <code>log()</code> calculates the log of a number:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.73767</code></pre>
+</div>
+</div>
+<p>(By default, this gives the natural log with base <span class="math inline">\(e\)</span>.)</p>
+<p>Parentheses are used both as a way to group elements of the calculation and also as a way to denote the arguments of functions. (The “arguments” of a function are the set of values given to it as input.) For example, <code>log(3)</code> is applying the function <code>log()</code> to the argument <code>3</code>.</p>
+<p>Another mathematical function that often comes in handy is the square root function, <code>sqrt()</code>. For example, the square root of <code>4</code> is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.480741</code></pre>
+</div>
+</div>
+<p>To calculate a value with an exponent, used the <code>^</code> symbol. For example <span class="math inline">\(4^3\)</span> is written as:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">^</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 64</code></pre>
+</div>
+</div>
+<p>Note how <em>R</em> ignores white space when it’s not in quotes (we’ll come back to quotes later):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 64</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>  <span class="sc">^</span>  <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 64</code></pre>
+</div>
+</div>
+<p>Of course, many math functions can be combined to give an almost infinite possibility of mathematical expressions. For example,</p>
+<p><span class="math display">\[\frac{1}{\sqrt{2 \pi (3.1)^2}} e ^ {-\frac{(12 - 10.7) ^ 2}{2 \times 3.1}}\]</span></p>
+<p>can be calculated with</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">/</span> (<span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> (<span class="fl">3.1</span>) <span class="sc">^</span> <span class="dv">2</span>))) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>(<span class="dv">12</span> <span class="sc">-</span> <span class="fl">10.7</span>) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fl">3.1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.09798692</code></pre>
+</div>
+</div>
+</section>
+<section id="saving-your-code" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="saving-your-code"><span class="header-section-number">1.3.2</span> Saving your code</h3>
+<p>When you analyze your own data, we strongly recommend that you keep a record of all commands used, along with copious notes, so that weeks or years later you can retrace the steps of your earlier analysis.</p>
+<p>In <em>Posit Cloud</em>, you can create a plain text file (sometimes called a script), which contains <em>R</em> commands that can be reloaded and used at a later date. We have created a scratch file where you can enter and save your commands while you’re learning the tools. Click on “scratch.R” in the lower-right:</p>
+<p><img src="images/rstudio-cloud-05.png" class="img-fluid"></p>
+<p>That will open a mostly blank text file above the Console that looks like this:</p>
+<p><img src="images/rstudio-cloud-06.png" class="img-fluid"></p>
+<p>You can copy and paste any commands that you want from the Console, or type directly here. (When you copy and paste, do not include the <code>&gt;</code> prompt in the script.) Save this script for later reference by hitting “Save” under the “File” menu. In the future you can open this file to have those commands available for use again.</p>
+<p>It is a good habit to type all your commands in the script window and run them from there, rather than typing directly into the console. This lets you save a record of your session so that you can more easily re-create what you have done later.</p>
+<p>FYI, if you want to create a new, blank <em>R</em> script, here’s how: under the menu at the top, choose “File”, then “New File”, and then “R Script”. Follow the prompts to save the new file.</p>
+</section>
+<section id="comments" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="comments"><span class="header-section-number">1.3.3</span> Comments</h3>
+<p>In scripts, it can be very useful to save a bit of text which is not to be evaluated by <em>R</em>. You can leave a note to yourself (or a collaborator) about what the next line is supposed to do, what its strengths and limitations are, or anything else you want to remember later. To leave a note, we use “comments”, which are a line of text that starts with the hash symbol <code>#</code>. Anything on a line after a <code>#</code> will be ignored by <em>R</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a comment. Running this in R will </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># have no effect.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="functions" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="functions"><span class="header-section-number">1.3.4</span> Functions</h3>
+<p>Most of the work in <em>R</em> is done by functions. A function has a name and one or more arguments. For example, <code>log(4)</code> is a function that calculates the log in base <span class="math inline">\(e\)</span> for the value <code>4</code> given as input.</p>
+<p>Sometimes functions have optional input arguments. For the function <code>log()</code>, for example, we can specify the optional input argument base to tell the function what base to use for the logarithm. If we don’t specify the base variable, it has a default value of <code>base = e</code>. To get a log in base 10, for example, we would use:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">4</span>, <span class="at">base =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.60206</code></pre>
+</div>
+</div>
+</section>
+<section id="defining-variables" class="level3" data-number="1.3.5">
+<h3 data-number="1.3.5" class="anchored" data-anchor-id="defining-variables"><span class="header-section-number">1.3.5</span> Defining variables</h3>
+<p>In <em>R</em>, we can store information of various sorts by assigning them to variables. For example, if we want to create a variable called <code>x</code> and give it a value of <code>4</code>, we would write</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The middle bit of this—a less than sign and a hyphen typed together to make something that looks a little like a left-facing arrow – tells <em>R</em> to assign the value on the right to the variable on the left. After running the command above, whenever we use <code>x</code> in a command it would be replaced by its value <code>4</code>. For example, if we add <code>3</code> to <code>x</code>, we would expect to get <code>7</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+</div>
+<p>Variables in <em>R</em> can store more than just simple numbers. They can store lists of numbers, functions, graphics, etc., depending on what values get assigned to the variable.</p>
+<p>We can always reassign a new value to a variable. If we now tell <em>R</em> that <code>x</code> is equal to 32</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>then <code>x</code> takes its new value:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 32</code></pre>
+</div>
+</div>
+</section>
+<section id="names" class="level3" data-number="1.3.6">
+<h3 data-number="1.3.6" class="anchored" data-anchor-id="names"><span class="header-section-number">1.3.6</span> Names</h3>
+<p>Naming variables and functions in <em>R</em> is pretty flexible.</p>
+<p>A name has to start with a letter, but that can be followed by any combination of letters, numbers, and underscores (<code>_</code>). Names cannot have spaces or any character other than letters, numbers, and underscores, for example <code>$</code>, <code>-</code>, and <code>%</code> are not allowed. Technically, periods (<code>.</code>) are allowed in names, but not reccomended excpet for specific uses outside the scope of this course.</p>
+<p>Names in <em>R</em> are case-sensitive, which means that <code>Weights</code> and <code>weights</code> are completely different things to <em>R</em>. This is a common and incredibly frustrating source of errors in <em>R</em>.</p>
+<p>It’s a good idea to have your names be as descriptive as possible, so that you will know what you meant later on when looking at it. (However, if they get too long, it becomes painful and error prone to type them each time we use them, so this, as with all things, requires moderation.)</p>
+<p>Sometimes clear naming means that it is best to have multiple words in the name, but we can’t have spaces. Therefore a common approach is like we saw in the previous section, to chain the words with underscores (not hyphens!), as in <code>weights_before_hospital</code>. (Another solution to make separate words stand out in a variable name is to vary the case: <code>weightsBeforeHospital</code>. This is called “Camel Case” because the capital letters are like camel humps.)</p>
+</section>
+<section id="vectors" class="level3" data-number="1.3.7">
+<h3 data-number="1.3.7" class="anchored" data-anchor-id="vectors"><span class="header-section-number">1.3.7</span> Vectors</h3>
+<p>One useful feature of <em>R</em> is the ability to apply functions to an entire collection of numbers. The technical term for a set of numbers is “vector”. For example, the following code will create a vector of six numbers:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">c</span>(<span class="dv">78</span>, <span class="dv">85</span>, <span class="dv">64</span>, <span class="dv">54</span>, <span class="dv">102</span>, <span class="fl">98.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  78.0  85.0  64.0  54.0 102.0  98.6</code></pre>
+</div>
+</div>
+<p><code>c()</code> is a function that creates a vector, containing the items given in its arguments. To help you remember, you could think of the function <code>c()</code> meaning to “<strong>c</strong>ombine” some elements into a vector.</p>
+<p>Let’s add a little extra here to make the computer remember this vector. Let’s assign it to a variable, called <code>temperatureF</code> (because these numbers are actually a set of temperatures in degrees Fahrenheit):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>temperatureF <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">78</span>, <span class="dv">85</span>, <span class="dv">64</span>, <span class="dv">54</span>, <span class="dv">102</span>, <span class="fl">98.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The combination of the less than sign and the hyphen makes an arrow pointing from right to left—this tells <em>R</em> to assign the stuff on the right to the name on the left. In this case we are assigning a vector to the variable <code>temperatureF</code>.</p>
+<p>Inputting this into <em>R</em> causes no obvious output, but <em>R</em> will now remember this vector of temperatures under the name <code>temperatureF</code>. We can view the contents of the vector <code>temperatureF</code> by simply typing its name:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>temperatureF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  78.0  85.0  64.0  54.0 102.0  98.6</code></pre>
+</div>
+</div>
+<p>The power of vectors is that <em>R</em> can do the same calculation on all elements of a vector with one command. For example, to convert a temperature in Fahrenheit to Celsius, we would want to subtract <code>32</code> and multiply times <code>5/9</code>. We can do that for all the numbers in this vector at once:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>temperatureC <span class="ot">&lt;-</span> (temperatureF <span class="sc">-</span> <span class="dv">32</span>) <span class="sc">*</span> <span class="dv">5</span> <span class="sc">/</span> <span class="dv">9</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>temperatureC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25.55556 29.44444 17.77778 12.22222 38.88889 37.00000</code></pre>
+</div>
+</div>
+<p>To pull out one of the numbers in this vector, we add square brackets after the vector name, and inside those brackets put the index of the element we want. (The “index” is just a number giving the location in the vector of the item we want. The first item has index <code>1</code>, etc.) For example, the second element of the vector <code>temperatureC</code> is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>temperatureC[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 29.44444</code></pre>
+</div>
+</div>
+<p>One of the ways to slip up in <em>R</em> is to confuse the [square brackets] which pull out an element of a vector, with the (parentheses), which is used to enclose the arguments of a function.</p>
+<p>Vectors can also operate mathematically with other vectors. For example, imagine you have a vector of the body weights of patients before entering hospital (<code>weight_before_hospital</code>) and another vector with the same patient’s weights after leaving hospital (<code>weight_after_hospital</code>). You can calculate the change in weight for all these patients in one command, using vector subtraction:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>weight_before_hospital <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">102</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>weight_after_hospital <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">98</span>, <span class="dv">99</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>weight_change_during_hospital <span class="ot">&lt;-</span> weight_before_hospital <span class="sc">-</span> weight_after_hospital</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The result will be a vector that has each patient’s change in weight.</p>
+</section>
+<section id="basic-calculation-examples" class="level3" data-number="1.3.8">
+<h3 data-number="1.3.8" class="anchored" data-anchor-id="basic-calculation-examples"><span class="header-section-number">1.3.8</span> Basic calculation examples</h3>
+<p>In this course, we’ll learn how to use a few dozen functions, but let’s start with a couple of basic ones.</p>
+<p>The function <code>mean()</code> does just what it sounds like: it calculates the sample mean (that is, the average) of the vector given to it as input. For example, the mean of the vector of the temperatures in degrees Celsius from above is 26.81481:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(temperatureC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26.81481</code></pre>
+</div>
+</div>
+<p>Another simple (and simply named) function calculates the sum of all numbers in a vector: <code>sum()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(temperatureC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 160.8889</code></pre>
+</div>
+</div>
+<p>To count the number of elements in a vector, use <code>length()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(temperatureC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+<p>This shows that there are 6 temperature values in the vector that make up the vector <code>temperatureC</code>.</p>
+</section>
+<section id="reading-a-data-file" class="level3" data-number="1.3.9">
+<h3 data-number="1.3.9" class="anchored" data-anchor-id="reading-a-data-file"><span class="header-section-number">1.3.9</span> Reading a data file</h3>
+<p>In this course, we have saved the data in a “comma-separated variable” format. All files in this format ought to have “.csv” as the end of their file name. A CSV file is a plain text file, easily read by a wide variety of programs. Each row in the file (besides the first row) is the data for a given individual, and for each individual each variable is listed in the same order, separated by commas. It’s important to note that you can’t have commas anywhere else in the file, besides the separators.</p>
+<p>The first row of a CSV file should be a “header” row, which gives the names of each variable, again separated by commas.</p>
+<p>For examples in this tutorial, let’s use a data set about the passengers of the <em>RMS Titanic</em>. One of the data sets in the folder of data attached to this lab is called “titanic.csv”. This is a data set of 1313 passengers from the voyage of this ship, which contains information about some personal info about each passenger as well as whether they survived the accident or not.</p>
+<p>To import a CSV file into <em>R</em>, use the <code>read.csv()</code> function as in the following command. (This assumes that you have set the working directory to the labs folder, as we described above.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>titanic_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/titanic.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This looks for the file called <code>titanic.csv</code> in the folder called <code>data</code>. Here we have given the name <code>titanic_data</code> to the object in <em>R</em> that contains all this passenger data. Of course, if you wanted to load a different data set, you would be better off giving it a more apt name than “<code>titanic_data</code>”.</p>
+<p>To see if the data loads appropriately, you might want to run the command</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(titanic_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> passenger_class        name                age            embarked        
+ Length:1313        Length:1313        Min.   : 0.1667   Length:1313       
+ Class :character   Class :character   1st Qu.:21.0000   Class :character  
+ Mode  :character   Mode  :character   Median :30.0000   Mode  :character  
+                                       Mean   :31.1942                     
+                                       3rd Qu.:41.0000                     
+                                       Max.   :71.0000                     
+                                       NA's   :680                         
+ home_destination       sex              survive         
+ Length:1313        Length:1313        Length:1313       
+ Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character  
+                                                         
+                                                         
+                                                         
+                                                         </code></pre>
+</div>
+</div>
+<p>which will list all the variables and some summary statistics for each variable.</p>
+</section>
+<section id="intro-to-data-frames" class="level3" data-number="1.3.10">
+<h3 data-number="1.3.10" class="anchored" data-anchor-id="intro-to-data-frames"><span class="header-section-number">1.3.10</span> Intro to data frames</h3>
+<p>A data frame is a way that <em>R</em> can store a data set on a number of individuals. A data frame is a collection of columns; each column contains the values of a single variable for all individuals. The values of each individual occur in the same order in all the columns, so the first value for one variable represents the same individual as the first value in the lists of all other variables.</p>
+<p>The function <code>read.csv()</code> loads the data it reads into a data frame.</p>
+<p>The data frame is usually given a name, which is used to tell <em>R</em>’s functions which data set to use. For example, in the previous section we read in a data set to a data frame that we called <code>titanic_data</code>. This data frame now contains information about each of the passengers on the <em>Titanic.</em> This data frame has seven variables, so it has seven columns (<code>passenger_class</code>, <code>name</code>, <code>age</code>, <code>embarked</code>, <code>home_destination</code>, <code>sex</code>, and <code>survive</code>).</p>
+<p>Very importantly, we can grab one of the columns from a data frame by itself. We write the name of the data frame, followed by a <code>$</code>, and then the name of the variable.</p>
+<p>For example, to show a list of the age of all the passengers on the <em>Titanic</em>, use</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>titanic_data<span class="sc">$</span>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will show a vector that has the values for this variable <code>age</code>, one for each individual in the data set.</p>
+<p>Note, when looking at long vectors or data frames, it’s convenient to use the <code>head</code> function, which only shows the first 6 elements, not the whole huge vector or data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(titanic_data<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 29.0000  2.0000 30.0000 25.0000  0.9167 47.0000</code></pre>
+</div>
+</div>
+</section>
+<section id="adding-a-new-column" class="level3" data-number="1.3.11">
+<h3 data-number="1.3.11" class="anchored" data-anchor-id="adding-a-new-column"><span class="header-section-number">1.3.11</span> Adding a new column</h3>
+<p>Sometimes we would like to add a new column to a data frame. The easiest way to do this is to simply assign a new vector to a new column name, using the <code>$</code>.</p>
+<p>For example, to add the log of age as a column in the <code>titanic_data</code> data frame, we can write</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>titanic_data<span class="sc">$</span>log_age <span class="ot">&lt;-</span> <span class="fu">log</span>(titanic_data<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can run the command <code>head(titanic_data)</code> to see that <code>log_age</code> is now a column in <code>titanic_data</code>.</p>
+</section>
+<section id="choosing-subsets-of-data" class="level3" data-number="1.3.12">
+<h3 data-number="1.3.12" class="anchored" data-anchor-id="choosing-subsets-of-data"><span class="header-section-number">1.3.12</span> Choosing subsets of data</h3>
+<p>Sometimes we want to do an analysis only on some of the data that fit certain criteria. For example, we might want to analyze the data from the <em>Titanic</em> using only the information from females. The easiest way to do this is to use the <code>subset</code> function.</p>
+<p>In the titanic data set there is a variable named <code>sex</code>. We can create a new data frame that includes only the data from passengers recorded as female with the following command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>titanic_female_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(titanic_data, sex <span class="sc">==</span> <span class="st">"female"</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(titanic_female_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   passenger_class                                       name age    embarked
+1              1st                  Allen,MissElisabethWalton  29 Southampton
+2              1st                   Allison,MissHelenLoraine   2 Southampton
+4              1st  Allison,MrsHudsonJ.C.(BessieWaldoDaniels)  25 Southampton
+7              1st              Andrews,MissKorneliaTheodosia  63 Southampton
+9              1st    Appleton,MrsEdwardDale(CharlotteLamson)  58 Southampton
+12             1st Astor,MrsJohnJacob(MadeleineTalmadgeForce)  19   Cherbourg
+              home_destination    sex survive   log_age
+1                   StLouis,MO female     yes 3.3672958
+2  Montreal,PQ/Chesterville,ON female      no 0.6931472
+4  Montreal,PQ/Chesterville,ON female      no 3.2188758
+7                    Hudson,NY female     yes 4.1431347
+9            Bayside,Queens,NY female     yes 4.0604430
+12                  NewYork,NY female     yes 2.9444390</code></pre>
+</div>
+</div>
+<p>This new data fame will include all the same columns as the original <code>titanic_data</code>, but it will only include the rows for which the <code>sex</code> was “<code>female</code>”.</p>
+<p>Note that the syntax here requires a double <code>==</code> sign. In <em>R</em> (and many other computer languages), the double equal sign creates a statement that can be evaluated as <code>TRUE</code> or <code>FALSE</code>. Here we are asking, for each individual, whether <code>sex</code> is “<code>female</code>”.</p>
+</section>
+</section>
+<section id="questions-for-lab-report" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="questions-for-lab-report"><span class="header-section-number">1.4</span> Questions for Lab Report</h2>
+<p>Your lab report is due <strong>before the start of next week’s lab</strong>. When you’re finished, save it, and your TA can access it on the Cloud.</p>
+<ol type="1">
+<li>For each week, use the <em>R</em> script called “report.R” to save the commands that you use to answer the questions, as well as the answers themselves.
+<ol type="a">
+<li>Open the report.R file. Start by editing comments with your name at the top. <img src="images/rstudio-cloud-07.png" class="img-fluid"></li>
+<li>Save the script regularly as you work! To save, go to “File &gt; Save” or use command-S shortcut. <img src="images/rstudio-cloud-save1.png" class="img-fluid"></li>
+<li>For each of the questions below, write the question number as a comment, followed by any <em>R</em> code you use to do the question, and give the answers as comments. It might look something like this:</li>
+</ol></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Student's name</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># BIOL 220 Lab 11</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2023-01-12</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Questions</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. I followed directions to set up my lab report</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Yes, I got the same answers!</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Only text answers, no code</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer part 1</span></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer part 2</span></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Text and code</span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># you can also comment like this</span></span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a><span class="co"># The mean of c(1, 2, 3) is 2. Here's what that means...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li><p>Run the <strong>Learning the tools</strong> commands in <em>R</em> from your “scratch.R” script. Did you get the same answers as shown in the text? (Answer “yes”, “no”, or a more detailed explanation. You don’t need to re-run all the code and output here.)</p></li>
+<li><p>For each of the following, come up with a variable name that would be appropriate to use in <em>R</em> for the listed variable:</p></li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Name in <em>R</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Body temperature in Celsius</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>How much aspirin is given per dose for a patient</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Number of televisions per person</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Height (including neck and extended legs) of giraffes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol start="4" type="1">
+<li><p>Use <em>R</em> to calculate:</p>
+<ol type="a">
+<li><span class="math inline">\(15 \times 17\)</span></li>
+<li><span class="math inline">\(13^3\)</span></li>
+<li><span class="math inline">\(\text{log}_e(14)\)</span> (natural log)</li>
+<li><span class="math inline">\(\text{log}_{10}(100)\)</span> (base 10 log)</li>
+<li><span class="math inline">\(\sqrt{81}\)</span></li>
+</ol></li>
+<li><p>Weddell seals live in Antarctic waters and take long strenuous dives in order to find fish to feed upon. Researchers (Williams <em>et al</em>. 2004) wanted to know whether these feeding dives were more energetically expensive than regular dives (perhaps because they are deeper, or the seal has to swim further or faster). They measured the metabolic costs of dives using the oxygen consumption of 10 animals (in ml O<span class="math inline">\(_2\)</span> / kg) during a feeding dive. Here are the data:</p>
+<blockquote class="blockquote">
+<p>71.0, 77.3, 82.6, 96.1, 106.6, 112.8, 121.2, 126.4, 127.5, 143.1</p>
+</blockquote>
+<p>For the same 10 animals, they also measured the oxygen consumption in non-feeding dives. With the 10 animals in the same order as before, here are those data:</p>
+<blockquote class="blockquote">
+<p>42.2, 51.7, 59.8, 66.5, 81.9, 82.0, 81.3, 81.3, 96.0, 104.1</p>
+</blockquote>
+<ol type="a">
+<li>Make a vector for each of these lists, and give them appropriate names.</li>
+<li>Confirm (using <em>R</em>) that both of your vectors have the same number of individuals in them.</li>
+<li>Create a vector called <code>metabolism_difference</code> by calculating the difference in oxygen consumption between feeding dives and nonfeeding dives for each animal.</li>
+<li>What is the average difference between feeding dives and nonfeeding dives in oxygen consumption?</li>
+<li>The arithmetic mean is calculated by adding up all the numbers and dividing by how many numbers there are. Calculate the mean of these numbers using <code>sum()</code> and <code>length()</code>. Did you get the same answer as with using <code>mean()</code>?</li>
+<li>Another appropriate way to represent the relationship between these two numbers would be to take the ratio of O<span class="math inline">\(_2\)</span> consumption for feeding dives over the O<span class="math inline">\(_2\)</span> consumption of nonfeeding dives. Make a vector which gives this ratio for each seal.</li>
+<li>Sometimes ratios are easier to analyze when we look at the log of the ratio. Create a vector which gives the log of the ratios from the previous step. (Use the natural log.) What is the mean of this log-ratio?</li>
+</ol></li>
+<li><p>The data file called “countries.csv” in the data folder contains information about all the countries on Earth<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Each row is a country, and each column contains a variable.</p>
+<ol type="a">
+<li>Use <code>read.csv()</code> to read the data from this file into a data frame called <code>countries</code>.</li>
+<li>Use <code>summary()</code> to get a quick description of this data set. What are the first three variables?</li>
+<li>Using the output of <code>summary()</code>, how many countries are from Africa in this data set?</li>
+<li>What kinds of variables (i.e., categorical or numerical) are continents, <code>cell_phone_subscriptions_per_100_people_2012</code>, <code>total_population_in_thousands_2015</code>, and <code>fines_for_tobacco_advertising_2014</code>? (Don’t go by their variable names – look at the data in the summary results to decide.)</li>
+<li>Add a new column to your countries data frame that has the difference in ecological footprint between 2012 and 2000. What is the mean of this difference? (Note: this variable will have “missing data”, which means that some of the countries do not have data in this file for one or the other of the years of ecological footprint. By default, <em>R</em> doesn’t calculate a mean unless all the data are present. To tell R to ignore the missing data, add an option to the <code>mean()</code> command that says <code>na.rm=TRUE</code>. We’ll learn more about this later.)</li>
+</ol></li>
+<li><p>Using the countries data again, create a new data frame called <code>africa_data</code>, that only includes data for countries in Africa. What is the sum of the <code>total_population_in_thousands_2015</code> for this new data frame?</p></li>
+</ol>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>These data mainly come from the World Health Organization, but the Continent list comes from <a href="https://datahub.io/" class="uri">https://datahub.io/</a> and the ecological footprint and cell phone data come from <a href="http://www.nationmaster.com" class="uri">http://www.nationmaster.com</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setup</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lab02.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphics in R</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

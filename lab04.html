@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Labs for Intro Biostatistics - 4&nbsp; The Sampling Distribution</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lab05.html" rel="next">
+<link href="./lab03.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab04.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Sampling Distribution</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Labs for Intro Biostatistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphics in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Workikng with data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab04.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Sampling Distribution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 coding, data, graphics</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">4.1</span> Goals</a></li>
+  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">4.2</span> Learning the Tools</a>
+  <ul class="collapse">
+  <li><a href="#simulating-your-own-sampling-distributions" id="toc-simulating-your-own-sampling-distributions" class="nav-link" data-scroll-target="#simulating-your-own-sampling-distributions"><span class="header-section-number">4.2.1</span> Simulating your own sampling distributions</a></li>
+  <li><a href="#sample-mean-bary" id="toc-sample-mean-bary" class="nav-link" data-scroll-target="#sample-mean-bary"><span class="header-section-number">4.2.2</span> Sample mean <span class="math inline">\(\bar{Y}\)</span></a></li>
+  <li><a href="#plot-the-sampling-distribution-bary" id="toc-plot-the-sampling-distribution-bary" class="nav-link" data-scroll-target="#plot-the-sampling-distribution-bary"><span class="header-section-number">4.2.3</span> Plot the sampling distribution <span class="math inline">\(\bar{Y}\)</span></a></li>
+  <li><a href="#standard-error-of-the-mean" id="toc-standard-error-of-the-mean" class="nav-link" data-scroll-target="#standard-error-of-the-mean"><span class="header-section-number">4.2.4</span> Standard error of the mean</a></li>
+  <li><a href="#sample-standard-error-of-the-mean" id="toc-sample-standard-error-of-the-mean" class="nav-link" data-scroll-target="#sample-standard-error-of-the-mean"><span class="header-section-number">4.2.5</span> Sample standard error of the mean</a></li>
+  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals"><span class="header-section-number">4.2.6</span> 95% confidence intervals</a></li>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">4.3</span> Questions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Sampling Distribution</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="goals" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">4.1</span> Goals</h2>
+<ul>
+<li>Understand the sampling distribution of an estimate</li>
+<li>Investigate sampling error</li>
+<li>Calculate standard error of the mean</li>
+<li>Calculate confidence intervals</li>
+</ul>
+</section>
+<section id="learning-the-tools" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">4.2</span> Learning the Tools</h2>
+<section id="simulating-your-own-sampling-distributions" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="simulating-your-own-sampling-distributions"><span class="header-section-number">4.2.1</span> Simulating your own sampling distributions</h3>
+<p>Just like we did in lecture, we will simulate our own sampling distribution of the mean. For this lab, we will use the <code>iris</code> dataset to demonstrate how. You’ll take many random samples from the <code>iris</code> dataset, calculate the sample mean <span class="math inline">\(\bar{Y}\)</span> for each, and plot the distribution.</p>
+<section id="randomly-sampling-rows" class="level4" data-number="4.2.1.1">
+<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="randomly-sampling-rows"><span class="header-section-number">4.2.1.1</span> Randomly sampling rows</h4>
+<p>We used the <code>replicate</code> function in lecture, but the <strong>dplyr</strong> package offers tools that are perhaps even more intuitive. You can take a random sample of rows in your data using the <strong>dplyr</strong> function <code>slice_sample()</code>. For example, to sample 5 rows at random from the <code>iris</code> data set, you would do the following:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>samp <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(iris, <span class="at">n =</span> <span class="dv">5</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>samp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+1          6.1         2.6          5.6         1.4  virginica
+2          6.7         3.1          4.7         1.5 versicolor
+3          4.8         3.0          1.4         0.3     setosa
+4          6.5         3.0          5.5         1.8  virginica
+5          4.6         3.6          1.0         0.2     setosa</code></pre>
+</div>
+</div>
+<p>Now try on your to increase the sample size 10, how would you do this?</p>
+</section>
+<section id="repeated-sampling" class="level4" data-number="4.2.1.2">
+<h4 data-number="4.2.1.2" class="anchored" data-anchor-id="repeated-sampling"><span class="header-section-number">4.2.1.2</span> Repeated sampling</h4>
+<p>To simulate a sampling distribution, we need to repeatedly randomly sample the “population” (in this case, we’re pretending the <code>iris</code> data set is the entire population). The <strong>infer</strong> package has a convenient function <code>rep_slice_sample()</code> that will repeat <code>slice_sample()</code> many times. It creates a new column called <code>replicate</code> to index each replicate sample. To randomly sample 5 rows 4 times from <em>Iris setosa</em>, we do:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first load the infer pacakge</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># let's look at just the species setosa, so we'll need to subset our data</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>just_setosa <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, Species <span class="sc">==</span> <span class="st">"setosa"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>many_setosa_samp <span class="ot">&lt;-</span> <span class="fu">rep_slice_sample</span>(just_setosa, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">reps =</span> <span class="dv">4</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(many_setosa_samp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+# Groups:   replicate [2]
+  replicate Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+      &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+1         1          4.4         3            1.3         0.2 setosa 
+2         1          4.7         3.2          1.6         0.2 setosa 
+3         1          5.4         3.9          1.7         0.4 setosa 
+4         1          5           3.6          1.4         0.2 setosa 
+5         1          5.1         3.7          1.5         0.4 setosa 
+6         2          5.2         3.4          1.4         0.2 setosa </code></pre>
+</div>
+</div>
+<p>Note: the <strong>infer</strong> package converted the <code>iris</code> data.frame to something called a <code>tibble</code>, for our purposes, think of a data.frame and a tibble as equivalent.</p>
+<p>Now, let’s take 1000 samples of 10 from each species. I’ll show you the code for <em>Iris setosa</em>, then fill in the <code>___</code> sections below to do it for it the other species. After, you’ll need to combine the results before summarizing and plotting.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's use `set.seed` so we can compare answers</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>just_setosa <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, Species <span class="sc">==</span> <span class="st">"setosa"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>many_setosa_samp10 <span class="ot">&lt;-</span> <span class="fu">rep_slice_sample</span>(just_setosa, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">reps =</span> <span class="dv">1000</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>just_versicolor <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, Species <span class="sc">==</span> ___)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>many_versicolor_samp10 <span class="ot">&lt;-</span> <span class="fu">rep_slice_sample</span>(___, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">reps =</span> <span class="dv">1000</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>just_virginica <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, Species <span class="sc">==</span> ___)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>many_virginica_samp10 <span class="ot">&lt;-</span> <span class="fu">rep_slice_sample</span>(___, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">reps =</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you used the same seed (<code>123</code>) in the above code then you should get these same answers:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>many_setosa_samp10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10,000 × 6
+# Groups:   replicate [1,000]
+   replicate Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+       &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+ 1         1          4.8         3.1          1.6         0.2 setosa 
+ 2         1          5.8         4            1.2         0.2 setosa 
+ 3         1          4.3         3            1.1         0.1 setosa 
+ 4         1          4.7         3.2          1.3         0.2 setosa 
+ 5         1          4.5         2.3          1.3         0.3 setosa 
+ 6         1          4.4         3.2          1.3         0.2 setosa 
+ 7         1          5.5         3.5          1.3         0.2 setosa 
+ 8         1          4.6         3.2          1.4         0.2 setosa 
+ 9         1          4.8         3.4          1.9         0.2 setosa 
+10         1          5           3            1.6         0.2 setosa 
+# ℹ 9,990 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>many_versicolor_samp10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10,000 × 6
+# Groups:   replicate [1,000]
+   replicate Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
+       &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;     
+ 1         1          6.6         3            4.4         1.4 versicolor
+ 2         1          5.7         3            4.2         1.2 versicolor
+ 3         1          5.6         2.9          3.6         1.3 versicolor
+ 4         1          5.5         2.6          4.4         1.2 versicolor
+ 5         1          6.1         2.9          4.7         1.4 versicolor
+ 6         1          4.9         2.4          3.3         1   versicolor
+ 7         1          5.6         2.7          4.2         1.3 versicolor
+ 8         1          5.5         2.3          4           1.3 versicolor
+ 9         1          6.9         3.1          4.9         1.5 versicolor
+10         1          5.1         2.5          3           1.1 versicolor
+# ℹ 9,990 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>many_virginica_samp10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10,000 × 6
+# Groups:   replicate [1,000]
+   replicate Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
+       &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;    
+ 1         1          5.9         3            5.1         1.8 virginica
+ 2         1          6.3         2.8          5.1         1.5 virginica
+ 3         1          7.1         3            5.9         2.1 virginica
+ 4         1          6.4         3.1          5.5         1.8 virginica
+ 5         1          6.9         3.1          5.1         2.3 virginica
+ 6         1          7.2         3            5.8         1.6 virginica
+ 7         1          6.3         2.9          5.6         1.8 virginica
+ 8         1          6.7         3.3          5.7         2.1 virginica
+ 9         1          5.8         2.7          5.1         1.9 virginica
+10         1          6.3         2.7          4.9         1.8 virginica
+# ℹ 9,990 more rows</code></pre>
+</div>
+</div>
+<p>Remember, we only need to use <code>set.seed</code> in situations where we’re trying to compare output from random sampling. You can delete <code>set.seed</code> after you compared your output to mine.</p>
+<p>You can use the <code>rbind</code> function to combine all three sets of sampling distributions into a single <code>tibble</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>iris_sample_dists <span class="ot">&lt;-</span> <span class="fu">rbind</span>(many_setosa_samp10, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                           many_versicolor_samp10,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                           many_virginica_samp10)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>iris_sample_dists</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30,000 × 6
+# Groups:   replicate [1,000]
+   replicate Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+       &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+ 1         1          4.8         3.1          1.6         0.2 setosa 
+ 2         1          5.8         4            1.2         0.2 setosa 
+ 3         1          4.3         3            1.1         0.1 setosa 
+ 4         1          4.7         3.2          1.3         0.2 setosa 
+ 5         1          4.5         2.3          1.3         0.3 setosa 
+ 6         1          4.4         3.2          1.3         0.2 setosa 
+ 7         1          5.5         3.5          1.3         0.2 setosa 
+ 8         1          4.6         3.2          1.4         0.2 setosa 
+ 9         1          4.8         3.4          1.9         0.2 setosa 
+10         1          5           3            1.6         0.2 setosa 
+# ℹ 29,990 more rows</code></pre>
+</div>
+</div>
+<p>Now we have a very large set of samples to examine.</p>
+</section>
+</section>
+<section id="sample-mean-bary" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="sample-mean-bary"><span class="header-section-number">4.2.2</span> Sample mean <span class="math inline">\(\bar{Y}\)</span></h3>
+<p>To look at the distribution of the sample mean, we first need to calculate the sample mean for all 1000 replicates per species. We will use two helpful functions from <em>dplyr</em> to first <strong>group</strong> the <code>iris_sample_dists</code> data.frame by species and replicate, and then calculate the mean for each species with the <code>summarize</code> function. Let’s first look at the sampling distribution of the mean of sepal length:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sepal_length_sample_dists <span class="ot">&lt;-</span>  <span class="fu">group_by</span>(iris_sample_dists, Species, replicate)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sepal_length_sample_dists <span class="ot">&lt;-</span> <span class="fu">summarize</span>(sepal_length_sample_dists, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">Y_bar =</span> <span class="fu">mean</span>(Sepal.Length))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>sepal_length_sample_dists</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,000 × 3
+# Groups:   Species [3]
+   Species replicate Y_bar
+   &lt;fct&gt;       &lt;int&gt; &lt;dbl&gt;
+ 1 setosa          1  4.84
+ 2 setosa          2  4.93
+ 3 setosa          3  4.87
+ 4 setosa          4  4.86
+ 5 setosa          5  5.04
+ 6 setosa          6  5.1 
+ 7 setosa          7  5   
+ 8 setosa          8  5.05
+ 9 setosa          9  4.87
+10 setosa         10  5.05
+# ℹ 2,990 more rows</code></pre>
+</div>
+</div>
+<p>Modify the code above to calculate sample means for <code>Petal.Length</code>.</p>
+</section>
+<section id="plot-the-sampling-distribution-bary" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="plot-the-sampling-distribution-bary"><span class="header-section-number">4.2.3</span> Plot the sampling distribution <span class="math inline">\(\bar{Y}\)</span></h3>
+<p>We can apply the <code>ggplot()</code> tools we’ve already learned to plot a multiple histogram to compare the sampling distributions in each species.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sepal_length_sample_dists, <span class="fu">aes</span>(Y_bar, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">bins =</span> <span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_viridis_d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab04_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>See if you remember how to use <code>facet_grid()</code> to put each Specie in it’s own panel like this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="lab04_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="standard-error-of-the-mean" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="standard-error-of-the-mean"><span class="header-section-number">4.2.4</span> Standard error of the mean</h3>
+<p>The standard error of the mean helps us quantify our uncertainty about our estimate of the population mean given our sample size. We can calculate a <em>hypothetical</em> standard error for the perfect random sample of size <span class="math inline">\(n\)</span> by dividing the population standard deviation by <span class="math inline">\(\sqrt{n}\)</span>: <span class="math inline">\(\sigma / \sqrt{n}\)</span>. Let’s pretend that the <code>iris</code> data set is the entire “population”, the population standard deviation for <code>Sepal.Length</code> is:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Species</th>
+<th style="text-align: right;"><span class="math inline">\(\sigma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">setosa</td>
+<td style="text-align: right;">0.35</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">versicolor</td>
+<td style="text-align: right;">0.51</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">virginica</td>
+<td style="text-align: right;">0.62</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Now calculate the hypothetical standard error of the mean for a sample size of 10. You should get:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Species</th>
+<th style="text-align: right;"><span class="math inline">\(\sigma\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\sigma/\sqrt{n}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">setosa</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.1106797</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">versicolor</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: right;">0.1612762</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">virginica</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.1960612</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Let’s compare this hypothetical standard error of the mean to what we obtain from our simulations. Remember that the standard error of the mean is simply the standard deviation of the sampling distribution. That means we can get the answer by using the <code>sd()</code> function on our simulated sampling distribution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sepal_length_se <span class="ot">&lt;-</span> <span class="fu">group_by</span>(sepal_length_sample_dists, Species)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>sepal_length_se <span class="ot">&lt;-</span> <span class="fu">summarize</span>(sepal_length_se, <span class="at">SE_Ybar =</span> <span class="fu">sd</span>(Y_bar))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>sepal_length_se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  Species    SE_Ybar
+  &lt;fct&gt;        &lt;dbl&gt;
+1 setosa       0.101
+2 versicolor   0.147
+3 virginica    0.182</code></pre>
+</div>
+</div>
+<p>Notice that we had to first group by Species, then summarize by taking the standard deviation of all of our sample means.</p>
+<p>Are the population standard errors of the mean close to what you calculated from the simulations? Are the standard errors what you expected given the multiple histogram figure above?</p>
+</section>
+<section id="sample-standard-error-of-the-mean" class="level3" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="sample-standard-error-of-the-mean"><span class="header-section-number">4.2.5</span> Sample standard error of the mean</h3>
+<p>The sample standard error (<span class="math inline">\(\mathrm{SE}_{\bar{Y}}\)</span>) quantifies our uncertainty in our estimate of the population mean, <span class="math inline">\(\bar{Y}\)</span>. Specifically, <span class="math inline">\(\mathrm{SE}_{\bar{Y}}\)</span> is the standard deviation of sampling distribution for <span class="math inline">\(\bar{Y}\)</span>. The equation for the <span class="math inline">\(\mathrm{SE}_{\bar{Y}}\)</span> is the sample standard deviation divided by the square-root of the sample size:</p>
+<p><span class="math display">\[ \mathrm{SE}_{\bar{Y}} = \frac{s}{\sqrt{n}} \]</span></p>
+<p>There’s no function in <em>R</em> to calculate <span class="math inline">\(\mathrm{SE}_{\bar{Y}}\)</span>, but you know the functions for sample standard deviation and square-root. Use <em>R</em> to calculate the sample standard error of the mean for the following numbers:</p>
+<blockquote class="blockquote">
+<p>2.16 -0.79 -0.18 1.62 -0.98 -1.15 -0.15 1.34 1.96 1.74</p>
+</blockquote>
+<p>You should get <span class="math inline">\(\mathrm{SE}_{\bar{Y}}\)</span> = 0.419.</p>
+</section>
+<section id="confidence-intervals" class="level3" data-number="4.2.6">
+<h3 data-number="4.2.6" class="anchored" data-anchor-id="confidence-intervals"><span class="header-section-number">4.2.6</span> 95% confidence intervals</h3>
+<p>Confidence intervals are a way to show the plausible range of parameter values given the data. 95% confidence intervals will include the true population parameter 95% of the time. We’ll learn ways to calculate confidence intervals for different parameters throughout the class. Today, we’ll use the “2 SE” rule to approximate 95% confidence intervals for the sample mean <span class="math inline">\(\bar{Y}\)</span>. The lower bound and upper bounds of the approximate 95% confidence interval using the 2 SE rule are:</p>
+<p><span class="math display">\[ \text{lower CI}: \bar{Y} - 2 \times \mathrm{SE}_{\bar{Y}} \]</span> <span class="math display">\[ \text{upper CI}: \bar{Y} + 2 \times \mathrm{SE}_{\bar{Y}} \]</span> Use the <code>mean()</code> functions and standard error of the mean to calculate the confidence interval for the data you used in the last section. You should get:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(\bar{Y}\)</span></th>
+<th style="text-align: right;">Lower CI</th>
+<th style="text-align: right;">Upper CI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.557</td>
+<td style="text-align: right;">-0.2813638</td>
+<td style="text-align: right;">1.395364</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="questions" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">4.3</span> Questions</h2>
+<p>All questions are about the sampling distribution of the sample mean, <span class="math inline">\(\bar{Y}\)</span></p>
+<ol type="1">
+<li><p>Import data</p>
+<p>We’ll use a dataset about leaf sizes from <a href="https://doi.org/10.1126/science.aal4760">Wright <em>et al.</em> (2017)</a>. We’ll pretend that this is population of all leaf sizes in the world and look at the properties of random samples from the population.</p>
+<p>Use the <code>read.csv()</code>, <code>$</code>, <code>[</code>, and/or <em>dplyr</em> functions to</p>
+<ul>
+<li>read-in the dataset</li>
+<li>make a data.frame with only the <code>latitude</code> and <code>leafsize_cm2</code> columns</li>
+<li>remove all rows with missing values from <code>leafsize_cm2</code></li>
+<li>subset the data to only tropical latitudes between -23.43655° and 23.43655°</li>
+<li>assign this data.frame to the name <code>leafsize</code></li>
+</ul>
+<p>Hints:</p>
+<ul>
+<li>to get <strong>ONE</strong> column you can use <code>...$column_name</code>, to get multiple columns, you can use <code>...[, c("column_name1", "column_name2")]</code></li>
+<li>remember the <code>select</code> function</li>
+<li>you can figure out if a value is missing with the <code>is.na</code> function</li>
+<li>latitudes between -23.43655° and 23.43655° is the same as <code>abs(latitude) &lt; 23.43655</code></li>
+</ul>
+<p>If you’ve done everything correctly, you should get the same values for the population mean seen below:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(leafsize<span class="sc">$</span>leafsize_cm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>[1] 65.97642</code></p></li>
+<li><p>Create 1000 replicates each of sample sizes of 64, 256, and 1024 from the <code>leafize</code> data.frame you generated in a. I’ll show you the code for <span class="math inline">\(n = 64\)</span>, then you should copy and modify it to make similar objects called <code>sample_dist256</code> and <code>sample_dist1024</code>. Then use <code>rbind()</code> to combine them into an object called <code>sample_dists</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create replicate samples</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sample_dist64 <span class="ot">&lt;-</span> <span class="fu">rep_slice_sample</span>(leafsize, <span class="at">n =</span> <span class="dv">64</span>, <span class="at">reps =</span> <span class="fl">1e3</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column recording the sample size</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>sample_dist64<span class="sc">$</span>sample_size <span class="ot">&lt;-</span> <span class="dv">64</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create replicate samples</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>sample_dist256 <span class="ot">&lt;-</span> ___</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column recording the sample size</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>___ <span class="ot">&lt;-</span> <span class="dv">256</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># create replicate samples</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>sample_dist1024 <span class="ot">&lt;-</span> ___</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># add a column recording the sample size</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>___ <span class="ot">&lt;-</span> <span class="dv">1024</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co"># combine using `rbind`</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>sample_dists <span class="ot">&lt;-</span> ___</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Use the <code>group_by()</code> and <code>summarize()</code> functions to calculate the sample mean for each level of sample size (64, 256, or 1024) and replicate. Make sure you assign the output a name so you can use it to make a plot in the next part.</p></li>
+<li><p>Make a multi-panel histogram with separate panels for each sample size. It should look something like this, but will not be exactly the same because the simulations are random.</p>
+<p><img src="images/lab-04-q1d.png" class="img-fluid"></p></li>
+<li><p>How does the location and width of the sampling distribution for <span class="math inline">\(\bar{Y}\)</span> change as <span class="math inline">\(n\)</span> increases?</p></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lab03.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Workikng with data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lab05.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 coding, data, graphics</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
