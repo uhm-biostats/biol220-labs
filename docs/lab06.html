@@ -192,9 +192,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#describing-the-location-of-data" id="toc-describing-the-location-of-data" class="nav-link" data-scroll-target="#describing-the-location-of-data"><span class="header-section-number">6.2.1</span> Describing the <strong>location</strong> of data</a></li>
   <li><a href="#describing-the-spread-of-data" id="toc-describing-the-spread-of-data" class="nav-link" data-scroll-target="#describing-the-spread-of-data"><span class="header-section-number">6.2.2</span> Describing the <strong>spread</strong> of data</a></li>
+  <li><a href="#describing-our-confidence-in-estimates" id="toc-describing-our-confidence-in-estimates" class="nav-link" data-scroll-target="#describing-our-confidence-in-estimates"><span class="header-section-number">6.2.3</span> Describing our confidence in estimates</a></li>
   </ul></li>
-  <li><a href="#describing-our-confidence-in-estimates" id="toc-describing-our-confidence-in-estimates" class="nav-link" data-scroll-target="#describing-our-confidence-in-estimates"><span class="header-section-number">6.3</span> Describing our confidence in estimates</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">6.4</span> Questions</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">6.3</span> Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -287,11 +287,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.27</code></pre>
+<pre><code>[1] 2.244</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.555</code></pre>
+<pre><code>[1] 1.965</code></pre>
 </div>
 </div>
 <p>The values are more distant. Let’s figure out why by making a histogram to look at the shape of the distribution of these data:</p>
@@ -401,8 +401,8 @@ s = \sqrt(s^2)
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>y2sorted <span class="ot">&lt;-</span> <span class="fu">sort</span>(y2)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>y2sorted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.00 0.02 0.06 0.14 0.23 0.26 0.28 0.31 0.51 0.51 0.60 0.69 1.11 1.17 1.22
-[16] 1.88 2.77 3.10 4.39 6.15</code></pre>
+<pre><code> [1] 0.12 0.14 0.34 0.44 0.61 0.68 0.76 0.78 1.35 1.87 2.06 2.25 2.27 2.27 2.56
+[16] 3.57 4.25 4.54 5.49 8.53</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we figure out how many data points we're dealing with</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(y2sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -425,18 +425,18 @@ s = \sqrt(s^2)
 <span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> <span class="fu">c</span>(q1, q3)</span>
 <span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>iqr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.245 1.550</code></pre>
+<pre><code>[1] 0.645 3.065</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to calculate a single value describing the spread we can just calcualte</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the difference between those two values</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>q3 <span class="sc">-</span> q1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.305</code></pre>
+<pre><code>[1] 2.42</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or...</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(iqr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.305</code></pre>
+<pre><code>[1] 2.42</code></pre>
 </div>
 </div>
 <p>Notice that I called these values <code>q1</code> and <code>q3</code> that is because these are the first and third quartiles. The first quartile has 25% of the data below it, the third quartile has 25% of the data above it. Put another way, the third quartile has 75% of the data <em>below</em> it!</p>
@@ -445,15 +445,14 @@ s = \sqrt(s^2)
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(y2, <span class="at">type =</span> <span class="dv">2</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  25%   75% 
-0.245 1.550 </code></pre>
+0.645 3.065 </code></pre>
 </div>
 </div>
 <p>We have to specify <code>type = 2</code> so that R takes the average of adjacent values when the sample size is even.</p>
 <p><strong>Note:</strong> if we were trying to compare <code>y1</code> and <code>y2</code> we would need to use the <strong>SAME</strong> metrics, we can’t compare the mean of one to the median of another, or the standard deviation of one to the interquartile range of another. The median and interquartile range work for <em>any</em> data, so in this case we should use the median and interquartile range for both <code>y1</code> and <code>y2</code> if we wanted to compare them.</p>
 </section>
-</section>
-<section id="describing-our-confidence-in-estimates" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="describing-our-confidence-in-estimates"><span class="header-section-number">6.3</span> Describing our confidence in estimates</h2>
+<section id="describing-our-confidence-in-estimates" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="describing-our-confidence-in-estimates"><span class="header-section-number">6.2.3</span> Describing our confidence in estimates</h3>
 <p>We calculated the mean of <code>y1</code> before:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>y1bar <span class="ot">&lt;-</span> <span class="fu">mean</span>(y1)</span>
@@ -486,8 +485,9 @@ SE = \frac{s}{\sqrt n}
 <p>In biology, the 95% confidence interval is most commonly used. In other fields different percentages (such as 90% or 99%) are also used.</p>
 <p>The interpretation of the 95% confidence interval is that 95% of the middle of the sampling distribution is contained within the upper and lower bounds of the 95% confidence interval. Have a look at the interactive website from our book for more explanation: <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CIMean.htm" class="uri">https://www.zoology.ubc.ca/~whitlock/Kingfisher/CIMean.htm</a></p>
 </section>
-<section id="questions" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="questions"><span class="header-section-number">6.4</span> Questions</h2>
+</section>
+<section id="questions" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">6.3</span> Questions</h2>
 <ol type="1">
 <li>Fix the snippet of a script below:</li>
 </ol>
@@ -538,25 +538,6 @@ SE = \frac{s}{\sqrt n}
 <ol start="6" type="1">
 <li>Suppose that instead of the 500 data points we have for chinstraps we actually had 250 data points. Write some code to calculate how we might expect the SE and 95% CI to change. Hint: in this thought experiment, what value in the calculation of SE can you assume stays approximately constant, what value <em>must</em> change? Now do the same kind of calculation, but for the hypothetical case where we have twice as much data (so n = 1000). How do the smaller and larger sample size data sets compare the data we actually have?</li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the case for half the data</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>n_half <span class="ot">&lt;-</span> n <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>se_half <span class="ot">&lt;-</span> s <span class="sc">/</span> <span class="fu">sqrt</span>(n_half)</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>ci95_half <span class="ot">&lt;-</span> <span class="fu">c</span>(ybar <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> se_half, ybar <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> se_half)</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>se_half</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>ci95_half</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the case for double the data</span></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>n_double <span class="ot">&lt;-</span> n <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>se_double <span class="ot">&lt;-</span> s <span class="sc">/</span> <span class="fu">sqrt</span>(n_double)</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>ci95_double <span class="ot">&lt;-</span> <span class="fu">c</span>(ybar <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> se_double, ybar <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> se_double)</span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>se_double</span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>ci95_double</span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="co"># with less data the SE is bigger so the CI is wider, with more data the SE is smaller so the CI is more narrow</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 
 
 </section>

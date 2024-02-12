@@ -438,7 +438,7 @@ ci95
 
 6. Suppose that instead of the `r n` data points we have for chinstraps we actually had `r n/2` data points.  Write some code to calculate how we might expect the SE and 95% CI to change. Hint: in this thought experiment, what value in the calculation of SE can you assume stays approximately constant, what value *must* change?  Now do the same kind of calculation, but for the hypothetical case where we have twice as much data (so n = `r n*2`).  How do the smaller and larger sample size data sets compare the data we actually have?
 
-```{r eval = FALSE, echo = TRUE}
+```{r eval = FALSE, echo = FALSE}
 # the case for half the data
 n_half <- n / 2
 se_half <- s / sqrt(n_half)
