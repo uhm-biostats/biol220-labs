@@ -1,0 +1,374 @@
+# 🎉 Review 🎉 describing data, standard error, confidence intervals
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+library(dplyr)
+library(ggplot2)
+library(readr)
+```
+
+## Goals
+
+Build more confidence with:
+
+* Calculating descriptions of the location and spread of data
+* Calculate standard error of the mean
+* Calculate confidence intervals
+
+
+
+## Learning the Tools
+
+### Describing the **location** of data
+
+For location we use either the mean or the median.  The mean is ideal for data that are symmetrically distributed, the median is more ideal for skewed data or data with outliers because it will be less sensitive to extreme values.
+
+Here are some examples of simulated datasets with different distributions, organized by which description of location (mean or median) would work best:
+
+::: columns
+
+:::: column
+
+**Use the mean**
+
+```{r}
+d <- data.frame(x = c(rnorm(100), 
+                      runif(100)))
+d$g <- rep(c("A", "B"), each = 100)
+
+
+```
+
+::::
+
+:::: column
+
+** Use the median**
+
+```{r}
+
+```
+
+::::
+
+:::
+
+One key to writing useful scripts is making effective use of comments. Recall: comments are the text that is only for us humans to read. Comments always start with a `#` symbol, like this:
+
+```{r}
+# this is a comment, I could use it to explain the code below
+# I am making a numeric vector x
+
+x <- c(1, 2, 3)
+```
+
+In the above code, the computer doesn't bother trying to understand what you wrote in the comment, it only cares about the code `x <- c(1, 2, 3)`.
+
+Try doing the opposite:
+
+```{r, eval = FALSE}
+this is a comment, I could use it to explain the code below
+I am making a numeric vector x
+
+# x <- c(1, 2, 3)
+```
+
+What do you think will happen? Try running it and see.
+
+**Important** We ask you to complete your lab reports by writing a script (saved in the file report.R), running the code in that script, and then pasting the answers back into the script as comments.
+
+If a lab report question was
+
+> 2.  Make a vector containing these numeric values and then calculate its median `1.0, 1.2, 2.3, 4.0, 5.1`
+
+Your answer should look like this:
+
+```{r, eval = FALSE}
+# 2. Make a vector containing these numeric values and then calculate its median `1.0, 1.2, 2.3, 4.0, 5.1`
+
+x <- c(1.0, 1.2, 2.3, 4.0, 5.1)
+
+median(x)
+
+## 2.3
+```
+
+Your answer *should* **not** *look* like this:
+
+```{r, eval = FALSE}
+# 2. Make a vector containing these numeric values and then calculate its median `1.0, 1.2, 2.3, 4.0, 5.1`
+
+# x <- c(1.0, 1.2, 2.3, 4.0, 5.1)
+# 
+# median(x)
+
+2.3
+```
+
+In the incorrect example, the code is commented out (incorrect because you want to *run* the code) and the answer is not commented out---incorrect because we explicitly ask you to report the answer as a comment...also imagine if the answer needed to be a sentence, if you reported that answer without making it a comment, R would throw an error.
+
+### Manipulating data
+
+Let's use the data on global reef fish species richness to help understand how to subset data. First read-in the data and have a look:
+
+```{r}
+reef_fish <- read.csv("data/global-reef-fish.csv")
+
+head(reef_fish)
+```
+
+The columns are `site`, `temp`, and `spp_richness`. If I was curious about the mean species richness for the whole dataset, how could I figure that out?
+
+First, I could recall that to access the **one** column containing species richness I can use the `$`:
+
+```{r, eval = FALSE}
+reef_fish$spp_richness
+```
+
+Try that out.
+
+Then if I want to know the mean, I can just put that above command inside the function `mean`:
+
+```{r}
+mean(reef_fish$spp_richness)
+```
+
+Now suppose I want to know the specific values of `temp` and `spp_richness` for one specific site. Imagine I already know the name of the site I'm interested in: `hawaii_11`. How do I extract the *rows* associated with that site? I use the subset function:
+
+```{r}
+subset(reef_fish, reef_fish$site == "hawaii_11")
+```
+
+The function `subset` takes two arguments: the data.frame we want to take a subset of (in this case `reef_fish`) and a vector of `TRUE`s and `FALSE`s that tells R which rows we want. As we covered in lecture, a vector composed of `TRUE` and `FALSE` is a *logical* vector, i.e. it is of class *logical*.
+
+Let's look at how we made a logical vector with the above code `reef_fish$site == "hawaii_11`.
+
+First we asked for just the `site` column using the `$` symbol
+
+```{r eval = FALSE}
+reef_fish$site
+```
+
+Then we used the double equal sign `==` to ask R a question: "hey R, which of the values in the `site` column are equal to `"hawaii_11"`?" And R answered our question by reporting a `FALSE` for every value in the `site` column that *does not equal* `"hawaii_11"` and reporting a `TRUE` for every value in the `site` column that *does equal* `hawaii_11`. Here's that full command:
+
+```{r eval = FALSE}
+reef_fish$site == "hawaii_11"
+```
+
+We have to put "hawaii_11" in quotes for two reasons:
+
+1.  the `site` column is of class *character*, so to ask R a yes/no question with the `==` symbol, we need to use the same class
+2.  if we did not put `"hawaii_11"` in quotes, R would think we were trying to refer to an *object* named `hawaii_11`; chances are there is no object named `hawaii_11`, so R would return an error
+
+There are other types of "yes/no" questions we can ask R. For example, we can ask if a numerical value/vector is greater than or less than something. Here is how we would subset the `reef_fish` data.frame to look at only the rows with temperature less than or equal to 22C:
+
+```{r}
+subset(reef_fish, reef_fish$temp_C <= 22)
+```
+
+We used `<=` for "less than or equal to". We can use just `<` for stricktly less than. The same goes for `>=` and `>`.
+
+We can also combine "yes/no" questions. There are two ways to combine them: with "AND" or with "OR". Let's see an "AND" example, we use the symbol `&` for "AND":
+
+```{r}
+subset(reef_fish, reef_fish$temp_C <= 22 & reef_fish$temp_C > 21.5)
+```
+
+We are asking R to make a subset for cases where the temperature is $\le 22$ **AND** $< 21.5$. There is only one row that meets those criteria.
+
+R might not be able to find any cases that match our criteria, for example if we ask for temperature less than 21.5 **AND** site equal to `"santa_catarina_4"`:
+
+```{r}
+subset(reef_fish, reef_fish$temp_C < 21.5 & 
+         reef_fish$site == "santa_catarina_4")
+```
+
+We get 0 rows back.
+
+Let's contrast that with what we get replacing **AND** with **OR**. The symbol for "OR" is `|`:
+
+```{r}
+subset(reef_fish, reef_fish$temp_C < 21.5 | 
+         reef_fish$site == "santa_catarina_4")
+```
+
+Here we get all the rows that meet *either* the criterion that temperature is less than 21.5 *or* the criterion that site is equal to `"santa_catarina_4"`.
+
+There is one last super useful "yes/no" question having to do with missing data. The `reef_fish` data do not have missing values so let's look at the Palmer penguins data provided by the *palmerpenguins* package
+
+```{r}
+library(palmerpenguins)
+
+head(penguins)
+```
+
+Already we can see some missing data in the form of `NA` values.  If we would like to remove rows that have an `NA` in a certain column, we can use the function `is.na` to help us do that.
+
+The function `is.na` looks different from the other "yes/no" questions like `==`, but it serves the same purpose, it lets us ask a "yes/no" question, is this case, "are the values `NA` or not?"
+
+So if we want to remove rows for which `bill_length_mm` is `NA`, we would do this:
+
+```{r}
+subset(penguins, !is.na(penguins$bill_length_mm))
+```
+
+Notice the `!` in that code.  The `!` symbol (pronounced "bang!") changes a `TRUE` to a `FALSE` and a `FALSE` to a `TRUE`.  It reverses the answer.  So we asked `is.na` which tells us `TRUE` when the value is `NA`.  But we want the opposite, we want to know which values are **not** `NA`, so we put "bang" in front: `!is.na(penguins$bill_length_mm)`.
+
+### Making graphs
+
+Let's keep using the `penguins` data to make some plots.  Let's look at how the different species compare in terms of their body mass.  Here our explanatory variable is penguin species, and the response variable is body mass.  So we have...
+
+
+#### Categorical explanatory variable, numerical response variable
+
+For this type of situation we often want a boxplot:
+
+```{r}
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+    geom_boxplot()
+```
+
+Cool!  This is a perfectly good *exploratory* plot.  But how could we improve it if we wanted it to be more of a finished product?  The y-axis label could be nicer looking:
+
+```{r}
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+    geom_boxplot() +
+    ylab("body mass (g)")
+```
+
+And finally, we might debate about whether we need the gridlines in the background (e.g. if they are over-plotting), let's try adding a different theme to remove those:
+
+```{r}
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+    geom_boxplot() +
+    ylab("body mass (g)") + 
+    theme_classic()
+```
+
+Some will prefer the grid, others will not.  Make your choice based on what you want the viewers of your graphic to understand about your data.
+
+We might also be curious about if the different species have different sizes on the different islands.  First let's use `subset` to look at one species (Adelie) across the islands:
+
+```{r}
+ggplot(subset(penguins, penguins$species == "Adelie"), 
+       aes(x = island, y = body_mass_g)) +
+    geom_boxplot() +
+    ylab("body mass (g)") + 
+    theme_classic()
+```
+
+Pretty similar.  But what about the other species?  We can look at all species at once by using facetting 
+
+```{r}
+ggplot(penguins, aes(x = island, y = body_mass_g)) +
+    geom_boxplot() +
+    facet_grid(rows = vars(species)) + 
+    ylab("body mass (g)") + 
+    theme_classic()
+```
+
+Ahhh interesting, Chinstrap and Gentoo are not found on all the islands like Adalie is.
+
+Let's try a different kind of plot, what if we want to look in more detail at how the body size data are distributed in only one species, that brings us to...
+
+
+#### Numerical response variable, no explanatory variable
+
+For this situation a histogram is the best graphic.  Let's look at just the Gentoo penguin (again, we use `subset` to achieve this)
+
+```{r}
+ggplot(subset(penguins, penguins$species == "Gentoo"), 
+       aes(x = body_mass_g)) +
+    geom_histogram()
+```
+
+Looks like a nice symetric distribution without any major outliers.  Here's a case where I would say the grid lines in the background are definitely not neccesary, and thus overplotting:
+
+```{r}
+ggplot(subset(penguins, penguins$species == "Gentoo"), 
+       aes(x = body_mass_g)) +
+    geom_histogram() +
+    theme_classic()
+```
+
+Now let's look at how body mass and bill length are related, this brings us to...
+
+
+#### Numerical reponse and numerical explanatory variable
+
+For this situation a scatter plot is best:
+
+```{r}
+ggplot(penguins, aes(x = body_mass_g, y = bill_length_mm)) +
+    geom_point()
+```
+
+The bigger the penguin, the bigger the bill.  Makes sense!  But do all the penguins have the same exact relationship?  Let's use different colors for the different species to find out:
+
+```{r}
+ggplot(penguins, aes(x = body_mass_g, y = bill_length_mm, 
+                     color = species)) +
+    geom_point() 
+```
+
+The legend might make it hard to see the actual data!  Let's move the legend to a better place
+
+
+```{r}
+ggplot(penguins, aes(x = body_mass_g, y = bill_length_mm, 
+                     color = species)) +
+    geom_point() + 
+    theme(legend.position = "top", 
+          legend.title = element_blank())
+```
+
+We also used `legend.title = element_blank()` to remove the title of the legend.
+
+Now we can see that Adelie and Gentoo follow the same kind of patter, but Chinstrap penguins have comparatively longer bills for their mass. **But** for folks with red-green color blindness, this would not be clear.  Let's choose different colors
+
+```{r}
+ggplot(penguins, aes(x = body_mass_g, y = bill_length_mm, 
+                     color = species)) +
+    geom_point() + 
+    theme(legend.position = "top", 
+          legend.title = element_blank()) +
+    scale_color_viridis_d()
+```
+
+
+## Questions
+
+1. Fix the snippet of a script below:
+
+```{r eval = FALSE}
+First I read-in my data
+
+# read.csv("data/BatTongues.csv")
+
+# then I plot a histogram of tongue lengths
+ggplot(bats, aes(x = tongue_length)) +
+    "geom_boxplot()" +
+    xlab(Tongue length (mm))
+```
+
+2. Use the `reef_fish` to do the following:
+
+   a. copy the line of code `reef_fish <- read.csv("data/global-reef-fish.csv")` over to your report.R script
+   b. use `subset` and `$` to calculate the mean species richness across sites with a temperature greater than or equal to 25 C
+   c. use `subset` and `$` to calculate the mean species richness across sites with a temperature less than 25 C
+
+3. Fix [this dataset](https://docs.google.com/spreadsheets/d/1oVQeM_pqERpinFFQUCC6cBkSeRdzJbhzj7Y_UK8-OSg/edit#gid=0) using the principles we've discussed in lecture and lab. Your final dataset should have columns called `site`, `date_visited`, `impact`, `species`, `length_cm`. Hint: pay special attention to all the inconsistent ways missing data have been recorded.
+
+    It should be noted that these are made up data (made up by Andy). They come from hypothetical examples we've been talking about in class including our three favorite fish species *uhu*, *lauʻipala*, and *pākuʻikuʻi*. And they come from a hypothetical study we have talked about looking at how the level of human impact can affect ecosystems. These data imagine the impact of humans on the body sizes of these three fish species.
+    
+    Report your answer to this problem by copying the google sheet, fixing it, and pasting a URL link to the corrected google sheet in the report.R script. Make sure to report the URL as a comment, and make sure to allow sharing (via google sheets) to anyone with the link
+
+4. Save the dataset you just cleaned-up as a .csv file and upload it to Posit Cloud so we can work with it for the following questions.
+
+    Remember these are made up data!
+    
+    a. Read in the cleaned-up data and use `subset` to make a new data.frame that has no missing species names
+    b. The column for `impact` represents an *ordinal* variable, but right now R doesn't know that; write code to change the `impact` column into a properly ordered *ordinal* variable column
+    c. Make a plot showing how the sizes of the three different species change across the levels of human impact. Hint: you will need to use colors and facets
+    d. in a few sentences, describe what you conclude about the effect of human impact on fish body size...in these made up data
