@@ -14,6 +14,7 @@ book:
     - lab04.qmd
     - lab05.qmd
     - lab06.qmd
+    - lab07.qmd
 comments:
   hypothesis: true
 
