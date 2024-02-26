@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Labs for Intro Biostatistics - 8&nbsp; Statistical Null Hypothesis Testing</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lab07.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab08.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Labs for Intro Biostatistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphics in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Workikng with data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Sampling Distribution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 coding, data, graphics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 describing data, standard error, confidence intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab08.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">8.1</span> Goals</a></li>
+  <li><a href="#discuss-ideas-for-questions-and-hypotheses-with-group-members" id="toc-discuss-ideas-for-questions-and-hypotheses-with-group-members" class="nav-link" data-scroll-target="#discuss-ideas-for-questions-and-hypotheses-with-group-members"><span class="header-section-number">8.2</span> Discuss ideas for questions and hypotheses with group members</a></li>
+  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">8.3</span> Learning the Tools</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing"><span class="header-section-number">8.3.1</span> Hypothesis testing</a></li>
+  <li><a href="#coral-reef-fish-across-polynesia" id="toc-coral-reef-fish-across-polynesia" class="nav-link" data-scroll-target="#coral-reef-fish-across-polynesia"><span class="header-section-number">8.3.2</span> Coral reef fish across Polynesia</a></li>
+  <li><a href="#state-h_0-and-h_a" id="toc-state-h_0-and-h_a" class="nav-link" data-scroll-target="#state-h_0-and-h_a">1. State <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></a></li>
+  <li><a href="#calculate-the-test-statistic" id="toc-calculate-the-test-statistic" class="nav-link" data-scroll-target="#calculate-the-test-statistic">2. Calculate the test statistic</a></li>
+  <li><a href="#generate-the-null-distribution" id="toc-generate-the-null-distribution" class="nav-link" data-scroll-target="#generate-the-null-distribution">3. Generate the null distribution</a></li>
+  <li><a href="#calculate-the-p-value" id="toc-calculate-the-p-value" class="nav-link" data-scroll-target="#calculate-the-p-value">4. Calculate the <span class="math inline">\(p\)</span>-value</a></li>
+  <li><a href="#decide-reject-h_0-or-fail-to-reject-h_0" id="toc-decide-reject-h_0-or-fail-to-reject-h_0" class="nav-link" data-scroll-target="#decide-reject-h_0-or-fail-to-reject-h_0">5. Decide: reject <span class="math inline">\(H_0\)</span> or fail to reject <span class="math inline">\(H_0\)</span></a></li>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">8.4</span> Questions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="goals" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">8.1</span> Goals</h2>
+<ul>
+<li>Discuss ideas for questions and hypotheses with group members</li>
+<li>Review steps of null hypothesis statistical testing</li>
+<li>Generate null distributions through repeated random sampling</li>
+<li>Test hypotheses with null distributions</li>
+</ul>
+</section>
+<section id="discuss-ideas-for-questions-and-hypotheses-with-group-members" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="discuss-ideas-for-questions-and-hypotheses-with-group-members"><span class="header-section-number">8.2</span> Discuss ideas for questions and hypotheses with group members</h2>
+<p>Before starting the main content of this lab, get together with members of your group for the final project. Make sure everybody agrees on which dataset you will use. Discuss some ideas for questions and hypotheses. Your gruop’s write-up of your questions and hypotheses will be due tomorrow! Consult with your TA about any questions you might have. Your TA can either answer those, or pass them along to Andy.</p>
+<p>This discussion of group projects should be allowed around 20 minutes.</p>
+</section>
+<section id="learning-the-tools" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">8.3</span> Learning the Tools</h2>
+<section id="hypothesis-testing" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="hypothesis-testing"><span class="header-section-number">8.3.1</span> Hypothesis testing</h3>
+<p>The remainder of this course works within the null hypothesis statistical testing (NHST) framework that we will introduce this week. As we will discover, there are six core steps in NHST:</p>
+<ol type="1">
+<li><p>State <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></p></li>
+<li><p>Calculate the test statistic</p></li>
+<li><p>Generate the null distribution</p></li>
+<li><p>Calculate the <span class="math inline">\(p\)</span>-value</p></li>
+<li><p>Decide:</p>
+<ul>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p \le \alpha\)</span></li>
+<li>Fail to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p &gt; \alpha\)</span></li>
+</ul></li>
+</ol>
+<p>For the statistical tests that we encounter during this course, the equations to calculate appropriate test statistics, null distribution of the test statistic, and <span class="math inline">\(p\)</span>-value are well understood. However, the concepts of null hypothesis testing can often be made more obvious by making a computer simulate the null distribution for us. Such “computationally intensive” null distributions also have important applications beyond learning the concepts—there are many real-world situations where no mathematical equation has ever been derived to calculate the necessary test statistic or null distribution for specific data or null hypotheses. In these cases, the only workable solution is to use a computer to simulate a null distribution.</p>
+<p>Let’s have a look at some data and a hypothesis where a “computational null distribution” will both be informative for learning, and also necessary because no mathematical equation exists to define an appropriate null distribution.</p>
+</section>
+<section id="coral-reef-fish-across-polynesia" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="coral-reef-fish-across-polynesia"><span class="header-section-number">8.3.2</span> Coral reef fish across Polynesia</h3>
+<p>The Hawaiian Islands and Rapa Nui are unique in the world for their geographic isolation. We might hypothesize that this isolation makes it difficult for organisms to disperse to these islands. Even fish (turns out they swim) might have a difficult time getting there. As such, we might hypothesize that compared to the rest of Polynesia, Hawaiʻi and Rapa Nui might have fewer species of coral reef-associated fishes. Let’s test that out. We have a dataset from <a href="https://onlinelibrary.wiley.com/doi/10.1111/geb.12851">Barneche et. al (2019)</a> that compiles surveys of reef fish from across the globe. The Barneche et. al data report total numbers of species found at different sites. We’ll look at just a subset of those sites to test our <em>scientific</em> hypothesis about species richness of reef fish in Polynesia.</p>
+<p>Let’s go through the steps of null hypothesis testing:</p>
+</section>
+<section id="state-h_0-and-h_a" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="state-h_0-and-h_a">1. State <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></h3>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: Between the two groups “Distant Polynesia” (i.e.&nbsp;Hawaiʻi and Rapa Nui) and “Core Polynesia”, there will be no difference in mean species richness</li>
+<li><span class="math inline">\(H_A\)</span>: There <em>will be</em> a difference in mean species richness between “Distant Polynesia” and “Core Polynesia”</li>
+</ul>
+</section>
+<section id="calculate-the-test-statistic" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="calculate-the-test-statistic">2. Calculate the test statistic</h3>
+<p>What is the test statistic? The null hypothesis says there will be no difference in the mean richness. So our test statistic will be <strong>(mean species richness of Core Polynesia) - (mean species richness of Distant Polynesia)</strong>.</p>
+<p>To calculate that, we need to read-in the data,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>reef_fish <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/reef_fish.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># have a look at the data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(reef_fish)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can see there are columns for <code>region</code>, <code>polynesia_isolation</code>, <code>site</code>, <code>lon</code> (longitude), <code>lat</code> (latitude), and <code>richness</code> (species richness). The <code>polynesia_isolation</code> column was added special for this lab. It has values <code>core_polynisia</code>, <code>distant_polynisia</code>, and <code>NA</code>. <code>NA</code> is for everything all sites outside of Polynesia. Before we calculate our test statistic, we need to subset our data to just Polynesia. We can do that like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># "pol_tri" for polynesian triangle </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pol_tri_fish <span class="ot">&lt;-</span> <span class="fu">subset</span>(reef_fish, <span class="sc">!</span><span class="fu">is.na</span>(reef_fish<span class="sc">$</span>polynesia_isolation))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># have a look</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(pol_tri_fish)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we will use our friends <code>group_by</code> and <code>summarize</code> from <em>dplyr</em> to help us calculate the test statistic.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">group_by</span>(pol_tri_fish, polynesia_isolation)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>group_means <span class="ot">&lt;-</span> <span class="fu">summarize</span>(groups, <span class="at">ybar =</span> <span class="fu">mean</span>(richness))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># have a look (this is a small data frame, so we donʻt need</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># to use the `View` function)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>group_means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  polynesia_isolation  ybar
+  &lt;chr&gt;               &lt;dbl&gt;
+1 core_polynesia      105. 
+2 distant_polynesia    82.5</code></pre>
+</div>
+</div>
+<p>Now from <code>group_means</code> we can calculate the test statistic of the difference in the means</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>test_stat <span class="ot">&lt;-</span> <span class="fu">diff</span>(group_means<span class="sc">$</span>ybar)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>test_stat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -22.5</code></pre>
+</div>
+</div>
+<p>Note: <code>test_stat</code> is the mean of <code>core_polynesia</code> minus the mean of <code>distant_polynesia</code>. The fact that <code>test_stat</code> is negative means that on average there is higher fish species richness in <code>core_polynesia</code>, which aligns with out <em>scientific hypothesis</em>, but will we reject the statistical null or not? For that we need to…</p>
+</section>
+<section id="generate-the-null-distribution" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="generate-the-null-distribution">3. Generate the null distribution</h3>
+<p>Remember a null distribution seeks to capture what our test statistic would look like if the null hypothesis were true. If the null hypothesis were true, then it shouldn’t matter for reef fish richness if we did a survey in Core Polynesia or in Distant Polynesia. That means we can simulate the null distribution by repeatedly shuffling the values of the column <code>polynesia_isolation</code> and then following the same steps for calculating calculating the test statistic. Let’s look at how we would shuffle <code>polynesia_isolation</code> and calculate the test statistic.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a new copy of the data for purposes of making</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the null distribution</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pol_fish_null <span class="ot">&lt;-</span> pol_tri_fish</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can re-make the <code>polynesia_isolation</code> column as a random shuffle of itself. First, have a look at the behavior of the <code>sample</code> function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a simple vector of letters</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "A" "A" "B" "B"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(x)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "A" "B" "B" "A"</code></pre>
+</div>
+</div>
+<p>We started with <code>x</code> being a orderly sequence <code>A A B B</code> and then used <code>sample</code> to generate a random sequence that happens to be <code>A B B A</code>. If we ran <code>sample(x)</code> again, we’d likely get a different random reshuffling of the letters.</p>
+<p>Now let’s use that approach to make our null distribution. For the null distribution we need to make many <em>many</em> <strong>many</strong> random re-shufflings. But first we’ll look at how we do it just once:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remember we already made `pol_fish_null` as a copy</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># of the real data</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># reshuffle the group identities</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>pol_fish_null<span class="sc">$</span>polynesia_isolation <span class="ot">&lt;-</span> <span class="fu">sample</span>(pol_fish_null<span class="sc">$</span>polynesia_isolation)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># follow the same steps as before for calculating the test statistic</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>groups_null <span class="ot">&lt;-</span> <span class="fu">group_by</span>(pol_fish_null, polynesia_isolation)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>group_means_null <span class="ot">&lt;-</span> <span class="fu">summarize</span>(groups_null, <span class="at">ybar =</span> <span class="fu">mean</span>(richness))</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>test_stat_null <span class="ot">&lt;-</span> <span class="fu">diff</span>(group_means_null<span class="sc">$</span>ybar)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>test_stat_null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -9.088235</code></pre>
+</div>
+</div>
+<p>Great! Now we just need to do that over and over again! Luckily we can ask R to do the work for us. We can use the <code>replicate</code> function to do the same task over and over. Let’s look at a simple example first.</p>
+<p>Suppose we want to simulate the distribution of outcomes of rolling two dice (and adding their values). We can do <em>one</em> roll like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>die1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>die2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>die1 <span class="sc">+</span> die2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<p>Do do that 20 times, we just copy and paste the above code into <code>replicate</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dice_rolls <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">20</span>, {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    die1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    die2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    die1 <span class="sc">+</span> die2</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>dice_rolls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  2 10 10 10  9  5 10  7  4  8  5  8  7  7  3  6  4  7  9  9</code></pre>
+</div>
+</div>
+<p>Cool, we got 20 random outcomes! Notice that we had to paste the three lines of code into “squiggly brackets” <code>{}</code> within the <code>replicate</code> function. That’s just our way of letting R know that those three lines of code all need to be run together, that the whole set of three lines is what we want R to compute 20 times. With this structure, we could ask R to make 20 replicates, or 20,000!</p>
+<p>Now we can use the same approach to make the null distribution. Let’s do 1000 re-shufelings to make our null distribution.</p>
+<div class="cell" data-hash="lab08_cache/html/null_dist_calc_825531d7d575adeb9c9e78399f093fc7">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>null_dist <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># reshuffle the group identities</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    pol_fish_null<span class="sc">$</span>polynesia_isolation <span class="ot">&lt;-</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sample</span>(pol_fish_null<span class="sc">$</span>polynesia_isolation)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># follow the same steps as before for calculating the test statistic</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    groups_null <span class="ot">&lt;-</span> <span class="fu">group_by</span>(pol_fish_null, polynesia_isolation)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    group_means_null <span class="ot">&lt;-</span> <span class="fu">summarize</span>(groups_null, <span class="at">ybar =</span> <span class="fu">mean</span>(richness))</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    test_stat_null <span class="ot">&lt;-</span> <span class="fu">diff</span>(group_means_null<span class="sc">$</span>ybar)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    test_stat_null</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co"># the output of `replicate` will be a vector with 1000 null test statistics</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co"># let's just look at the first little bit</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(null_dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]   1.058824  30.352941 -17.647059   4.588235 -18.264706  -1.235294</code></pre>
+</div>
+</div>
+<p>Let’s visualize the null distribution as a histogram</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># notice we need to make a data.frame in order for ggplot to work</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>null_dist_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">null_test_stat =</span> null_dist)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(null_dist_df, <span class="fu">aes</span>(<span class="at">x =</span> null_test_stat)) <span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab08_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="calculate-the-p-value" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="calculate-the-p-value">4. Calculate the <span class="math inline">\(p\)</span>-value</h3>
+<p>Now we calculate the <span class="math inline">\(p\)</span>-value. Remember, our default assumption is that we are considering a two-tailed alternative hypothesis. So we need to calculate <span class="math inline">\(Pr(\text{lower tail}) + Pr(\text{upper tail})\)</span>. Our test statistic is -22.5 which is negative, so our lower tail probability will be the <em>proportion</em> of times that <code>null_dist</code> is less than or equal to <code>test_stat</code>, and the upper tail probability will be the <em>proportion</em> of times that <code>null_dist</code> is greater than or equal to <code>-1 * test_stat</code>. Let’s put that in code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lower_tail <span class="ot">&lt;-</span> <span class="fu">mean</span>(null_dist <span class="sc">&lt;=</span> test_stat)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>upper_tail <span class="ot">&lt;-</span> <span class="fu">mean</span>(null_dist <span class="sc">&gt;=</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> test_stat)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">&lt;-</span> lower_tail <span class="sc">+</span> upper_tail</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>pval</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.043</code></pre>
+</div>
+</div>
+<p>Wow cool! our <span class="math inline">\(p\)</span>-value is 0.043. What does that mean?</p>
+</section>
+<section id="decide-reject-h_0-or-fail-to-reject-h_0" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="decide-reject-h_0-or-fail-to-reject-h_0">5. Decide: reject <span class="math inline">\(H_0\)</span> or fail to reject <span class="math inline">\(H_0\)</span></h3>
+<p>That is the question. Since we’re in <em>bio</em>statistics and the convention in our field is to set <span class="math inline">\(\alpha = 0.05\)</span>, then we will <strong>reject</strong> <span class="math inline">\(H_0\)</span> because <span class="math inline">\(p \le \alpha\)</span>, i.e., it is true that 0 <span class="math inline">\(\le 0.05\)</span>.</p>
+</section>
+</section>
+<section id="questions" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="questions"><span class="header-section-number">8.4</span> Questions</h2>
+<p>A common hypothesis in the study of biodiversity is that species richness is higher in the tropics. The tropics are defined as any place between the latitudes of -23.43615° and 23.43615°, i.e.&nbsp;23.43615° south of the equator and 23.43615° north of the equator. Reef ecosystems largely exist only within the tropics, but there are a few interesting and unique types of reef ecosystems outside the tropic latitudes as well. That means we can use our reef fish dataset to test whether reef species richness is higher in the tropics or not.</p>
+<p>In questions 1–X you will conduct the steps of testing this <em>scientific hypothesis</em> with statistical null hypothesis testing.</p>
+<ol type="1">
+<li><p>First we need to do some data manipulation to add a column to our reef fish data that tells us if the sites are tropical or temperate (temperate refers to areas outside the tropics). To get you started, recall this is how we can add a column:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>reef_fish<span class="sc">$</span>trop_or_temp <span class="ot">&lt;-</span> <span class="st">"tropical"</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(reef_fish)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we’ve added one column, but all the values in that column say “tropical”. We need to manipulate that new <code>trop_or_temp</code> column to say “temperate” for all latitudes outside the tropics. Here’s the code to do that for the Northern Hemisphere:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>reef_fish<span class="sc">$</span>trop_or_temp[reef_fish<span class="sc">$</span>lat <span class="sc">&gt;=</span> <span class="fl">23.43615</span>] <span class="ot">&lt;-</span> <span class="st">"temperate"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now your job is to do the same for the Southern Hemisphere.</p></li>
+<li><p>Now that we have our column <code>trop_or_temp</code> telling us which group each data point belongs to, we need to state our null and alternative hypotheses</p></li>
+<li><p>Now calculate our test statistic</p></li>
+<li><p>Now we generate the null distribution. Let’s do that in two steps:</p>
+<ol type="a">
+<li>Refer to the code where we shuffled the <code>polynesia_isolation</code> of <code>pol_fish_null</code>. Use that example to make <em>one</em> random reshuffling of the <code>trop_or_temp</code> column and caculate <em>one</em> null test statistic</li>
+<li>Now use the code from (4a.) and refer to the use of the <code>replicate</code> function to simulate a null distribution with 1000 replicates</li>
+</ol></li>
+<li><p>Plot a histogram of the null distribution</p></li>
+<li><p>Calculate the <span class="math inline">\(p\)</span>-value for the two-tailed alternative hypothesis</p></li>
+<li><p>Decide whether we reject or fail to reject the null hypothesis</p></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lab07.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

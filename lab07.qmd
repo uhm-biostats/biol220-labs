@@ -189,16 +189,6 @@ In questions 1--4 you will simulate data using the `sample` function and use the
 4. Discuss in 2 to 3 sentence how you could change the code in (2.) to simulate non-independence between the events in column `x` and column `y`. You do not need to implement this code, just discuss
 
 
-<!-- ```{r} -->
-<!-- dat <- data.frame(x = sample(c(1, 2), 40, replace = TRUE),  -->
-<!--                   y = sample(c("A", "B"), 40, replace = TRUE)) -->
-
-<!-- datXis1 <- subset(dat, dat$x == 1) -->
-<!-- mean(datXis1$y == "A") -->
-<!-- mean(dat$y == "A") -->
-<!-- ``` -->
-
-
 Questions 5--7 will revisit the visualization of probabilities as overlapping circles that we used in class.  **NOTE:** this is the same concept as what we covered in class, but the actual probabilities will be different
 
 5. Fill in the probability figure. Use the made up data below to calculate the probabilities of all the events in the figure (e.g. what is $Pr(\text{length} > 40)$? What about $Pr(\text{length} \leq 40 \text{ \& species} \neq \text{uhu})$?)

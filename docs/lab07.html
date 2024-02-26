@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./lab08.html" rel="next">
 <link href="./lab06.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -196,6 +197,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./lab07.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span></a>
   </div>
 </li>
     </ul>
@@ -359,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly sample 3 numbers between 1 and 10</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4 8 1</code></pre>
+<pre><code>[1] 7 1 5</code></pre>
 </div>
 </div>
 <p>We can also sample characters:</p>
@@ -367,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample 5 letters from A, B, C with replacement</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "A" "A" "C" "C" "A"</code></pre>
+<pre><code>[1] "C" "C" "A" "A" "C"</code></pre>
 </div>
 </div>
 <p>Try running the above code without setting <code>replace = TRUE</code></p>
@@ -387,7 +394,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly sample 3 numbers between 1 and 10</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  4  2 10</code></pre>
+<pre><code>[1]  3 10 10</code></pre>
 </div>
 </div>
 <p>We can also change the frequency of different outcomes by changing the probability that R assigns to them!</p>
@@ -395,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly sample 3 numbers between 1 and 10</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "A" "B" "B" "C" "A"</code></pre>
+<pre><code>[1] "A" "C" "C" "A" "A"</code></pre>
 </div>
 </div>
 <p>The above code will yield 80% “A”, and 10% of both “B” and “C” if we run it over and over.</p>
@@ -404,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly sample 3 numbers between 1 and 10</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "A" "B" "B" "A" "A"</code></pre>
+<pre><code>[1] "A" "A" "A" "A" "A"</code></pre>
 </div>
 </div>
 <p>The exact events will be different because each time you run it is a random trial.</p>
@@ -418,13 +425,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Given that we simulate <code>y</code> and <code>x</code> as independent, why do we find that <span class="math inline">\(Pr(y = A | x = 1)\)</span> and <span class="math inline">\(Pr(y = A)\)</span> and not exactly equal? If we simulated a data.frame with 80 rows, would you expect <span class="math inline">\(Pr(y = A | x = 1)\)</span> and <span class="math inline">\(Pr(y = A)\)</span> to be more closely equal or more different? Why?</p></li>
 <li><p>Discuss in 2 to 3 sentence how you could change the code in (2.) to simulate non-independence between the events in column <code>x</code> and column <code>y</code>. You do not need to implement this code, just discuss</p></li>
 </ol>
-<!-- ```{r} -->
-<!-- dat <- data.frame(x = sample(c(1, 2), 40, replace = TRUE),  -->
-<!--                   y = sample(c("A", "B"), 40, replace = TRUE)) -->
-<!-- datXis1 <- subset(dat, dat$x == 1) -->
-<!-- mean(datXis1$y == "A") -->
-<!-- mean(dat$y == "A") -->
-<!-- ``` -->
 <p>Questions 5–7 will revisit the visualization of probabilities as overlapping circles that we used in class. <strong>NOTE:</strong> this is the same concept as what we covered in class, but the actual probabilities will be different</p>
 <ol start="5" type="1">
 <li>Fill in the probability figure. Use the made up data below to calculate the probabilities of all the events in the figure (e.g.&nbsp;what is <span class="math inline">\(Pr(\text{length} &gt; 40)\)</span>? What about <span class="math inline">\(Pr(\text{length} \leq 40 \text{ \&amp; species} \neq \text{uhu})\)</span>?)</li>
@@ -689,6 +689,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./lab08.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
