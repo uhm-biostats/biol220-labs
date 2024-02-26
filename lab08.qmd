@@ -233,7 +233,7 @@ That is the question.  Since we're in *bio*statistics and the convention in our 
 
 A common hypothesis in the study of biodiversity is that species richness is higher in the tropics.  The tropics are defined as any place between the latitudes of -23.43615° and 23.43615°, i.e. 23.43615° south of the equator and 23.43615° north of the equator.  Reef ecosystems largely exist only within the tropics, but there are a few interesting and unique types of reef ecosystems outside the tropic latitudes as well.  That means we can use our reef fish dataset to test whether reef species richness is higher in the tropics or not.
 
-In questions 1--X you will conduct the steps of testing this *scientific hypothesis* with statistical null hypothesis testing.
+In questions 1--7 you will conduct the steps of testing this *scientific hypothesis* with statistical null hypothesis testing.
 
 1. First we need to do some data manipulation to add a column to our reef fish data that tells us if the sites are tropical or temperate (temperate refers to areas outside the tropics). To get you started, recall this is how we can add a column:
 
