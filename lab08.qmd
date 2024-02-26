@@ -85,6 +85,7 @@ View(pol_tri_fish)
 Now we will use our friends `group_by` and `summarize` from *dplyr* to help us calculate the test statistic.
 
 ```{r}
+library(dplyr)
 groups <- group_by(pol_tri_fish, polynesia_isolation)
 group_means <- summarize(groups, ybar = mean(richness))
 
