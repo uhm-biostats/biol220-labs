@@ -121,7 +121,7 @@ The `binom.test()` function also gives an estimate of the proportion of successe
 
 ## Questions
 
-Let's imagine a new feeding trial of pulelehua Kamehameha caterpillars. This time we will imagine a comparison inspired by [Bongar et al. (2024)](https://onlinelibrary.wiley.com/doi/abs/10.1111/btp.13292). They looked at māmaki versus a close relative that happens to be invasive in Hawaiʻi: *Cecropia obtusifolia*. If pulelehua Kamehameha caterpillars could trive on *Cecropia obtusifolia* that would be great.
+Let's imagine a new feeding trial of pulelehua Kamehameha caterpillars. This time we will imagine a comparison inspired by [Bongar et al. (2024)](https://onlinelibrary.wiley.com/doi/abs/10.1111/btp.13292). They looked at māmaki versus a close relative that happens to be invasive in Hawaiʻi: *Cecropia obtusifolia*. If pulelehua Kamehameha caterpillars could thrive on *Cecropia obtusifolia* that would be great.
 
 Inspired by the results of Bongar et al. (2024), let's suppose that out of 50 feeding trials where pulelehua Kamehameha caterpillars are given a choice between māmaki and *Cecropia obtusifolia*, they choose māmaki 38 times. 
 
