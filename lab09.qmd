@@ -129,6 +129,6 @@ Inspired by the results of Bongar et al. (2024), let's suppose that out of 50 fe
 
 2. Based on the results form `binom.test` you just produced does it seem promising that pulelehua Kamehameha caterpillars will be able to use *Cecropia obtusifolia* as a food plant?
 
-3. Based on the 95% confidence intervals, do you think the proportion of times the caterpillars choose māmaki over *Urtica* versus the poroportion of times they choose māmaki over *Cecropia obtusifolia* are different from one another? Explain your answer.
+3. Based on the 95% confidence intervals, do you think the proportion of times the caterpillars choose māmaki over *Urtica* versus the proportion of times they choose māmaki over *Cecropia obtusifolia* are different from one another? Explain your answer.
 
 4. Find your own proportion data on the Internet or at home if you are doing this after lab. Develop a null hypothesis, state it in your report, and use `binom.test()` to test it. Did you reject your null hypothesis? Explain why or why not.
