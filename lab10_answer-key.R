@@ -43,7 +43,7 @@ critval_df9
 nevent <- sum(chi2_df9 >= critval_df9)
 nevent / length(chi2_df9)
 
-# 5. Following the steps we used to do a $\chi^2$ goodness of fit test for `fake_data`, preform a $\chi^2$ goodness of fit test to answer the question of whether the racial and ethnic composition of UH faculty resembles the racial and ethnic compotition of Hawaiʻi.  What do you conclude?
+# 5. Following the steps we used to do a $\chi^2$ goodness of fit test for `fake_data`, preform a $\chi^2$ goodness of fit test to answer the question of whether the ethnic composition of UH faculty resembles the ethnic composition of Hawaiʻi.  What do you conclude?
 
 # read-in data
 uh <- read.csv("data/uh_faculty_ethnicity.csv")
@@ -66,7 +66,7 @@ pchisq(chi2stat, df = 9, lower.tail = FALSE)
 # decide to reject or fail to reject
 
 # we reject the null that UH faculty are representative of the Hawaiʻi 
-# population in terms of race and ethnicity
+# population in terms of ethnicity
 
 
 # 6. Following the steps we used to do a contingency analysis for `fake_2var`, preform a contingency analysis for the manu o Kū nesting data. Do the manu have a preference for which type of tree to nest in, or do they seem to choose at random?

@@ -251,7 +251,7 @@ You can see it tells us some extra stuff, but our primary concern for now is the
 
 4. Use R code to estimate the probability from your random sample from the $\chi^2$ distribution with 9 degrees of freedom of values greater than or equal to the critical value you just calculated
 
-5. Following the steps we used to do a $\chi^2$ goodness of fit test for `fake_data`, preform a $\chi^2$ goodness of fit test to answer the question of whether the racial and ethnic composition of UH faculty resembles the racial and ethnic compotition of Hawaiʻi.  What do you conclude?
+5. Following the steps we used to do a $\chi^2$ goodness of fit test for `fake_data`, preform a $\chi^2$ goodness of fit test to answer the question of whether the ethnic composition of UH faculty resembles the ethnic composition of Hawaiʻi.  What do you conclude?
 
 6. Following the steps we used to do a contingency analysis for `fake_2var`, preform a contingency analysis for the manu o Kū nesting data. Do the manu have a preference for which type of tree to nest in, or do they seem to choose at random?  You can read in those data like this:
 
