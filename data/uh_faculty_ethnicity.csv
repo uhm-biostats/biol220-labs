@@ -1,11 +1,11 @@
 ethnicity,state_pop_proportion,number_uh_faculty
 American Indian and Alaska Native,0.016,41
 Black or African American,0.025,63
-Chinese,0.100,349
+Chinese,0.1,349
 Filipino,0.178,247
 Japanese,0.162,544
 Korean,0.024,135
 Native Hawaiian,0.152,453
-Other Pacific Islander,0.030,42
+Other Pacific Islander,0.03,42
 Vietnamese,0.007,18
-White,0.306,"1,670"
+White,0.306,1670
