@@ -1,0 +1,262 @@
+# Frequency and Contingency Analysis
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+library(dplyr)
+library(ggplot2)
+library(DT)
+```
+
+
+## Goals
+
+- Gain familiarity with the $\chi^2$ Distribution
+- Calculate the $\chi^2$ test statistic and associated degrees of freedom
+- Test null hypotheses with the $\chi^2$ null distribution
+
+
+## Learning the Tools
+
+### The $\chi^2$ distribution
+
+Let's get familiar with the $\chi^2$ distribution. We'll also learn about a new kind of *R* function, one for generating random samples from any probability distribution.  Because we're focused on the $\chi^2$ distribution, we'll use the random sampling function for that distribution: `rchisq`. We can use `rchisq` to generate a random sample of any size from a $\chi^2$ distribution with any degrees of freedom using a classic example: flipping a coin.  We will simulate the coin flipping process using `sample`:
+
+```{r}
+rchisq(10, df = 3)
+```
+
+
+The above is a random sample of 10 numbers from the $\chi^2$ distribution with 3 degrees of freedom.
+
+We can take a larger sample, put it in a data.frame, and make a histogram to see approximately what the $\chi^2$ distribution with 3 degrees of freedom looks like:
+
+```{r fig.align='center', fig.width=4, fig.height=3.5}
+# generate the sample
+chi2_df3 <- rchisq(1000, df = 3)
+
+# put it in a data.frame
+samp <- data.frame(chi2 = chi2_df3)
+
+# plot it
+library(ggplot2)
+
+ggplot(samp, aes(x = chi2)) +
+    geom_histogram()
+```
+
+Cool! Let's keep building on this and visualize the histograms of both `df = 3` and `df = 6`. We can do this by adding to our `samp` data.frame, both extra rows for a random sample with `df = 6` and also a column to keep track of the degrees of freedom.
+
+```{r}
+# first add a column for degrees of freedom
+samp$df <- 3
+
+# now make a new data.frame for df = 6 (next we'll combine the data.frames)
+chi2_df6 <- rchisq(1000, df = 6)
+samp_df6 <- data.frame(chi2 = chi2_df6, df = 6)
+
+# now add that new data.frame onto `samp`
+samp <- rbind(samp, samp_df6)
+```
+
+```{r eval = FALSE}
+# visualize the results 
+View(samp)
+```
+
+
+Now we can make a faceted histogram to see how degrees of freedom impacts the shape of the $\chi^2$ distribution
+
+```{r fig.align='center', fig.width=4, fig.height=7}
+ggplot(samp, aes(x = chi2)) +
+    geom_histogram() +
+    facet_grid(rows = vars(df))
+```
+
+As we expected, the bigger the degrees of freedom, the more the distribution shifts to the right.
+
+Let's also calculate some probabilities from these random samples. Let's calculate the probability of observing a $\chi^2$ test statistic of 7.8 or greater given 3 degrees of freedom
+
+```{r}
+# recall probability is just the proportion of times an event happens
+n_event <- sum(chi2_df3 >= 7.8)
+n_event / length(chi2_df3)
+
+```
+
+So the probability $Pr(\chi^2 \ge 7.8 | df = 3) \approx$ `r round(n_event / length(chi2_df3), 3)`. We are working with random samples here, so your numbers will likely be a little different. If $Pr(\chi^2 \ge 7.8 | df = 3) \approx$ `r round(n_event / length(chi2_df3), 3)` seems suspiciously close to 0.05 that's because I choose 7.8 very deliberately.  7.8 is approximately the *critical value* for a $\chi^2$ distribution with 3 degrees of freedom.  
+
+Recall that a critical value is the value that cuts a probability distribution at the desired $\alpha$, AKA significance level.  To calculate the critical value we use `qchisq`:
+
+```{r}
+# this returns the value that divides a chi-sqrd distribution
+# into 95% to the left, 5% to the right
+qchisq(0.95, df = 3)
+
+# this does the same
+qchisq(0.05, df = 3, lower.tail = FALSE)
+```
+
+
+### $\chi^2$ goodness of fit test
+
+Here's a question: does the ethnic composition of faculty at the University of Hawaiʻi match the ethnic composition of the state? If not, then something funny might be going on like racist hiring practices, or systemic racism leading to discrepancies in higher education leading to different proportions of qualifications (e.g. holding a graduate degree) across ethnicities. 
+
+There are also acceptable reasons for differential ethnic representation, such as if UH wants to have thriving Asian Studies or Black/African Studies or Hawaiian Studies programs, we will need to hire qualified faculty for those positions who will likely come from those ethnic backgrounds more often than not.
+
+It should be noted that discrepancies in ethnic group representation in skilled labor jobs is sometimes used to claim there are "biological" differences between ethnic groups in terms of intelligence. This is false.  A great read on this topic is [*Superior* by Angela Saini*](https://www.penguinrandomhouse.com/books/607248/superior-by-angela-saini/).  I wish I could say that "historically there were claims about 'biological' differences..." but these claims [persist all too readily into our modern times](https://www.theguardian.com/news/2018/mar/02/the-unwelcome-revival-of-race-science).
+
+So let's get to it!
+
+Here are the data on ethnic proportions in the Hawaiʻi and counts of different ethnic groups who represent our faculty at UH:
+
+```{r echo = FALSE}
+uh_fac <- read.csv("data/uh_faculty_ethnicity.csv")
+
+knitr::kable(uh_fac)
+```
+
+The source for population proportions in Hawaiʻi comes from the state of Hawaiʻi report ["Demographic, Social, Economic, and Housing Characteristics for Selected Race Groups in Hawaii"](https://files.hawaii.gov/dbedt/economic/reports/SelectedRacesCharacteristics_HawaiiReport.pdf) and the numbers of faculty by ethnic group comes from the [UH Mānoa Institutional Research Office](https://data.hawaii.edu/#/reports/FAC06?SEM_YR_IRO=2022-8&TENURE_TOGGLE=TENURE_ALL&reportId=FAC06). Because those two reporting bodies divide ethnicities slightly differently or do not report on others I had to leave some groups out entirely (e.g. Indian, not reported by the State).
+
+These data are in your `data` folder in posit cloud, you can read them in like this
+
+```{r}
+uh_fac <- read.csv("data/uh_faculty_ethnicity.csv")
+```
+
+How would we use a $\chi^2$ goodness of fit test for these data?  We're going to leave that to you to answer in the **Questions** section.  Here, we'll look at a simpler example.  First let's make that example.  Suppose we have data on 4 groups `A`, `B`, `C`, `D`, and their expected proportions. We can make such a data set like this:
+
+```{r}
+fake_data <- data.frame(group = c("A", "B", "C", "D"), 
+                        prop = c(0.15, 0.5, 0.05, 0.3), 
+                        count = c(15, 17, 10, 8))
+
+# have a look
+fake_data
+```
+
+Now we can walk through the steps of calculating a $\chi^2$ statistic and comparing it to the null distribution.
+
+#### Calculate the $\chi^2$ statistic
+
+First we need the expected counts
+
+```{r}
+# just the expected proportion times total number of observations
+fake_data$expected <- fake_data$prop * sum(fake_data$count)
+
+fake_data
+```
+
+We can see that we're not violating the assumptions of the $\chi^2$ distribution so let's calculate the $\chi^2$ test statistic:
+
+```{r}
+chi2stat <- sum((fake_data$count - fake_data$expected)^2 / 
+                    fake_data$expected)
+```
+
+
+#### Identify the null distribution
+
+We're dealing with frequency data, and doing a lab about $\chi^2$ distributions, so our null distribution is a $\chi^2$ distribution, but with what degrees of freedom?  There are 4 groups, so `df = 3`.
+
+#### Calculate the $P$-value and decide if we reject the null
+
+```{r}
+pchisq(chi2stat, df = 3, lower.tail = FALSE)
+```
+
+That's a tiny $P$-value, so yes, we reject the null at an $\alpha = 0.05$ level.
+
+## Contingency analysis
+
+Contingency analysis is very similar to a $\chi^2$ goodness of fit test, but in contingency analysis we have 2 categorical variables. We still compare the observed frequencies with the expected using a $\chi^2$ test statistic, and we still use a $\chi^2$ distribution for the null distribution.
+
+Our question is often a little different: with contingency analysis we are often asking, *is there an association between these two categorical variables?*
+
+For example, do manu o Kū prefer nesting in certain types of trees?  Manu o Kū are the friendly (yes I am anthropomorphism) little white terns that fly around campus. Last year, students went out and looked in random trees to see if the manu o Kū were nesting in the trees. Do the manu prefer a certain species? Here the two categorical variables are **tree species** and **yes/no is there a nest**. Here is a peek at the data
+
+```{r echo = FALSE}
+yesNest <- data.frame(tree = rep(c("Albizia", "Cassia", "Kukui"), 
+                                 c(1, 15, 6)), 
+                      nest = "yes")
+noNest <- data.frame(tree = rep(c("Albizia", "Cassia", "Kukui"), 
+                                 c(46, 89, 26)), 
+                      nest = "no")
+
+manuoku <- rbind(yesNest, noNest)
+
+set.seed(1)
+manuoku <- manuoku[sample(nrow(manuoku)), ]
+rownames(manuoku) <- NULL
+
+write.csv(manuoku, file = "data/manuoku.csv", row.names = FALSE)
+
+knitr::kable(head(manuoku))
+```
+
+That is just the first few rows, there are `r nrow(manuoku)` rows in total.  How do we do a $\chi^2$ contingency analysis with these kind of data?  Again, let's get there using a simpler fake dataset
+
+```{r}
+fake_2var <- data.frame(group1 = sample(c("A", "B"), 25, replace = TRUE), 
+                        yes_no = sample(c("yes", "no"), 25, replace = TRUE))
+
+fake_2var
+```
+
+We will use the `chisq.test` function for the contingency analysis rather than calculate everything by hand.  The function `chisq.test` can be used in one of two ways.
+
+First, we can calculate the contingency table from the data and pass that table to `chisq.test`:
+
+```{r}
+# calculate the contingency table
+fake_tab <- table(fake_2var)
+
+# have a look, remember this is random so yours may be different
+fake_tab
+```
+
+Now we can pass this to `chisq.test`
+
+```{r warning=TRUE}
+chisq.test(fake_tab)
+```
+
+Notice, we are again getting a warning that the assumptions of the $\chi^2$ test might not be met.  That's ok, this is just an example.
+
+The other way we can use the `chisq.test` function is by directly passing it the categorical variables 
+
+```{r warning=TRUE}
+chisq.test(fake_2var$group1, fake_2var$yes_no)
+```
+
+That really couldn't be simpler!  Under the hood, `chisq.test` is calculating the contingency table for us.
+
+We might as well touch on what to do in real life if you get the warning about the $\chi^2$ test assumptions not being met.  You can instead use a test called "Fisher's exact test."  This approach is more computationally intensive than the $\chi^2$ test, so back in the day people didn't like doing it, but now there's really no harm.  The code is the same too, just swap out the function name:
+
+```{r}
+fisher.test(fake_2var$group1, fake_2var$yes_no)
+```
+
+You can see it tells us some extra stuff, but our primary concern for now is the $P$-value, which is still very non-significant.
+
+## Questions
+
+1. Keep building on the code you ran to make `samp`. Add another random sample of 1000 numbers, but this time from a $\chi^2$ distribution with 9 degrees of freedom.
+
+2. Make a faceted histogram with all three distributions captured in `samp`.
+
+3. Calculate the critical value for $\alpha = 0.05$ for the $\chi^2$ distribution with 9 degrees of freedom
+
+4. Use R code to estimate the probability from your random sample from the $\chi^2$ distribution with 9 degrees of freedom of values greater than or equal to the critical value you just calculated
+
+5. Following the steps we used to do a $\chi^2$ goodness of fit test for `fake_data`, preform a $\chi^2$ goodness of fit test to answer the question of whether the racial and ethnic composition of UH faculty resembles the racial and ethnic compotition of Hawaiʻi.  What do you conclude?
+
+6. Following the steps we used to do a contingency analysis for `fake_2var`, preform a contingency analysis for the manu o Kū nesting data. Do the manu have a preference for which type of tree to nest in, or do they seem to choose at random?  You can read in those data like this:
+
+```{r}
+manuoku <- read.csv("data/manuoku.csv")
+```
+
+
