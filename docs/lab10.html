@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./lab11.html" rel="next">
 <link href="./lab09.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -201,6 +202,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -258,8 +265,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rchisq</span>(<span class="dv">10</span>, <span class="at">df =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 7.7061085 3.0663099 0.3068477 2.0476535 5.3716508 1.2359450 4.7888293
- [8] 0.2399889 2.8193312 1.3050130</code></pre>
+<pre><code> [1] 0.4860133 1.6234291 2.1778225 1.8228694 0.7583024 4.7216676 2.0133518
+ [8] 3.5244385 1.6854764 5.6412488</code></pre>
 </div>
 </div>
 <p>The above is a random sample of 10 numbers from the <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
@@ -320,10 +327,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n_event <span class="ot">&lt;-</span> <span class="fu">sum</span>(chi2_df3 <span class="sc">&gt;=</span> <span class="fl">7.8</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>n_event <span class="sc">/</span> <span class="fu">length</span>(chi2_df3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.043</code></pre>
+<pre><code>[1] 0.051</code></pre>
 </div>
 </div>
-<p>So the probability <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.043. We are working with random samples here, so your numbers will likely be a little different. If <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.043 seems suspiciously close to 0.05 that’s because I choose 7.8 very deliberately. 7.8 is approximately the <em>critical value</em> for a <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
+<p>So the probability <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.051. We are working with random samples here, so your numbers will likely be a little different. If <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.051 seems suspiciously close to 0.05 that’s because I choose 7.8 very deliberately. 7.8 is approximately the <em>critical value</em> for a <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
 <p>Recall that a critical value is the value that cuts a probability distribution at the desired <span class="math inline">\(\alpha\)</span>, AKA significance level. To calculate the critical value we use <code>qchisq</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this returns the value that divides a chi-sqrd distribution</span></span>
@@ -358,59 +365,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th style="text-align: left;">ethnicity</th>
 <th style="text-align: right;">state_pop_proportion</th>
-<th style="text-align: left;">number_uh_faculty</th>
+<th style="text-align: right;">number_uh_faculty</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">American Indian and Alaska Native</td>
 <td style="text-align: right;">0.016</td>
-<td style="text-align: left;">41</td>
+<td style="text-align: right;">41</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Black or African American</td>
 <td style="text-align: right;">0.025</td>
-<td style="text-align: left;">63</td>
+<td style="text-align: right;">63</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Chinese</td>
 <td style="text-align: right;">0.100</td>
-<td style="text-align: left;">349</td>
+<td style="text-align: right;">349</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Filipino</td>
 <td style="text-align: right;">0.178</td>
-<td style="text-align: left;">247</td>
+<td style="text-align: right;">247</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Japanese</td>
 <td style="text-align: right;">0.162</td>
-<td style="text-align: left;">544</td>
+<td style="text-align: right;">544</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Korean</td>
 <td style="text-align: right;">0.024</td>
-<td style="text-align: left;">135</td>
+<td style="text-align: right;">135</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Native Hawaiian</td>
 <td style="text-align: right;">0.152</td>
-<td style="text-align: left;">453</td>
+<td style="text-align: right;">453</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Other Pacific Islander</td>
 <td style="text-align: right;">0.030</td>
-<td style="text-align: left;">42</td>
+<td style="text-align: right;">42</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Vietnamese</td>
 <td style="text-align: right;">0.007</td>
-<td style="text-align: left;">18</td>
+<td style="text-align: right;">18</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">White</td>
 <td style="text-align: right;">0.306</td>
-<td style="text-align: left;">1,670</td>
+<td style="text-align: right;">1670</td>
 </tr>
 </tbody>
 </table>
@@ -626,7 +633,7 @@ odds ratio
 <li><p>Make a faceted histogram with all three distributions captured in <code>samp</code>.</p></li>
 <li><p>Calculate the critical value for <span class="math inline">\(\alpha = 0.05\)</span> for the <span class="math inline">\(\chi^2\)</span> distribution with 9 degrees of freedom</p></li>
 <li><p>Use R code to estimate the probability from your random sample from the <span class="math inline">\(\chi^2\)</span> distribution with 9 degrees of freedom of values greater than or equal to the critical value you just calculated</p></li>
-<li><p>Following the steps we used to do a <span class="math inline">\(\chi^2\)</span> goodness of fit test for <code>fake_data</code>, preform a <span class="math inline">\(\chi^2\)</span> goodness of fit test to answer the question of whether the racial and ethnic composition of UH faculty resembles the racial and ethnic compotition of Hawaiʻi. What do you conclude?</p></li>
+<li><p>Following the steps we used to do a <span class="math inline">\(\chi^2\)</span> goodness of fit test for <code>fake_data</code>, preform a <span class="math inline">\(\chi^2\)</span> goodness of fit test to answer the question of whether the ethnic composition of UH faculty resembles the ethnic composition of Hawaiʻi. What do you conclude?</p></li>
 <li><p>Following the steps we used to do a contingency analysis for <code>fake_2var</code>, preform a contingency analysis for the manu o Kū nesting data. Do the manu have a preference for which type of tree to nest in, or do they seem to choose at random? You can read in those data like this:</p></li>
 </ol>
 <div class="cell">
@@ -877,6 +884,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./lab11.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

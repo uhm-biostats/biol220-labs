@@ -202,6 +202,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -312,11 +318,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.0085</code></pre>
+<pre><code>[1] 1.2735</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.285</code></pre>
+<pre><code>[1] 1.135</code></pre>
 </div>
 </div>
 <p>The values are more distant. Let’s figure out why by making a histogram to look at the shape of the distribution of these data:</p>
@@ -426,8 +432,8 @@ s = \sqrt(s^2)
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>y2sorted <span class="ot">&lt;-</span> <span class="fu">sort</span>(y2)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>y2sorted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.02 0.29 0.34 0.46 0.53 0.64 0.68 1.03 1.09 1.24 1.33 1.48 1.67 1.71 2.07
-[16] 2.73 3.25 4.36 6.03 9.22</code></pre>
+<pre><code> [1] 0.04 0.24 0.55 0.78 0.84 0.87 0.89 0.93 0.98 1.11 1.16 1.20 1.21 1.24 1.43
+[16] 1.43 1.52 1.61 3.70 3.74</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we figure out how many data points we're dealing with</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(y2sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -450,18 +456,18 @@ s = \sqrt(s^2)
 <span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> <span class="fu">c</span>(q1, q3)</span>
 <span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>iqr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.585 2.400</code></pre>
+<pre><code>[1] 0.855 1.430</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to calculate a single value describing the spread we can just calcualte</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the difference between those two values</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>q3 <span class="sc">-</span> q1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.815</code></pre>
+<pre><code>[1] 0.575</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or...</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(iqr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.815</code></pre>
+<pre><code>[1] 0.575</code></pre>
 </div>
 </div>
 <p>Notice that I called these values <code>q1</code> and <code>q3</code> that is because these are the first and third quartiles. The first quartile has 25% of the data below it, the third quartile has 25% of the data above it. Put another way, the third quartile has 75% of the data <em>below</em> it!</p>
@@ -470,7 +476,7 @@ s = \sqrt(s^2)
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(y2, <span class="at">type =</span> <span class="dv">2</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  25%   75% 
-0.585 2.400 </code></pre>
+0.855 1.430 </code></pre>
 </div>
 </div>
 <p>We have to specify <code>type = 2</code> so that R takes the average of adjacent values when the sample size is even.</p>

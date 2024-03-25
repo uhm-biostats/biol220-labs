@@ -202,6 +202,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -216,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">9.2</span> Learning the Tools</a>
   <ul class="collapse">
   <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">9.2.1</span> Binomial distribution</a></li>
-  <li><a href="#binomial-tests" id="toc-binomial-tests" class="nav-link" data-scroll-target="#binomial-tests"><span class="header-section-number">9.2.2</span> Binomial tests</a></li>
+  <li><a href="#binomial-tests-and-confidence-intervals" id="toc-binomial-tests-and-confidence-intervals" class="nav-link" data-scroll-target="#binomial-tests-and-confidence-intervals"><span class="header-section-number">9.2.2</span> Binomial tests and confidence intervals</a></li>
   </ul></li>
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">9.3</span> Questions</a></li>
   </ul>
@@ -258,21 +264,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "T"</code></pre>
+<pre><code>[1] "H"</code></pre>
 </div>
 </div>
 <p>The above code simulates <em>one</em> coin toss that will come up either heads (<code>"H"</code>) or tails (<code>"T"</code>). We are simulating a fair coin, meaning equal probabilities of heads and tails, thus we specify <code>prob = c(0.5, 0.5)</code>. We could simulate the outcome of tossing a coin 4 times like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "T" "T" "H" "H"</code></pre>
+<pre><code>[1] "H" "T" "H" "T"</code></pre>
 </div>
 </div>
 <p>Now let’s modify the code for 4 coin tosses to represent a biased coin, say one that comes up tails 70% of the time</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "T" "T" "H" "H"</code></pre>
+<pre><code>[1] "T" "T" "T" "T"</code></pre>
 </div>
 </div>
 <p>Let’s arbitrarily say that a “success” is if the coin lands tails up. We can count the number of successes like this:</p>
@@ -281,13 +287,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>toss <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>toss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "T" "H" "T" "H"</code></pre>
+<pre><code>[1] "H" "H" "H" "T"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count successes</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>nsuccess <span class="ot">&lt;-</span> <span class="fu">sum</span>(toss <span class="sc">==</span> <span class="st">"T"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>nsuccess</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
 <p>The number of successes in 4 tosses is exactly the kind of situation where a binomial distribution is relevant. In this example, the probability of success is <span class="math inline">\(p = 0.5\)</span> and the number of trials is <span class="math inline">\(n = 4\)</span>.</p>
@@ -341,8 +347,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Pretty close!</p>
 </section>
-<section id="binomial-tests" class="level3" data-number="9.2.2">
-<h3 data-number="9.2.2" class="anchored" data-anchor-id="binomial-tests"><span class="header-section-number">9.2.2</span> Binomial tests</h3>
+<section id="binomial-tests-and-confidence-intervals" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="binomial-tests-and-confidence-intervals"><span class="header-section-number">9.2.2</span> Binomial tests and confidence intervals</h3>
 <p>Doing a binomial test in <em>R</em> is much easier than doing one by hand.</p>
 <p>The function <code>binom.test()</code> will do an exact binomial test. It requires three pieces of information in the input.</p>
 <ul>
@@ -373,12 +379,12 @@ probability of success
 </section>
 <section id="questions" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">9.3</span> Questions</h2>
-<p>Let’s imagine a new feeding trial of pulelehua Kamehameha caterpillars. This time we will imagine a comparison inspired by <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/btp.13292">Bongar et al.&nbsp;(2024)</a>. They looked at māmaki versus a close relative that happens to be invasive in Hawaiʻi: <em>Cecropia obtusifolia</em>. If pulelehua Kamehameha caterpillars could trive on <em>Cecropia obtusifolia</em> that would be great.</p>
+<p>Let’s imagine a new feeding trial of pulelehua Kamehameha caterpillars. This time we will imagine a comparison inspired by <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/btp.13292">Bongar et al.&nbsp;(2024)</a>. They looked at māmaki versus a close relative that happens to be invasive in Hawaiʻi: <em>Cecropia obtusifolia</em>. If pulelehua Kamehameha caterpillars could thrive on <em>Cecropia obtusifolia</em> that would be great.</p>
 <p>Inspired by the results of Bongar et al.&nbsp;(2024), let’s suppose that out of 50 feeding trials where pulelehua Kamehameha caterpillars are given a choice between māmaki and <em>Cecropia obtusifolia</em>, they choose māmaki 38 times.</p>
 <ol type="1">
 <li><p>Use <code>binom.test()</code> to calculate the estimated proportion of choosing māmaki. What is the 95% confidence interval for this proportion? What is the two-tailed <span class="math inline">\(P\)</span>-value of the null hypothesis?</p></li>
 <li><p>Based on the results form <code>binom.test</code> you just produced does it seem promising that pulelehua Kamehameha caterpillars will be able to use <em>Cecropia obtusifolia</em> as a food plant?</p></li>
-<li><p>Based on the 95% confidence intervals, do you think the proportion of times the caterpillars choose māmaki over <em>Urtica</em> versus the proportion of times they choose māmaki over <em>Cecropia obtusifolia</em> are different from one another? Explain your answer.</p></li>
+<li><p>Based on the 95% confidence intervals, do you think the proportion of times the caterpillars choose māmaki over <em>Urtica</em> versus the proportion of times they choose māmaki over <em>Cecropia obtusifolia</em> are different from one another? Explain your answer. The hypothetical experiment comparing choice between māmaki and <em>Urtica</em> comes from our lectures, please refer to lecture slides for details on this hypothetical experiment.</p></li>
 <li><p>Find your own proportion data on the Internet or at home if you are doing this after lab. Develop a null hypothesis, state it in your report, and use <code>binom.test()</code> to test it. Did you reject your null hypothesis? Explain why or why not.</p></li>
 </ol>
 
