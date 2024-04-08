@@ -214,6 +214,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Visualizing data for hypothesis testing</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -271,8 +277,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rchisq</span>(<span class="dv">10</span>, <span class="at">df =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 2.982516 1.786812 1.837762 2.178296 1.033479 1.624728 2.400084 3.660939
- [9] 5.098970 3.757578</code></pre>
+<pre><code> [1] 2.7766009 1.6531027 0.1113721 0.5289443 4.5192373 0.5159183 2.2419540
+ [8] 0.4559130 3.1713227 0.2382888</code></pre>
 </div>
 </div>
 <p>The above is a random sample of 10 numbers from the <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
@@ -333,10 +339,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n_event <span class="ot">&lt;-</span> <span class="fu">sum</span>(chi2_df3 <span class="sc">&gt;=</span> <span class="fl">7.8</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>n_event <span class="sc">/</span> <span class="fu">length</span>(chi2_df3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.047</code></pre>
+<pre><code>[1] 0.06</code></pre>
 </div>
 </div>
-<p>So the probability <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.047. We are working with random samples here, so your numbers will likely be a little different. If <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.047 seems suspiciously close to 0.05 that’s because I choose 7.8 very deliberately. 7.8 is approximately the <em>critical value</em> for a <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
+<p>So the probability <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.06. We are working with random samples here, so your numbers will likely be a little different. If <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.06 seems suspiciously close to 0.05 that’s because I choose 7.8 very deliberately. 7.8 is approximately the <em>critical value</em> for a <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
 <p>Recall that a critical value is the value that cuts a probability distribution at the desired <span class="math inline">\(\alpha\)</span>, AKA significance level. To calculate the critical value we use <code>qchisq</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this returns the value that divides a chi-sqrd distribution</span></span>
