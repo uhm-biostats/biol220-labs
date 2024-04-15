@@ -21,6 +21,7 @@ book:
     - lab11.qmd
     - lab12.qmd
     - lab13.qmd
+    - lab14.qmd
 comments:
   hypothesis: true
 
