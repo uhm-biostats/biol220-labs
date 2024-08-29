@@ -1,0 +1,190 @@
+---
+title: "Using **pretend made up data** to pretend to evaluate impacts of mean annual precipitation and collection method on insect biomass in Hawaiʻi"
+author: Andy Rominger
+bibliography: fake_bib.bib
+format:
+  docx:
+    toc: false
+    number-sections: false
+    colorlinks: true
+---
+
+## Background
+
+The insects of Hawaiʻi represent an especially unique assemblage owing to their high levels of endemicity [@gillespie2002arthropods] and evolutionary divergence to occupy novel ecosystems through adaptive radiation. Up to 98% of insect in Hawaiʻi are endemic, meaning they are found nowhere else on Earth.
+
+This high level of endemicity and multiple anthropocentric stressers---including habitat destruction, climate change, and introduction of invasive species---make Hawaiian insects a high priority for conservation and restoration [@medeiros2013importance]. Invasive insects pose multiple threats both to endemic and native biodiversity on the islands, and also agricultural systems.
+
+Despite the priority of Hawaiian insects for conservation, and impact of invasive insects, there remains insufficient study of how insect populations and species respond to environmental gradients [@medeiros2013importance], and even which methods are most effective for monitoring invasive species [@borges2018global].
+
+Here we analyze a *totally fake simulated dataset* to help answer two questions:
+
+1. how does total biomass of insects change across gradients of rainfall across the Hawaiian islands?  
+2. are malaise traps or pitfall traps more effective in detecting the concerning invasive *Species 1*?
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+library(dplyr)
+library(ggplot2)
+```
+
+
+
+
+## Analysis and results
+
+We will make use of several packages to analyze and visualize these data. We load those packages like this:
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(cowplot)
+```
+
+Next we read-in the dataset:
+
+
+```{r eval = FALSE}
+dat <- read.csv("data/insect_map.csv")
+head(dat)
+```
+
+We can see our data have columns indicating the name of the site where data where collected, the mean annual precipitation (MAP) at that site, and then information about the species identities of the insects collected, and their sampled masses from each of the two collecting methods: malaise and pitfall.
+
+Now we can analyze the data to address our two questions.
+
+### How does total biomass of insects change across gradients of rainfall across the Hawaiian islands? 
+
+
+```{r echo = FALSE}
+# copy, paste, and run all the below code:
+
+set.seed(123)
+
+mapdat <- runif(10, 10, 100)
+y <- mapdat + rnorm(length(mapdat), 0, 15)
+
+q <- quantile(y, probs = seq(0, 1, length.out = 11))
+q[q == min(q)] <- min(q) - 0.1
+
+site <- cut(y, q, labels = paste0("site_", 1:10))
+
+dat <- data.frame(site = site, MAP = mapdat)
+dat <- dat[rep(1:nrow(dat), each = 3), ]
+dat$species <- rep(paste0("species_", 1:3), 10)
+
+dat$total_mass_malaise <- 0.1 * dat$MAP + 
+    as.numeric(as.factor(dat$species)) * 2 + 
+    rnorm(nrow(dat), 0, 2)
+
+dat$total_mass_pitfall <- 6 - 3 * as.numeric(as.factor(dat$species)) + 
+    dat$total_mass_malaise + rnorm(nrow(dat), 0, 2)
+
+rownames(dat) <- NULL
+```
+
+
+To evaluate how biomass changes across MAP, we first need to prepare a suitably-formatted data.frame.
+
+```{r warning=FALSE, message=FALSE, echo = FALSE}
+# combine the sampled masses from each trap type
+dat$total_mass <- dat$total_mass_malaise + dat$total_mass_pitfall
+
+# we will group the data by site and ignore species
+dat_no_spp <- group_by(dat, site)
+
+# now use summarize to get the mass across all species 
+dat_no_spp <- summarize(dat_no_spp, 
+                        MAP = mean(MAP), 
+                        total_mass = sum(total_mass))
+
+
+```
+
+Now we can visualize the relationship between MAP and biomass
+
+```{r fig.align='center', fig.width=3, fig.height=3}
+ggplot(dat_no_spp, aes(x = MAP, y = total_mass)) +
+    geom_point() +
+    theme_cowplot() +
+    xlab("Mean annual precipitation (mm/yr)") +
+    ylab("Total insect biomass (g)")
+    
+```
+
+
+
+These data seem well suited to a correlation test, and visually do not appear to need transformation to meet the normality assumptions of correlation.  To test if there is a significant correlation we use the `cor.test` function and find:
+
+```{r}
+cor.test(dat_no_spp$MAP, dat_no_spp$total_mass)
+```
+
+
+The null hypothesis is that **there is zero correlation between MAP and total mass** (i.e. $H_0 \text{: } \rho = 0$). The alternative hypothesis is that **MAP and total mass have a non-zero correlation** (i.e. $H_A \text{: } \rho \neq 0$).
+
+The test statistic is the sample correlation coefficient $r =$ `r cor(dat_no_spp$MAP, dat_no_spp$total_mass)`.  And the null distribution is the $t$ distribution with $df =$ `r nrow(dat_no_spp) - 2`. The $P$-value is $< 0.001$ which is less than $\alpha = 0.05$ so we reject the null of no correlation.  Furthermore, the 95% confidence interval for $r$ is [0.787, 0.988], which is positive and far from 0, so we conclude there is strong evidence for a positive correlation between MAP and biomass.
+
+### Are malaise traps or pitfall traps more effective in detecting the concerning invasive *Species 1*?
+
+*Species 1* is a known invasive that does such and such bad things.  We would like to know which sampling method works best to monitor this species.
+
+Here again we will need to do some data manipulations to properly format the data for our visualization and analysis needs
+
+```{r echo = FALSE}
+# extract only the needed columns for malaise catch
+malaise <- dat[, c("site", "MAP", "species", "total_mass_malaise")]
+
+# add a column indicating that these data come from malaise traps
+malaise$trap_type <- "malaise"
+
+# do the same for pitfalls
+pitfall <- dat[, c("site", "MAP", "species", "total_mass_pitfall")]
+pitfall$trap_type <- "pitfall"
+
+# make column names consistent
+colnames(malaise) <- c("site", "MAP", "species", 
+                       "total_mass", "trap_type")
+colnames(pitfall) <- c("site", "MAP", "species", 
+                       "total_mass", "trap_type")
+
+# combine the two data frames
+dat_by_trap <- rbind(malaise, pitfall)
+```
+
+Now we can visualize the biomass for *Species 1* found in each trap type
+
+```{r fig.align='center', fig.width=3, fig.height=3}
+# notice that we're subsetting the data to just look at species 1
+ggplot(subset(dat_by_trap, dat_by_trap$species == "species_1"), 
+       aes(x = trap_type, y = total_mass)) +
+    geom_boxplot() + 
+    theme_cowplot() +
+    xlab("Trap type") +
+    ylab("Biomass of Species 1 (g)")
+
+```
+
+
+Here we have a categorical explanatory variable and a numerical response variable.  This is well-suited for a $t$-test.  Because we have two categories, we might be tempted to do a two-sample $t$-test.  
+
+Our hypotheses are:
+
+- $H_0$: $\mu_\text{malaise} = \mu_\text{pitfall}$
+- $H_A$: $\mu_\text{malaise} \neq \mu_\text{pitfall}$
+
+Because each replicate of the pitfall traps and malaise traps are located **at the same site**, we will use a *paired* $t$-test. The results of which are
+
+```{r}
+t.test(total_mass ~ trap_type, 
+       data = subset(dat_by_trap, dat_by_trap$species == "species_1"),
+       paired = TRUE)
+```
+
+The $P$-value is far less than $\alpha = 0.05$ so we reject the null of no difference between the traps.  From the visualization and the 95% confidence interval of the mean difference between groups, we see that malaise traps catch much less biomass of *Species 1* so we conclude pitfall traps are the more effective way to monitor for this species.
+
+
+## References
