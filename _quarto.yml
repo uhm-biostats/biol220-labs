@@ -5,10 +5,11 @@ project:
 
 book:
   title: "Labs for Intro Biostatistics"
-  author: "Mike Whitlock (original material), Chris Muir (modifications), Andy Rominger (modifications and web design), Renata Diaz (web design)"
+  author: "Mike Whitlock (original material), Chris Muir (modifications), Renata Diaz (web design)"
   chapters:
     - index.qmd
     - lab01.qmd
+    - lab02.qmd
 comments:
   hypothesis: true
 
