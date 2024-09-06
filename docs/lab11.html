@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Labs for Intro Biostatistics - 11&nbsp; R functions quick reference sheet</title>
+<title>Labs for Intro Biostatistics - 9&nbsp; R functions quick reference sheet</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab11.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">*R* functions quick reference sheet</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab11.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">*R* functions quick reference sheet</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -166,50 +166,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 coding, data, graphics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 describing data, standard error, confidence intervals</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./lab07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab11.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
   </div>
 </li>
     </ul>
@@ -222,32 +210,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">11.1</span> Goals</a></li>
-  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">11.2</span> Learning the Tools</a>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">9.1</span> Goals</a></li>
+  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">9.2</span> Learning the Tools</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">11.2.1</span> <code>#</code></a></li>
-  <li><a href="#library" id="toc-library" class="nav-link" data-scroll-target="#library"><span class="header-section-number">11.2.2</span> <code>library</code></a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">11.2.3</span> <code>&lt;-</code></a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">11.2.4</span> <code>:</code></a></li>
-  <li><a href="#length" id="toc-length" class="nav-link" data-scroll-target="#length"><span class="header-section-number">11.2.5</span> <code>length</code></a></li>
-  <li><a href="#data.frame" id="toc-data.frame" class="nav-link" data-scroll-target="#data.frame"><span class="header-section-number">11.2.6</span> <code>data.frame</code></a></li>
-  <li><a href="#head" id="toc-head" class="nav-link" data-scroll-target="#head"><span class="header-section-number">11.2.7</span> <code>head</code></a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">11.2.8</span> <code>==</code></a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">11.2.9</span> <code>&amp;</code></a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">11.2.10</span> <code>|</code></a></li>
-  <li><a href="#is.na" id="toc-is.na" class="nav-link" data-scroll-target="#is.na"><span class="header-section-number">11.2.11</span> <code>is.na</code></a></li>
-  <li><a href="#subset" id="toc-subset" class="nav-link" data-scroll-target="#subset"><span class="header-section-number">11.2.12</span> <code>subset</code></a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">11.2.13</span> <code>[</code></a></li>
-  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"><span class="header-section-number">11.2.14</span> <code>group_by</code></a></li>
-  <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize"><span class="header-section-number">11.2.15</span> <code>summarize</code></a></li>
-  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot"><span class="header-section-number">11.2.16</span> <code>ggplot</code></a></li>
-  <li><a href="#aes" id="toc-aes" class="nav-link" data-scroll-target="#aes"><span class="header-section-number">11.2.17</span> <code>aes</code></a></li>
-  <li><a href="#geom_point" id="toc-geom_point" class="nav-link" data-scroll-target="#geom_point"><span class="header-section-number">11.2.18</span> <code>geom_point</code></a></li>
-  <li><a href="#vars" id="toc-vars" class="nav-link" data-scroll-target="#vars"><span class="header-section-number">11.2.19</span> <code>vars</code></a></li>
-  <li><a href="#facet_grid" id="toc-facet_grid" class="nav-link" data-scroll-target="#facet_grid"><span class="header-section-number">11.2.20</span> <code>facet_grid</code></a></li>
-  <li><a href="#scale_color_viridis_c" id="toc-scale_color_viridis_c" class="nav-link" data-scroll-target="#scale_color_viridis_c"><span class="header-section-number">11.2.21</span> <code>scale_color_viridis_c</code></a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">9.2.1</span> <code>#</code></a></li>
+  <li><a href="#library" id="toc-library" class="nav-link" data-scroll-target="#library"><span class="header-section-number">9.2.2</span> <code>library</code></a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">9.2.3</span> <code>&lt;-</code></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">9.2.4</span> <code>:</code></a></li>
+  <li><a href="#length" id="toc-length" class="nav-link" data-scroll-target="#length"><span class="header-section-number">9.2.5</span> <code>length</code></a></li>
+  <li><a href="#data.frame" id="toc-data.frame" class="nav-link" data-scroll-target="#data.frame"><span class="header-section-number">9.2.6</span> <code>data.frame</code></a></li>
+  <li><a href="#head" id="toc-head" class="nav-link" data-scroll-target="#head"><span class="header-section-number">9.2.7</span> <code>head</code></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">9.2.8</span> <code>==</code></a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">9.2.9</span> <code>&amp;</code></a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">9.2.10</span> <code>|</code></a></li>
+  <li><a href="#is.na" id="toc-is.na" class="nav-link" data-scroll-target="#is.na"><span class="header-section-number">9.2.11</span> <code>is.na</code></a></li>
+  <li><a href="#subset" id="toc-subset" class="nav-link" data-scroll-target="#subset"><span class="header-section-number">9.2.12</span> <code>subset</code></a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">9.2.13</span> <code>[</code></a></li>
+  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"><span class="header-section-number">9.2.14</span> <code>group_by</code></a></li>
+  <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize"><span class="header-section-number">9.2.15</span> <code>summarize</code></a></li>
+  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot"><span class="header-section-number">9.2.16</span> <code>ggplot</code></a></li>
+  <li><a href="#aes" id="toc-aes" class="nav-link" data-scroll-target="#aes"><span class="header-section-number">9.2.17</span> <code>aes</code></a></li>
+  <li><a href="#geom_point" id="toc-geom_point" class="nav-link" data-scroll-target="#geom_point"><span class="header-section-number">9.2.18</span> <code>geom_point</code></a></li>
+  <li><a href="#vars" id="toc-vars" class="nav-link" data-scroll-target="#vars"><span class="header-section-number">9.2.19</span> <code>vars</code></a></li>
+  <li><a href="#facet_grid" id="toc-facet_grid" class="nav-link" data-scroll-target="#facet_grid"><span class="header-section-number">9.2.20</span> <code>facet_grid</code></a></li>
+  <li><a href="#scale_color_viridis_c" id="toc-scale_color_viridis_c" class="nav-link" data-scroll-target="#scale_color_viridis_c"><span class="header-section-number">9.2.21</span> <code>scale_color_viridis_c</code></a></li>
   </ul></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">11.3</span> Questions</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">9.3</span> Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -256,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></h1>
 </div>
 
 
@@ -271,15 +259,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="goals" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">11.1</span> Goals</h2>
+<section id="goals" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">9.1</span> Goals</h2>
 <ul>
 <li>Help make your own quick reference sheet of the most important <em>R</em> functions we’ve gone over so far</li>
 </ul>
 <p>This lab will be a little different from the others. In the <strong>Learning the Tools</strong> section we’ll take a guided tour of the start of a quick reference sheet. Then in the <strong>Questions</strong> section, you’ll be tasked with completing the reference sheet.</p>
 </section>
-<section id="learning-the-tools" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">11.2</span> Learning the Tools</h2>
+<section id="learning-the-tools" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">9.2</span> Learning the Tools</h2>
 <p>After completing this lab you will have a quick reference guide for the following functions/commands:</p>
 <p><strong>“Base R” stuff (i.e.&nbsp;you don’t need to load a package for these functions/commands)</strong></p>
 <ul>
@@ -326,8 +314,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>scale_color_viridis_d</code><span style="opacity: 0;"><font color="black">___</font></span><em>[q17]</em></li>
 </ul>
 <p>Functions and commands that have <em>[qXYZ]</em> next to them will be saved for you as questions, all the rest we will cover together here in <strong>Learning the Tools</strong>. Let’s dive in!</p>
-<section id="section" class="level3" data-number="11.2.1">
-<h3 data-number="11.2.1" class="anchored" data-anchor-id="section"><span class="header-section-number">11.2.1</span> <code>#</code></h3>
+<section id="section" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="section"><span class="header-section-number">9.2.1</span> <code>#</code></h3>
 <p><strong>Definition:</strong> The special “comment” character, this charachter tells <em>R</em> to ignore what you’re typing, those words are for human eyes only</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -335,8 +323,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># each new line of a comment needs a new `#`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="library" class="level3" data-number="11.2.2">
-<h3 data-number="11.2.2" class="anchored" data-anchor-id="library"><span class="header-section-number">11.2.2</span> <code>library</code></h3>
+<section id="library" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="library"><span class="header-section-number">9.2.2</span> <code>library</code></h3>
 <p><strong>Definition:</strong> Use <code>library</code> to load a package, this allows you to use the functions defined by that package, and any data contained in that package.</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -356,8 +344,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="section-1" class="level3" data-number="11.2.3">
-<h3 data-number="11.2.3" class="anchored" data-anchor-id="section-1"><span class="header-section-number">11.2.3</span> <code>&lt;-</code></h3>
+<section id="section-1" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="section-1"><span class="header-section-number">9.2.3</span> <code>&lt;-</code></h3>
 <p><strong>Definition:</strong> The special “assignment” character, tells <em>R</em> to assign the stuff on the right hand side to the name on the left hand side</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -368,8 +356,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="section-2" class="level3" data-number="11.2.4">
-<h3 data-number="11.2.4" class="anchored" data-anchor-id="section-2"><span class="header-section-number">11.2.4</span> <code>:</code></h3>
+<section id="section-2" class="level3" data-number="9.2.4">
+<h3 data-number="9.2.4" class="anchored" data-anchor-id="section-2"><span class="header-section-number">9.2.4</span> <code>:</code></h3>
 <p><strong>Definition:</strong> A quick way to make a vector of consecutive integers</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -380,8 +368,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="length" class="level3" data-number="11.2.5">
-<h3 data-number="11.2.5" class="anchored" data-anchor-id="length"><span class="header-section-number">11.2.5</span> <code>length</code></h3>
+<section id="length" class="level3" data-number="9.2.5">
+<h3 data-number="9.2.5" class="anchored" data-anchor-id="length"><span class="header-section-number">9.2.5</span> <code>length</code></h3>
 <p><strong>Definition:</strong> Tells you the length of a vector</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -392,8 +380,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="data.frame" class="level3" data-number="11.2.6">
-<h3 data-number="11.2.6" class="anchored" data-anchor-id="data.frame"><span class="header-section-number">11.2.6</span> <code>data.frame</code></h3>
+<section id="data.frame" class="level3" data-number="9.2.6">
+<h3 data-number="9.2.6" class="anchored" data-anchor-id="data.frame"><span class="header-section-number">9.2.6</span> <code>data.frame</code></h3>
 <p><strong>Definition:</strong> A function to <em>create</em> a data.frame object. You tell it what columns you want by passing the names and values of the columns as arguments</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -412,8 +400,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="head" class="level3" data-number="11.2.7">
-<h3 data-number="11.2.7" class="anchored" data-anchor-id="head"><span class="header-section-number">11.2.7</span> <code>head</code></h3>
+<section id="head" class="level3" data-number="9.2.7">
+<h3 data-number="9.2.7" class="anchored" data-anchor-id="head"><span class="header-section-number">9.2.7</span> <code>head</code></h3>
 <p><strong>Definition:</strong> Look at the first few rows a data.frame</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -431,8 +419,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="section-3" class="level3" data-number="11.2.8">
-<h3 data-number="11.2.8" class="anchored" data-anchor-id="section-3"><span class="header-section-number">11.2.8</span> <code>==</code></h3>
+<section id="section-3" class="level3" data-number="9.2.8">
+<h3 data-number="9.2.8" class="anchored" data-anchor-id="section-3"><span class="header-section-number">9.2.8</span> <code>==</code></h3>
 <p><strong>Definition:</strong> Asks a “yes/no” question: does the object on the left hand size equal the object on the right hand side, yes (<code>TRUE</code>) or no (<code>FALSE</code>)?</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -451,8 +439,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="section-4" class="level3" data-number="11.2.9">
-<h3 data-number="11.2.9" class="anchored" data-anchor-id="section-4"><span class="header-section-number">11.2.9</span> <code>&amp;</code></h3>
+<section id="section-4" class="level3" data-number="9.2.9">
+<h3 data-number="9.2.9" class="anchored" data-anchor-id="section-4"><span class="header-section-number">9.2.9</span> <code>&amp;</code></h3>
 <p><strong>Definition:</strong> Combines “TRUE/FALSE” questions with “and”. Like “is this TRUE, <em>and</em> this TRUE?” If either is not true, the <code>&amp;</code> gives us FALSE</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -465,8 +453,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="section-5" class="level3" data-number="11.2.10">
-<h3 data-number="11.2.10" class="anchored" data-anchor-id="section-5"><span class="header-section-number">11.2.10</span> <code>|</code></h3>
+<section id="section-5" class="level3" data-number="9.2.10">
+<h3 data-number="9.2.10" class="anchored" data-anchor-id="section-5"><span class="header-section-number">9.2.10</span> <code>|</code></h3>
 <p><strong>Definition:</strong> Combines “TRUE/FALSE” questions with “or”. Like “is this TRUE, <em>or</em> this TRUE?” If either is true, the <code>|</code> gives us TRUE</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -479,8 +467,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="is.na" class="level3" data-number="11.2.11">
-<h3 data-number="11.2.11" class="anchored" data-anchor-id="is.na"><span class="header-section-number">11.2.11</span> <code>is.na</code></h3>
+<section id="is.na" class="level3" data-number="9.2.11">
+<h3 data-number="9.2.11" class="anchored" data-anchor-id="is.na"><span class="header-section-number">9.2.11</span> <code>is.na</code></h3>
 <p><strong>Definition:</strong> Asks a “TRUE/FALSE” question: is a value missing (<code>NA</code>) or not?</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -491,8 +479,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="subset" class="level3" data-number="11.2.12">
-<h3 data-number="11.2.12" class="anchored" data-anchor-id="subset"><span class="header-section-number">11.2.12</span> <code>subset</code></h3>
+<section id="subset" class="level3" data-number="9.2.12">
+<h3 data-number="9.2.12" class="anchored" data-anchor-id="subset"><span class="header-section-number">9.2.12</span> <code>subset</code></h3>
 <p><strong>Definition:</strong> Returns a subset of a data.frame based on some condition being met. The condition is usually whether the values in one of the vectors meet some kind of criterion</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -508,8 +496,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="section-6" class="level3" data-number="11.2.13">
-<h3 data-number="11.2.13" class="anchored" data-anchor-id="section-6"><span class="header-section-number">11.2.13</span> <code>[</code></h3>
+<section id="section-6" class="level3" data-number="9.2.13">
+<h3 data-number="9.2.13" class="anchored" data-anchor-id="section-6"><span class="header-section-number">9.2.13</span> <code>[</code></h3>
 <p><strong>Definition:</strong> Called the “square bracket” this command is used to extract specific elements of a vector or data.frame</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -520,12 +508,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="group_by" class="level3" data-number="11.2.14">
-<h3 data-number="11.2.14" class="anchored" data-anchor-id="group_by"><span class="header-section-number">11.2.14</span> <code>group_by</code></h3>
+<section id="group_by" class="level3" data-number="9.2.14">
+<h3 data-number="9.2.14" class="anchored" data-anchor-id="group_by"><span class="header-section-number">9.2.14</span> <code>group_by</code></h3>
 <p><strong>Definition:</strong> A function from the <em>dplyr</em> package, this function tells <em>R</em> to split a data.frame into groups according to one or more of the columns in the data.frame. This function is almost always used in combination with <code>summarize</code>. We will show an example of both working together</p>
 </section>
-<section id="summarize" class="level3" data-number="11.2.15">
-<h3 data-number="11.2.15" class="anchored" data-anchor-id="summarize"><span class="header-section-number">11.2.15</span> <code>summarize</code></h3>
+<section id="summarize" class="level3" data-number="9.2.15">
+<h3 data-number="9.2.15" class="anchored" data-anchor-id="summarize"><span class="header-section-number">9.2.15</span> <code>summarize</code></h3>
 <p><strong>Definition:</strong> A function provided by the package <em>dyplyr</em> to calculate a statistic from the column or columns of a data.frame. This function is almost always used in combination with <code>group_by</code></p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -545,16 +533,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>                             <span class="at">mean_length =</span> <span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="ggplot" class="level3" data-number="11.2.16">
-<h3 data-number="11.2.16" class="anchored" data-anchor-id="ggplot"><span class="header-section-number">11.2.16</span> <code>ggplot</code></h3>
+<section id="ggplot" class="level3" data-number="9.2.16">
+<h3 data-number="9.2.16" class="anchored" data-anchor-id="ggplot"><span class="header-section-number">9.2.16</span> <code>ggplot</code></h3>
 <p><strong>Definition:</strong> The main function from package <em>ggplot2</em> for setting up a plot. This function doesn’t make the plot itself, but it tells <em>R</em> what data.frame to use and which columns from that data.frame will go on the x and y axes. The x and y axes are set up wit the <code>aes</code> function. We will show an example after we define <code>aes</code> and the <code>geom_*</code> family of functions</p>
 </section>
-<section id="aes" class="level3" data-number="11.2.17">
-<h3 data-number="11.2.17" class="anchored" data-anchor-id="aes"><span class="header-section-number">11.2.17</span> <code>aes</code></h3>
+<section id="aes" class="level3" data-number="9.2.17">
+<h3 data-number="9.2.17" class="anchored" data-anchor-id="aes"><span class="header-section-number">9.2.17</span> <code>aes</code></h3>
 <p><strong>Definition:</strong> The function from package <em>ggplot2</em> that tells <em>R</em> what data will go across the x and y axes</p>
 </section>
-<section id="geom_point" class="level3" data-number="11.2.18">
-<h3 data-number="11.2.18" class="anchored" data-anchor-id="geom_point"><span class="header-section-number">11.2.18</span> <code>geom_point</code></h3>
+<section id="geom_point" class="level3" data-number="9.2.18">
+<h3 data-number="9.2.18" class="anchored" data-anchor-id="geom_point"><span class="header-section-number">9.2.18</span> <code>geom_point</code></h3>
 <p><strong>Definition:</strong> The function from package <em>ggplot2</em> that draws a scatter plot of points</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -568,12 +556,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="vars" class="level3" data-number="11.2.19">
-<h3 data-number="11.2.19" class="anchored" data-anchor-id="vars"><span class="header-section-number">11.2.19</span> <code>vars</code></h3>
+<section id="vars" class="level3" data-number="9.2.19">
+<h3 data-number="9.2.19" class="anchored" data-anchor-id="vars"><span class="header-section-number">9.2.19</span> <code>vars</code></h3>
 <p><strong>Definition:</strong> A function from package <em>ggplot2</em> that is used to refer to a specific column when doing complex plotting like adding facets or colors that display information from the data. This will be more clear with the example from the <code>facet_grid</code> function</p>
 </section>
-<section id="facet_grid" class="level3" data-number="11.2.20">
-<h3 data-number="11.2.20" class="anchored" data-anchor-id="facet_grid"><span class="header-section-number">11.2.20</span> <code>facet_grid</code></h3>
+<section id="facet_grid" class="level3" data-number="9.2.20">
+<h3 data-number="9.2.20" class="anchored" data-anchor-id="facet_grid"><span class="header-section-number">9.2.20</span> <code>facet_grid</code></h3>
 <p><strong>Definition:</strong> A function from package <em>ggplot2</em> that allows us to make multiple plots all at once based on a <em>categorical</em> column in our data set (each unique category in the data will get its own plot)</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -588,8 +576,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="scale_color_viridis_c" class="level3" data-number="11.2.21">
-<h3 data-number="11.2.21" class="anchored" data-anchor-id="scale_color_viridis_c"><span class="header-section-number">11.2.21</span> <code>scale_color_viridis_c</code></h3>
+<section id="scale_color_viridis_c" class="level3" data-number="9.2.21">
+<h3 data-number="9.2.21" class="anchored" data-anchor-id="scale_color_viridis_c"><span class="header-section-number">9.2.21</span> <code>scale_color_viridis_c</code></h3>
 <p><strong>Definition:</strong> A function from package <em>ggplot2</em> that creates a color scale corresponding to a <em>continuous</em> variable. The “viridis” color palette is a very useful color scale because is very well aligned to how humans perceive color changes</p>
 <p><strong>Examples:</strong></p>
 <div class="cell">
@@ -616,8 +604,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="questions" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">11.3</span> Questions</h2>
+<section id="questions" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">9.3</span> Questions</h2>
 <p>Now it’s your turn! In the <code>reprot.R</code> script, create a reference guide for yourself following the same format, like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">## &lt;function name&gt;</span></span>
@@ -890,12 +878,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./lab10.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./lab12.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

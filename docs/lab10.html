@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Labs for Intro Biostatistics - 10&nbsp; Frequency and Contingency Analysis</title>
+<title>Labs for Intro Biostatistics - 8&nbsp; Frequency and Contingency Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab10.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab10.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -168,50 +168,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 coding, data, graphics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 describing data, standard error, confidence intervals</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./lab07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab10.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
   </div>
 </li>
     </ul>
@@ -224,14 +212,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">10.1</span> Goals</a></li>
-  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">10.2</span> Learning the Tools</a>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">8.1</span> Goals</a></li>
+  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">8.2</span> Learning the Tools</a>
   <ul class="collapse">
-  <li><a href="#the-chi2-distribution" id="toc-the-chi2-distribution" class="nav-link" data-scroll-target="#the-chi2-distribution"><span class="header-section-number">10.2.1</span> The <span class="math inline">\(\chi^2\)</span> distribution</a></li>
-  <li><a href="#chi2-goodness-of-fit-test" id="toc-chi2-goodness-of-fit-test" class="nav-link" data-scroll-target="#chi2-goodness-of-fit-test"><span class="header-section-number">10.2.2</span> <span class="math inline">\(\chi^2\)</span> goodness of fit test</a></li>
+  <li><a href="#the-chi2-distribution" id="toc-the-chi2-distribution" class="nav-link" data-scroll-target="#the-chi2-distribution"><span class="header-section-number">8.2.1</span> The <span class="math inline">\(\chi^2\)</span> distribution</a></li>
+  <li><a href="#chi2-goodness-of-fit-test" id="toc-chi2-goodness-of-fit-test" class="nav-link" data-scroll-target="#chi2-goodness-of-fit-test"><span class="header-section-number">8.2.2</span> <span class="math inline">\(\chi^2\)</span> goodness of fit test</a></li>
   </ul></li>
-  <li><a href="#contingency-analysis" id="toc-contingency-analysis" class="nav-link" data-scroll-target="#contingency-analysis"><span class="header-section-number">10.3</span> Contingency analysis</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">10.4</span> Questions</a></li>
+  <li><a href="#contingency-analysis" id="toc-contingency-analysis" class="nav-link" data-scroll-target="#contingency-analysis"><span class="header-section-number">8.3</span> Contingency analysis</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">8.4</span> Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -240,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></h1>
 </div>
 
 
@@ -255,24 +243,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="goals" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">10.1</span> Goals</h2>
+<section id="goals" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">8.1</span> Goals</h2>
 <ul>
 <li>Gain familiarity with the <span class="math inline">\(\chi^2\)</span> Distribution</li>
 <li>Calculate the <span class="math inline">\(\chi^2\)</span> test statistic and associated degrees of freedom</li>
 <li>Test null hypotheses with the <span class="math inline">\(\chi^2\)</span> null distribution</li>
 </ul>
 </section>
-<section id="learning-the-tools" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">10.2</span> Learning the Tools</h2>
-<section id="the-chi2-distribution" class="level3" data-number="10.2.1">
-<h3 data-number="10.2.1" class="anchored" data-anchor-id="the-chi2-distribution"><span class="header-section-number">10.2.1</span> The <span class="math inline">\(\chi^2\)</span> distribution</h3>
+<section id="learning-the-tools" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">8.2</span> Learning the Tools</h2>
+<section id="the-chi2-distribution" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="the-chi2-distribution"><span class="header-section-number">8.2.1</span> The <span class="math inline">\(\chi^2\)</span> distribution</h3>
 <p>Let’s get familiar with the <span class="math inline">\(\chi^2\)</span> distribution. We’ll also learn about a new kind of <em>R</em> function, one for generating random samples from any probability distribution. Because we’re focused on the <span class="math inline">\(\chi^2\)</span> distribution, we’ll use the random sampling function for that distribution: <code>rchisq</code>. We can use <code>rchisq</code> to generate a random sample of any size from a <span class="math inline">\(\chi^2\)</span> distribution with any degrees of freedom using a classic example: flipping a coin. We will simulate the coin flipping process using <code>sample</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rchisq</span>(<span class="dv">10</span>, <span class="at">df =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 2.0589898 0.8461569 4.1660231 1.2311095 0.4587205 3.9431961 1.6724550
- [8] 1.0800312 0.6231305 1.3284260</code></pre>
+<pre><code> [1] 0.08780563 6.36687267 3.17695986 8.42081859 3.22340880 3.07683940
+ [7] 5.78784483 9.76356735 6.36609909 1.48691548</code></pre>
 </div>
 </div>
 <p>The above is a random sample of 10 numbers from the <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
@@ -333,10 +321,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n_event <span class="ot">&lt;-</span> <span class="fu">sum</span>(chi2_df3 <span class="sc">&gt;=</span> <span class="fl">7.8</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>n_event <span class="sc">/</span> <span class="fu">length</span>(chi2_df3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.05</code></pre>
+<pre><code>[1] 0.055</code></pre>
 </div>
 </div>
-<p>So the probability <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.05. We are working with random samples here, so your numbers will likely be a little different. If <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.05 seems suspiciously close to 0.05 that’s because I choose 7.8 very deliberately. 7.8 is approximately the <em>critical value</em> for a <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
+<p>So the probability <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.055. We are working with random samples here, so your numbers will likely be a little different. If <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.055 seems suspiciously close to 0.05 that’s because I choose 7.8 very deliberately. 7.8 is approximately the <em>critical value</em> for a <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
 <p>Recall that a critical value is the value that cuts a probability distribution at the desired <span class="math inline">\(\alpha\)</span>, AKA significance level. To calculate the critical value we use <code>qchisq</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this returns the value that divides a chi-sqrd distribution</span></span>
@@ -352,8 +340,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="chi2-goodness-of-fit-test" class="level3" data-number="10.2.2">
-<h3 data-number="10.2.2" class="anchored" data-anchor-id="chi2-goodness-of-fit-test"><span class="header-section-number">10.2.2</span> <span class="math inline">\(\chi^2\)</span> goodness of fit test</h3>
+<section id="chi2-goodness-of-fit-test" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="chi2-goodness-of-fit-test"><span class="header-section-number">8.2.2</span> <span class="math inline">\(\chi^2\)</span> goodness of fit test</h3>
 <p>Here’s a question: does the ethnic composition of faculty at the University of Hawaiʻi match the ethnic composition of the state? If not, then something funny might be going on like racist hiring practices, or systemic racism leading to discrepancies in higher education leading to different proportions of qualifications (e.g.&nbsp;holding a graduate degree) across ethnicities.</p>
 <p>There are also acceptable reasons for differential ethnic representation, such as if UH wants to have thriving Asian Studies or Black/African Studies or Hawaiian Studies programs, we will need to hire qualified faculty for those positions who will likely come from those ethnic backgrounds more often than not.</p>
 <p>It should be noted that discrepancies in ethnic group representation in skilled labor jobs is sometimes used to claim there are “biological” differences between ethnic groups in terms of intelligence. This is false. A great read on this topic is <a href="https://www.penguinrandomhouse.com/books/607248/superior-by-angela-saini/"><em>Superior</em> by Angela Saini*</a>. I wish I could say that “historically there were claims about ‘biological’ differences…” but these claims <a href="https://www.theguardian.com/news/2018/mar/02/the-unwelcome-revival-of-race-science">persist all too readily into our modern times</a>.</p>
@@ -451,8 +439,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now we can walk through the steps of calculating a <span class="math inline">\(\chi^2\)</span> statistic and comparing it to the null distribution.</p>
-<section id="calculate-the-chi2-statistic" class="level4" data-number="10.2.2.1">
-<h4 data-number="10.2.2.1" class="anchored" data-anchor-id="calculate-the-chi2-statistic"><span class="header-section-number">10.2.2.1</span> Calculate the <span class="math inline">\(\chi^2\)</span> statistic</h4>
+<section id="calculate-the-chi2-statistic" class="level4" data-number="8.2.2.1">
+<h4 data-number="8.2.2.1" class="anchored" data-anchor-id="calculate-the-chi2-statistic"><span class="header-section-number">8.2.2.1</span> Calculate the <span class="math inline">\(\chi^2\)</span> statistic</h4>
 <p>First we need the expected counts</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># just the expected proportion times total number of observations</span></span>
@@ -473,12 +461,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                    fake_data<span class="sc">$</span>expected)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="identify-the-null-distribution" class="level4" data-number="10.2.2.2">
-<h4 data-number="10.2.2.2" class="anchored" data-anchor-id="identify-the-null-distribution"><span class="header-section-number">10.2.2.2</span> Identify the null distribution</h4>
+<section id="identify-the-null-distribution" class="level4" data-number="8.2.2.2">
+<h4 data-number="8.2.2.2" class="anchored" data-anchor-id="identify-the-null-distribution"><span class="header-section-number">8.2.2.2</span> Identify the null distribution</h4>
 <p>We’re dealing with frequency data, and doing a lab about <span class="math inline">\(\chi^2\)</span> distributions, so our null distribution is a <span class="math inline">\(\chi^2\)</span> distribution, but with what degrees of freedom? There are 4 groups, so <code>df = 3</code>.</p>
 </section>
-<section id="calculate-the-p-value-and-decide-if-we-reject-the-null" class="level4" data-number="10.2.2.3">
-<h4 data-number="10.2.2.3" class="anchored" data-anchor-id="calculate-the-p-value-and-decide-if-we-reject-the-null"><span class="header-section-number">10.2.2.3</span> Calculate the <span class="math inline">\(P\)</span>-value and decide if we reject the null</h4>
+<section id="calculate-the-p-value-and-decide-if-we-reject-the-null" class="level4" data-number="8.2.2.3">
+<h4 data-number="8.2.2.3" class="anchored" data-anchor-id="calculate-the-p-value-and-decide-if-we-reject-the-null"><span class="header-section-number">8.2.2.3</span> Calculate the <span class="math inline">\(P\)</span>-value and decide if we reject the null</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pchisq</span>(chi2stat, <span class="at">df =</span> <span class="dv">3</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -489,8 +477,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="contingency-analysis" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="contingency-analysis"><span class="header-section-number">10.3</span> Contingency analysis</h2>
+<section id="contingency-analysis" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="contingency-analysis"><span class="header-section-number">8.3</span> Contingency analysis</h2>
 <p>Contingency analysis is very similar to a <span class="math inline">\(\chi^2\)</span> goodness of fit test, but in contingency analysis we have 2 categorical variables. We still compare the observed frequencies with the expected using a <span class="math inline">\(\chi^2\)</span> test statistic, and we still use a <span class="math inline">\(\chi^2\)</span> distribution for the null distribution.</p>
 <p>Our question is often a little different: with contingency analysis we are often asking, <em>is there an association between these two categorical variables?</em></p>
 <p>For example, do manu o Kū prefer nesting in certain types of trees? Manu o Kū are the friendly (yes I am anthropomorphism) little white terns that fly around campus. Last year, students went out and looked in random trees to see if the manu o Kū were nesting in the trees. Do the manu prefer a certain species? Here the two categorical variables are <strong>tree species</strong> and <strong>yes/no is there a nest</strong>. Here is a peek at the data</p>
@@ -632,8 +620,8 @@ odds ratio
 </div>
 <p>You can see it tells us some extra stuff, but our primary concern for now is the <span class="math inline">\(P\)</span>-value, which is still very non-significant.</p>
 </section>
-<section id="questions" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="questions"><span class="header-section-number">10.4</span> Questions</h2>
+<section id="questions" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="questions"><span class="header-section-number">8.4</span> Questions</h2>
 <ol type="1">
 <li><p>Keep building on the code you ran to make <code>samp</code>. Add another random sample of 1000 numbers, but this time from a <span class="math inline">\(\chi^2\)</span> distribution with 9 degrees of freedom.</p></li>
 <li><p>Make a faceted histogram with all three distributions captured in <code>samp</code>.</p></li>
@@ -886,12 +874,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./lab09.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./lab11.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

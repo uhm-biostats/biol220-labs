@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Labs for Intro Biostatistics - 8&nbsp; Statistical Null Hypothesis Testing</title>
+<title>Labs for Intro Biostatistics - 6&nbsp; Statistical Null Hypothesis Testing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab08.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab08.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -168,50 +168,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 coding, data, graphics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 describing data, standard error, confidence intervals</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./lab07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab08.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
   </div>
 </li>
     </ul>
@@ -224,19 +212,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">8.1</span> Goals</a></li>
-  <li><a href="#discuss-ideas-for-questions-and-hypotheses-with-group-members" id="toc-discuss-ideas-for-questions-and-hypotheses-with-group-members" class="nav-link" data-scroll-target="#discuss-ideas-for-questions-and-hypotheses-with-group-members"><span class="header-section-number">8.2</span> Discuss ideas for questions and hypotheses with group members</a></li>
-  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">8.3</span> Learning the Tools</a>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">6.1</span> Goals</a></li>
+  <li><a href="#discuss-ideas-for-questions-and-hypotheses-with-group-members" id="toc-discuss-ideas-for-questions-and-hypotheses-with-group-members" class="nav-link" data-scroll-target="#discuss-ideas-for-questions-and-hypotheses-with-group-members"><span class="header-section-number">6.2</span> Discuss ideas for questions and hypotheses with group members</a></li>
+  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">6.3</span> Learning the Tools</a>
   <ul class="collapse">
-  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing"><span class="header-section-number">8.3.1</span> Hypothesis testing</a></li>
-  <li><a href="#coral-reef-fish-across-polynesia" id="toc-coral-reef-fish-across-polynesia" class="nav-link" data-scroll-target="#coral-reef-fish-across-polynesia"><span class="header-section-number">8.3.2</span> Coral reef fish across Polynesia</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing"><span class="header-section-number">6.3.1</span> Hypothesis testing</a></li>
+  <li><a href="#coral-reef-fish-across-polynesia" id="toc-coral-reef-fish-across-polynesia" class="nav-link" data-scroll-target="#coral-reef-fish-across-polynesia"><span class="header-section-number">6.3.2</span> Coral reef fish across Polynesia</a></li>
   <li><a href="#state-h_0-and-h_a" id="toc-state-h_0-and-h_a" class="nav-link" data-scroll-target="#state-h_0-and-h_a">1. State <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></a></li>
   <li><a href="#calculate-the-test-statistic" id="toc-calculate-the-test-statistic" class="nav-link" data-scroll-target="#calculate-the-test-statistic">2. Calculate the test statistic</a></li>
   <li><a href="#generate-the-null-distribution" id="toc-generate-the-null-distribution" class="nav-link" data-scroll-target="#generate-the-null-distribution">3. Generate the null distribution</a></li>
   <li><a href="#calculate-the-p-value" id="toc-calculate-the-p-value" class="nav-link" data-scroll-target="#calculate-the-p-value">4. Calculate the <span class="math inline">\(p\)</span>-value</a></li>
   <li><a href="#decide-reject-h_0-or-fail-to-reject-h_0" id="toc-decide-reject-h_0-or-fail-to-reject-h_0" class="nav-link" data-scroll-target="#decide-reject-h_0-or-fail-to-reject-h_0">5. Decide: reject <span class="math inline">\(H_0\)</span> or fail to reject <span class="math inline">\(H_0\)</span></a></li>
   </ul></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">8.4</span> Questions</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">6.4</span> Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -245,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></h1>
 </div>
 
 
@@ -260,8 +248,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="goals" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">8.1</span> Goals</h2>
+<section id="goals" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">6.1</span> Goals</h2>
 <ul>
 <li>Discuss ideas for questions and hypotheses with group members</li>
 <li>Review steps of null hypothesis statistical testing</li>
@@ -269,15 +257,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Test hypotheses with null distributions</li>
 </ul>
 </section>
-<section id="discuss-ideas-for-questions-and-hypotheses-with-group-members" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="discuss-ideas-for-questions-and-hypotheses-with-group-members"><span class="header-section-number">8.2</span> Discuss ideas for questions and hypotheses with group members</h2>
+<section id="discuss-ideas-for-questions-and-hypotheses-with-group-members" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="discuss-ideas-for-questions-and-hypotheses-with-group-members"><span class="header-section-number">6.2</span> Discuss ideas for questions and hypotheses with group members</h2>
 <p>Before starting the main content of this lab, get together with members of your group for the final project. Make sure everybody agrees on which dataset you will use. Discuss some ideas for questions and hypotheses. Your gruop’s write-up of your questions and hypotheses will be due tomorrow! Consult with your TA about any questions you might have. Your TA can either answer those, or pass them along to Andy.</p>
 <p>This discussion of group projects should be allowed around 20 minutes.</p>
 </section>
-<section id="learning-the-tools" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">8.3</span> Learning the Tools</h2>
-<section id="hypothesis-testing" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="hypothesis-testing"><span class="header-section-number">8.3.1</span> Hypothesis testing</h3>
+<section id="learning-the-tools" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">6.3</span> Learning the Tools</h2>
+<section id="hypothesis-testing" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="hypothesis-testing"><span class="header-section-number">6.3.1</span> Hypothesis testing</h3>
 <p>The remainder of this course works within the null hypothesis statistical testing (NHST) framework that we will introduce this week. As we will discover, there are six core steps in NHST:</p>
 <ol type="1">
 <li><p>State <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></p></li>
@@ -293,8 +281,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For the statistical tests that we encounter during this course, the equations to calculate appropriate test statistics, null distribution of the test statistic, and <span class="math inline">\(p\)</span>-value are well understood. However, the concepts of null hypothesis testing can often be made more obvious by making a computer simulate the null distribution for us. Such “computationally intensive” null distributions also have important applications beyond learning the concepts—there are many real-world situations where no mathematical equation has ever been derived to calculate the necessary test statistic or null distribution for specific data or null hypotheses. In these cases, the only workable solution is to use a computer to simulate a null distribution.</p>
 <p>Let’s have a look at some data and a hypothesis where a “computational null distribution” will both be informative for learning, and also necessary because no mathematical equation exists to define an appropriate null distribution.</p>
 </section>
-<section id="coral-reef-fish-across-polynesia" class="level3" data-number="8.3.2">
-<h3 data-number="8.3.2" class="anchored" data-anchor-id="coral-reef-fish-across-polynesia"><span class="header-section-number">8.3.2</span> Coral reef fish across Polynesia</h3>
+<section id="coral-reef-fish-across-polynesia" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="coral-reef-fish-across-polynesia"><span class="header-section-number">6.3.2</span> Coral reef fish across Polynesia</h3>
 <p>The Hawaiian Islands and Rapa Nui are unique in the world for their geographic isolation. We might hypothesize that this isolation makes it difficult for organisms to disperse to these islands. Even fish (turns out they swim) might have a difficult time getting there. As such, we might hypothesize that compared to the rest of Polynesia, Hawaiʻi and Rapa Nui might have fewer species of coral reef-associated fishes. Let’s test that out. We have a dataset from <a href="https://onlinelibrary.wiley.com/doi/10.1111/geb.12851">Barneche et. al (2019)</a> that compiles surveys of reef fish from across the globe. The Barneche et. al data report total numbers of species found at different sites. We’ll look at just a subset of those sites to test our <em>scientific</em> hypothesis about species richness of reef fish in Polynesia.</p>
 <p>Let’s go through the steps of null hypothesis testing:</p>
 </section>
@@ -474,8 +462,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>That is the question. Since we’re in <em>bio</em>statistics and the convention in our field is to set <span class="math inline">\(\alpha = 0.05\)</span>, then we will <strong>reject</strong> <span class="math inline">\(H_0\)</span> because <span class="math inline">\(p \le \alpha\)</span>, i.e., it is true that 0 <span class="math inline">\(\le 0.05\)</span>.</p>
 </section>
 </section>
-<section id="questions" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="questions"><span class="header-section-number">8.4</span> Questions</h2>
+<section id="questions" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="questions"><span class="header-section-number">6.4</span> Questions</h2>
 <p>A common hypothesis in the study of biodiversity is that species richness is higher in the tropics. The tropics are defined as any place between the latitudes of -23.43615° and 23.43615°, i.e.&nbsp;23.43615° south of the equator and 23.43615° north of the equator. Reef ecosystems largely exist only within the tropics, but there are a few interesting and unique types of reef ecosystems outside the tropic latitudes as well. That means we can use our reef fish dataset to test whether reef species richness is higher in the tropics or not.</p>
 <p>In questions 1–7 you will conduct the steps of testing this <em>scientific hypothesis</em> with statistical null hypothesis testing.</p>
 <ol type="1">
@@ -737,12 +725,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./lab07.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./lab09.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

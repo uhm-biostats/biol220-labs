@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Labs for Intro Biostatistics - 7&nbsp; Probability</title>
+<title>Labs for Intro Biostatistics - 5&nbsp; Probability</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./lab08.html" rel="next">
-<link href="./lab06.html" rel="prev">
+<link href="./lab04.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -126,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab07.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab07.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -183,50 +183,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 coding, data, graphics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 describing data, standard error, confidence intervals</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./lab07.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
   </div>
 </li>
     </ul>
@@ -239,14 +227,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">7.1</span> Goals</a></li>
-  <li><a href="#exchange-contact-info" id="toc-exchange-contact-info" class="nav-link" data-scroll-target="#exchange-contact-info"><span class="header-section-number">7.2</span> Exchange contact info!</a></li>
-  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">7.3</span> Learning the Tools</a>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">5.1</span> Goals</a></li>
+  <li><a href="#exchange-contact-info" id="toc-exchange-contact-info" class="nav-link" data-scroll-target="#exchange-contact-info"><span class="header-section-number">5.2</span> Exchange contact info!</a></li>
+  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">5.3</span> Learning the Tools</a>
   <ul class="collapse">
-  <li><a href="#more-fun-with-penguins" id="toc-more-fun-with-penguins" class="nav-link" data-scroll-target="#more-fun-with-penguins"><span class="header-section-number">7.3.1</span> More fun with penguins!</a></li>
+  <li><a href="#more-fun-with-penguins" id="toc-more-fun-with-penguins" class="nav-link" data-scroll-target="#more-fun-with-penguins"><span class="header-section-number">5.3.1</span> More fun with penguins!</a></li>
   </ul></li>
-  <li><a href="#simulating-random-events-with-sample" id="toc-simulating-random-events-with-sample" class="nav-link" data-scroll-target="#simulating-random-events-with-sample"><span class="header-section-number">7.4</span> Simulating random events with <code>sample</code></a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">7.5</span> Questions</a></li>
+  <li><a href="#simulating-random-events-with-sample" id="toc-simulating-random-events-with-sample" class="nav-link" data-scroll-target="#simulating-random-events-with-sample"><span class="header-section-number">5.4</span> Simulating random events with <code>sample</code></a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">5.5</span> Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -255,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability</span></h1>
 </div>
 
 
@@ -270,8 +258,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="goals" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">7.1</span> Goals</h2>
+<section id="goals" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">5.1</span> Goals</h2>
 <ul>
 <li>Exchange contact info with your groups</li>
 <li>Be able to estimate probabilities from data</li>
@@ -279,14 +267,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use rules of probability to evaluate if different events in a dataset are likely to be independent or not</li>
 </ul>
 </section>
-<section id="exchange-contact-info" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="exchange-contact-info"><span class="header-section-number">7.2</span> Exchange contact info!</h2>
+<section id="exchange-contact-info" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="exchange-contact-info"><span class="header-section-number">5.2</span> Exchange contact info!</h2>
 <p>Before starting the main content of this lab, take a few minutes to introduce yourselves to your group members and exchange email addresses so you can communicate about your group projects.</p>
 </section>
-<section id="learning-the-tools" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">7.3</span> Learning the Tools</h2>
-<section id="more-fun-with-penguins" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="more-fun-with-penguins"><span class="header-section-number">7.3.1</span> More fun with penguins!</h3>
+<section id="learning-the-tools" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">5.3</span> Learning the Tools</h2>
+<section id="more-fun-with-penguins" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="more-fun-with-penguins"><span class="header-section-number">5.3.1</span> More fun with penguins!</h3>
 <p>We’ll use our old friend the Palmer penguins data set. Let’s first look at some simple probabilities:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
@@ -383,14 +371,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="simulating-random-events-with-sample" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="simulating-random-events-with-sample"><span class="header-section-number">7.4</span> Simulating random events with <code>sample</code></h2>
+<section id="simulating-random-events-with-sample" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="simulating-random-events-with-sample"><span class="header-section-number">5.4</span> Simulating random events with <code>sample</code></h2>
 <p>You’ve seen us use the <code>sample</code> function all the time. We can take a random sample of integers:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly sample 3 numbers between 1 and 10</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  3 10  5</code></pre>
+<pre><code>[1] 5 7 8</code></pre>
 </div>
 </div>
 <p>We can also sample characters:</p>
@@ -398,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample 5 letters from A, B, C with replacement</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "B" "C" "B" "A" "B"</code></pre>
+<pre><code>[1] "C" "A" "A" "C" "C"</code></pre>
 </div>
 </div>
 <p>Try running the above code without setting <code>replace = TRUE</code></p>
@@ -418,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly sample 3 numbers between 1 and 10</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8 6 4</code></pre>
+<pre><code>[1] 10  6  6</code></pre>
 </div>
 </div>
 <p>We can also change the frequency of different outcomes by changing the probability that R assigns to them!</p>
@@ -426,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly sample 3 numbers between 1 and 10</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "A" "B" "A" "A" "A"</code></pre>
+<pre><code>[1] "A" "A" "C" "A" "A"</code></pre>
 </div>
 </div>
 <p>The above code will yield 80% “A”, and 10% of both “B” and “C” if we run it over and over.</p>
@@ -435,13 +423,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># randomly sample 3 numbers between 1 and 10</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "A" "A" "A" "B" "A"</code></pre>
+<pre><code>[1] "A" "A" "A" "A" "C"</code></pre>
 </div>
 </div>
 <p>The exact events will be different because each time you run it is a random trial.</p>
 </section>
-<section id="questions" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="questions"><span class="header-section-number">7.5</span> Questions</h2>
+<section id="questions" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="questions"><span class="header-section-number">5.5</span> Questions</h2>
 <p>In questions 1–4 you will simulate data using the <code>sample</code> function and use the resulting data.frame to evaluate probabilities</p>
 <ol type="1">
 <li><p>Use <code>sample</code> to make a data.frame with 40 rows and 2 columns: <code>x</code> and <code>y</code>. Column <code>x</code> should be filled with a random sample of the the integers 1 and 2, each with equal probability; column <code>y</code> should be filled with a random sample of the letters A and B, each with equal probability.</p></li>
@@ -708,13 +696,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lab06.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🎉 Review 🎉 describing data, standard error, confidence intervals</span></span>
+      <a href="./lab04.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Sampling Distribution</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./lab08.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
