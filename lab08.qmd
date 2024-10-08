@@ -12,16 +12,11 @@ library(DT)
 
 ## Goals
 
-- Discuss ideas for questions and hypotheses with group members 
+
 - Review steps of null hypothesis statistical testing
 - Generate null distributions through repeated random sampling
 - Test hypotheses with null distributions
 
-## Discuss ideas for questions and hypotheses with group members
-
-Before starting the main content of this lab, get together with members of your group for the final project. Make sure everybody agrees on which dataset you will use. Discuss some ideas for questions and hypotheses. Your gruop's write-up of your questions and hypotheses will be due tomorrow!  Consult with your TA about any questions you might have.  Your TA can either answer those, or pass them along to Andy.
-
-This discussion of group projects should be allowed around 20 minutes.
 
 
 ## Learning the Tools
