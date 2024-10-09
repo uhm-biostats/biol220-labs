@@ -1,4 +1,4 @@
-# R functions reference sheet
+# Analysis of Variance
 
 
 ```{r setup, include=FALSE}
