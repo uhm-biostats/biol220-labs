@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lab11.html" rel="next">
+<link href="./lab12.html" rel="next">
 <link href="./lab09.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -192,14 +192,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
+  <a href="./lab12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
+  <a href="./lab11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Regerssion</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
   </div>
 </li>
     </ul>
@@ -259,8 +277,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rchisq</span>(<span class="dv">10</span>, <span class="at">df =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 4.75223180 4.91737276 2.21415590 3.25928877 0.61928947 0.06758679
- [7] 0.23252018 7.36510630 1.18093077 6.68771599</code></pre>
+<pre><code> [1] 2.6534519 1.4713053 0.4326847 3.5033255 1.6272748 7.2516653 0.5083790
+ [8] 2.6512486 3.3647596 3.5873293</code></pre>
 </div>
 </div>
 <p>The above is a random sample of 10 numbers from the <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
@@ -321,10 +339,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n_event <span class="ot">&lt;-</span> <span class="fu">sum</span>(chi2_df3 <span class="sc">&gt;=</span> <span class="fl">7.8</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>n_event <span class="sc">/</span> <span class="fu">length</span>(chi2_df3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.042</code></pre>
+<pre><code>[1] 0.047</code></pre>
 </div>
 </div>
-<p>So the probability <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.042. We are working with random samples here, so your numbers will likely be a little different. If <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.042 seems suspiciously close to 0.05 that’s because I choose 7.8 very deliberately. 7.8 is approximately the <em>critical value</em> for a <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
+<p>So the probability <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.047. We are working with random samples here, so your numbers will likely be a little different. If <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.047 seems suspiciously close to 0.05 that’s because I choose 7.8 very deliberately. 7.8 is approximately the <em>critical value</em> for a <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
 <p>Recall that a critical value is the value that cuts a probability distribution at the desired <span class="math inline">\(\alpha\)</span>, AKA significance level. To calculate the critical value we use <code>qchisq</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this returns the value that divides a chi-sqrd distribution</span></span>
@@ -878,8 +896,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab11.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./lab12.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

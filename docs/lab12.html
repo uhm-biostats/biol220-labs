@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Labs for Intro Biostatistics - 10&nbsp; The normal distribution and sample means</title>
+<title>Labs for Intro Biostatistics - 9&nbsp; The normal distribution and sample means</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lab15.html" rel="next">
-<link href="./lab11.html" rel="prev">
+<link href="./lab11.html" rel="next">
+<link href="./lab10.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab12.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab12.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -192,14 +192,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
+  <a href="./lab12.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab12.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
+  <a href="./lab11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -230,17 +230,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">10.1</span> Goals</a></li>
-  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">10.2</span> Learning the Tools</a>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">9.1</span> Goals</a></li>
+  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">9.2</span> Learning the Tools</a>
   <ul class="collapse">
-  <li><a href="#qq-plot" id="toc-qq-plot" class="nav-link" data-scroll-target="#qq-plot"><span class="header-section-number">10.2.1</span> QQ Plot</a></li>
-  <li><a href="#transformations" id="toc-transformations" class="nav-link" data-scroll-target="#transformations"><span class="header-section-number">10.2.2</span> Transformations</a></li>
+  <li><a href="#qq-plot" id="toc-qq-plot" class="nav-link" data-scroll-target="#qq-plot"><span class="header-section-number">9.2.1</span> QQ Plot</a></li>
+  <li><a href="#transformations" id="toc-transformations" class="nav-link" data-scroll-target="#transformations"><span class="header-section-number">9.2.2</span> Transformations</a></li>
   </ul></li>
-  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities"><span class="header-section-number">10.3</span> Activities</a>
+  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities"><span class="header-section-number">9.3</span> Activities</a>
   <ul class="collapse">
-  <li><a href="#activity-1-distribution-of-sample-means" id="toc-activity-1-distribution-of-sample-means" class="nav-link" data-scroll-target="#activity-1-distribution-of-sample-means"><span class="header-section-number">10.3.1</span> Activity 1: Distribution of sample means</a></li>
+  <li><a href="#activity-1-distribution-of-sample-means" id="toc-activity-1-distribution-of-sample-means" class="nav-link" data-scroll-target="#activity-1-distribution-of-sample-means"><span class="header-section-number">9.3.1</span> Activity 1: Distribution of sample means</a></li>
   </ul></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">10.4</span> Questions</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">9.4</span> Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -249,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></h1>
 </div>
 
 
@@ -264,8 +264,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="goals" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">10.1</span> Goals</h2>
+<section id="goals" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">9.1</span> Goals</h2>
 <ul>
 <li>Visualize properties of the normal distribution.</li>
 <li>Understand the Central Limit Theorem.</li>
@@ -273,8 +273,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Decide whether a data set likely comes from a normal distribution</li>
 </ul>
 </section>
-<section id="learning-the-tools" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">10.2</span> Learning the Tools</h2>
+<section id="learning-the-tools" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">9.2</span> Learning the Tools</h2>
 <p>This week we will mainly focus on some exercises to better understand the nature of the normal distribution. We will also learn a couple of tools that help us decide whether a particular data set is likely to have come from population with an approximately normal distribution.</p>
 <p>Many statistical tests assume that the variable being analyzed has a normal distribution. Fortunately, many of these tests are fairly robust to this assumption—that is, they work reasonably well even when this assumption is not quite true, especially when sample size is large. Therefore it is often sufficient to be able to assess whether the data come from a distribution whose shape is even approximately normal (the bell curve).</p>
 <p>A good way to start is to simply visualize the frequency distribution of the variable in the data set by drawing a histogram. Let’s use the age of passengers on the Titanic for our example.</p>
@@ -290,8 +290,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Looking at this histogram, we see that the frequency distribution of the variable is not exactly normal; it is slightly asymmetric and there seems to be a second mode near 0. On the other hand, like the normal distribution, the frequency distribution has a large mode near the center of the distribution, frequencies mainly fall off to either side, and there are no outliers. This is close enough to normal that most methods would work fine.</p>
-<section id="qq-plot" class="level3" data-number="10.2.1">
-<h3 data-number="10.2.1" class="anchored" data-anchor-id="qq-plot"><span class="header-section-number">10.2.1</span> QQ Plot</h3>
+<section id="qq-plot" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="qq-plot"><span class="header-section-number">9.2.1</span> QQ Plot</h3>
 <p>Another graphical technique that can help us visualize whether a variable is approximately normal is called a quantile plot (or a QQ plot). The QQ plot shows the data on the vertical axis ranked in order from smallest to largest (“sample” in the figure below). On the horizontal axis, it shows the expected value of an individual with the same quantile if the distribution were normal (“theoretical” in the same figure). The QQ plot should follow more or less along a straight line if the data come from a normal distribution (with some tolerance for sampling variation).</p>
 <p>QQ plots can be made in <em>R</em> using a function called <code>geom_qq()</code>. Add <code>geom_qq_line()</code> to draw a line through that QQ plot to make the linear relationship easier to see. The only weird thing about these geom’s is that you need to specify <code>sample</code> in the <code>aes()</code> function.</p>
 <div class="cell">
@@ -314,9 +314,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">13</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 11.174784 13.104214  7.648138 15.856684  4.040495 14.588208 15.365404
- [8]  7.991804 11.483442 10.100472 12.880559 14.879026  1.291009 12.296700
-[15] 13.726999 11.100987 12.576603 14.344710 15.694221 18.884891</code></pre>
+<pre><code> [1]  9.942292 18.129416 12.192635 10.863773  8.311777  7.256846 17.322706
+ [8] 12.059730 18.259957  8.297064  6.797034 12.795351 18.465169 10.211724
+[15]  7.298880 17.783269  6.222133 12.088374 11.081205 11.255123</code></pre>
 </div>
 </div>
 <p>Let’s look at a QQ plot generated from 100 numbers randomly drawn from a normal distribution:</p>
@@ -347,8 +347,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="transformations" class="level3" data-number="10.2.2">
-<h3 data-number="10.2.2" class="anchored" data-anchor-id="transformations"><span class="header-section-number">10.2.2</span> Transformations</h3>
+<section id="transformations" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="transformations"><span class="header-section-number">9.2.2</span> Transformations</h3>
 <p>When data are not normally distributed, we can try to use a simple mathematical transformation on each data point to create a list of numbers that still convey the information about the original question but that may be better matched to the assumptions of our statistical tests. We’ll see more about such transformations in chapter 13 of Whitlock and Schluter, but for now let’s learn how to do one of the most common data transformations, the log-transformation.</p>
 <p>With a transformation, we apply the same mathematical function to each value of a given numerical variable for individual in the data set. With a log-transformation, we take the logarithm of each individual’s value for a numerical variable.</p>
 <p>We can only use the log-transformation if all values are greater than zero. Also, it will only improve the fit of the normal distribution to the data in cases when the frequency distribution of the data is right-skewed.</p>
@@ -359,10 +359,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This will return a vector of values, each of which is the log of age of a passenger.</p>
 </section>
 </section>
-<section id="activities" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="activities"><span class="header-section-number">10.3</span> Activities</h2>
-<section id="activity-1-distribution-of-sample-means" class="level3" data-number="10.3.1">
-<h3 data-number="10.3.1" class="anchored" data-anchor-id="activity-1-distribution-of-sample-means"><span class="header-section-number">10.3.1</span> Activity 1: Distribution of sample means</h3>
+<section id="activities" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="activities"><span class="header-section-number">9.3</span> Activities</h2>
+<section id="activity-1-distribution-of-sample-means" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="activity-1-distribution-of-sample-means"><span class="header-section-number">9.3.1</span> Activity 1: Distribution of sample means</h3>
 <p>We return to the applet we used in chapter 3, located at <a href="http://www.zoology.ubc.ca/~whitlock/Kingfisher/SamplingNormal.htm">http://www.zoology.ubc.ca/~whitlock/Kingfisher/SamplingNormal.htm</a> to investigate three points made in the text.</p>
 <p><strong>Point 1: The distribution of sample means is normal, if the variable itself has a normal distribution.</strong></p>
 <p>First, hit “COMPLETE SAMPLE OF 10” and “CALCULATE MEAN” a few times, to remind yourself of what this applet does. (It takes a sample from the normal distribution shown when you click “SHOW POPULATION”. The top panel shows a histogram of that sample, and the bottom panel shows the distribution of sample means from all the previous samples.)</p>
@@ -378,8 +378,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now set <span class="math inline">\(n=25\)</span> and simulate many sample means. How does the distribution of sample means look now? It should look much more like a normal distribution, because of the Central Limit Theorem.</p>
 </section>
 </section>
-<section id="questions" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="questions"><span class="header-section-number">10.4</span> Questions</h2>
+<section id="questions" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="questions"><span class="header-section-number">9.4</span> Questions</h2>
 <ol type="1">
 <li><p>Let’s use <em>R</em>’s random number generator for the normal distribution to build intuition for how to view and interpret histograms and QQ plots. Remember, the lists of values generated by <code>rnorm()</code> come from a population that truly have a normal distribution.</p>
 <ol type="a">
@@ -638,13 +638,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lab11.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span>
+      <a href="./lab10.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab15.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./lab11.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
