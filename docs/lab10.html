@@ -283,8 +283,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rchisq</span>(<span class="dv">10</span>, <span class="at">df =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 4.1505161 0.8380667 0.8088337 3.6194754 4.4101810 3.6089048 1.5167782
- [8] 2.7571264 7.8385500 1.6100783</code></pre>
+<pre><code> [1] 7.2124230 1.4098802 1.0806319 4.1717771 3.9022538 1.2359550 3.1626169
+ [8] 1.9682343 2.5572440 0.8559613</code></pre>
 </div>
 </div>
 <p>The above is a random sample of 10 numbers from the <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
@@ -345,10 +345,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n_event <span class="ot">&lt;-</span> <span class="fu">sum</span>(chi2_df3 <span class="sc">&gt;=</span> <span class="fl">7.8</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>n_event <span class="sc">/</span> <span class="fu">length</span>(chi2_df3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.04</code></pre>
+<pre><code>[1] 0.041</code></pre>
 </div>
 </div>
-<p>So the probability <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.04. We are working with random samples here, so your numbers will likely be a little different. If <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.04 seems suspiciously close to 0.05 that’s because I choose 7.8 very deliberately. 7.8 is approximately the <em>critical value</em> for a <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
+<p>So the probability <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.041. We are working with random samples here, so your numbers will likely be a little different. If <span class="math inline">\(Pr(\chi^2 \ge 7.8 | df = 3) \approx\)</span> 0.041 seems suspiciously close to 0.05 that’s because I choose 7.8 very deliberately. 7.8 is approximately the <em>critical value</em> for a <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom.</p>
 <p>Recall that a critical value is the value that cuts a probability distribution at the desired <span class="math inline">\(\alpha\)</span>, AKA significance level. To calculate the critical value we use <code>qchisq</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this returns the value that divides a chi-sqrd distribution</span></span>

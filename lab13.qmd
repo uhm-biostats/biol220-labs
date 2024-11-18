@@ -15,7 +15,7 @@ library(DT)
 ## Goals
 
 - Visualize the data for your group project in a way that helps address your scientific hypotheses and predictions 
-
+- Go from scientific questions, predictions, and data visualizations to null hypothesis testing
 
 
 
@@ -32,6 +32,16 @@ Here are the steps for visualizing data with the goal of testing scientific hypo
         - discrete/categorical explanatory variable and continuous response variable: **box plot**
 4. Manipulate your data to make it ready for plotting
 5. Make the plot!
+
+Hand-in-hand with visualization we will over the steps of null hypothesis testing, they are:
+
+1. State null and alternative hypotheses
+2. Calculate test statistic
+2. Identify null distribution 
+3. Calculate $P$-value
+4. Decide:
+    - Reject null
+    - Fail to reject null
 
 To walk through these steps we will use a hypothetical example about arthropod biomass in Hawaiʻi across different environments and over time.
 
@@ -130,6 +140,26 @@ ggplot(dat_no_spp, aes(x = MAP, y = total_mass)) +
 
 There you have it!  You should take a little time to make the plot look nicer, but we have all the data visualized that we need.
 
+This prediction seems well suited to a correlation test. The null hypothesis is that **there is zero correlation between MAP and total mass** (i.e. $H_0 \text{: } \rho = 0$). The alternative hypothesis is that **MAP and total mass have a non-zero correlation** (i.e. $H_A \text{: } \rho \neq 0$).
+
+The test statistic is the sample correlation coefficient $r$.  And the null distribution is the $t$ distribution with $df = n - 2$ degrees of freedom.
+
+We can use the `cor.test` function to run this null hypothesis test
+
+```{r}
+# recall from the previous lab that we already made the dat_no_spp
+# data frame
+
+cor.test(dat_no_spp$MAP, dat_no_spp$total_mass)
+
+```
+
+
+Now we decide: the $P$-value is *much* less than $\alpha = 0.05$ so we reject the null of no correlation.
+
+Now let's have a look at the next prediction we had from the last lab:
+
+
 ### Another example prediction: Malaise traps will catch less biomass of species 1 compared to pitfall traps
 
 We stated the prediction above, now we need to identify the variables:
@@ -180,6 +210,29 @@ ggplot(subset(dat_by_trap, dat_by_trap$species == "species_1"),
 
 Again, you should take some time to beautify your plot, but all the info from the data are now visualized!
 
+Here we have a categorical explanatory variable and a numerical response variable.  This is well-suited for a $t$-test.  Because we have two categories, we might be tempted to do a two-sample $t$-test.  
+
+Our hypotheses are:
+
+- $H_0$: $\mu_\text{malaise} = \mu_\text{pitfall}$
+- $H_A$: $\mu_\text{malaise} \neq \mu_\text{pitfall}$
+
+The test-statistic is the difference in the two sample means divided by the pooled standard error.  But wait! Perhaps we should iterate on this a little.  Each replicate of the pitfall traps and malaise traps are located **at the same site**, so really we have a *paired* $t$-test.
+
+The null and alternative hypotheses stay the same, but the test statistic will change because the standard error calculation is different between two-sample and paired $t$-tests. Our degrees of freedom, and thus are null distribution, will also be very different between the two-sample $t$-test and the paired $t$-test.  For the paired $t$-test the degrees of freedom are $df = \text{(number of pairs)} - 1$.
+
+The `t.test` function will handle these calculations for us
+
+```{r}
+# recall from the last lab we already made the dat_by_trap data frame
+just_sp1 <- subset(dat_by_trap, dat_by_trap$species == "species_1")
+
+# MAKE SURE TO SET paired = TRUE!!!
+t.test(just_sp1$total_mass ~ just_sp1$trap_type, paired = TRUE)
+```
+
+Now we decide: the $P$-value is less than $\alpha = 0.05$ so we reject the null of no difference between the means.
+
 
 ## Questions
 
@@ -192,3 +245,10 @@ Now it's your turn to to walk through the steps of visualizing your data for tes
     - this you do not need to copy into the google doc, but make sure you save your script in posit cloud
 5. Make the plot!
     - take a screenshot of your plot(s) and paste the screenshot(s) into the google doc
+1. State null and alternative hypotheses
+2. Calculate test statistic (and include a written justification for why this test statistic is appropriate)
+2. Identify null distribution (and include a written justification for why this null distribution is appropriate) 
+3. Calculate $P$-value
+4. Decide:
+    - Reject null
+    - Fail to reject null
