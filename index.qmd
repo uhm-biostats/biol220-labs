@@ -12,26 +12,22 @@ For this course, you won't need *R* and *RStudio* installed on your own device b
 
 ## Using *Posit Cloud*
 
-We have setup Workspaces for each lab assignment and each lab section.  For example, the workspace for lab01 materials for section 001 is lab01-001. Join the Workspace for each lab by clicking on the appropriate link in Google Classroom (e.g. "Lab 01-005 Posit Cloud Link" for the first week's materials for section 005)
+We have setup Workspaces for each lab section.  For example, the workspace for section 001 is biol220-sec001. Join the *Posit Cloud* Workspace for your lab section by clicking on the appropriate link in the Lab 01 Assignment on Laulima.
 
-**Important**: Login with your userid@hawaii.edu account, not a personal gmail account. If you accidentally use your personal account, let me know. I will delete it while you register with the university account.
-
-**Note**: Wherever images say "lab02", replace that with the actual lab number you will be completing (e.g. "lab01" or "lab11").
+**Important**: Login with your userid@hawaii.edu account, not a personal gmail account. If you accidentally use your personal account, let your TA know. They will delete it while you register with the university account.
 
 ![](images/rstudio-cloud-11.png)
 
-3. Once you're logged in, the lab01 Workspace will looking something like this (*note: where it says "-monday" in the picture should be your section number*):
+**Note**: Wherever images say "lab02", replace that with the actual lab number you will be completing (e.g. "lab01" or "lab11").
+
+Once you're logged in, the lab01 Workspace will looking something like this (*note: where it says "-monday" in the picture should be your section number*):
 
 ![](images/rstudio-cloud-08.png)
 
-Each item listed under "All Projects" is a "Project" within the lab01-section Workspace. Each week I will create a Project template that you will copy and work from (you cannot edit the original). 
+Each item listed under "All Projects" is a "Project" within the biol220-sec001 Workspace. You will copy this and work from your own copy (you cannot edit the original). 
 
-4. To create your own, click "START" to the left of "lab01".
+To create your own, click "START" to the left of "lab01".
 
 ![](images/rstudio-cloud-10.png)
-
-5. Once the Project is copied and deployed, rename the Project from "lab01" to include your name like this: `lab01-muir-chris`
-
-![](images/rstudio-cloud-09.png)
 
 **Disclaimer: These labs rely heavily on those developed by Mike Whitlock for his BIOL 300 course at UBC <https://www.zoology.ubc.ca/~whitlock/bio300/>.** In some cases the materials have been used *verbatim*, in other cases Chris Muir, and/or Andy Rominger have added new material, or heavily modified the original material by Prof. Whitlock.
