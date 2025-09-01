@@ -1,6 +1,6 @@
 # Getting started
 
-As with all labs, please complete this lab using *RStudio* running on the UH *Koa Server* (more on what that is below). 
+As with all labs, please complete this lab using *RStudio* running on the UH *Koa Server*. Access the *Koa Server* at [koa.its.hawaii.edu](https://koa.its.hawaii.edu/){target="_blank"} and use your UH credentials to log in.
 
 ## Goals
 
@@ -305,13 +305,21 @@ The first row of a CSV file should be a "header" row, which gives the names of e
 
 For examples in this tutorial, let's use a data set about the passengers of the *RMS Titanic*. One of the data sets in the folder of data attached to this lab is called "titanic.csv". This is a data set of 1313 passengers from the voyage of this ship, which contains information about some personal info about each passenger as well as whether they survived the accident or not.
 
-To import a CSV file into *R*, use the `read.csv()` function as in the following command. (This assumes that you have set the working directory to the labs folder, as we described above.)
+To import a CSV file into *R*, use the `read.csv()` function as in the following command. The long string in the quotes is how we tell *R* where to find the file we want to read in. Note: you will need to replace `<username>` with your actual UH username, for example I would replace `<username>` with `rominger`. In this case, the file is in the `data` folder, itself in the student's `<username` folder, itself in the `biol220_class` folder.  All data we use will be found in the `data` folder at this location.
 
-```{r, echo = TRUE, eval = TRUE}
+```{r}
+#| echo: false
+
 titanic_data <- read.csv("data/titanic.csv")
 ```
 
-This looks for the file called `titanic.csv` in the folder called `data`. Here we have given the name `titanic_data` to the object in *R* that contains all this passenger data. Of course, if you wanted to load a different data set, you would be better off giving it a more apt name than "`titanic_data`".
+```{r}
+#| eval: false
+
+titanic_data <- read.csv("biol220_class/students/<username>/data/titanic.csv")
+```
+
+Here we have given the name `titanic_data` to the object in *R* that contains all this passenger data. Of course, if you wanted to load a different data set, you would be better off giving it a more apt name than "`titanic_data`".
 
 To see if the data loads appropriately, you might want to run the command
 

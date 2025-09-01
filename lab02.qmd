@@ -1,13 +1,14 @@
 # Graphics in R
 
+As with all labs, please complete this lab using *RStudio* running on the UH *Koa Server*. Access the *Koa Server* at [koa.its.hawaii.edu](https://koa.its.hawaii.edu/){target="_blank"} and use your UH credentials to log in. If needed, refer back to ["Setup"](index.qmd) and ["Lab 1"](lab01.qmd) for instructions on access, setting up your account, and how to turn in your lab report.
+
 ## Goals
 
-- Know how to load packages to expand the capabilities of R
-- Know some basic graphical formats and when they are useful.
-- Make graphs in *R*, such as histograms, bar charts, box plots, and scatter plots.
+- Know how to load packages to expand the capabilities of *R*
+- Know some basic graphical formats and when they are useful
+- Make graphs in *R*, such as histograms, bar charts, box plots, and scatter plots
 - Be able to suggest improvements to basic graphs to improve readability and accurate communication
 
-As will be the case with all labs, this lab will be completed using *Posit Cloud*. If needed, refer back to ["Setup"](index.qmd) and ["Lab 1"](lab01.qmd) for instructions on access and setting up your workspace for this lab. Here is the direct link to the *Posit Cloud* shared workspace for Lab 2: xyz.
 
 ## Learning the Tools
 
@@ -32,7 +33,7 @@ install.packages("ggplot2")
 ```
 
 
-Installing a package only needs to be done once on a given computer or a given *Posit Cloud* Workspace, and that package is permanently available.
+Installed packages will be available for future work sessions on *Koa Server* without needing to go through the installation process again. This is also true when using your own computer. But you will need to re-install packages after software updates.
 
 
 ### Loading a package
@@ -65,14 +66,22 @@ A histogram represents the frequency distribution of a numerical variable in a s
 Let's see how to make a basic histogram using the age data from the Titanic data set. Make sure you have loaded the data (using `read.csv()`) into a data frame called `titanic_data`.
 
 ```{r}
+#| echo: false
+
 titanic_data <- read.csv("data/titanic.csv")
+```
+
+```{r}
+#| eval: false
+
+titanic_data <- read.csv("biol220_class/students/rominger/data/titanic.csv")
 ```
 
 Here's the *ggplot2* code to make a simple histogram of age:
 
 ```{r}
 ggplot(titanic_data, aes(x = age)) + 
-  geom_histogram()
+    geom_histogram()
 ```
 
 Notice that there are two functions called here, put together in a single command with a `+` sign. You don't have to put a line break after the `+` (*R* ignores it), but it makes the code more readable. The first function is `ggplot`, and it has two input arguments. The first is `titanic_data`, this is the name of the data frame containing the variables that we want to graph. The second input to `ggplot` is an `aes` function. In this case, the `aes` function tells *R* that we want `Age` to be the $x$-variable (i.e. the variable that is displayed along the $x$-axis). The "`aes`" stands for "aesthetics".
@@ -83,7 +92,7 @@ Running this should give a plot that look something like this:
 
 ```{r, echo = FALSE, eval = TRUE, warning = FALSE, message = FALSE}
 ggplot(titanic_data, aes(x = age)) + 
-  geom_histogram()
+    geom_histogram()
 ```
 
 This is not the most beautiful graph in the world, but it conveys the information. At the end of this tutorial we'll see a couple of options that can make a `ggplot` graph look a little better.
@@ -120,14 +129,14 @@ A boxplot is a convenient way of showing the distribution of a numerical variabl
 
 ```{r, echo = TRUE, eval = FALSE}
 ggplot(titanic_data, aes(x = sex, y = age)) + 
-  geom_boxplot()
+    geom_boxplot()
 ```
 
 Notice that the $y$ variable here is `age`, and $x$ is the categorical variable sex that goes on the $x$-axis. The other new feature here is the new geom function, `geom_boxplot()`.
 
 ```{r, echo = FALSE, eval = TRUE, warning = FALSE}
 ggplot(titanic_data, aes(x = sex, y = age)) + 
-  geom_boxplot()
+    geom_boxplot()
 ```
 
 Here the thick bar in the middle of each boxplot is the median of that group. The upper and lower bounds of the box extend from the first to the third quartile. The vertical lines are called whiskers, and they cover most of the range of the data (except when data points are pretty far from the median, then they are plotted as individual dots, as on the male boxplot).
@@ -156,7 +165,7 @@ To make a scatter plot of the variables `temp_C` and `spp_richness` with **ggplo
 # This has no effect on the code, but makes it easier to read IMO
 ggplot(reef_fish, 
        aes(x = temp_C, y = spp_richness)) +
-  geom_point()
+    geom_point()
 ```
 
 The result look like this:
@@ -164,7 +173,7 @@ The result look like this:
 ```{r, echo = FALSE, eval = TRUE}
 ggplot(reef_fish, 
        aes(x = temp_C, y = spp_richness)) +
-  geom_point()
+    geom_point()
 ```
 
 ### Better looking graphics with options
@@ -176,9 +185,9 @@ Let's dig a little deeper into just a couple of options that you can add to any 
 ```{r, echo = TRUE, eval = FALSE}
 ggplot(reef_fish, 
        aes(x = temp_C, y = spp_richness)) +
-  geom_point() +
-  xlab("Temperature (degrees C)") +
-  ylab("Species richness")
+    geom_point() +
+    xlab("Temperature (degrees C)") +
+    ylab("Species richness")
 ```
 
 The labels that we want to add are included in quotes inside the `xlab()` and `ylab()` functions. Here is what appears:
@@ -186,9 +195,9 @@ The labels that we want to add are included in quotes inside the `xlab()` and `y
 ```{r, echo = FALSE, eval = TRUE}
 ggplot(reef_fish, 
        aes(x = temp_C, y = spp_richness)) +
-  geom_point() +
-  xlab("Temperature (degrees C)") +
-  ylab("Species richness")
+    geom_point() +
+    xlab("Temperature (degrees C)") +
+    ylab("Species richness")
 ```
 
 It can also be nice to remove the default gray background, to make what some feel is a cleaner graph. Try adding
@@ -197,7 +206,7 @@ It can also be nice to remove the default gray background, to make what some fee
 + theme_minimal()
 ```
 
-to the end of one of your lines of code making a graph, to see whether you prefer the result to the default design.
+to the end of one of your lines of code making a graph, to see whether you prefer the result compared to the default design.
 
 ### Color palettes
 
@@ -207,44 +216,47 @@ The cool thing about **ggplot2** is we can assign a large number of graphical fe
 
 ```{r}
 ggplot(titanic_data, aes(x = age, fill = sex)) +
-  geom_histogram()
+    geom_histogram()
 ```
 
 That works, but it's pretty ugly. For one thing, the bars are stacked on top of one another, so it's hard to see the separate histograms for males and females. We'll fix that by using the `position = ...` argument in the `geom_histogram()` function like this:
 
 ```{r}
 ggplot(titanic_data, aes(x = age, fill = sex)) +
-  # I will interleave comments to explain what's going on
-  # position = position_identity() stops the bars from stacking
-  geom_histogram(position = position_identity())
+    # I will interleave comments to explain what's going on
+    # position = position_identity() stops the bars from stacking
+    geom_histogram(position = position_identity())
 ```
 
 Well, that's worse! Now the male bars are blocking the female bars. Let's add a couple more arguments, making the color 50% transparent using the `alpha = ...` argument. I'll also make the color around the bars black so we can see them better.
 
 ```{r}
 ggplot(titanic_data, aes(x = age, fill = sex)) +
-  # alpha = 0.5 makes bars transparent
-  # color = "black" adds black lines around bars
-  geom_histogram(alpha = 0.5, color = "black", position = position_identity())
+    # alpha = 0.5 makes bars transparent
+    # color = "black" adds black lines around bars
+    geom_histogram(alpha = 0.5, color = "black", 
+                   position = position_identity())
 ```
 
 Better, but not great. Let's use the `facet_grid()` function to put the histograms on separate panels. For this, we have to put sex in quotes (learning when things need to be quoted or not is frustrating).
 
 ```{r}
 ggplot(titanic_data, aes(x = age, fill = sex)) +
-  # facet_grid() makes separate panels for each sex
-  facet_grid(rows = "sex") +
-  geom_histogram(alpha = 0.5, color = "black", position = position_identity())
+    # facet_grid() makes separate panels for each sex
+    facet_grid(rows = "sex") +
+    geom_histogram(alpha = 0.5, color = "black", 
+                   position = position_identity())
 ```
 
 Pretty good. Now, let's finally add the viridis color palette. **ggplot2** has some built in functions that you can just add using the `+` operator to change the color, like this:
 
 ```{r}
 ggplot(titanic_data, aes(x = age, fill = sex)) +
-  facet_grid(rows = "sex") +
-  geom_histogram(alpha = 0.5, color = "black", position = position_identity()) +
-  # This function changes the color palette
-  scale_fill_viridis_d()
+    facet_grid(rows = "sex") +
+    geom_histogram(alpha = 0.5, color = "black", 
+                   position = position_identity()) +
+    # This function changes the color palette
+    scale_fill_viridis_d()
 
 ```
 
@@ -258,7 +270,8 @@ help(ggplot)
 # you can also use
 ?ggplot
 ```
-This will cause the contents of the manual page for this function to appear in the Help window in *RStudio Cloud*. These manual pages are often frustratingly technical. What many of us do instead is simply google the name of the function—there are a great number of resources online about *R*.
+
+This will cause the contents of the manual page for this function to appear in the Help window in *RStudio Cloud*. These manual pages are often frustratingly technical. An additional aid is to simply google the name of the function---there are a great number of resources online about *R*.
 
 
 ## Questions

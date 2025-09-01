@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./lab02.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -186,6 +187,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphics in R</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -245,7 +252,7 @@ window.Quarto = {
 </header>
 
 
-<p>As with all labs, please complete this lab using <em>RStudio</em> running on the UH <em>Koa Server</em> (more on what that is below).</p>
+<p>As with all labs, please complete this lab using <em>RStudio</em> running on the UH <em>Koa Server</em>. Access the <em>Koa Server</em> at <a href="https://koa.its.hawaii.edu/" target="_blank">koa.its.hawaii.edu</a> and use your UH credentials to log in.</p>
 <section id="goals" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">1.1</span> Goals</h2>
 <ul>
@@ -501,11 +508,11 @@ window.Quarto = {
 <p>In this course, we have saved the data in a “comma-separated variable” format. All files in this format ought to have “.csv” as the end of their file name. A CSV file is a plain text file, easily read by a wide variety of programs. Each row in the file (besides the first row) is the data for a given individual, and for each individual each variable is listed in the same order, separated by commas. It’s important to note that you can’t have commas anywhere else in the file, besides the separators.</p>
 <p>The first row of a CSV file should be a “header” row, which gives the names of each variable, again separated by commas.</p>
 <p>For examples in this tutorial, let’s use a data set about the passengers of the <em>RMS Titanic</em>. One of the data sets in the folder of data attached to this lab is called “titanic.csv”. This is a data set of 1313 passengers from the voyage of this ship, which contains information about some personal info about each passenger as well as whether they survived the accident or not.</p>
-<p>To import a CSV file into <em>R</em>, use the <code>read.csv()</code> function as in the following command. (This assumes that you have set the working directory to the labs folder, as we described above.)</p>
+<p>To import a CSV file into <em>R</em>, use the <code>read.csv()</code> function as in the following command. The long string in the quotes is how we tell <em>R</em> where to find the file we want to read in. Note: you will need to replace <code>&lt;username&gt;</code> with your actual UH username, for example I would replace <code>&lt;username&gt;</code> with <code>rominger</code>. In this case, the file is in the <code>data</code> folder, itself in the student’s <code>&lt;username</code> folder, itself in the <code>biol220_class</code> folder. All data we use will be found in the <code>data</code> folder at this location.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>titanic_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/titanic.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>titanic_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"biol220_class/students/&lt;username&gt;/data/titanic.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This looks for the file called <code>titanic.csv</code> in the folder called <code>data</code>. Here we have given the name <code>titanic_data</code> to the object in <em>R</em> that contains all this passenger data. Of course, if you wanted to load a different data set, you would be better off giving it a more apt name than “<code>titanic_data</code>”.</p>
+<p>Here we have given the name <code>titanic_data</code> to the object in <em>R</em> that contains all this passenger data. Of course, if you wanted to load a different data set, you would be better off giving it a more apt name than “<code>titanic_data</code>”.</p>
 <p>To see if the data loads appropriately, you might want to run the command</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(titanic_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -594,7 +601,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab01_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="440"></p>
+<p><img src="lab01_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="440"></p>
 </figure>
 </div>
 </div>
@@ -604,7 +611,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab01_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="439"></p>
+<p><img src="lab01_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="439"></p>
 </figure>
 </div>
 </div>
@@ -1132,6 +1139,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./lab02.html" class="pagination-link" aria-label="Graphics in R">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphics in R</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
