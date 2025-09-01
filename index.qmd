@@ -1,33 +1,149 @@
+---
+execute:
+  echo: false
+  message: false
+  warning: false
+---
+
 # Setup {.unnumbered}
 
 ## Software and Cloud Services
 
-All labs will use *R*, *RStudio*, and *Posit Cloud*.
+All labs will use *R*, *RStudio*, and the *Koa Server* operated by UH Mānoa.
 
 *R* is a computer program that allows an extraordinary range of statistical calculations. It is a free program, mainly written by volunteer contributors from around the world.
 
-*RStudio* is a separate program, also free, that allows you to easily organize separate tabs for *R* code files, graphic, help docs, and more.
+*RStudio* is a separate program, also free, that allows you to easily organize separate tabs for *R* code files, graphics, help docs, and more.
 
-For this course, you won't need *R* and *RStudio* installed on your own device because we will work in *Posit Cloud*. However, if you wish to install them on your device, go to <https://rstudio.com/products/rstudio/download/> for instructions about getting set up.
+For this course, you won't need *R* and *RStudio* installed on your own device because we will work on the *Koa Server*. However, if you wish to install them on your device, go to <https://rstudio.com/products/rstudio/download/> for instructions about getting set up.
 
-## Using *Posit Cloud*
+## Using the *Koa Server*
 
-We have setup Workspaces for each lab section.  For example, the workspace for section 001 is biol220-sec001. Join the *Posit Cloud* Workspace for your lab section by clicking on the appropriate link in the Lab 01 Assignment on Laulima.
+```{r}
+#| label: koa_img_setup
 
-**Important**: Login with your userid@hawaii.edu account, not a personal gmail account. If you accidentally use your personal account, let your TA know. They will delete it while you register with the university account.
+library(magick)
+library(grid)
 
-![](images/rstudio-cloud-11.png)
+for(i in 1:8) {
+  assign(sprintf("koa%s", i), 
+         image_trim(image_read(sprintf("images/koa/‎koa.‎00%s.png", i))))
+  
+}
+```
 
-**Note**: Wherever images say "lab02", replace that with the actual lab number you will be completing (e.g. "lab01" or "lab11").
+The *Koa Server* allows us to run *R* and *RStudio* remotely on the servers maintained by UH.  Each student has a dedicated folder where all labs (and problem sets) will be posted. 
 
-Once you're logged in, the lab01 Workspace will looking something like this (*note: where it says "-monday" in the picture should be your section number*):
+To log into the *Koa Server* visit this url: [koa.its.hawaii.edu](https://koa.its.hawaii.edu/){target="_blank"}.
 
-![](images/rstudio-cloud-08.png)
+When prompted, login with your UH credentials.  Once you are logged in, you will see this landing page:
 
-Each item listed under "All Projects" is a "Project" within the biol220-sec001 Workspace. You will copy this and work from your own copy (you cannot edit the original). 
+```{r}
+#| label: koa1
+#| fig-width: !expr image_info(koa1)$width / 150
+#| fig-height: !expr image_info(koa1)$height / 150
 
-To create your own, click "START" to the left of "lab01".
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa1) |> 
+  grid.raster()
+```
 
-![](images/rstudio-cloud-10.png)
+Click on the "Interactive Apps" drop-down menu and select RStudio Server
 
-**Disclaimer: These labs rely heavily on those developed by Mike Whitlock for his BIOL 300 course at UBC <https://www.zoology.ubc.ca/~whitlock/bio300/>.** In some cases the materials have been used *verbatim*, in other cases Chris Muir, and/or Andy Rominger have added new material, or heavily modified the original material by Prof. Whitlock.
+```{r}
+#| label: koa2
+#| fig-width: !expr image_info(koa2)$width / 150
+#| fig-height: !expr image_info(koa2)$height / 150
+
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa2) |> 
+  grid.raster()
+```
+
+This will open up a form where you can select different options for your session working on the *Koa Server*. Leave all the defaults as is **except** 
+
+- enter a reasonable number of hours from 1--4 depending on how long you plan to work in one continuous sitting (if you keep working past the number of hours you entered your session will end, but not to worry, you can just restart it and you won't lose any work)
+- enter 8 GB of RAM (after you set this as 8 the first time, you might not need to re-set it)
+
+Once you have made your selection for hours and RAM, hit "Launch."
+
+```{r}
+#| label: koa3
+#| fig-width: !expr image_info(koa3)$width / 150
+#| fig-height: !expr image_info(koa3)$height / 150
+
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa3) |> 
+  grid.raster()
+```
+
+You will have to wait a few seconds for your session to become active. Once it's ready you will see a button "Connect to RStudio Server."  Click that button and you will be taken to your *RStudio* session.
+
+```{r}
+#| label: koa4
+#| fig-width: !expr image_info(koa4)$width / 150
+#| fig-height: !expr image_info(koa4)$height / 150
+
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa4) |> 
+  grid.raster()
+```
+
+RStudio is arranged into several panels, each with its own purpose.  You will learn all about these in ["Lab 01: Getting started"](lab01.qmd).  For now, we need to know that the bottom right panel is how we access files and folders on the server.  Click on the folder named for our class "biol220_class."
+
+```{r}
+#| label: koa5
+#| fig-width: !expr image_info(koa5)$width / 150
+#| fig-height: !expr image_info(koa5)$height / 150
+
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa5) |> 
+  grid.raster()
+```
+
+
+Then click "students"
+
+```{r}
+#| label: koa6
+#| fig-width: !expr image_info(koa6)$width / 150
+#| fig-height: !expr image_info(koa6)$height / 150
+
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa6) |> 
+  grid.raster()
+```
+
+And finally click on the folder named the same as your UH username
+
+```{r}
+#| label: koa7
+#| fig-width: !expr image_info(koa7)$width / 150
+#| fig-height: !expr image_info(koa7)$height / 150
+
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa7) |> 
+  grid.raster()
+```
+
+Now the bottom right panel will show you all your lab (and problem set) assignments.  As assignments are posted they will appear inside your folder.  As an example, check out the "lab_01_getting-started.R" assignment. Clicking on that file will open an R script where you will complete the assignment.
+
+```{r}
+#| label: koa8
+#| fig-width: !expr image_info(koa8)$width / 150
+#| fig-height: !expr image_info(koa8)$height / 150
+
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa8) |> 
+  grid.raster()
+```
+
+You'll see that the file opens in the top left panel.

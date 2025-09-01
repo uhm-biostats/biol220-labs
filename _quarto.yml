@@ -5,23 +5,22 @@ project:
 
 book:
   title: "Labs for Intro Biostatistics"
-  author: "Mike Whitlock (original material), Chris Muir (modifications), Renata Diaz (web design)"
   chapters:
     - index.qmd
     - lab01.qmd
-    - lab02.qmd
-    - lab03.qmd
-    - lab04.qmd
-    - lab07.qmd
-    - lab08.qmd
-    - lab09.qmd
-    - lab10.qmd
-    - lab12.qmd
-    - lab11.qmd
-    - lab15.qmd
-    - lab13.qmd
-    - lab16.qmd
-    - lab17.qmd
+    # - lab02.qmd
+    # - lab03.qmd
+    # - lab04.qmd
+    # - lab07.qmd
+    # - lab08.qmd
+    # - lab09.qmd
+    # - lab10.qmd
+    # - lab12.qmd
+    # - lab11.qmd
+    # - lab15.qmd
+    # - lab13.qmd
+    # - lab16.qmd
+    # - lab17.qmd
 comments:
   hypothesis: true
 

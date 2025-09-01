@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Labs for Intro Biostatistics - 1&nbsp; Getting started</title>
+<title>1&nbsp; Getting started – Labs for Intro Biostatistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,24 +64,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lab02.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b26e19045aa9867e81a6a72d21989353.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,15 +95,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -108,13 +146,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -123,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Labs for Intro Biostatistics</a> 
@@ -148,88 +186,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphics in R</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Workikng with data</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Sampling Distribution</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title"><em>R</em> functions quick reference sheet</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab15.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab13.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Visualizing data for hypothesis testing</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab16.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Regerssion</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lab17.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -237,17 +197,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">1.1</span> Goals</a></li>
-  <li><a href="#r-rstudio-and-posit-cloud" id="toc-r-rstudio-and-posit-cloud" class="nav-link" data-scroll-target="#r-rstudio-and-posit-cloud"><span class="header-section-number">1.2</span> <em>R</em>, <em>RStudio</em>, and <em>Posit Cloud</em></a>
+  <li><a href="#r-rstudio-and-koa-server" id="toc-r-rstudio-and-koa-server" class="nav-link" data-scroll-target="#r-rstudio-and-koa-server"><span class="header-section-number">1.2</span> <em>R</em>, <em>RStudio</em>, and <em>Koa Server</em></a>
   <ul class="collapse">
   <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r"><span class="header-section-number">1.2.1</span> What is <em>R</em>?</a></li>
   <li><a href="#what-is-rstudio" id="toc-what-is-rstudio" class="nav-link" data-scroll-target="#what-is-rstudio"><span class="header-section-number">1.2.2</span> What is <em>RStudio</em>?</a></li>
-  <li><a href="#what-is-posit-cloud" id="toc-what-is-posit-cloud" class="nav-link" data-scroll-target="#what-is-posit-cloud"><span class="header-section-number">1.2.3</span> What is <em>Posit Cloud</em>?</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">1.2.4</span> Resources</a></li>
-  <li><a href="#getting-started-with-posit-cloud" id="toc-getting-started-with-posit-cloud" class="nav-link" data-scroll-target="#getting-started-with-posit-cloud"><span class="header-section-number">1.2.5</span> Getting started with <em>Posit Cloud</em></a></li>
+  <li><a href="#what-is-the-koa-server" id="toc-what-is-the-koa-server" class="nav-link" data-scroll-target="#what-is-the-koa-server"><span class="header-section-number">1.2.3</span> What is the <em>Koa Server</em>?</a></li>
+  <li><a href="#getting-started-with-on-the-koa-server" id="toc-getting-started-with-on-the-koa-server" class="nav-link" data-scroll-target="#getting-started-with-on-the-koa-server"><span class="header-section-number">1.2.4</span> Getting started with on the <em>Koa Server</em></a></li>
   </ul></li>
   <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">1.3</span> Learning the Tools</a>
   <ul class="collapse">
-  <li><a href="#the-command-line" id="toc-the-command-line" class="nav-link" data-scroll-target="#the-command-line"><span class="header-section-number">1.3.1</span> The command line</a></li>
+  <li><a href="#the-console" id="toc-the-console" class="nav-link" data-scroll-target="#the-console"><span class="header-section-number">1.3.1</span> The Console</a></li>
   <li><a href="#saving-your-code" id="toc-saving-your-code" class="nav-link" data-scroll-target="#saving-your-code"><span class="header-section-number">1.3.2</span> Saving your code</a></li>
   <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments"><span class="header-section-number">1.3.3</span> Comments</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">1.3.4</span> Functions</a></li>
@@ -282,21 +241,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<p>Please complete this lab using <em>Posit Cloud</em> (more on what that is below). Here is the <em>Posit Cloud</em> workspace link for this lab: <a href="https://posit.cloud/spaces/463390/content/all?sort=name_asc" class="uri">https://posit.cloud/spaces/463390/content/all?sort=name_asc</a>.</p>
+
+<p>As with all labs, please complete this lab using <em>RStudio</em> running on the UH <em>Koa Server</em> (more on what that is below).</p>
 <section id="goals" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">1.1</span> Goals</h2>
 <ul>
-<li>Learning how to start with <em>Posit Cloud</em></li>
+<li>Learning how to start with <em>Koa Server</em></li>
 <li>Use the command line</li>
 <li>Use functions in <em>R</em></li>
 <li>Use vectors</li>
 <li>Use data frames</li>
 </ul>
 </section>
-<section id="r-rstudio-and-posit-cloud" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="r-rstudio-and-posit-cloud"><span class="header-section-number">1.2</span> <em>R</em>, <em>RStudio</em>, and <em>Posit Cloud</em></h2>
+<section id="r-rstudio-and-koa-server" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="r-rstudio-and-koa-server"><span class="header-section-number">1.2</span> <em>R</em>, <em>RStudio</em>, and <em>Koa Server</em></h2>
 <section id="what-is-r" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="what-is-r"><span class="header-section-number">1.2.1</span> What is <em>R</em>?</h3>
 <p><em>R</em> is a computer program that allows an extraordinary range of statistical calculations. It is a free program, mainly written by voluntary contributions from statisticians around the world. <em>R</em> is available on most operating systems, including Windows, Mac OS, and Linux.</p>
@@ -305,35 +266,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-is-rstudio" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="what-is-rstudio"><span class="header-section-number">1.2.2</span> What is <em>RStudio</em>?</h3>
 <p><em>RStudio</em> is a separate program, also free, that provides a more elegant front end for <em>R</em>. <em>RStudio</em> allows you to easily organize separate windows for <em>R</em> commands, graphic, help, etc. in one place.</p>
-<p>For this course, you won’t need <em>R</em> and <em>RStudio</em> installed on your own device because we will work in <em>Posit Cloud</em>. However, if you wish to install them on your device, go to <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a> for instructions about getting set up.</p>
+<p>For this course, you won’t need <em>R</em> and <em>RStudio</em> installed on your own device because we will work on the <em>Koa Server</em>. However, if you wish to install them on your device, go to <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a> for instructions about getting set up.</p>
 </section>
-<section id="what-is-posit-cloud" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3" class="anchored" data-anchor-id="what-is-posit-cloud"><span class="header-section-number">1.2.3</span> What is <em>Posit Cloud</em>?</h3>
-<p><em>Posit Cloud</em> allows you to run a hosted version of <em>RStudio</em> in the cloud that allows you to run R without having to download anything on your personal computer or confirgure your personal computer. You access <em>Posit Cloud</em> from your browser, and conveniently you can access from <em>any</em> computer, not just your personal device.</p>
+<section id="what-is-the-koa-server" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="what-is-the-koa-server"><span class="header-section-number">1.2.3</span> What is the <em>Koa Server</em>?</h3>
+<p>The <em>Koa Server</em> allows you to run a hosted version of <em>RStudio</em> in the cloud that allows you to run R without having to download anything on your personal computer or confirgure your personal computer. You access the <em>Koa Server</em> from your browser, and conveniently you can access it from <em>any</em> computer or tablet.</p>
 </section>
-<section id="resources" class="level3" data-number="1.2.4">
-<h3 data-number="1.2.4" class="anchored" data-anchor-id="resources"><span class="header-section-number">1.2.4</span> Resources</h3>
-<blockquote class="blockquote">
-<p><em>Posit Cloud</em> provides many learning materials: <a href="https://posit.cloud/learn/recipes">interactive tutorials</a> covering the basics of data science, <a href="https://posit.co/resources/cheatsheets/">cheatsheets</a>, and a <a href="https://posit.cloud/learn/guide">guide to using <em>Posit Cloud</em></a>.</p>
-</blockquote>
-</section>
-<section id="getting-started-with-posit-cloud" class="level3" data-number="1.2.5">
-<h3 data-number="1.2.5" class="anchored" data-anchor-id="getting-started-with-posit-cloud"><span class="header-section-number">1.2.5</span> Getting started with <em>Posit Cloud</em></h3>
-<p>Follow the instructions on the <a href="./index.html">“Setup”</a> page for setting yourself up with <em>Posit Cloud</em>.</p>
+<section id="getting-started-with-on-the-koa-server" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="getting-started-with-on-the-koa-server"><span class="header-section-number">1.2.4</span> Getting started with on the <em>Koa Server</em></h3>
+<p>Follow the instructions on the <a href="./index.html">“Setup”</a> page for setting yourself up on the <em>Koa Server</em>.</p>
 <p>Once done, proceed with the rest of the lab below.</p>
 </section>
 </section>
 <section id="learning-the-tools" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">1.3</span> Learning the Tools</h2>
-<p>When you start <em>Posit Cloud</em>, it will automatically start <em>RStudio</em> as well. You run <em>R</em> inside <em>RStudio</em>, itself inside <em>Posit Cloud</em>.</p>
-<p>After you have started <em>Posit Cloud</em>, you should see a new window with a menu bar at the top and three main sections. One of the sections is called the “Console” – this is where you type commands to give instructions to <em>R</em> and typically where you see <em>R</em>’s answers to you.</p>
-<p>Another important corner of this window can show a variety of information. Most importantly to us, this is where graphics will appear, under the tab marked “Plots”.</p>
-<section id="the-command-line" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="the-command-line"><span class="header-section-number">1.3.1</span> The command line</h3>
-<p>When you start <em>Posit Cloud</em>, you’ll see a corner of the window called the “Console.” By the default the console window is in the bottom left of the <em>RStudio</em> screen.</p>
-<p>You can type commands in this window where there is a prompt (which will look like a <code>&gt;</code> sign at the bottom of the window). The Console has to be the selected window. (Clicking anywhere in the Console selects it.)</p>
+<p>Once you have launched your <em>RStudio</em> session on the <em>Koa Server</em> you should see a new window with a menu bar at the top and three main panels.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab01_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="593"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The left panel is called the “Console”—this is where you type commands to give instructions to <em>R</em> and typically where you see <em>R</em>’s answers to you.</p>
+<p>The top right panel can show various different pieces of information. We will not make extensive use of this panel in our class, but you can note that the “Environment” tab in this panel shows all the <em>objects</em> (more on that below) that you have created in your current <em>R</em> session.</p>
+<p>The bottom left panel, as you already know, shows the folders and files you have access to. You should always make sure you are working in the folder named after your UH username.</p>
+<p>This bottom left panel is also where help documents will be rendered (in the tab called “Help”) and data visualizations will be shown (in the tab called “Plots”).</p>
+<p>Once you click on an <em>R</em> script to open it, you Console gets pushed down to the bottom left panel and the script appears in the top left panel.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab01_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="646"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="the-console" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="the-console"><span class="header-section-number">1.3.1</span> The Console</h3>
+<p>You can type commands into the Console where there is a prompt (which will look like a <code>&gt;</code> sign at the bottom of the window). The Console has to be the selected window. (Clicking anywhere in the Console selects it.)</p>
 <p>The <code>&gt;</code> prompt is <em>R</em>’s way of inviting you to give it instructions. You communicate with <em>R</em> by typing commands after the <code>&gt;</code> prompt.</p>
-<p>Type “<code>2+2</code>” at the <code>&gt;</code> prompt, and hit return. You’ll see that <em>R</em> can work like a calculator (among its many other powers). It will give you the answer, <code>4</code>, and it will label that answer with <code>[1]</code> to indicate that it is the first element in the answer. (This is sort of annoying when the answers are simple like this, but can be very valuable when the answers become more complex.)</p>
+<p>Type “<code>2 + 2</code>” at the <code>&gt;</code> prompt, and hit return. You’ll see that <em>R</em> can work as a calculator (among its many other uses). It will give you the answer <code>4</code> and it will label that answer with <code>[1]</code> to indicate that it is the first element in the answer. (This is sort of annoying when the answers are simple like this, but can be very valuable when the answers become more complex and have multiple elements.)</p>
 <p>Remember, you don’t type the <code>&gt;</code> sign. The <code>&gt;</code> is the prompt that <em>R</em> gives saying it is ready for input. We reproduce it here so you can see which is input (in blue) and which is output (in black or red).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -352,14 +327,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Parentheses are used both as a way to group elements of the calculation and also as a way to denote the arguments of functions. (The “arguments” of a function are the set of values given to it as input.) For example, <code>log(3)</code> is applying the function <code>log()</code> to the argument <code>3</code>.</p>
 <p>Another mathematical function that often comes in handy is the square root function, <code>sqrt()</code>. For example, the square root of <code>4</code> is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.480741</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
 <p>To calculate a value with an exponent, used the <code>^</code> symbol. For example <span class="math inline">\(4^3\)</span> is written as:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">^</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 64</code></pre>
 </div>
@@ -375,24 +350,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 64</code></pre>
 </div>
 </div>
-<p>Of course, many math functions can be combined to give an almost infinite possibility of mathematical expressions. For example,</p>
-<p><span class="math display">\[\frac{1}{\sqrt{2 \pi (3.1)^2}} e ^ {-\frac{(12 - 10.7) ^ 2}{2 \times 3.1}}\]</span></p>
+<p>Of course, math functions can be combined to give an infinite possibility of mathematical expressions. For example,</p>
+<p><span class="math display">\[\frac{1}{\sqrt{2 \pi \times 3.1^2}} e^{-\frac{(12 - 10.7) ^ 2}{2 \times 3.1}}\]</span></p>
 <p>can be calculated with</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">/</span> (<span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> (<span class="fl">3.1</span>) <span class="sc">^</span> <span class="dv">2</span>))) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>(<span class="dv">12</span> <span class="sc">-</span> <span class="fl">10.7</span>) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fl">3.1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> <span class="fl">3.1</span><span class="sc">^</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>(<span class="dv">12</span> <span class="sc">-</span> <span class="fl">10.7</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fl">3.1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.09798692</code></pre>
 </div>
 </div>
+<p>Remember parentheses are used both to pass arguments to functions (like <code>exp(-(12 - 10.7)^2 / (2 * 3.1))</code>) but also to group mathematical operations. For example, the argument passed to <code>exp()</code> is <code>-(12 - 10.7)^2 / (2 * 3.1)</code>. We need all those parentheses to make sure the fraction is correctly computed as <span class="math inline">\(-\frac{(12 - 10.7) ^ 2}{2 \times 3.1}\)</span>. If we didn’t have the parentheses around <code>(12 - 10.7)^2</code> and instead wrote <code>-12 - 10.7^2 / (2 * 3.1)</code>, that would be valid code, but it would calculate an answer to the wrong equation:</p>
+<p><span class="math display">\[-12 - \frac{10.7^2}{(2 \times 3.1)}\]</span></p>
 </section>
 <section id="saving-your-code" class="level3" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="saving-your-code"><span class="header-section-number">1.3.2</span> Saving your code</h3>
 <p>When you analyze your own data, we strongly recommend that you keep a record of all commands used, along with copious notes, so that weeks or years later you can retrace the steps of your earlier analysis.</p>
-<p>In <em>Posit Cloud</em>, you can create a plain text file (sometimes called a script), which contains <em>R</em> commands that can be reloaded and used at a later date. We have created a scratch file where you can enter and save your commands while you’re learning the tools. Click on “scratch.R” in the lower-right:</p>
-<p><img src="images/rstudio-cloud-05.png" class="img-fluid"></p>
-<p>That will open a mostly blank text file above the Console that looks like this:</p>
-<p><img src="images/rstudio-cloud-06.png" class="img-fluid"></p>
-<p>You can copy and paste any commands that you want from the Console, or type directly here. (When you copy and paste, do not include the <code>&gt;</code> prompt in the script.) Save this script for later reference by hitting “Save” under the “File” menu. In the future you can open this file to have those commands available for use again.</p>
+<p>In <em>RStudio</em> you can create a plain text file (sometimes called a script), which contains <em>R</em> commands that can be reloaded and used at a later date. We create scripts for you for every assignment where you can enter and save your commands.</p>
+<p>While you’re “learning the tools” you can copy and paste any commands that you want from the the lab instructions, the Console (do not include the <code>&gt;</code> prompt in the script), or type directly into the script. Save this script for later reference by hitting “Save” under the “File” menu. In the future you can open this file to have those commands available for use again.</p>
 <p>It is a good habit to type all your commands in the script window and run them from there, rather than typing directly into the console. This lets you save a record of your session so that you can more easily re-create what you have done later.</p>
 <p>FYI, if you want to create a new, blank <em>R</em> script, here’s how: under the menu at the top, choose “File”, then “New File”, and then “R Script”. Follow the prompts to save the new file.</p>
 </section>
@@ -614,44 +588,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="questions-for-lab-report" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="questions-for-lab-report"><span class="header-section-number">1.4</span> Questions for Lab Report</h2>
-<p>Your lab report is due <strong>before the start of next week’s lab</strong>. When you’re finished, save it, and your TA can access it on the Cloud.</p>
-<ol type="1">
-<li>For each week, use the <em>R</em> script called “report.R” to save the commands that you use to answer the questions, as well as the answers themselves.
-<ol type="a">
-<li>Open the report.R file. Start by editing comments with your name at the top. <img src="images/rstudio-cloud-07.png" class="img-fluid"></li>
-<li>Save the script regularly as you work! To save, go to “File &gt; Save” or use command-S shortcut. <img src="images/rstudio-cloud-save1.png" class="img-fluid"></li>
-<li>For each of the questions below, write the question number as a comment, followed by any <em>R</em> code you use to do the question, and give the answers as comments. It might look something like this:</li>
-</ol></li>
-</ol>
+<p>Your lab report is due <strong>before the start of next week’s lab</strong>. When you’re finished, save it, export it, and upload it to Google Classroom to turn in the assignment.</p>
+<p>To export your script from the <em>RStudio</em> session running on the <em>Koa Server</em>, select the radio button next to the script name.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Student's name</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># BIOL 220 Lab 11</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2023-01-12</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Questions</span></span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. I followed directions to set up my lab report</span></span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Yes, I got the same answers!</span></span>
-<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Only text answers, no code</span></span>
-<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer part 1</span></span>
-<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer part 2</span></span>
-<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Text and code</span></span>
-<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="co"># a.</span></span>
-<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># you can also comment like this</span></span>
-<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="co"># b.</span></span>
-<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
-<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a><span class="co"># The mean of c(1, 2, 3) is 2. Here's what that means...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab01_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="440"></p>
+</figure>
 </div>
-<ol start="2" type="1">
+</div>
+</div>
+<p>Then click the gear icon titled “More” and from the drop-down menu select “Export.”</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab01_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="439"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>When prompted click “Download” and then save the script somewhere on your device. Once downloaded on your device, you can upload to Google Classroom.</p>
+<p>To answer each of the questions below, in your script <code>lab_01-getting-started.R</code> write the question number as a comment, followed by any <em>R</em> code you use to answer the question, and give the answers as comments. It might look something like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Questions</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. I followed directions to set up my lab report</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Yes, I got the same answers!</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Only text answers, no code</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer part 1</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer part 2</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Text and code</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="co"># a.</span></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># you can also comment like this</span></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="co"># b.</span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a><span class="co"># The mean of c(1, 2, 3) is 2. Here's what that means...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
 <li><p>Run the <strong>Learning the tools</strong> commands in <em>R</em> from your “scratch.R” script. Did you get the same answers as shown in the text? (Answer “yes”, “no”, or a more detailed explanation. You don’t need to re-run all the code and output here.)</p></li>
 <li><p>For each of the following, come up with a variable name that would be appropriate to use in <em>R</em> for the listed variable:</p></li>
 </ol>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Variable</th>
@@ -759,18 +743,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -802,11 +775,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -816,8 +826,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -829,7 +848,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -873,6 +1014,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -898,6 +1040,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -959,17 +1127,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
+      <a href="./index.html" class="pagination-link" aria-label="Setup">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setup</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab02.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphics in R</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

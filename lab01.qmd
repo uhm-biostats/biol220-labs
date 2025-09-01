@@ -1,17 +1,17 @@
 # Getting started
 
-Please complete this lab using *Posit Cloud* (more on what that is below). Here is the *Posit Cloud* workspace link for this lab: <https://posit.cloud/spaces/463390/content/all?sort=name_asc>. 
+As with all labs, please complete this lab using *RStudio* running on the UH *Koa Server* (more on what that is below). 
 
 ## Goals
 
-* Learning how to start with *Posit Cloud*
+* Learning how to start with *Koa Server*
 * Use the command line
 * Use functions in *R*
 * Use vectors
 * Use data frames
 
 
-## *R*, *RStudio*, and *Posit Cloud*
+## *R*, *RStudio*, and *Koa Server*
 
 ### What is *R*?
 
@@ -23,40 +23,84 @@ Please complete this lab using *Posit Cloud* (more on what that is below). Here 
 
 *RStudio* is a separate program, also free, that provides a more elegant front end for *R*. *RStudio* allows you to easily organize separate windows for *R* commands, graphic, help, etc. in one place.
 
-For this course, you won't need *R* and *RStudio* installed on your own device because we will work in *Posit Cloud*. However, if you wish to install them on your device, go to <https://rstudio.com/products/rstudio/download/> for instructions about getting set up.
+For this course, you won't need *R* and *RStudio* installed on your own device because we will work on the *Koa Server*. However, if you wish to install them on your device, go to <https://rstudio.com/products/rstudio/download/> for instructions about getting set up.
 
 
-### What is *Posit Cloud*?
+### What is the *Koa Server*?
 
-*Posit Cloud* allows you to run a hosted version of *RStudio* in the cloud that allows you to run R without having to download anything on your personal computer or confirgure your personal computer.  You access *Posit Cloud* from your browser, and conveniently you can access from *any* computer, not just your personal device.
+The *Koa Server* allows you to run a hosted version of *RStudio* in the cloud that allows you to run R without having to download anything on your personal computer or confirgure your personal computer.  You access the *Koa Server* from your browser, and conveniently you can access it from *any* computer or tablet.
 
-### Resources
 
-> *Posit Cloud* provides many learning materials: [interactive tutorials](https://posit.cloud/learn/recipes) covering the basics of data science, [cheatsheets](https://posit.co/resources/cheatsheets/), and a [guide to using *Posit Cloud*](https://posit.cloud/learn/guide).
+### Getting started with on the *Koa Server*
 
-### Getting started with *Posit Cloud*
-
-Follow the instructions on the ["Setup"](index.qmd) page for setting yourself up with *Posit Cloud*.
+Follow the instructions on the ["Setup"](index.qmd) page for setting yourself up on the *Koa Server*.
 
 Once done, proceed with the rest of the lab below.
 
 ## Learning the Tools
 
-When you start *Posit Cloud*, it will automatically start *RStudio* as well. You run *R* inside *RStudio*, itself inside *Posit Cloud*. 
+Once you have launched your *RStudio* session on the *Koa Server* you should see a new window with a menu bar at the top and three main panels. 
 
-After you have started *Posit Cloud*, you should see a new window with a menu bar at the top and three main sections. One of the sections is called the "Console" – this is where you type commands to give instructions to *R* and typically where you see *R*'s answers to you.
 
-Another important corner of this window can show a variety of information. Most importantly to us, this is where graphics will appear, under the tab marked "Plots".
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
 
-### The command line
+library(magick)
+library(grid)
 
-When you start *Posit Cloud*, you'll see a corner of the window called the "Console." By the default the console window is in the bottom left of the *RStudio* screen.
+for(i in 1:10) {
+  assign(sprintf("koa%s", i), 
+         image_trim(image_read(sprintf("images/koa/‎koa.‎%03d.png", i))))
+  
+}
+```
 
-You can type commands in this window where there is a prompt (which will look like a `>` sign at the bottom of the window). The Console has to be the selected window. (Clicking anywhere in the Console selects it.)
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: !expr image_info(koa5)$width / 150
+#| fig-height: !expr image_info(koa5)$height / 150
+
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa5) |> 
+  grid.raster()
+```
+
+
+The left panel is called the "Console"---this is where you type commands to give instructions to *R* and typically where you see *R*'s answers to you.
+
+The top right panel can show various different pieces of information.  We will not make extensive use of this panel in our class, but you can note that the "Environment" tab in this panel shows all the *objects* (more on that below) that you have created in your current *R* session. 
+
+The bottom left panel, as you already know, shows the folders and files you have access to.  You should always make sure you are working in the folder named after your UH username. 
+
+This bottom left panel is also where help documents will be rendered (in the tab called "Help") and data visualizations will be shown (in the tab called "Plots"). 
+
+Once you click on an *R* script to open it, you Console gets pushed down to the bottom left panel and the script appears in the top left panel.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: !expr image_info(koa8)$width / 150
+#| fig-height: !expr image_info(koa8)$height / 150
+
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa8) |> 
+  grid.raster()
+```
+
+### The Console
+
+You can type commands into the Console where there is a prompt (which will look like a `>` sign at the bottom of the window). The Console has to be the selected window. (Clicking anywhere in the Console selects it.)
 
 The `>` prompt is *R*'s way of inviting you to give it instructions. You communicate with *R* by typing commands after the `>` prompt.
 
-Type "`2+2`" at the `>` prompt, and hit return. You'll see that *R* can work like a calculator (among its many other powers). It will give you the answer, `4`, and it will label that answer with `[1]` to indicate that it is the first element in the answer. (This is sort of annoying when the answers are simple like this, but can be very valuable when the answers become more complex.)
+Type "`2 + 2`" at the `>` prompt, and hit return. You'll see that *R* can work as a calculator (among its many other uses). It will give you the answer `4` and it will label that answer with `[1]` to indicate that it is the first element in the answer. (This is sort of annoying when the answers are simple like this, but can be very valuable when the answers become more complex and have multiple elements.)
 
 Remember, you don't type the `>` sign. The `>` is the prompt that *R* gives saying it is ready for input. We reproduce it here so you can see which is input (in blue) and which is output (in black or red).
 
@@ -77,13 +121,13 @@ Parentheses are used both as a way to group elements of the calculation and also
 Another mathematical function that often comes in handy is the square root function, `sqrt()`. For example, the square root of `4` is:
 
 ```{r}
-sqrt(42)
+sqrt(4)
 ```
 
 To calculate a value with an exponent, used the `^` symbol. For example $4^3$ is written as:
 
 ```{r}
-4 ^ 3
+4^3
 ```
 
 Note how *R* ignores white space when it's not in quotes (we'll come back to quotes later):
@@ -93,29 +137,27 @@ Note how *R* ignores white space when it's not in quotes (we'll come back to quo
 4  ^  3
 ```
 
-Of course, many math functions can be combined to give an almost infinite possibility of mathematical expressions. For example,
+Of course, math functions can be combined to give an infinite possibility of mathematical expressions. For example,
 
-$$\frac{1}{\sqrt{2 \pi (3.1)^2}} e ^ {-\frac{(12 - 10.7) ^ 2}{2 \times 3.1}}$$
+$$\frac{1}{\sqrt{2 \pi \times 3.1^2}} e^{-\frac{(12 - 10.7) ^ 2}{2 \times 3.1}}$$
 
 can be calculated with
 
 ```{r}
-(1 / (sqrt(2 * pi * (3.1) ^ 2))) * exp(-(12 - 10.7) ^ 2 / (2 * 3.1))
+1 / sqrt(2 * pi * 3.1^ 2) * exp(-(12 - 10.7)^2 / (2 * 3.1))
 ```
+
+Remember parentheses are used both to pass arguments to functions (like `exp(-(12 - 10.7)^2 / (2 * 3.1))`) but also to group mathematical operations. For example, the argument passed to `exp()` is `-(12 - 10.7)^2 / (2 * 3.1)`. We need all those parentheses to make sure the fraction is correctly computed as $-\frac{(12 - 10.7) ^ 2}{2 \times 3.1}$. If we didn't have the parentheses around `(12 - 10.7)^2` and instead wrote `-12 - 10.7^2 / (2 * 3.1)`, that would be valid code, but it would calculate an answer to the wrong equation:
+
+$$-12 - \frac{10.7^2}{(2 \times 3.1)}$$
 
 ### Saving your code
 
 When you analyze your own data, we strongly recommend that you keep a record of all commands used, along with copious notes, so that weeks or years later you can retrace the steps of your earlier analysis.
 
-In *Posit Cloud*, you can create a plain text file (sometimes called a script), which contains *R* commands that can be reloaded and used at a later date. We have created a scratch file where you can enter and save your commands while you're learning the tools. Click on "scratch.R" in the lower-right:
+In *RStudio* you can create a plain text file (sometimes called a script), which contains *R* commands that can be reloaded and used at a later date. We create scripts for you for every assignment where you can enter and save your commands.
 
-![](images/rstudio-cloud-05.png)
-
-That will open a mostly blank text file above the Console that looks like this:
-
-![](images/rstudio-cloud-06.png)
-
-You can copy and paste any commands that you want from the Console, or type directly here. (When you copy and paste, do not include the `>` prompt in the script.) Save this script for later reference by hitting "Save" under the "File" menu. In the future you can open this file to have those commands available for use again.
+While you're "learning the tools" you can copy and paste any commands that you want from the the lab instructions, the Console (do not include the `>` prompt in the script), or type directly into the script.  Save this script for later reference by hitting "Save" under the "File" menu. In the future you can open this file to have those commands available for use again.
 
 It is a good habit to type all your commands in the script window and run them from there, rather than typing directly into the console. This lets you save a record of your session so that you can more easily re-create what you have done later.
 
@@ -334,20 +376,43 @@ Note that the syntax here requires a double `==` sign. In *R* (and many other co
 ## Questions for Lab Report
 
 
-Your lab report is due **before the start of next week's lab**. When you're finished, save it, and your TA can access it on the Cloud.
+Your lab report is due **before the start of next week's lab**. When you're finished, save it, export it, and upload it to Google Classroom to turn in the assignment.
 
-1. For each week, use the *R* script called "report.R" to save the commands that you use to answer the questions, as well as the answers themselves. 
-    a. Open the report.R file. Start by editing comments with your name at the top.
-        ![](images/rstudio-cloud-07.png)
-    b. Save the script regularly as you work! To save, go to "File > Save" or use command-S shortcut.
-        ![](images/rstudio-cloud-save1.png)
-    c. For each of the questions below, write the question number as a comment, followed by any *R* code you use to do the question, and give the answers as comments. It might look something like this:
+To export your script from the *RStudio* session running on the *Koa Server*, select the radio button next to the script name. 
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: !expr image_info(koa9)$width / 150
+#| fig-height: !expr image_info(koa9)$height / 150
+
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa9) |> 
+  grid.raster()
+```
+
+Then click the gear icon titled "More" and from the drop-down menu select "Export."
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: !expr image_info(koa10)$width / 150
+#| fig-height: !expr image_info(koa10)$height / 150
+
+par(mar = rep(0, 4))
+plot(1, axes = FALSE)
+image_trim(koa10) |> 
+  grid.raster()
+```
+
+When prompted click "Download" and then save the script somewhere on your device.  Once downloaded on your device, you can upload to Google Classroom.
+
+To answer each of the questions below, in your script `lab_01-getting-started.R` write the question number as a comment, followed by any *R* code you use to answer the question, and give the answers as comments. It might look something like this:
 
 ```{r, eval = FALSE}
-# Student's name
-# BIOL 220 Lab 11
-# 2023-01-12
-
 # Questions
 
 # 1. I followed directions to set up my lab report
@@ -368,7 +433,7 @@ mean(x)
 # The mean of c(1, 2, 3) is 2. Here's what that means...
 ```
         
-2. Run the **Learning the tools** commands in *R* from your "scratch.R" script. Did you get the same answers as shown in the text? (Answer "yes", "no", or a more detailed explanation. You don't need to re-run all the code and output here.)
+1. Run the **Learning the tools** commands in *R* from your "scratch.R" script. Did you get the same answers as shown in the text? (Answer "yes", "no", or a more detailed explanation. You don't need to re-run all the code and output here.)
 
 1. For each of the following, come up with a variable name that would be appropriate to use in *R* for the listed variable:
 
