@@ -1,198 +1,338 @@
-# Workikng with data
+# The Sampling Distribution
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+library(dplyr)
+library(ggplot2)
+library(readr)
+```
 
 ## Goals
 
-* Learn to create data files
-* Explore the importance of random sampling
-* Understand variance and standard deviation
-* Understand mean and median
+* Understand the sampling distribution of an estimate
+* Investigate sampling error
+* Calculate standard error of the mean
+* Calculate confidence intervals
 
-As will be the case with all labs, this lab will be completed using *Posit Cloud*. If needed, refer back to ["Setup"](index.qmd) and ["Lab 1"](lab01.qmd) for instructions on access and setting up your workspace for this lab. Here is the direct link to the *Posit Cloud* shared workspace for Lab 2: xyz.
+```{r, echo=FALSE,eval=TRUE}
+library(infer)
+```
+
+
+
 
 ## Learning the Tools
 
-### Structure of a good data file
+### Simulating your own sampling distributions
 
-Data files appear in many formats, and different formats are sometimes preferable for different tasks. But there is one way to structure data — called “long” format — that is extremely useful for most things that you will want to do in statistics and *R*.
+Just like we did in lecture, we will simulate our own sampling distribution of the mean. For this lab, we will use the `iris` dataset to demonstrate how. You'll take many random samples from the `iris` dataset, calculate the sample mean $\bar{Y}$ for each, and plot the distribution. 
 
-Long format is actually very simple. Every row in the data set is a unique individual. Every column is a variable being measured on those individuals.
 
-For example, last week in Question 4 we looked at some data about the tongue and palate lengths of several species of bats. There were three variables in that data set, the species name, tongue length, and palate length. Here each “individual” is a species. Here is that data in long format—each row is an individual. There are three columns, one for each variable:
+#### Randomly sampling rows
 
-```{r, echo = FALSE, eval = TRUE}
-bat_tongues <- read.csv("data/BatTongues.csv")
-knitr::kable(bat_tongues)
-# knitr::knit(bat_tongue)
+We used the `replicate` function in lecture, but the **dplyr** package offers tools that are perhaps even more intuitive. You can take a random sample of rows in your data using the **dplyr** function `slice_sample()`. For example, to sample 5 rows at random from the `iris` data set, you would do the following:
+
+```{r}
+library(dplyr)
+
+samp <- slice_sample(iris, n = 5)
+samp
 ```
 
-### Creating a data file
+Now try on your to increase the sample size 10, how would you do this?
 
-When you have new data that you want to get into the computer in a format that *R* can read, it is often easiest to do this outside of *R*. A spreadsheet program like Excel (or a freely available program like Google Sheets) is a straightforward way to create a .csv file that *R* can read. For the lab today, we'll use Google Sheets.
 
-1. Log into Google Drive using your userid@hawaii.edu credentials.
+#### Repeated sampling
 
-2. Create a new Google Sheet
+To simulate a sampling distribution, we need to repeatedly randomly sample the "population" (in this case, we're pretending the `iris` data set is the entire population). The **infer** package has a convenient function `rep_slice_sample()` that will repeat `slice_sample()` many times. It creates a new column called `replicate` to index each replicate sample. To randomly sample 5 rows 4 times from *Iris setosa*, we do:
 
-![](images/google-sheets-1.png)
+```{r}
+# first load the infer pacakge
+library(infer)
 
-3. Name the new sheet "BatTongues2"
+# let's look at just the species setosa, so we'll need to subset our data
+just_setosa <- subset(iris, Species == "setosa")
 
-![](images/google-sheets-2.png)
+many_setosa_samp <- rep_slice_sample(just_setosa, n = 5, reps = 4)
+head(many_setosa_samp)
+```
 
-4. Enter data
+Note: the **infer** package converted the `iris` data.frame to something called a `tibble`, for our purposes, think of a data.frame and a tibble as equivalent.
 
-In the first row of your new spreadsheet, write your variable names, one for each column. (Be sure to give them good names that will work in *R* following principles of spreadsheet organized in Broman & Woo (2018). Mainly, don't have any spaces in a variable name and make sure that it doesn't start with a number or contain punctuation marks. See Lab 01 for more about naming variables.)
+Now, let's take 1000 samples of 10 from each species. I'll show you the code for *Iris setosa*, then fill in the `___` sections below to do it for it the other species. After, you'll need to combine the results before summarizing and plotting.
 
-On the rows immediately below that first row, enter the data for each individual, in the correct column. Here’s what the spreadsheet would look like for the bat data after they are entered:
+```{r, echo = TRUE, eval = FALSE}
+# let's use `set.seed` so we can compare answers
+set.seed(123)
 
-![](images/google-sheets-3.png)
+just_setosa <- subset(iris, Species == "setosa")
+many_setosa_samp10 <- rep_slice_sample(just_setosa, n = 10, reps = 1000)
 
-5. Download as a .csv file. Go to "File > Download > Comma-spearate values (.csv, current sheet)"
+just_versicolor <- subset(iris, Species == ___)
+many_versicolor_samp10 <- rep_slice_sample(___, n = 10, reps = 1000)
 
-![](images/google-sheets-4.png)
-Save to the Desktop (or elsewhere that is convenient) as "BatTongues2.csv"
+just_virginica <- subset(iris, Species == ___)
+many_virginica_samp10 <- rep_slice_sample(___, n = 10, reps = 1000)
+```
 
-![](images/google-sheets-5.png)
 
-Saving a spreadsheet in a format that *R* can read is very straightforward. In these tutorials, we are using .csv files (which stands for **c**omma **s**eparated **v**alues).
+```{r, echo = FALSE, eval = TRUE}
+# let's use `set.seed` so we can compare answers
+set.seed(123)
 
-6. Upload file to *RStudio Cloud*
+just_setosa <- subset(iris, Species == "setosa")
+many_setosa_samp10 <- rep_slice_sample(just_setosa, n = 10, reps = 1000)
 
-In your lab03 project, click on the "data" directory under the Files tab:
+just_versicolor <- subset(iris, Species == "versicolor")
+many_versicolor_samp10 <- rep_slice_sample(just_versicolor, n = 10, reps = 1000)
 
-![](images/google-sheets-6.png)
+just_virginica <- subset(iris, Species == "virginica")
+many_virginica_samp10 <- rep_slice_sample(just_virginica, n = 10, reps = 1000)
+```
 
-Then click the Upload option:
+If you used the same seed (`123`) in the above code then you should get these same answers:
 
-![](images/google-sheets-7.png)
+```{r}
+many_setosa_samp10
 
-You should see the following dialog box:
+many_versicolor_samp10
 
-![](images/google-sheets-8.png)
+many_virginica_samp10
+```
 
-Click "Choose File" and navigate to where you saved "BatTongues2.csv" and select it. 
+Remember, we only need to use `set.seed` in situations where we're trying to compare output from random sampling.  You can delete `set.seed` after you compared your output to mine.
 
-![](images/google-sheets-9.png)
+You can use the `rbind` function to combine all three sets of sampling distributions into a single `tibble`.
 
-Click OK. Then you should see "BatTongues2.csv" in your data directory.
+```{r}
+iris_sample_dists <- rbind(many_setosa_samp10, 
+                           many_versicolor_samp10,
+                           many_virginica_samp10)
 
-![](images/google-sheets-10.png)
+iris_sample_dists
+```
 
-Look at "BatTongues2.csv" in the *RStudio Cloud* viewer by clicking the file name and selecting "View File"
+Now we have a very large set of samples to examine.
 
-![](images/google-sheets-11.png)
+### Sample mean $\bar{Y}$
 
-It should something like this:
+To look at the distribution of the sample mean, we first need to calculate the sample mean for all 1000 replicates per species. We will use two helpful functions from *dplyr* to first **group** the `iris_sample_dists` data.frame by species and replicate, and then calculate the mean for each species with the `summarize` function. Let's first look at the sampling distribution of the mean of sepal length:
 
-![](images/google-sheets-12.png)
+```{r}
+sepal_length_sample_dists <-  group_by(iris_sample_dists, Species, replicate)
+sepal_length_sample_dists <- summarize(sepal_length_sample_dists, 
+                                       Y_bar = mean(Sepal.Length))
+
+sepal_length_sample_dists
+```
+
+Modify the code above to calculate sample means for `Petal.Length`.
+
+### Plot the sampling distribution $\bar{Y}$
+
+We can apply the `ggplot()` tools we've already learned to plot a multiple histogram to compare the sampling distributions in each species.
+
+```{r}
+
+ggplot(sepal_length_sample_dists, aes(Y_bar, fill = Species)) +
+    geom_histogram(alpha = 0.5, position = "identity", bins = 30) +
+    scale_fill_viridis_d()
+
+```
+
+See if you remember how to use `facet_grid()` to put each Specie in it's own panel like this:
+
+```{r, echo = FALSE, eval = TRUE}
+
+ggplot(sepal_length_sample_dists, aes(Y_bar, fill = Species)) +
+    facet_grid(rows = "Species") +
+    geom_histogram(alpha = 0.5, position = "identity", bins = 30) +
+    scale_fill_viridis_d()
+
+```
+
+### Standard error of the mean
+
+The standard error of the mean helps us quantify our uncertainty about our estimate of the population mean given our sample size. We can calculate a *hypothetical* standard error for the perfect random sample of size $n$ by dividing the population standard deviation by $\sqrt{n}$: $\sigma / \sqrt{n}$. Let's pretend that the `iris` data set is the entire "population", the population standard deviation for `Sepal.Length` is:
+
+```{r, echo = FALSE}
+out <- iris |>
+    group_by(Species) |>
+    summarize(s = sd(Sepal.Length), n = n()) |>
+    mutate("$\\sigma$" = round(s * (n - 1)  / n, 2)) |>
+    select(-s, -n) |>
+    knitr::kable()
+
+out
+```
+
+Now calculate the hypothetical standard error of the mean for a sample size of 10. You should get:
+
+```{r, echo = FALSE}
+
+iris |>
+    group_by(Species) |>
+    summarize(s = sd(Sepal.Length), n = n()) |>
+    mutate(`$\\sigma$` = round(s * (n - 1)  / n, 2)) |>
+    mutate(`$\\sigma/\\sqrt{n}$` = `$\\sigma$` / sqrt(10)) |>
+    select(-s, -n) |>
+    knitr::kable()
+    
+
+```
+
+Let's compare this hypothetical standard error of the mean to what we obtain from our simulations. Remember that the standard error of the mean is simply the standard deviation of the sampling distribution. That means we can get the answer by using the `sd()` function on our simulated sampling distribution.
+
+```{r}
+sepal_length_se <- group_by(sepal_length_sample_dists, Species)
+sepal_length_se <- summarize(sepal_length_se, SE_Ybar = sd(Y_bar))
+sepal_length_se
+```
+
+Notice that we had to first group by Species, then summarize by taking the standard deviation of all of our sample means.
+
+Are the population standard errors of the mean close to what you calculated from the simulations? Are the standard errors what you expected given the multiple histogram figure above?
+
+### Sample standard error of the mean
+
+The sample standard error ($\mathrm{SE}_{\bar{Y}}$) quantifies our uncertainty in our estimate of the population mean, $\bar{Y}$. Specifically, $\mathrm{SE}_{\bar{Y}}$ is the standard deviation of sampling distribution for $\bar{Y}$. The equation for the $\mathrm{SE}_{\bar{Y}}$ is the sample standard deviation divided by the square-root of the sample size:
+
+$$ \mathrm{SE}_{\bar{Y}} = \frac{s}{\sqrt{n}} $$
+
+There's no function in *R* to calculate $\mathrm{SE}_{\bar{Y}}$, but you know the functions for sample standard deviation and square-root. Use *R* to calculate the sample standard error of the mean for the following numbers:
+
+> 2.16 -0.79 -0.18  1.62 -0.98 -1.15 -0.15  1.34  1.96  1.74
+
+```{r, echo = FALSE}
+
+x <- c(2.16, -0.79, -0.18,  1.62, -0.98, -1.15, -0.15,  1.34,  1.96,  1.74)
+se <- sd(x) / sqrt(length(x))
+```
+
+You should get $\mathrm{SE}_{\bar{Y}}$ = `r round(se, 3)`.
+
+### 95% confidence intervals
+
+Confidence intervals are a way to show the plausible range of parameter values given the data. 95% confidence intervals will include the true population parameter 95% of the time. We'll learn ways to calculate confidence intervals for different parameters throughout the class. Today, we'll use the "2 SE" rule to approximate 95% confidence intervals for the sample mean $\bar{Y}$. The lower bound and upper bounds of the approximate 95% confidence interval using the 2 SE rule are:
+
+$$ \text{lower CI}: \bar{Y} - 2 \times \mathrm{SE}_{\bar{Y}} $$
+$$ \text{upper CI}: \bar{Y} + 2 \times \mathrm{SE}_{\bar{Y}} $$
+Use the `mean()` functions and standard error of the mean to calculate the confidence interval for the data you used in the last section. You should get:
+
+```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE} 
+d <- data.frame("$\\bar{Y}$" = mean(x),
+                "Lower CI" = mean(x) - 2 * se,
+                "Upper CI" = mean(x) + 2 * se)
+names(d) <- c("$\\bar{Y}$", "Lower CI", "Upper CI")
+knitr::kable(d)
+
+```
 
 
 ## Questions
 
-1. Review: Import "BatTongues2.csv" using the `read.csv()`, name the data.frame `bat_tongues`, and make a scatterplot using the **ggplot2** package. It should look the same as last week unless you made a typo.
-
-2. Calculate the sample variance and standard deviation.
-
-    The variance and standard deviation are common descriptions of the variability in a population. If we're plotting the data in a histogram, these are associated with the spread of histogram. By convention the *population* variance and standard deviations are often denoted $\sigma ^ 2$ and $\sigma$, respectively ($\sigma$, pronounced "sig-ma", is a lowercase Greek letter). The *sample* variance and standard deviations are often denoted $s^2$ and $s$, respectively. In both cases, the standard deviation is simply the square root of the variance.
-    
-    The equations for the sample variance and standard deviation are:
-    
-    $$ s ^ 2 = \frac{\Sigma^{n}_{i=1} (Y_i - \bar{Y}) ^ 2}{n - 1} $$
-    $$ s = \sqrt{\frac{\Sigma^{n}_{i=1} (Y_i - \bar{Y}) ^ 2}{n - 1}} $$
-    
-    a.  Calculate the sample variance of the `palate_length` variable. Note that if you named the column something other than `palate_length`, you will have to use your name. Here's a couple hints to get started:
-    
-        ```r
-        # Create a vector and call it Y
-        Y <- bat_tongues$palate_length
-        
-        # Calculate the mean of Y
-        Y_bar <- mean(Y)
-        
-        # Calculate the sample size, n
-        n <- length(Y)
-        
-        # Calculate the squared deviations (Y_i - Y_bar) ^ 2
-        squared_devs <- (Y - Y_bar) ^ 2
-        ```
-        
-        Once you're done, you can check your answer using the `var()` function in *R*
-        
-        ```r
-        var(bat_tongues$palate_length)
-        ```
-    
-    b. Now calculate the standard deviation and check your result using the `sd()` function.
-    
-    
 ```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
 
-leafsize <- read.csv("data/wright_etal_2017.csv")
+leafsize <- read.csv("data/wright_etal_2017.csv") |>
+  select(latitude, leafsize_cm2) |>
+  filter(!is.na(leafsize_cm2), abs(latitude) < 23.43655)
 
-library(ggplot2)
+sample_dist64 <- leafsize |>
+  rep_slice_sample(n = 64, reps = 1e3) |>
+  mutate(sample_size = 64)
 
-lsize <- ggplot(leafsize, aes(x = leafsize_cm2)) +
-  geom_histogram()
+sample_dist256 <- leafsize |>
+  rep_slice_sample(n = 256, reps = 1e3) |>
+  mutate(sample_size = 256)
 
-loglsize <- ggplot(leafsize, aes(x = leafsize_cm2)) +
-  geom_histogram() +
-  scale_x_log10()
+sample_dist1024 <- leafsize |>
+  rep_slice_sample(n = 1024, reps = 1e3) |>
+  mutate(sample_size = 1024)
 
-ggsave("images/lab03-q3b.png", lsize)
-ggsave("images/lab03-q3d.png", loglsize)
+sample_dists <- rbind(sample_dist64, sample_dist256, sample_dist1024) 
+
+sample_dists <- sample_dists |>
+  group_by(sample_size, replicate) |>
+  summarize(Y_bar = mean(leafsize_cm2))
+
+
+
+g <- ggplot(sample_dists, aes(Y_bar)) +
+    facet_grid(rows = vars(sample_size)) +
+    geom_histogram(bins = 30)
+
+ggsave("images/lab-04-q1d.png", plot = g)
+
 ```
 
-3. Learning when to use mean versus median. For this exercise, we'll use a data set on leaf area from [Wright *et al.* 2017](https://doi.org/10.1126/science.aal4760). 
+All questions are about the sampling distribution of the sample mean, $\bar{Y}$
 
-    a. Import the file "wright_etal_2017.csv" from the data directory using the `read.csv()` function. Call the data.frame `leafsize`.
-    b. Make a histogram of leaf size (units of cm$^2$) using **ggplot2**. The variable name is `leafsize_cm2`. It should look something like this: 
-        ![](images/lab03-q3b.png)
+1. Import data
+
+    We'll use a dataset about leaf sizes from [Wright *et al.* (2017)](https://doi.org/10.1126/science.aal4760). We'll pretend that this is population of all leaf sizes in the world and look at the properties of random samples from the population.
+
+    Use the `read.csv()`, `$`, `[`, and/or *dplyr* functions to
     
-    c. Describe the distribution of leaf size. Do you expect the mean or median to be larger? Check your answer using the `mean()` and `median()` functions. Make sure to use the `na.rm = TRUE` argument to ignore missing data. Which value would you use to describe the location (aka central tendency) of leaf size in this data set?
-  
-    d. Now let's look at the power of log-transformation. First, use the `+ scale_x_log10()` function in **ggplot2** to plot leaf size on a log$_{10}$-transformed scale. Modify your previous histogram using this function. The output should look something like this: 
-        ![](images/lab03-q3d.png)
+    * read-in the dataset
+    * make a data.frame with only the `latitude` and `leafsize_cm2` columns
+    * remove all rows with missing values from `leafsize_cm2`
+    * subset the data to only tropical latitudes between -23.43655° and 23.43655°
+    * assign this data.frame to the name `leafsize`
 
-    d. Now describe the shape of this distribution. Would you expect the mean or median to be higher? Check your guesses by first creating a new column called `log10_leafsize_cm2`. Hint: you'll need to use the `$` operator and the `log(..., base = 10)` or `log10(...)` functions. Then use `mean()` and `median()` on the new column.
-
-    e. Now, would you still use the same function (`mean()` or `median()`) you selected in part c. to describe the location of the *log-transformed* leaf size? Explain your answer.
-
-
-```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
-leafsize1 <- subset(leafsize, !is.na(leafsize_cm2))
-n_leaves <- nrow(leafsize1)
-```
-
-4. Make a random sample.
-
-    Let's assume that the data set represents the entire population of leaf sizes in the world (it doesn't, but let's just assume). Now we'll look at the property of random samples from this population. 
-        
-    a. To make our lives simpler, let's first filter out the missing values using the `subset()` function.
-        
-        ```r
-        leafsize1 <- subset(leafsize, !is.na(leafsize_cm2))
-        ```
-        
-        Note how we now have two data frames, `leafsize` and `leafsize1`. `leafsize1` has all the same columns as the original, but without rows containing missing values. The command `!is.na()` (pronounced "bang! is-dot-na") tells `subset` which values are NOT `NA`. In *R*, `!` ("bang!") means NOT.
-
-    b. What is the sample size now? You can use the `nrow()` function to figure this out. Assign the output of `nrow` to a variable named `n_leaves`.
-    c. To take a random sample, all members of the population must have the same chance of being chosen for our sample. In *R*, the function `sample()` can randomly choose integers from a given range. For example, to randomly sample 5 individuals from 25 possibilities, we can use: 
-        
-        ```r
-        sample(25, size = 5)
-        ```
-        Now randomly sample 5 leaf sizes and assign the output to a vector called `i`: 
-        
-        ```r
-        i <- sample(n_leaves, size = 5)
-        ```
-
-    d. The square brackets `[ ]` in *R* let you extract portions of a vector. Extract the values of the random leaves you sampled using the square brackets and assign the output as `leafsize1_sample`; you can run the following code:
-        
-        ```r
-        leafsize1_sample <- leafsize1$leafsize_cm2[i]
-        ```
+    Hints: 
     
-    e. Use *R* to calculate the mean of the leaf sizes for these 5 leaves in your random sample. The result is an estimate of the mean leaf size in your population.
+    - to get **ONE** column you can use `...$column_name`, to get multiple columns, you can use `...[, c("column_name1", "column_name2")]`
+    - remember the `select` function
+    - you can figure out if a value is missing with the `is.na` function
+    - latitudes between -23.43655° and 23.43655° is the same as `abs(latitude) < 23.43655`
+
+    If you've done everything correctly, you should get the same values for the population mean seen below:
     
-    f. Make another random sample of 5 leaves, and calculate the mean of this sample. Did you get a different number from the mean of the first sample? Why do you think the second sample mean is different from the first?
+    ```r
+    mean(leafsize$leafsize_cm2)
+    ```
+        
+    `[1] 65.97642`
+
+
+
+2. Create 1000 replicates each of sample sizes of 64, 256, and 1024 from the `leafize` data.frame you generated in a. I'll show you the code for $n = 64$, then you should copy and modify it to make similar objects called `sample_dist256` and `sample_dist1024`. Then use `rbind()` to combine them into an object called `sample_dists`.
+        
+    ```r
+    # create replicate samples
+    sample_dist64 <- rep_slice_sample(leafsize, n = 64, reps = 1e3)
+    
+    # add a column recording the sample size
+    sample_dist64$sample_size <- 64
+    
+    # create replicate samples
+    sample_dist256 <- ___
+    
+    # add a column recording the sample size
+    ___ <- 256
+    
+    # create replicate samples
+    sample_dist1024 <- ___
+    
+    # add a column recording the sample size
+    ___ <- 1024
+    
+    # combine using `rbind`
+    sample_dists <- ___
+    ```
+
+
+
+3. Use the `group_by()` and `summarize()` functions to calculate the sample mean for each level of sample size (64, 256, or 1024) and replicate. Make sure you assign the output a name so you can use it to make a plot in the next part.
+
+
+
+4. Make a multi-panel histogram with separate panels for each sample size. It should look something like this, but will not be exactly the same because the simulations are random.
+       
+    ![](images/lab-04-q1d.png)
+
+
+
+5. How does the location and width of the sampling distribution for $\bar{Y}$ change as $n$ increases?
