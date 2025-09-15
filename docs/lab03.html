@@ -260,26 +260,26 @@ window.Quarto = {
 <p>For this lab we will simulate our own sampling distribution of the mean. Here we will use the <code>penguins</code> dataset from the <em>palmerpenguins</em> package. To simulate the sampling distribution you’ll treat the data in the <code>penguins</code> dataset as the entire population (it isn’t but we can pretend) and take many random samples from it, calculate the sample mean <span class="math inline">\(\bar{Y}\)</span> for each, and plot the distribution.</p>
 <section id="randomly-sampling-rows" class="level4" data-number="3.2.1.1">
 <h4 data-number="3.2.1.1" class="anchored" data-anchor-id="randomly-sampling-rows"><span class="header-section-number">3.2.1.1</span> Randomly sampling rows</h4>
-<p>The <em>dplyr</em> package offers tools that allow us to easily produce a random sample of rows from a dataset using the function <code>slice_sample()</code>. For example, to sample 5 rows at random from the <code>penguins</code> data set, you would do the following:</p>
+<p>The <em>dplyr</em> package offers tools that allow us to easily produce a random sample of rows from a dataset using the function <code>slice_sample()</code>. You may need to install the <em>dplyr</em> package, refer back to <a href="./lab02.html">Lab 02</a> for how to do that. With the <code>slice_sample()</code> function we can, for example, sample 5 rows at random from the <code>penguins</code> data set by doing the following:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>samp <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(penguins, <span class="at">n =</span> <span class="dv">5</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>samp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  species    island bill_len bill_dep flipper_len body_mass  sex year
-1  Adelie     Dream     37.5     18.9         179      2975 &lt;NA&gt; 2007
-2  Adelie     Dream     39.6     18.8         190      4600 male 2007
-3  Gentoo    Biscoe     49.6     15.0         216      4750 male 2008
-4  Gentoo    Biscoe     48.5     14.1         220      5300 male 2008
-5  Adelie Torgersen     37.8     17.1         186      3300 &lt;NA&gt; 2007</code></pre>
+<pre><code>  species    island bill_len bill_dep flipper_len body_mass    sex year
+1  Adelie     Dream     40.7     17.0         190      3725   male 2009
+2  Adelie Torgersen     37.2     19.4         184      3900   male 2008
+3  Gentoo    Biscoe     48.4     14.4         203      4625 female 2009
+4  Gentoo    Biscoe     59.6     17.0         230      6050   male 2007
+5  Gentoo    Biscoe     43.4     14.4         218      4600 female 2009</code></pre>
 </div>
 </div>
 <p>Now try on your to increase the sample size 10, how would you do this?</p>
 </section>
 <section id="repeated-sampling" class="level4" data-number="3.2.1.2">
 <h4 data-number="3.2.1.2" class="anchored" data-anchor-id="repeated-sampling"><span class="header-section-number">3.2.1.2</span> Repeated sampling</h4>
-<p>To simulate a sampling distribution, we need to repeatedly randomly sample the “population” (again, in this case, we’re pretending the <code>penguins</code> data set is the entire population). The <em>infer</em> package has a convenient function <code>rep_slice_sample()</code> that will repeat <code>slice_sample()</code> many times. It creates a new column called <code>replicate</code> to index each replicate sample. To randomly sample 5 rows 4 times from the species Adelie, we do:</p>
+<p>To simulate a sampling distribution, we need to repeatedly randomly sample the “population” (again, in this case, we’re pretending the <code>penguins</code> data set is the entire population). The <em>infer</em> package (again you may need to install this pacakge following direction sin <a href="./lab02.html">Lab 02</a>) has a convenient function <code>rep_slice_sample()</code> that will repeat <code>slice_sample()</code> many times. It creates a new column called <code>replicate</code> to index each replicate sample. To randomly sample 5 rows 4 times from the species Adelie, we do:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first load needed packages</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
@@ -295,12 +295,12 @@ window.Quarto = {
 # Groups:   replicate [2]
   replicate species island    bill_length_mm bill_depth_mm flipper_length_mm
       &lt;int&gt; &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-1         1 Adelie  Torgersen           41.5          18.3               195
-2         1 Adelie  Dream               37.2          18.1               178
-3         1 Adelie  Biscoe              39.6          20.7               191
-4         1 Adelie  Torgersen           38.6          17                 188
-5         1 Adelie  Dream               37            16.9               185
-6         2 Adelie  Biscoe              41.3          21.1               195
+1         1 Adelie  Dream               39.5          17.8               188
+2         1 Adelie  Torgersen           41.1          18.6               189
+3         1 Adelie  Biscoe              41            20                 203
+4         1 Adelie  Torgersen           35.1          19.4               193
+5         1 Adelie  Torgersen           39.7          18.4               190
+6         2 Adelie  Dream               40.8          18.9               208
 # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
 </div>

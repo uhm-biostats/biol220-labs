@@ -32,7 +32,7 @@ For this lab we will simulate our own sampling distribution of the mean. Here we
 
 #### Randomly sampling rows
 
-The *dplyr* package offers tools that allow us to easily produce a random sample of rows from a dataset using the function `slice_sample()`. For example, to sample 5 rows at random from the `penguins` data set, you would do the following:
+The *dplyr* package offers tools that allow us to easily produce a random sample of rows from a dataset using the function `slice_sample()`. You may need to install the *dplyr* package, refer back to [Lab 02](lab02.qmd) for how to do that.  With the `slice_sample()` function we can, for example, sample 5 rows at random from the `penguins` data set by doing the following:
 
 ```{r}
 library(dplyr)
@@ -46,7 +46,7 @@ Now try on your to increase the sample size 10, how would you do this?
 
 #### Repeated sampling
 
-To simulate a sampling distribution, we need to repeatedly randomly sample the "population" (again, in this case, we're pretending the `penguins` data set is the entire population). The *infer* package has a convenient function `rep_slice_sample()` that will repeat `slice_sample()` many times. It creates a new column called `replicate` to index each replicate sample. To randomly sample 5 rows 4 times from the species Adelie, we do:
+To simulate a sampling distribution, we need to repeatedly randomly sample the "population" (again, in this case, we're pretending the `penguins` data set is the entire population). The *infer* package (again you may need to install this pacakge following direction sin [Lab 02](lab02.qmd)) has a convenient function `rep_slice_sample()` that will repeat `slice_sample()` many times. It creates a new column called `replicate` to index each replicate sample. To randomly sample 5 rows 4 times from the species Adelie, we do:
 
 ```{r}
 # first load needed packages
