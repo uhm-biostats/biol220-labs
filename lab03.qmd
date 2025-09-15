@@ -27,17 +27,17 @@ library(infer)
 
 ### Simulating your own sampling distributions
 
-Just like we did in lecture, we will simulate our own sampling distribution of the mean. For this lab, we will use the `iris` dataset to demonstrate how. You'll take many random samples from the `iris` dataset, calculate the sample mean $\bar{Y}$ for each, and plot the distribution. 
+For this lab we will simulate our own sampling distribution of the mean. Here we will use the `penguins` dataset from the *palmerpenguins* package. To simulate the sampling distribution you'll treat the data in the `penguins` dataset as the entire population (it isn't but we can pretend) and take many random samples from it, calculate the sample mean $\bar{Y}$ for each, and plot the distribution. 
 
 
 #### Randomly sampling rows
 
-We used the `replicate` function in lecture, but the **dplyr** package offers tools that are perhaps even more intuitive. You can take a random sample of rows in your data using the **dplyr** function `slice_sample()`. For example, to sample 5 rows at random from the `iris` data set, you would do the following:
+The *dplyr* package offers tools that allow us to easily produce a random sample of rows from a dataset using the function `slice_sample()`. For example, to sample 5 rows at random from the `penguins` data set, you would do the following:
 
 ```{r}
 library(dplyr)
 
-samp <- slice_sample(iris, n = 5)
+samp <- slice_sample(penguins, n = 5)
 samp
 ```
 
@@ -46,35 +46,36 @@ Now try on your to increase the sample size 10, how would you do this?
 
 #### Repeated sampling
 
-To simulate a sampling distribution, we need to repeatedly randomly sample the "population" (in this case, we're pretending the `iris` data set is the entire population). The **infer** package has a convenient function `rep_slice_sample()` that will repeat `slice_sample()` many times. It creates a new column called `replicate` to index each replicate sample. To randomly sample 5 rows 4 times from *Iris setosa*, we do:
+To simulate a sampling distribution, we need to repeatedly randomly sample the "population" (again, in this case, we're pretending the `penguins` data set is the entire population). The *infer* package has a convenient function `rep_slice_sample()` that will repeat `slice_sample()` many times. It creates a new column called `replicate` to index each replicate sample. To randomly sample 5 rows 4 times from the species Adelie, we do:
 
 ```{r}
-# first load the infer pacakge
+# first load needed packages
+library(palmerpenguins)
 library(infer)
 
 # let's look at just the species setosa, so we'll need to subset our data
-just_setosa <- subset(iris, Species == "setosa")
+just_adelie <- subset(penguins, species == "Adelie")
 
-many_setosa_samp <- rep_slice_sample(just_setosa, n = 5, reps = 4)
-head(many_setosa_samp)
+many_adelie_samp <- rep_slice_sample(just_adelie, n = 5, reps = 4)
+head(many_adelie_samp)
 ```
 
-Note: the **infer** package converted the `iris` data.frame to something called a `tibble`, for our purposes, think of a data.frame and a tibble as equivalent.
+Note: the *infer* package converted the `penguins` data.frame to something called a `tibble`, for our purposes, think of a data.frame and a tibble as equivalent.
 
-Now, let's take 1000 samples of 10 from each species. I'll show you the code for *Iris setosa*, then fill in the `___` sections below to do it for it the other species. After, you'll need to combine the results before summarizing and plotting.
+Now, let's take 1000 samples of size 10 from each species. I'll show you the code for Adelie, then fill in the blank (`___`) sections below to do it for the other species. After, you'll need to combine the results before summarizing and plotting.
 
 ```{r, echo = TRUE, eval = FALSE}
 # let's use `set.seed` so we can compare answers
 set.seed(123)
 
-just_setosa <- subset(iris, Species == "setosa")
-many_setosa_samp10 <- rep_slice_sample(just_setosa, n = 10, reps = 1000)
+just_adelie <- subset(penguins, species == "Adelie")
+many_adelie_samp10 <- rep_slice_sample(just_adelie, n = 10, reps = 1000)
 
-just_versicolor <- subset(iris, Species == ___)
-many_versicolor_samp10 <- rep_slice_sample(___, n = 10, reps = 1000)
+just_chinstrap <- subset(penguins, species == ___)
+many_chinstrap_samp10 <- rep_slice_sample(___, n = 10, reps = 1000)
 
-just_virginica <- subset(iris, Species == ___)
-many_virginica_samp10 <- rep_slice_sample(___, n = 10, reps = 1000)
+just_gentoo <- subset(penguins, species == ___)
+many_gentoo_samp10 <- rep_slice_sample(___, n = 10, reps = 1000)
 ```
 
 
@@ -82,24 +83,25 @@ many_virginica_samp10 <- rep_slice_sample(___, n = 10, reps = 1000)
 # let's use `set.seed` so we can compare answers
 set.seed(123)
 
-just_setosa <- subset(iris, Species == "setosa")
-many_setosa_samp10 <- rep_slice_sample(just_setosa, n = 10, reps = 1000)
 
-just_versicolor <- subset(iris, Species == "versicolor")
-many_versicolor_samp10 <- rep_slice_sample(just_versicolor, n = 10, reps = 1000)
+just_adelie <- subset(penguins, species == "Adelie")
+many_adelie_samp10 <- rep_slice_sample(just_adelie, n = 10, reps = 1000)
 
-just_virginica <- subset(iris, Species == "virginica")
-many_virginica_samp10 <- rep_slice_sample(just_virginica, n = 10, reps = 1000)
+just_chinstrap <- subset(penguins, species == "Chinstrap")
+many_chinstrap_samp10 <- rep_slice_sample(just_chinstrap, n = 10, reps = 1000)
+
+just_gentoo <- subset(penguins, species == "Gentoo")
+many_gentoo_samp10 <- rep_slice_sample(just_gentoo, n = 10, reps = 1000)
 ```
 
 If you used the same seed (`123`) in the above code then you should get these same answers:
 
 ```{r}
-many_setosa_samp10
+many_adelie_samp10
 
-many_versicolor_samp10
+many_chinstrap_samp10
 
-many_virginica_samp10
+many_gentoo_samp10
 ```
 
 Remember, we only need to use `set.seed` in situations where we're trying to compare output from random sampling.  You can delete `set.seed` after you compared your output to mine.
@@ -107,47 +109,48 @@ Remember, we only need to use `set.seed` in situations where we're trying to com
 You can use the `rbind` function to combine all three sets of sampling distributions into a single `tibble`.
 
 ```{r}
-iris_sample_dists <- rbind(many_setosa_samp10, 
-                           many_versicolor_samp10,
-                           many_virginica_samp10)
+penguins_sample_dists <- rbind(many_adelie_samp10, 
+                               many_chinstrap_samp10,
+                               many_gentoo_samp10)
 
-iris_sample_dists
+penguins_sample_dists
 ```
 
 Now we have a very large set of samples to examine.
 
 ### Sample mean $\bar{Y}$
 
-To look at the distribution of the sample mean, we first need to calculate the sample mean for all 1000 replicates per species. We will use two helpful functions from *dplyr* to first **group** the `iris_sample_dists` data.frame by species and replicate, and then calculate the mean for each species with the `summarize` function. Let's first look at the sampling distribution of the mean of sepal length:
+To look at the distribution of the sample mean, we first need to calculate the sample mean for all 1000 replicates per species. We will use two helpful functions from *dplyr* to first **group** the `penguins_sample_dists` data.frame by species and replicate, and then calculate the mean for each species with the `summarize` function. Let's first look at the sampling distribution of the mean of bill length:
 
 ```{r}
-sepal_length_sample_dists <-  group_by(iris_sample_dists, Species, replicate)
-sepal_length_sample_dists <- summarize(sepal_length_sample_dists, 
-                                       Y_bar = mean(Sepal.Length))
+bill_length_sample_dists <-  group_by(penguins_sample_dists, species, replicate)
+bill_length_sample_dists <- summarize(bill_length_sample_dists, 
+                                      Y_bar = mean(bill_length_mm, na.rm = TRUE))
 
-sepal_length_sample_dists
+bill_length_sample_dists
 ```
 
-Modify the code above to calculate sample means for `Petal.Length`.
+Modify the code above to calculate sample means for `flipper_length_mm`.
 
 ### Plot the sampling distribution $\bar{Y}$
 
 We can apply the `ggplot()` tools we've already learned to plot a multiple histogram to compare the sampling distributions in each species.
 
 ```{r}
+library(ggplot2)
 
-ggplot(sepal_length_sample_dists, aes(Y_bar, fill = Species)) +
+ggplot(bill_length_sample_dists, aes(Y_bar, fill = species)) +
     geom_histogram(alpha = 0.5, position = "identity", bins = 30) +
     scale_fill_viridis_d()
 
 ```
 
-See if you remember how to use `facet_grid()` to put each Specie in it's own panel like this:
+See if you remember how to use `facet_grid()` to put each specie in it's own panel like this:
 
 ```{r, echo = FALSE, eval = TRUE}
 
-ggplot(sepal_length_sample_dists, aes(Y_bar, fill = Species)) +
-    facet_grid(rows = "Species") +
+ggplot(bill_length_sample_dists, aes(Y_bar, fill = species)) +
+    facet_grid(rows = "species") +
     geom_histogram(alpha = 0.5, position = "identity", bins = 30) +
     scale_fill_viridis_d()
 
@@ -155,12 +158,12 @@ ggplot(sepal_length_sample_dists, aes(Y_bar, fill = Species)) +
 
 ### Standard error of the mean
 
-The standard error of the mean helps us quantify our uncertainty about our estimate of the population mean given our sample size. We can calculate a *hypothetical* standard error for the perfect random sample of size $n$ by dividing the population standard deviation by $\sqrt{n}$: $\sigma / \sqrt{n}$. Let's pretend that the `iris` data set is the entire "population", the population standard deviation for `Sepal.Length` is:
+The standard error of the mean helps us quantify our uncertainty about our estimate of the population mean given our sample size. We can calculate a *hypothetical* standard error for the perfect random sample of size $n$ by dividing the population standard deviation by $\sqrt{n}$: $\sigma / \sqrt{n}$. Let's pretend that the `penguins` data set is the entire "population", the population standard deviation for `bill_length_mm` is:
 
 ```{r, echo = FALSE}
-out <- iris |>
-    group_by(Species) |>
-    summarize(s = sd(Sepal.Length), n = n()) |>
+out <- penguins |>
+    group_by(species) |>
+    summarize(s = sd(bill_length_mm, na.rm = TRUE), n = n()) |>
     mutate("$\\sigma$" = round(s * (n - 1)  / n, 2)) |>
     select(-s, -n) |>
     knitr::kable()
@@ -172,9 +175,9 @@ Now calculate the hypothetical standard error of the mean for a sample size of 1
 
 ```{r, echo = FALSE}
 
-iris |>
-    group_by(Species) |>
-    summarize(s = sd(Sepal.Length), n = n()) |>
+penguins |>
+    group_by(species) |>
+    summarize(s = sd(bill_length_mm, na.rm = TRUE), n = n()) |>
     mutate(`$\\sigma$` = round(s * (n - 1)  / n, 2)) |>
     mutate(`$\\sigma/\\sqrt{n}$` = `$\\sigma$` / sqrt(10)) |>
     select(-s, -n) |>
@@ -186,9 +189,9 @@ iris |>
 Let's compare this hypothetical standard error of the mean to what we obtain from our simulations. Remember that the standard error of the mean is simply the standard deviation of the sampling distribution. That means we can get the answer by using the `sd()` function on our simulated sampling distribution.
 
 ```{r}
-sepal_length_se <- group_by(sepal_length_sample_dists, Species)
-sepal_length_se <- summarize(sepal_length_se, SE_Ybar = sd(Y_bar))
-sepal_length_se
+bill_length_se <- group_by(bill_length_sample_dists, species)
+bill_length_se <- summarize(bill_length_se, SE_Ybar = sd(Y_bar))
+bill_length_se
 ```
 
 Notice that we had to first group by Species, then summarize by taking the standard deviation of all of our sample means.
@@ -211,7 +214,7 @@ x <- c(2.16, -0.79, -0.18,  1.62, -0.98, -1.15, -0.15,  1.34,  1.96,  1.74)
 se <- sd(x) / sqrt(length(x))
 ```
 
-You should get $\mathrm{SE}_{\bar{Y}}$ = `r round(se, 3)`.
+You should get $\mathrm{SE}_{\bar{Y}}$ = `r round(se, 2)`.
 
 ### 95% confidence intervals
 
@@ -219,7 +222,7 @@ Confidence intervals are a way to show the plausible range of parameter values g
 
 $$ \text{lower CI}: \bar{Y} - 2 \times \mathrm{SE}_{\bar{Y}} $$
 $$ \text{upper CI}: \bar{Y} + 2 \times \mathrm{SE}_{\bar{Y}} $$
-Use the `mean()` functions and standard error of the mean to calculate the confidence interval for the data you used in the last section. You should get:
+Use the `mean()` function and standard error of the mean to calculate the confidence interval for the data you used in the last section. You should get:
 
 ```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE} 
 d <- data.frame("$\\bar{Y}$" = mean(x),
@@ -284,7 +287,6 @@ All questions are about the sampling distribution of the sample mean, $\bar{Y}$
     Hints: 
     
     - to get **ONE** column you can use `...$column_name`, to get multiple columns, you can use `...[, c("column_name1", "column_name2")]`
-    - remember the `select` function
     - you can figure out if a value is missing with the `is.na` function
     - latitudes between -23.43655° and 23.43655° is the same as `abs(latitude) < 23.43655`
 
