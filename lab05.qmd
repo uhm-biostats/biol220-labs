@@ -57,6 +57,15 @@ What is the test statistic?  The null hypothesis says there will be no differenc
 To calculate that, we need to read-in the data,
 
 ```{r}
+#| eval: false
+
+# remember to insert your actual username
+reef_fish <- read.csv("biol220_class/students/username/data/reef_fish.csv")
+```
+
+```{r}
+#| echo: false
+
 reef_fish <- read.csv("data/reef_fish.csv")
 ```
 

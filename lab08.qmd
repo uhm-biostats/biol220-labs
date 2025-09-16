@@ -30,7 +30,13 @@ Many statistical tests assume that the variable being analyzed has a normal dist
 
 A good way to start is to simply visualize the frequency distribution of the variable in the data set by drawing a histogram. Let's use the age of passengers on the Titanic for our example.
 
-```{r, echo = TRUE, eval = TRUE}
+```{r, echo = TRUE, eval = FALSE}
+# remember to insert your actual user name
+titanic_data <- read.csv("biol220_class/students/username/data/titanic.csv" )
+```
+
+```{r, echo = FALSE, eval = TRUE}
+# remember to insert your actual user name
 titanic_data <- read.csv("data/titanic.csv" )
 ```
 

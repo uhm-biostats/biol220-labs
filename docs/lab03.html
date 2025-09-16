@@ -292,12 +292,12 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>samp <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(penguins, <span class="at">n =</span> <span class="dv">5</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>samp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    species island bill_len bill_dep flipper_len body_mass    sex year
-1    Adelie Biscoe     38.2     18.1         185      3950   male 2007
-2    Adelie  Dream     36.5     18.0         182      3150 female 2007
-3 Chinstrap  Dream     50.8     18.5         201      4450   male 2009
-4    Adelie  Dream     39.5     17.8         188      3300 female 2007
-5    Adelie  Dream     39.7     17.9         193      4250   male 2009</code></pre>
+<pre><code>    species    island bill_len bill_dep flipper_len body_mass    sex year
+1    Gentoo    Biscoe     55.1     16.0         230      5850   male 2009
+2    Adelie Torgersen     35.7     17.0         189      3350 female 2009
+3    Adelie    Biscoe     41.0     20.0         203      4725   male 2009
+4    Adelie Torgersen     39.3     20.6         190      3650   male 2007
+5 Chinstrap     Dream     55.8     19.8         207      4000   male 2009</code></pre>
 </div>
 </div>
 <p>Now try on your to increase the sample size 10, how would you do this?</p>
@@ -320,12 +320,12 @@ window.Quarto = {
 # Groups:   replicate [2]
   replicate species island    bill_length_mm bill_depth_mm flipper_length_mm
       &lt;int&gt; &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-1         1 Adelie  Biscoe              38.1          17                 181
-2         1 Adelie  Dream               36            18.5               186
-3         1 Adelie  Torgersen           37.7          19.8               198
-4         1 Adelie  Dream               39.5          16.7               178
-5         1 Adelie  Biscoe              39.6          20.7               191
-6         2 Adelie  Torgersen           41.8          19.4               198
+1         1 Adelie  Biscoe              35.9          19.2               189
+2         1 Adelie  Biscoe              38.1          16.5               198
+3         1 Adelie  Biscoe              35            17.9               192
+4         1 Adelie  Dream               41.1          18.1               205
+5         1 Adelie  Dream               36.6          18.4               184
+6         2 Adelie  Torgersen           37.8          17.3               180
 # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
 </div>
