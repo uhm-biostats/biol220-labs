@@ -51,7 +51,7 @@ nsuccess <- sum(toss == "T")
 nsuccess
 ```
 
-The number of successes in 4 tosses is exactly the kind of situation where a binomial distribution is relevant.  In this example, the probability of success is $p = 0.5$ and the number of trials is $n = 4$. 
+The number of successes in 4 tosses is exactly the kind of situation where a binomial distribution is relevant.  In the example of a fair coin tossed 4 times, the probability of success is $p = 0.5$ and the number of trials is $n = 4$. 
 
 Let's run the above code 20 times to estimate the frequencies of each potential outcome that will approximate the binomial distribution with $p = 0.5$ and $n = 4$.
 
