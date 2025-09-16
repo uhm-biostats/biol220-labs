@@ -10,7 +10,7 @@ book:
     - lab01.qmd
     - lab02.qmd
     - lab03.qmd
-    # - lab04.qmd
+    - lab04.qmd
     # - lab07.qmd
     # - lab08.qmd
     # - lab09.qmd
