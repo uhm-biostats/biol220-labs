@@ -217,6 +217,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -286,12 +292,12 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>samp <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(penguins, <span class="at">n =</span> <span class="dv">5</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>samp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    species    island bill_len bill_dep flipper_len body_mass    sex year
-1    Gentoo    Biscoe     46.4     15.0         216      4700 female 2008
-2 Chinstrap     Dream     53.5     19.9         205      4500   male 2008
-3    Adelie Torgersen     42.0     20.2         190      4250   &lt;NA&gt; 2007
-4    Gentoo    Biscoe     46.6     14.2         210      4850 female 2008
-5 Chinstrap     Dream     52.7     19.8         197      3725   male 2007</code></pre>
+<pre><code>    species island bill_len bill_dep flipper_len body_mass    sex year
+1    Adelie Biscoe     38.2     18.1         185      3950   male 2007
+2    Adelie  Dream     36.5     18.0         182      3150 female 2007
+3 Chinstrap  Dream     50.8     18.5         201      4450   male 2009
+4    Adelie  Dream     39.5     17.8         188      3300 female 2007
+5    Adelie  Dream     39.7     17.9         193      4250   male 2009</code></pre>
 </div>
 </div>
 <p>Now try on your to increase the sample size 10, how would you do this?</p>
@@ -314,12 +320,12 @@ window.Quarto = {
 # Groups:   replicate [2]
   replicate species island    bill_length_mm bill_depth_mm flipper_length_mm
       &lt;int&gt; &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-1         1 Adelie  Torgersen           39.7          18.4               190
-2         1 Adelie  Torgersen           42.8          18.5               195
-3         1 Adelie  Dream               44.1          19.7               196
-4         1 Adelie  Biscoe              37.8          20                 190
-5         1 Adelie  Dream               32.1          15.5               188
-6         2 Adelie  Torgersen           40.2          17                 176
+1         1 Adelie  Biscoe              38.1          17                 181
+2         1 Adelie  Dream               36            18.5               186
+3         1 Adelie  Torgersen           37.7          19.8               198
+4         1 Adelie  Dream               39.5          16.7               178
+5         1 Adelie  Biscoe              39.6          20.7               191
+6         2 Adelie  Torgersen           41.8          19.4               198
 # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
 </div>

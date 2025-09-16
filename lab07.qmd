@@ -21,7 +21,7 @@ library(DT)
 
 ### The $\chi^2$ distribution
 
-Let's get familiar with the $\chi^2$ distribution. We'll also learn about a new kind of *R* function, one for generating random samples from any probability distribution.  Because we're focused on the $\chi^2$ distribution, we'll use the random sampling function for that distribution: `rchisq`. We can use `rchisq` to generate a random sample of any size from a $\chi^2$ distribution with any degrees of freedom using a classic example: flipping a coin.  We will simulate the coin flipping process using `sample`:
+Let's get familiar with the $\chi^2$ distribution. We'll also learn about a new kind of *R* function, one for generating random samples from any probability distribution.  Because we're focused on the $\chi^2$ distribution, we'll use the random sampling function for that distribution: `rchisq`. We can use `rchisq` to generate a random sample of any size from a $\chi^2$ distribution with any degrees of freedom:
 
 ```{r}
 rchisq(10, df = 3)
@@ -101,15 +101,15 @@ qchisq(0.05, df = 3, lower.tail = FALSE)
 
 ### $\chi^2$ goodness of fit test
 
-Here's a question: does the ethnic composition of faculty at the University of Hawaiʻi match the ethnic composition of the state? If not, then something funny might be going on like racist hiring practices, or systemic racism leading to discrepancies in higher education leading to different proportions of qualifications (e.g. holding a graduate degree) across ethnicities. 
+Here's a question: does the representation of different ethnicities in the faculty at the University of Hawaiʻi look like the ethnic composition of Hawaiʻi as a whole? If not, then something funny might be going on like racist hiring practices, or systemic racism leading to discrepancies in higher education leading to different proportions of qualifications (e.g. holding a graduate degree) across ethnicities. 
 
-There are also acceptable reasons for differential ethnic representation, such as if UH wants to have thriving Asian Studies or Black/African Studies or Hawaiian Studies programs, we will need to hire qualified faculty for those positions who will likely come from those ethnic backgrounds more often than not.
+There can also be reasonable causes for differential ethnic representation, such as if UH wants to have thriving Asian Studies or Black/African Studies or Hawaiian Studies program, we will need to hire qualified faculty for those positions who will likely come from those ethnic backgrounds more often than not.
 
-It should be noted that discrepancies in ethnic group representation in skilled labor jobs is sometimes used to claim there are "biological" differences between ethnic groups in terms of intelligence. This is false.  A great read on this topic is [*Superior* by Angela Saini*](https://www.penguinrandomhouse.com/books/607248/superior-by-angela-saini/).  I wish I could say that "historically there were claims about 'biological' differences..." but these claims [persist all too readily into our modern times](https://www.theguardian.com/news/2018/mar/02/the-unwelcome-revival-of-race-science).
+It should be noted that discrepancies in ethnic group representation in skilled labor jobs is sometimes used to claim there are "biological" differences between ethnic groups in terms of intelligence. This is false.  A great read on this topic is [*Superior* by Angela Saini](https://www.penguinrandomhouse.com/books/607248/superior-by-angela-saini/).  I wish I could say that "historically there were claims about 'biological' differences..." but these claims [persist all too readily into our modern times](https://www.theguardian.com/news/2018/mar/02/the-unwelcome-revival-of-race-science).
 
 So let's get to it!
 
-Here are the data on ethnic proportions in the Hawaiʻi and counts of different ethnic groups who represent our faculty at UH:
+Here are the data on ethnicities in Hawaiʻi and counts of different ethnic groups who sit on our faculty at UH:
 
 ```{r echo = FALSE}
 uh_fac <- read.csv("data/uh_faculty_ethnicity.csv")
@@ -117,15 +117,12 @@ uh_fac <- read.csv("data/uh_faculty_ethnicity.csv")
 knitr::kable(uh_fac)
 ```
 
-The source for population proportions in Hawaiʻi comes from the state of Hawaiʻi report ["Demographic, Social, Economic, and Housing Characteristics for Selected Race Groups in Hawaii"](https://files.hawaii.gov/dbedt/economic/reports/SelectedRacesCharacteristics_HawaiiReport.pdf) and the numbers of faculty by ethnic group comes from the [UH Mānoa Institutional Research Office](https://data.hawaii.edu/#/reports/FAC06?SEM_YR_IRO=2022-8&TENURE_TOGGLE=TENURE_ALL&reportId=FAC06). Because those two reporting bodies divide ethnicities slightly differently or do not report on others I had to leave some groups out entirely (e.g. Indian, not reported by the State).
+Demographic data for Hawaiʻi come from the state government report ["Demographic, Social, Economic, and Housing Characteristics for Selected Race Groups in Hawaii"](https://files.hawaii.gov/dbedt/economic/reports/SelectedRacesCharacteristics_HawaiiReport.pdf) and the data for faculty by ethnic group come from the [UH Mānoa Institutional Research Office](https://data.hawaii.edu/#/reports/FAC06?SEM_YR_IRO=2022-8&TENURE_TOGGLE=TENURE_ALL&reportId=FAC06). Because those two reporting bodies divide ethnicities slightly differently or do not report on others I had to leave some groups out entirely (e.g. Indian, not reported by the state government).
 
-These data are in your `data` folder in posit cloud, you can read them in like this
+These data are in your `data` folder in Koa and are called `uh_faculty_ethnicity.csv`
 
-```{r}
-uh_fac <- read.csv("data/uh_faculty_ethnicity.csv")
-```
 
-How would we use a $\chi^2$ goodness of fit test for these data?  We're going to leave that to you to answer in the **Questions** section.  Here, we'll look at a simpler example.  First let's make that example.  Suppose we have data on 4 groups `A`, `B`, `C`, `D`, and their expected proportions. We can make such a data set like this:
+How would we use a $\chi^2$ goodness of fit test for these data?  We're going to leave that to you to answer in the **Questions** section.  Here, we'll look at a simpler example.  First let's make-up that example.  Suppose we have data on 4 groups `A`, `B`, `C`, `D`, and their expected proportions. We can make such a data set like this:
 
 ```{r}
 fake_data <- data.frame(group = c("A", "B", "C", "D"), 
@@ -175,7 +172,7 @@ Contingency analysis is very similar to a $\chi^2$ goodness of fit test, but in 
 
 Our question is often a little different: with contingency analysis we are often asking, *is there an association between these two categorical variables?*
 
-For example, do manu o Kū prefer nesting in certain types of trees?  Manu o Kū are the friendly (yes I am anthropomorphism) little white terns that fly around campus. Last year, students went out and looked in random trees to see if the manu o Kū were nesting in the trees. Do the manu prefer a certain species? Here the two categorical variables are **tree species** and **yes/no is there a nest**. Here is a peek at the data
+For example, do manu o Kū prefer nesting in certain types of trees?  Manu o Kū are the friendly (yes I am anthropomorphizing) little white terns that fly around campus. A few years back, students went out and looked in random trees to see if the manu o Kū were nesting in the trees. Do the manu prefer a certain species? Here the two categorical variables are **tree species** and **yes/no is there a nest**. Here is a peek at the data
 
 ```{r echo = FALSE}
 yesNest <- data.frame(tree = rep(c("Albizia", "Cassia", "Kukui"), 
@@ -253,10 +250,5 @@ You can see it tells us some extra stuff, but our primary concern for now is the
 
 5. Following the steps we used to do a $\chi^2$ goodness of fit test for `fake_data`, preform a $\chi^2$ goodness of fit test to answer the question of whether the ethnic composition of UH faculty resembles the ethnic composition of Hawaiʻi.  What do you conclude?
 
-6. Following the steps we used to do a contingency analysis for `fake_2var`, preform a contingency analysis for the manu o Kū nesting data. Do the manu have a preference for which type of tree to nest in, or do they seem to choose at random?  You can read in those data like this:
-
-```{r}
-manuoku <- read.csv("data/manuoku.csv")
-```
-
+6. Following the steps we used to do a contingency analysis for `fake_2var`, preform a contingency analysis for the manu o Kū nesting data. Do the manu have a preference for which type of tree to nest in, or do they seem to choose at random?  The manu o Kū data are in your `data` folder and called `manuoku.csv`.
 
