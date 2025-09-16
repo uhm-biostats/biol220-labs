@@ -65,7 +65,7 @@ reef_fish <- read.csv("data/reef_fish.csv")
 View(reef_fish)
 ```
 
-We can see there are columns for `region`, `polynesia_isolation`, `site`, `lon` (longitude), `lat` (latitude), and `richness` (species richness). The `polynesia_isolation` column was added special for this lab. It has values `core_polynisia`, `distant_polynisia`, and `NA`. `NA` is for everything all sites outside of Polynesia. Before we calculate our test statistic, we need to subset our data to just Polynesia.  We can do that like this:
+We can see there are columns for `region`, `polynesia_isolation`, `site`, `lon` (longitude), `lat` (latitude), and `richness` (species richness). The `polynesia_isolation` column was added special for this lab. It has values `core_polynisia`, `distant_polynisia`, and `NA`. `NA` is for all sites outside of Polynesia. Before we calculate our test statistic, we need to subset our data to just Polynesia.  We can do that like this:
 
 ```{r}
 # "pol_tri" for polynesian triangle 
@@ -227,7 +227,7 @@ That is the question.  Since we're in *bio*statistics and the convention in our 
 
 ## Questions
 
-A common hypothesis in the study of biodiversity is that species richness is higher in the tropics.  The tropics are defined as any place between the latitudes of -23.43615° and 23.43615°, i.e. 23.43615° south of the equator and 23.43615° north of the equator.  Reef ecosystems largely exist only within the tropics, but there are a few interesting and unique types of reef ecosystems outside the tropic latitudes as well.  That means we can use our reef fish dataset to test whether reef species richness is higher in the tropics or not.
+A common hypothesis in the study of biodiversity is that species richness is higher in the tropics.  The tropics are defined as any place between the latitudes of -23.43615° and 23.43615°, i.e. 23.43615° south of the equator and 23.43615° north of the equator.  Reef ecosystems largely exist only within the tropics, but there are a few interesting and unique types of reef ecosystems outside the tropical latitudes as well.  That means we can use our reef fish dataset to test whether reef species richness is higher in the tropics or not.
 
 In questions 1--7 you will conduct the steps of testing this *scientific hypothesis* with statistical null hypothesis testing.
 
