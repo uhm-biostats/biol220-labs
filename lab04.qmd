@@ -11,21 +11,17 @@ library(DT)
 
 ## Goals
 
-* Exchange contact info with your groups
 * Be able to estimate probabilities from data
 * Use `sample` to simulate events with different probabilities
 * Use rules of probability to evaluate if different events in a dataset are likely to be independent or not
 
-## Exchange contact info!
-
-Before starting the main content of this lab, take a few minutes to introduce yourselves to your group members and exchange email addresses so you can communicate about your group projects.
 
 
 ## Learning the Tools
 
 ### More fun with penguins!
 
-We'll use our old friend the Palmer penguins data set.  Let's first look at some simple probabilities:
+We'll use our old friend the Palmer penguins data set to calculate and think about probabilities.  Let's first look at some simple probabilities:
 
 ```{r}
 library(palmerpenguins)
@@ -57,7 +53,7 @@ Pr_bill_l_less45 <- sum(penguins$bill_length_mm < 45) / nrow(penguins)
 Pr_bill_l_less45
 ```
 
-We got `NA`?! The reason is that the bill length column has some missing data. We've dealt with that before by using `subset` to remove rows with missing data.  Here we will learn a new approach: telling `sum` to ignore `NA` values:
+We got `NA`?! The reason is that the bill length column has some missing data. We've dealt with that before by using `subset` to remove rows with missing data or by using the `na.rm` argument in functions like `mean()` that tell *R* to ignore `NA` values in making calculations.  Here we can use `na.rm` because `sum()` takes that argument:
 
 ```{r}
 # probability bill length is less than 45
@@ -89,7 +85,7 @@ pAl45
 
 Interesting, $Pr(\text{bill length} < 45)$ and $Pr(\text{bill length} < 45 \text{ \& Adelie})$ are about the same, could that mean that bill length and species are independent?  To figure out, we need to calculate $Pr(\text{bill length} < 45)$ and $Pr(\text{bill length} < 45 \mid \text{Adelie})$ and see if the two probabilities are roughly the same.
 
-The expression $Pr(\text{bill length} < 45 \mid \text{Adelie})$ tells us that we already know the species is Adelie.  That means to caculate the probability bill length < 45 *GIVEN* Adelie, we need to ignore all the rest of the data
+The expression $Pr(\text{bill length} < 45 \mid \text{Adelie})$ tells us that we already know the species is Adelie.  That means to calculate the probability bill length < 45 *GIVEN* Adelie, we need to ignore all the rest of the data
 
 
 ```{r}
@@ -104,10 +100,10 @@ pl45GivenA
 
 Recall that $Pr(\text{bill length} < 45)$ = `r round(Pr_bill_l_less45, 2)` which is vastly different from $Pr(\text{bill length} < 45 \mid \text{Adelie})$ = `r round(pl45GivenA, 2)` so we conclude that no, bill length and species are not independent.
 
-We can confirm this by visualizing the histograms: different penguin species have different distributions of bill lengths, again confirming that the two variables are not indipendent.
+We can confirm this by visualizing the histograms: different penguin species have different distributions of bill lengths, again confirming that the two variables are not independent.
 
 
-```{r, fig.align='center', fig.width=3, fig.height=3.5}
+```{r}
 library(ggplot2)
 
 ggplot(penguins, aes(x = bill_length_mm, fill = species)) +
@@ -120,7 +116,7 @@ ggplot(penguins, aes(x = bill_length_mm, fill = species)) +
 
 ## Simulating random events with `sample`
 
-You've seen us use the `sample` function all the time.  We can take a random sample of integers:
+The `sample` function let's us take a random sample of just about anything.  We can take a random sample of integers:
 
 ```{r}
 # randomly sample 3 numbers between 1 and 10
