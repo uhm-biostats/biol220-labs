@@ -90,9 +90,16 @@ These points fall mainly along a straight line, but there is some wobble around 
 
 When data are not normally distributed, the dots in the quantile plot will not follow a straight line, even approximately. For example, here is a histogram and a QQ plot for the population size of various counties, from the data in wright_etal_2017.csv. These data are very skewed to the right, and do not follow a normal distribution at all.
 
-```{r, echo = TRUE, eval = TRUE}
+```{r, echo = FALSE, eval = TRUE}
 leafsize <- read.csv("data/wright_etal_2017.csv")
+```
 
+```{r, echo = TRUE, eval = FALSE}
+# remember to insert your actual user name
+titanic_data <- read.csv("biol220_class/students/username/data/wright_etal_2017.csv" )
+```
+
+```{r}
 ggplot(leafsize, aes(x = leafsize_cm2)) + 
   geom_histogram()
 
@@ -118,36 +125,6 @@ log(titanic_data$age)
 
 This will return a vector of values, each of which is the log of age of a passenger.
 
-## Activities
-
-### Activity 1: Distribution of sample means
-
-We return to the applet we used in chapter 3, located at [http://www.zoology.ubc.ca/~whitlock/Kingfisher/SamplingNormal.htm](http://www.zoology.ubc.ca/~whitlock/Kingfisher/SamplingNormal.htm) to investigate three points made in the text.
-
-**Point 1: The distribution of sample means is normal, if the variable itself has a normal distribution.**
-
-First, hit "COMPLETE SAMPLE OF 10" and “CALCULATE MEAN” a few times, to remind yourself of what this applet does. (It takes a sample from the normal distribution shown when you click “SHOW POPULATION”. The top panel shows a histogram of that sample, and the bottom panel shows the distribution of sample means from all the previous samples.)
-
-Next, hit the "MEANS FOR MANY SAMPLES" button. This button makes a large number of separate samples at one go, all of the same sample size, to save you from making the samples one by one. Notice that the sample mean differs from sample to sample. The sample mean produced by random sampling from a probability distribution is itself a random variable.
-
-Look at the distribution of sample means. Does it seem to have a normal distribution? Click the checkbox by "SHOW SAMPLING DISTRIBUTION" off to the right, which will draw the curve for a normal distribution with the same mean and variance as this distribution of sample means.
-
-**Point 2: The standard deviation of the distribution of sample means is reduced with larger sample sizes.**
-
-The standard deviation of the population is controlled by the right slider marked with $\sigma$. The sample size is set by left slider. (The default when it opens is set to $n=10$.)
-
-For $n=10$, have the applet calculate a large number of sample means as you did in the previous exercise. If each sample size is 10 and the standard deviation is 30 (as in the default), what do you predict the standard deviation of the sample means to be? (Use the equation you have learned in class to make this calculation.)
-
-Change the sample size to $n=100$, and recalculate many sample means. Calculate the predicted standard deviation of all the sample means. Should the sampling distribution of sample means be wider or narrower with this larger sample size than in the previous case with a smaller sample size? What do you observe in the simulations?
-
-**Point 3: The distribution of sample means is approximately normal no matter what the distribution of the variable, as long as the sample size is large enough. (The Central Limit Theorem)**
-
-Load another web page: [http://www.zoology.ubc.ca/~whitlock/Kingfisher/CLT.htm](http://www.zoology.ubc.ca/~whitlock/Kingfisher/CLT.htm)
-
-This will simulate a very skewed distribution of data, showing the number of cups of coffee drunk per week for a population of university students. Click on “COFFEE” to see the distribution of the variable among individual students. Describe the ways that this looks different from a normal distribution.
-Set $n=2$ for the sample size, and simulate many sample means. Does the distribution of sample means look normal? Is it closer to normal in its shape than the distribution of individuals in the population?
-
-Now set $n=25$ and simulate many sample means. How does the distribution of sample means look now? It should look much more like a normal distribution, because of the Central Limit Theorem.
 
 ## Questions
 
@@ -167,7 +144,7 @@ Now set $n=25$ and simulate many sample means. How does the distribution of samp
 
 2. Repeat the procedures of Question 1, except this time have *R* sample 250 individuals for each sample. You can use the same command as in Question 1, but now set `n = 250`. Do the graphs and QQ plots from these larger samples look more like the normal expectations than the smaller sample you already did? Why do you think that this is?
 
-3. The file "mammals.csv" contains information on the body mass of various mammal species.
+3. The file "mammals.csv" (in the data folder) contains information on the body mass of various mammal species.
 
     a. Use `ggplot()` to plot the distribution of body mass, and describe its shape. Does this look like it has a normal distribution?
     b. Use `geom_qq()` and `geom_qq_line()` to plot a QQ plot for body mass. Does the data fall approximately along a straight line in the QQ plot? If so, what does this imply about the fit of these data to a normal distribution?
