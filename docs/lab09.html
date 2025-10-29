@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; The normal distribution and sample means – Labs for Intro Biostatistics</title>
+<title>9&nbsp; Correlation – Labs for Intro Biostatistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lab09.html" rel="next">
-<link href="./lab07.html" rel="prev">
+<link href="./lab08.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -111,6 +110,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -123,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab08.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab09.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -198,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab08.html" class="sidebar-item-text sidebar-link active">
+  <a href="./lab08.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab09.html" class="sidebar-item-text sidebar-link">
+  <a href="./lab09.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
   </div>
 </li>
@@ -218,13 +246,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">8.1</span> Goals</a></li>
-  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">8.2</span> Learning the Tools</a>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">9.1</span> Goals</a></li>
+  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">9.2</span> Learning the Tools</a>
   <ul class="collapse">
-  <li><a href="#qq-plot" id="toc-qq-plot" class="nav-link" data-scroll-target="#qq-plot"><span class="header-section-number">8.2.1</span> QQ Plot</a></li>
-  <li><a href="#transformations" id="toc-transformations" class="nav-link" data-scroll-target="#transformations"><span class="header-section-number">8.2.2</span> Transformations</a></li>
+  <li><a href="#rank-based-correlation" id="toc-rank-based-correlation" class="nav-link" data-scroll-target="#rank-based-correlation"><span class="header-section-number">9.2.1</span> Rank-based correlation</a></li>
   </ul></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">8.3</span> Questions</a></li>
+  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities"><span class="header-section-number">9.3</span> Activities</a>
+  <ul class="collapse">
+  <li><a href="#developing-an-intuition-for-correlation-coefficients." id="toc-developing-an-intuition-for-correlation-coefficients." class="nav-link" data-scroll-target="#developing-an-intuition-for-correlation-coefficients."><span class="header-section-number">9.3.1</span> Developing an intuition for correlation coefficients.</a></li>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">9.4</span> Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -233,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlation</span></h1>
 </div>
 
 
@@ -250,143 +281,108 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="goals" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">8.1</span> Goals</h2>
+<section id="goals" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">9.1</span> Goals</h2>
 <ul>
-<li>Visualize properties of the normal distribution.</li>
-<li>Understand the Central Limit Theorem.</li>
-<li>Calculate sampling properties of sample means.</li>
-<li>Decide whether a data set likely comes from a normal distribution</li>
+<li>Calculate a correlation coefficient and the coefficient of determination</li>
+<li>Test hypotheses about correlation</li>
+<li>Use the rank-based correlation when normality assumptions are not met</li>
 </ul>
 </section>
-<section id="learning-the-tools" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">8.2</span> Learning the Tools</h2>
-<p>This week we will mainly focus on some exercises to better understand the nature of the normal distribution. We will also learn a couple of tools that help us decide whether a particular data set is likely to have come from population with an approximately normal distribution.</p>
-<p>Many statistical tests assume that the variable being analyzed has a normal distribution. Fortunately, many of these tests are fairly robust to this assumption—that is, they work reasonably well even when this assumption is not quite true, especially when sample size is large. Therefore it is often sufficient to be able to assess whether the data come from a distribution whose shape is even approximately normal (the bell curve).</p>
-<p>A good way to start is to simply visualize the frequency distribution of the variable in the data set by drawing a histogram. Let’s use the age of passengers on the Titanic for our example.</p>
+<section id="learning-the-tools" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">9.2</span> Learning the Tools</h2>
+<p>This week and next week we will look at methods to understand the relationship between two numerical variables, using correlation and regression.</p>
+<p>To demonstrate the new <em>R</em> commands this week, we will use the penguin data set from the <code>palmerpenguins</code> package in R. These data record the measurements of different body dimensions of three species of penguins. For simplicity, we will focus just on the chinstrap penguin. Let’s first load the package and subset the data to just chinstraps.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remember to insert your actual user name</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>titanic_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"biol220_class/students/username/data/titanic.csv"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>chinstrap <span class="ot">&lt;-</span> <span class="fu">subset</span>(penguins, species <span class="sc">==</span> <span class="st">"Chinstrap"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Remember we can use <code>ggplot()</code> to draw histograms.</p>
+<p>Let’s look at the correlation between body mass and flipper length. We might expect the heavier the penguin, the bigger the flippers it needs. But before we go further, it is wise to plot a scatterplot to view the relationship of the two variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(titanic_data, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(chinstrap, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab08_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lab09_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Looking at this histogram, we see that the frequency distribution of the variable is not exactly normal; it is slightly asymmetric and there seems to be a second mode near 0. On the other hand, like the normal distribution, the frequency distribution has a large mode near the center of the distribution, frequencies mainly fall off to either side, and there are no outliers. This is close enough to normal that most methods would work fine.</p>
-<section id="qq-plot" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="qq-plot"><span class="header-section-number">8.2.1</span> QQ Plot</h3>
-<p>Another graphical technique that can help us visualize whether a variable is approximately normal is called a quantile plot (or a QQ plot). The QQ plot shows the data on the vertical axis ranked in order from smallest to largest (“sample” in the figure below). On the horizontal axis, it shows the expected value of an individual with the same quantile if the distribution were normal (“theoretical” in the same figure). The QQ plot should follow more or less along a straight line if the data come from a normal distribution (with some tolerance for sampling variation).</p>
-<p>QQ plots can be made in <em>R</em> using a function called <code>geom_qq()</code>. Add <code>geom_qq_line()</code> to draw a line through that QQ plot to make the linear relationship easier to see. The only weird thing about these geom’s is that you need to specify <code>sample</code> in the <code>aes()</code> function.</p>
+<p>These data seem to have a moderately strong, positive relationship. Note: this is just an exploratory plot, we haven’t made it look high quality, we’re just getting a sense of what the data look like.</p>
+<p>Calculating a correlation coefficient in <em>R</em> is straightforward. The function <code>cor()</code> calculates the correlation between the two variables given as input:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(titanic_data, <span class="fu">aes</span>(<span class="at">sample =</span> age)) <span class="sc">+</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab08_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This is what the resulting graph looks like for the Titanic age data. The dots do not land along a perfectly straight line. In particular the graph curves at the upper and lower end. However, this distribution definitely would be close enough to normal to use most standard methods, such as the <em>t</em>-test.</p>
-<p>It is difficult to interpret QQ plots without experience. One of the goals of today’s exercises will be to develop some visual experience about what these graphs look like when the data is truly normal. To do that, we will take advantage of a function built into <em>R</em> to generate random numbers drawn from a normal distribution. This function is called <code>rnorm()</code>.</p>
-<p>The function <code>rnorm()</code> will return a vector of numbers, all drawn randomly from a normal distribution. It takes three arguments:</p>
-<ul>
-<li><code>n</code>: how many random numbers to generate (the length of the output vector)</li>
-<li><code>mean</code>: the mean of the normal distribution to sample from</li>
-<li><code>sd</code>: the standard deviation of the normal distribution</li>
-</ul>
-<p>For example, the following command will give a vector of 20 random numbers drawn from a normal distribution with mean 13 and standard deviation 4:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">13</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(chinstrap<span class="sc">$</span>body_mass_g, chinstrap<span class="sc">$</span>flipper_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 15.877033 14.196288 10.023406 11.455855 17.006643 11.569374 15.398946
- [8] 20.266976 15.113860 10.941919 19.751690  8.747334 15.792678  7.504758
-[15] 17.570566 12.876574 14.231846 17.216849 13.818837 13.058297</code></pre>
+<pre><code>[1] 0.6415594</code></pre>
 </div>
 </div>
-<p>Let’s look at a QQ plot generated from 100 numbers randomly drawn from a normal distribution:</p>
+<p>As we predicted from the graph, the correlation coefficient of these data is positive and fairly strong.</p>
+<p>To test a hypothesis about the correlation coefficient or to calculate its confidence interval, use <code>cor.test()</code>. It takes as input the names of vectors containing the variables of interest.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>normal_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Y =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">13</span>, <span class="at">sd =</span> <span class="dv">4</span>))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(normal_data, <span class="fu">aes</span>(<span class="at">sample =</span> Y)) <span class="sc">+</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab08_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(chinstrap<span class="sc">$</span>body_mass_g, chinstrap<span class="sc">$</span>flipper_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  chinstrap$body_mass_g and chinstrap$flipper_length_mm
+t = 6.7947, df = 66, p-value = 3.748e-09
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.4759352 0.7632368
+sample estimates:
+      cor 
+0.6415594 </code></pre>
 </div>
 </div>
-</div>
-<p>These points fall mainly along a straight line, but there is some wobble around that line even though these points were in fact randomly sampled from a known normal distribution. With a QQ plot, we are looking for an overall pattern that is approximately a straight line, but we do not expect a perfect line. In the exercises, we’ll simulate several samples from a normal distribution to try to build intuition about the kinds of results you might get.</p>
-<p>When data are not normally distributed, the dots in the quantile plot will not follow a straight line, even approximately. For example, here is a histogram and a QQ plot for the population size of various counties, from the data in wright_etal_2017.csv. These data are very skewed to the right, and do not follow a normal distribution at all.</p>
+<p>The output gives many bits of information we might want. After, re-stating the names of the variables being used, the output gives us the test statistic <em>t</em>, degrees of freedom, and <em>P</em>-value of a test of the null hypothesis that the population correlation coefficient is zero. In this case the <em>P</em>-value is quite small, <span class="math inline">\(P = 3.748 \times 10^{-9}\)</span>. After that we have the 95% confidence interval for the correlation coefficient and finally the estimate of the correlation coefficient itself.</p>
+<p>The name <em>R</em> gives this correlation test is unfortunate. Pearson of course was a terrible eugenicist, and not the only person in the world to ever come up with the idea of correlation. At the very least we know the Indian statistician Anil Kumar Gain developed the same idea. For these reasons, despite the naming convention in <em>R</em>, we will call this type of correlation <strong>Product-moment correlation</strong>. This is a more descriptive name because the mathematical form of this correlation coefficient comes from multiplying the <em>moments</em> of the data—in statistics, <em>moments</em> are any expression like this <span class="math inline">\(\sum (Y_i - \bar{Y})^b\)</span> where <span class="math inline">\(b\)</span> can be any integer. For correlation <span class="math inline">\(b = 2\)</span>.</p>
+<section id="rank-based-correlation" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="rank-based-correlation"><span class="header-section-number">9.2.1</span> Rank-based correlation</h3>
+<p>The function <code>cor.test()</code> can also calculate a rank-based correlation, if we add the option <code>method = "spearman"</code> to the command. Rank-based correlation is helpful when the data are not normally distributed and/or when the relationship between variables is not linear. This is because it looks for a correlation between the <em>ranks</em> (first biggest, second biggest, etc.) of the data values rather than the values themselves.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remember to insert your actual user name</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>titanic_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"biol220_class/students/username/data/wright_etal_2017.csv"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(leafsize, <span class="fu">aes</span>(<span class="at">x =</span> leafsize_cm2)) <span class="sc">+</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab08_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(leafsize, <span class="fu">aes</span>(<span class="at">sample =</span> leafsize_cm2)) <span class="sc">+</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab08_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(chinstrap<span class="sc">$</span>body_mass_g, chinstrap<span class="sc">$</span>flipper_length_mm, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Spearman's rank correlation rho
+
+data:  chinstrap$body_mass_g and chinstrap$flipper_length_mm
+S = 17264, p-value = 3.983e-10
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.6704871 </code></pre>
 </div>
 </div>
-</div>
-</section>
-<section id="transformations" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="transformations"><span class="header-section-number">8.2.2</span> Transformations</h3>
-<p>When data are not normally distributed, we can try to use a simple mathematical transformation on each data point to create a list of numbers that still convey the information about the original question but that may be better matched to the assumptions of our statistical tests. We’ll see more about such transformations in chapter 13 of Whitlock and Schluter, but for now let’s learn how to do one of the most common data transformations, the log-transformation.</p>
-<p>With a transformation, we apply the same mathematical function to each value of a given numerical variable for individual in the data set. With a log-transformation, we take the logarithm of each individual’s value for a numerical variable.</p>
-<p>We can only use the log-transformation if all values are greater than zero. Also, it will only improve the fit of the normal distribution to the data in cases when the frequency distribution of the data is right-skewed.</p>
-<p>To take the log transformation for a variable in <em>R</em> is very simple. We simply use the function <code>log()</code>, and apply it to the vector of the numerical variable in question. For example, to calculate the log of age for all passengers on the Titanic, we use the command:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(titanic_data<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This will return a vector of values, each of which is the log of age of a passenger.</p>
+<p>The output here is similar to what we described above with product-moment correlation. We call this kind of correlation rank-based because that is more descriptive, and again removes the name of a eugenicist (Spearman) who just happened to receive historical credit for this type of analysis.</p>
 </section>
 </section>
-<section id="questions" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">8.3</span> Questions</h2>
-<ol type="1">
-<li><p>Let’s use <em>R</em>’s random number generator for the normal distribution to build intuition for how to view and interpret histograms and QQ plots. Remember, the lists of values generated by <code>rnorm()</code> come from a population that truly have a normal distribution.</p>
+<section id="activities" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="activities"><span class="header-section-number">9.3</span> Activities</h2>
+<section id="developing-an-intuition-for-correlation-coefficients." class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="developing-an-intuition-for-correlation-coefficients."><span class="header-section-number">9.3.1</span> Developing an intuition for correlation coefficients.</h3>
+<p>In a web browser, open the app at http://shiney.zoology.ubc.ca/whitlock/Guessing_correlation/</p>
+<p>This app is simple, it will plot some data in a scatterplot, and you guess the correct correlation coefficient for those data. Select one of the three choices and click the little circle next to your choice. Most people find this pretty challenging at first, but that is the point—to let you develop a better intuition about what a given value of a correlation coefficient means for how strong a relationship is between two numerical variables.</p>
+<p>Keep trying new data sets (by clicking the “Simulate new data” button) until you feel like you can get it right most of the time.</p>
+</section>
+</section>
+<section id="questions" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="questions"><span class="header-section-number">9.4</span> Questions</h2>
+<p><strong>1. Telomeres length and aging</strong></p>
+<p>The ends of chromosomes are called telomeres. These telomeres are shortened a bit during each cell cycle as DNA is replicated. One of their purposes is to protect more valuable DNA in the chromosome from degradation during replication. As people get older and their cells have replicated more often, their telomeres shorten. There is evidence that these shortened telomeres may play a role in aging. Telomeres can be lengthened in germ cells and stem cells by an enzyme called telomerase, but this enzyme is not active in most healthy somatic cells. (Cancer cells, on the other hand, usually express telomerase.)</p>
+<p>Given that the length of telomeres is biologically important, it becomes interesting to know whether telomere length varies between individuals and whether this variation is inherited. A set of data was collected by Nordfjäll <em>et al.</em> (2005) on the telomere length of fathers and their children; these data are in the file “telomere-inheritance.csv”.</p>
 <ol type="a">
-<li><p>Generate a list of 10 random numbers from a normal distribution with mean 15 and standard deviation 3, using the following command:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>normal_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Y =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">15</span>, <span class="at">sd =</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Use <code>geom_histogram()</code> to plot a histogram of these numbers from part a. You will want to change <code>binwidth</code> for visual clarity.</p></li>
-<li><p>Plot a QQ plot from the numbers in part a.</p></li>
-<li><p>Repeat <em>a</em> through <em>c</em> several times (at least a dozen times). For each, look at the histograms and QQ plots. Think about the ways in which these look different from the expectation of a normal distribution and remember that each of these samples comes from a truly normal population.</p></li>
-</ol></li>
-<li><p>Repeat the procedures of Question 1, except this time have <em>R</em> sample 250 individuals for each sample. You can use the same command as in Question 1, but now set <code>n = 250</code>. Do the graphs and QQ plots from these larger samples look more like the normal expectations than the smaller sample you already did? Why do you think that this is?</p></li>
-<li><p>The file “mammals.csv” (in the data folder) contains information on the body mass of various mammal species.</p>
+<li>Create a scatter plot showing the relationship between father and offspring telomere length.</li>
+<li>Do the data require any transformation to be bivariate normal before correlation?</li>
+<li>What’s the product-moment correlation between father and offspring telomere length? What’s the null hypothesis? Do you reject or fail to reject the null hypothesis?</li>
+</ol>
+<p><strong>2. Brain-body mass allometry in mammals</strong></p>
+<p>Larger animals tend to have larger brains. But is the increase in brain size proportional to the increase in body size? A set of data on body and brain size of 62 mammal species was collated by Allison and Cicchetti (1976), and these data are in the data set “mammals.csv”. The file contains columns giving the species name, the average body mass (in kg) and average brain size (in g) for each species.</p>
 <ol type="a">
-<li>Use <code>ggplot()</code> to plot the distribution of body mass, and describe its shape. Does this look like it has a normal distribution?</li>
-<li>Use <code>geom_qq()</code> and <code>geom_qq_line()</code> to plot a QQ plot for body mass. Does the data fall approximately along a straight line in the QQ plot? If so, what does this imply about the fit of these data to a normal distribution?</li>
-<li>Transform the body mass data with a log-transformation. Repeat steps (a) and (b) on the transformed data, does the log-transformation bring the data closer to normal or further from it?</li>
-<li>Calculate the mean of log body mass and a 95% confidence interval for this mean. (You may want to refer back to Lab 4 for the <em>R</em> commands to do this.)</li>
-</ol></li>
+<li>Plot brain size against body size. Is the relationship linear?</li>
+<li>Find a transformation (for either or both variables) that makes the relationship between these two variables linear.</li>
+<li>Is there statistical evidence that brain size is correlated with body size? Assume that the species data are independent.</li>
 </ol>
 
 
@@ -794,14 +790,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lab07.html" class="pagination-link" aria-label="Frequency and Contingency Analysis">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span>
+      <a href="./lab08.html" class="pagination-link" aria-label="The normal distribution and sample means">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The normal distribution and sample means</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab09.html" class="pagination-link" aria-label="Correlation">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlation</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

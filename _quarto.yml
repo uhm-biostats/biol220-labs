@@ -15,14 +15,9 @@ book:
     - lab06.qmd
     - lab07.qmd
     - lab08.qmd
-    # - lab09.qmd
+    - lab09.qmd
     # - lab10.qmd
-    # - lab12.qmd
     # - lab11.qmd
-    # - lab15.qmd
-    # - lab13.qmd
-    # - lab16.qmd
-    # - lab17.qmd
 comments:
   hypothesis: true
 
