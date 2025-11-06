@@ -237,6 +237,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regerssion</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -306,12 +312,12 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>samp <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(penguins, <span class="at">n =</span> <span class="dv">5</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>samp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  species island bill_len bill_dep flipper_len body_mass    sex year
-1  Adelie  Dream     39.2     18.6         190      4250   male 2009
-2  Adelie  Dream     39.5     17.8         188      3300 female 2007
-3  Gentoo Biscoe     46.4     15.0         216      4700 female 2008
-4  Adelie  Dream     36.9     18.6         189      3500 female 2008
-5  Gentoo Biscoe     49.4     15.8         216      4925   male 2009</code></pre>
+<pre><code>  species    island bill_len bill_dep flipper_len body_mass    sex year
+1  Gentoo    Biscoe     46.2     14.5         209      4800 female 2007
+2  Gentoo    Biscoe     50.2     14.3         218      5700   male 2007
+3  Adelie    Biscoe     40.5     18.9         180      3950   male 2007
+4  Adelie Torgersen     38.6     17.0         188      2900 female 2009
+5  Adelie Torgersen     34.4     18.4         184      3325 female 2007</code></pre>
 </div>
 </div>
 <p>Now try on your to increase the sample size 10, how would you do this?</p>
@@ -334,12 +340,12 @@ window.Quarto = {
 # Groups:   replicate [2]
   replicate species island    bill_length_mm bill_depth_mm flipper_length_mm
       &lt;int&gt; &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-1         1 Adelie  Torgersen           41.4          18.5               202
-2         1 Adelie  Dream               37.5          18.5               199
-3         1 Adelie  Dream               44.1          19.7               196
-4         1 Adelie  Biscoe              34.5          18.1               187
-5         1 Adelie  Dream               41.1          17.5               190
-6         2 Adelie  Torgersen           35.1          19.4               193
+1         1 Adelie  Torgersen           39.2          19.6               195
+2         1 Adelie  Torgersen           44.1          18                 210
+3         1 Adelie  Biscoe              42.7          18.3               196
+4         1 Adelie  Torgersen           37.8          17.3               180
+5         1 Adelie  Torgersen           35.2          15.9               186
+6         2 Adelie  Dream               39.8          19.1               184
 # ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
 </div>

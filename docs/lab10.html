@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; The Binomial Distribution and Analysis of Proportion Data – Labs for Intro Biostatistics</title>
+<title>10&nbsp; Regerssion – Labs for Intro Biostatistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lab07.html" rel="next">
-<link href="./lab05.html" rel="prev">
+<link href="./lab09.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -152,7 +151,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab06.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab10.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regerssion</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -215,7 +214,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab06.html" class="sidebar-item-text sidebar-link active">
+  <a href="./lab06.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></span></a>
   </div>
 </li>
@@ -239,7 +238,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab10.html" class="sidebar-item-text sidebar-link">
+  <a href="./lab10.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regerssion</span></span></a>
   </div>
 </li>
@@ -253,13 +252,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">6.1</span> Goals</a></li>
-  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">6.2</span> Learning the Tools</a>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">10.1</span> Goals</a></li>
+  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">10.2</span> Learning the Tools</a>
   <ul class="collapse">
-  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">6.2.1</span> Binomial distribution</a></li>
-  <li><a href="#binomial-tests-and-confidence-intervals" id="toc-binomial-tests-and-confidence-intervals" class="nav-link" data-scroll-target="#binomial-tests-and-confidence-intervals"><span class="header-section-number">6.2.2</span> Binomial tests and confidence intervals</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression"><span class="header-section-number">10.2.1</span> Linear regression</a></li>
+  <li><a href="#residual-plots" id="toc-residual-plots" class="nav-link" data-scroll-target="#residual-plots"><span class="header-section-number">10.2.2</span> Residual plots</a></li>
   </ul></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">6.3</span> Questions</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">10.3</span> Questions</a>
+  <ul class="collapse">
+  <li><a href="#numerical-estimation-in-grade-schoolers" id="toc-numerical-estimation-in-grade-schoolers" class="nav-link" data-scroll-target="#numerical-estimation-in-grade-schoolers"><span class="header-section-number">10.3.1</span> 1. Numerical estimation in grade schoolers</a></li>
+  <li><a href="#brain-body-mass-allometry-in-mammals" id="toc-brain-body-mass-allometry-in-mammals" class="nav-link" data-scroll-target="#brain-body-mass-allometry-in-mammals"><span class="header-section-number">10.3.2</span> 2. Brain-body mass allometry in mammals</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -268,7 +271,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Binomial Distribution and Analysis of Proportion Data</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regerssion</span></h1>
 </div>
 
 
@@ -285,147 +288,168 @@ window.Quarto = {
 </header>
 
 
-<section id="goals" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">6.1</span> Goals</h2>
+<section id="goals" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">10.1</span> Goals</h2>
 <ul>
-<li>Gain familiarity with the Binomial Distribution</li>
-<li>Test null hypotheses with the Binomial Test</li>
-<li>Generate and interpret 95% confidence intervals of proportions</li>
+<li>Estimate slopes of regressions</li>
+<li>Test regression models</li>
+<li>Plot regression lines</li>
+<li>Examine residual plots for deviations from the assumptions of linear regression</li>
 </ul>
 </section>
-<section id="learning-the-tools" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">6.2</span> Learning the Tools</h2>
-<section id="binomial-distribution" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="binomial-distribution"><span class="header-section-number">6.2.1</span> Binomial distribution</h3>
-<p>Let’s get familiar with the binomial distribution using a classic example: flipping a coin. We will simulate the coin flipping process using <code>sample</code>:</p>
+<section id="learning-the-tools" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">10.2</span> Learning the Tools</h2>
+<p>We will revisit the data set from Example 2.3B in Whitlock and Schluter that we used last week to introduce correlation. These data investigate the relationship between how ornamented a father guppy is (<code>fatherOrnamentation</code>) and how attractive to females are his sons (<code>sonAttractiveness</code>). Load the data from the .csv file:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "T"</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>guppy_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"biol220_class/students/username/data/chap02e3bGuppyFatherSonAttractiveness.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>The above code simulates <em>one</em> coin toss that will come up either heads (<code>"H"</code>) or tails (<code>"T"</code>). We are simulating a fair coin, meaning equal probabilities of heads and tails, thus we specify <code>prob = c(0.5, 0.5)</code>. We could simulate the outcome of tossing a coin 4 times like this:</p>
+<p>Let’s plot the data again before we start.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "T" "T" "T" "H"</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(guppy_data, <span class="fu">aes</span>(<span class="at">x =</span> fatherOrnamentation, <span class="at">y =</span> sonAttractiveness)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Father's ornamentation"</span>) <span class="sc">+</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Son's attractiveness"</span>) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab10_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>Now let’s modify the code for 4 coin tosses to represent a biased coin, say one that comes up tails 70% of the time</p>
+</div>
+<p>Note that these data seem to have a moderately strong, positive relationship.</p>
+<section id="linear-regression" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="linear-regression"><span class="header-section-number">10.2.1</span> Linear regression</h3>
+<p>Regression in <em>R</em> is a two-step process similar to the steps used in ANOVA last week. In fact, we again start by using <code>lm()</code> to fit a linear model to the data. (Both ANOVA and regression are special cases of linear models, which also can be used to generate much more complicated analyses than these.) We then give the output of <code>lm()</code> to the function <code>summary()</code> to see many useful results of the analysis.</p>
+<p>Using the <code>lm()</code> function to calculate regression is similar to the steps used for ANOVA. The first argument is a formula, in the form <code>response_variable ~ explanatory_variable</code>. In this case we want to predict son’s attractiveness from father’s ornamentation, so our formula will be <code>sonAttractiveness ~ fatherOrnamentation</code>. The second input argument is the name of the data frame with the data. We will want to assign the results to a new object with a name (we chose “<code>guppy_regression</code>”), so that we can use the results in later calculations with <code>summary()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "H" "H" "H" "T"</code></pre>
-</div>
-</div>
-<p>Let’s arbitrarily say that a “success” is if the coin lands tails up. We can count the number of successes like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get some coin tosses (we're again using a fair coin)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>toss <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>toss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "T" "T" "T" "H"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count successes</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>nsuccess <span class="ot">&lt;-</span> <span class="fu">sum</span>(toss <span class="sc">==</span> <span class="st">"T"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>nsuccess</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-</div>
-<p>The number of successes in 4 tosses is exactly the kind of situation where a binomial distribution is relevant. In the example of a fair coin tossed 4 times, the probability of success is <span class="math inline">\(p = 0.5\)</span> and the number of trials is <span class="math inline">\(n = 4\)</span>.</p>
-<p>Let’s run the above code 20 times to estimate the frequencies of each potential outcome that will approximate the binomial distribution with <span class="math inline">\(p = 0.5\)</span> and <span class="math inline">\(n = 4\)</span>.</p>
-<p>To do that, simply run the above code 20 times and record the number of successes from each iteration. You can write down the success on paper, or the computer, or team up with a partner. Once you’re done, enter those data into a simple vector using the <code>c</code> function. You’re aiming to get something like this (you’re numbers will be different though):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of the number of tails across 20 trials</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ntails <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>            <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>            <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># use the `table` function to get frequencies</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>freqs <span class="ot">&lt;-</span> <span class="fu">table</span>(ntails)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>freqs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>ntails
-0 1 2 3 4 
-2 5 9 3 1 </code></pre>
-</div>
-</div>
-<p>Let’s compare our estimated frequencies to the prediction from the binomial distribution. We will use <code>dbinom</code> to get the probability of each outcome directly from the binomial distribution. Remember, that for <span class="math inline">\(n = 4\)</span> trials, all the possible outcomes are <code>0, 1, 2, 3, 4</code>, which we can write in R code as <code>0:4</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0625 0.2500 0.3750 0.2500 0.0625</code></pre>
-</div>
-</div>
-<p>Compare that to the frequencies divided by 20 (dividing by the number of simulations turns frequencies into probabilities)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>freqs <span class="sc">/</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>ntails
-   0    1    2    3    4 
-0.10 0.25 0.45 0.15 0.05 </code></pre>
-</div>
-</div>
-<p>Remember your numbers will be different, you might in fact not even have all the outcomes represented in your simulation. What we observe is that there is a general agreement between our simulation and the true probabilities from <code>dbinom</code>: 2 successes is the most probable outcome, 0 and 4 are the least likely.</p>
-<p>Let’s also compare the probability of multiple events as estimated from our simulation and <code>pbinom</code>. Let’s look at the probability of 3 or fewer tails</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the estimated probability</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(ntails <span class="sc">&lt;=</span> <span class="dv">3</span>) <span class="sc">/</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.95</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare to the probability given by pbinom</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">3</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9375</code></pre>
-</div>
-</div>
-<p>Pretty close!</p>
-</section>
-<section id="binomial-tests-and-confidence-intervals" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="binomial-tests-and-confidence-intervals"><span class="header-section-number">6.2.2</span> Binomial tests and confidence intervals</h3>
-<p>Doing a binomial test in <em>R</em> is much easier than doing one by hand.</p>
-<p>The function <code>binom.test()</code> will do an exact binomial test. It requires three pieces of information in the input.</p>
-<ul>
-<li><code>x</code>: the number of successes</li>
-<li><code>n</code>: the number of trials</li>
-<li><code>p</code>: the proportion stated by the null hypothesis.</li>
-</ul>
-<p>For example, let’s consider the hypothetical feeding trial discussed in lecture with pulelehua Kamehameha caterpillars. We imagined we did a feeding trial with 30 replicates between māmaki and <em>Urtica</em>. Out of those 30 trials we imagined the caterpillars choose māmaki 21 times. Let’s test the null hypothesis of no preference using <code>binom.test</code>. We need to tell <code>binom.test</code> the number of successes (<code>x = 21</code>), the number trials (<code>n = 30</code>) and the null hypothesis probability (<code>p = 0.5</code>).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">21</span>, <span class="at">n =</span> <span class="dv">30</span>, <span class="at">p =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>guppy_regression <span class="ot">&lt;-</span> <span class="fu">lm</span>(sonAttractiveness <span class="sc">~</span> fatherOrnamentation, <span class="at">data =</span> guppy_data)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Let’s look at the output of lm() in this case.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>guppy_regression</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-    Exact binomial test
+Call:
+lm(formula = sonAttractiveness ~ fatherOrnamentation, data = guppy_data)
 
-data:  21 and 30
-number of successes = 21, number of trials = 30, p-value = 0.04277
-alternative hypothesis: true probability of success is not equal to 0.5
-95 percent confidence interval:
- 0.5060410 0.8526548
-sample estimates:
-probability of success 
-                   0.7 </code></pre>
+Coefficients:
+        (Intercept)  fatherOrnamentation  
+           0.005084             0.982285  </code></pre>
 </div>
 </div>
-<p>In this case, the output of the function gives quite a bit of information. One key element that we will be looking for is the <em>P</em>-value; in this case <em>R</em> tells us that the <em>P</em>-value is 0.04277. This is the <em>P</em>-value that corresponds to a two-tailed test.</p>
-<p>The <code>binom.test()</code> function also gives an estimate of the proportion of successes (in this case 0.7). It also gives an approximate 95% confidence interval. The method used to calculate this confidence interval is different from the method we discussed in lecture. When calculating confidence intervals for proportion data, you are welcome to use either the output of <code>binom.test</code> or the method we covered in lecture involving <code>qbinom</code>.</p>
+<p>This tells us that the estimate of the slope of the regression line is 0.982285, and the <em>y</em>-intercept is estimated to be 0.005084. Therefore the line that is estimated to be the best fit to these data is</p>
+<p><span class="math display">\[\text{sonAttractiveness} = (0.982285 \times \text{fatherOrnamentation} + 0.005084.\]</span> We can find other useful information by looking at the <code>summary()</code> of the <code>lm()</code> result:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(guppy_regression)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = sonAttractiveness ~ fatherOrnamentation, data = guppy_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.66888 -0.14647 -0.02119  0.27727  0.51324 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         0.005084   0.118988   0.043    0.966    
+fatherOrnamentation 0.982285   0.216499   4.537 6.78e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.3212 on 34 degrees of freedom
+Multiple R-squared:  0.3771,    Adjusted R-squared:  0.3588 
+F-statistic: 20.59 on 1 and 34 DF,  p-value: 6.784e-05</code></pre>
+</div>
+</div>
+<p>We see the estimates of the slope and intercept repeated here, in the <code>Coefficients</code> table under <code>Estimate</code>. Now, we also are given the standard error and <em>P</em>-value for each of these numbers in that same table. For these data, the <em>P</em>-value for the null hypothesis that the true slope is zero is <span class="math inline">\(6.78 \times 10 ^ {–5}\)</span>.</p>
+<p>Plotting this line on the scatterplot is fairly straightforward in <code>ggplot()</code>. We can use the same plot function as above, with a new layer added with “<code>+ geom_smooth(method = lm)</code>”:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(guppy_data, <span class="fu">aes</span>(<span class="at">x =</span> fatherOrnamentation, <span class="at">y =</span> sonAttractiveness)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Father's ornamentation"</span>) <span class="sc">+</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Son's attractiveness"</span>) <span class="sc">+</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab10_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This layer adds both the best-fitting regression line and also the 95% confidence interval for the line shown in gray shading. The outer edges of the shaded area represent the confidence bands, indicating the 95% confidence intervals for the mean of the <em>Y</em>-variable (son’s attractiveness) at each value of the X-variable (father’s ornamentation). If you want a plot without this confidence interval, add the argument <code>se = FALSE</code> to the <code>geom_smooth()</code> function, as in <code>geom_smooth(method = lm, se = FALSE)</code>.</p>
+</section>
+<section id="residual-plots" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="residual-plots"><span class="header-section-number">10.2.2</span> Residual plots</h3>
+<p>To check that the assumptions of regression apply for your data set, it is can be really helpful to look at a residual plot. A residual is the difference between the actual value of the <em>y</em> variable and the predicted value based on the regression line.</p>
+<p><em>R</em> can calculate the residuals from a model with the <code>residuals()</code> function. Simply give this function the results from the <code>lm()</code> function, such as the guppy_regression that we calculated above. A vector of all the residuals for this regression line would be calculated by</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">residuals</span>(guppy_regression)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To make a residual plot, we’ll make a new column called <code>guppy_data$resid</code>. As you long as you’re careful, the order of points in <code>residuals(guppy_regression)</code> matches the order of the original data, but it’s to mess this up if you don’t know what you’re doing. With a residual plot, we plot the residuals of each data point as a function of the explanatory variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>guppy_data<span class="sc">$</span>resid <span class="ot">&lt;-</span> <span class="fu">residuals</span>(guppy_regression)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(guppy_data, <span class="fu">aes</span>(<span class="at">x =</span> fatherOrnamentation, <span class="at">y =</span> resid)) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab10_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The command <code>+ geom_hline(yintercept = 0)</code> adds the horizontal line at 0 to the plot so that it is easier to see the baseline.</p>
+<p>This residual plot shows no major deviation from the assumptions of linear regression. There is no strong tendency for the variance of the residuals (indicated by the amount of scatter in the vertical dimension) to increase or decrease with increasing <span class="math inline">\(x\)</span>. The residuals show no outliers or other evidence of not being normally distributed for each value of <span class="math inline">\(x\)</span>.</p>
 </section>
 </section>
-<section id="questions" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">6.3</span> Questions</h2>
-<p>Let’s imagine a new feeding trial of pulelehua Kamehameha caterpillars. This time we will imagine a comparison inspired by <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/btp.13292">Bongar et al.&nbsp;(2024)</a>. They looked at māmaki versus a close relative that happens to be invasive in Hawaiʻi: <em>Cecropia obtusifolia</em>. If pulelehua Kamehameha caterpillars could thrive on <em>Cecropia obtusifolia</em> that would be great.</p>
-<p>Inspired by the results of Bongar et al.&nbsp;(2024), let’s suppose that out of 50 feeding trials where pulelehua Kamehameha caterpillars are given a choice between māmaki and <em>Cecropia obtusifolia</em>, they choose māmaki 38 times.</p>
-<ol type="1">
-<li><p>Use <code>binom.test()</code> to calculate the estimated proportion of choosing māmaki. What is the 95% confidence interval for this proportion? What is the two-tailed <span class="math inline">\(P\)</span>-value of the null hypothesis?</p></li>
-<li><p>Based on the results form <code>binom.test</code> you just produced does it seem promising that pulelehua Kamehameha caterpillars will be able to use <em>Cecropia obtusifolia</em> as a food plant?</p></li>
-<li><p>Based on the 95% confidence intervals, do you think the proportion of times the caterpillars choose māmaki over <em>Urtica</em> versus the proportion of times they choose māmaki over <em>Cecropia obtusifolia</em> are different from one another? Explain your answer. The hypothetical experiment comparing choice between māmaki and <em>Urtica</em> comes from our lectures, please refer to lecture slides for details on this hypothetical experiment.</p></li>
-<li><p>Find your own proportion data on the Internet or at home if you are doing this after lab. Develop a null hypothesis, state it in your report, and use <code>binom.test()</code> to test it. Did you reject your null hypothesis? Explain why or why not.</p></li>
+<section id="questions" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">10.3</span> Questions</h2>
+<section id="numerical-estimation-in-grade-schoolers" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="numerical-estimation-in-grade-schoolers"><span class="header-section-number">10.3.1</span> 1. Numerical estimation in grade schoolers</h3>
+<p>Opfer and Siegler (2007) asked second- and fourth-grade school children to mark on a number line where a given number would fall. Each child was given a drawing of a number line with two ends marked at 0 and 1000, and was then asked to make an X on that line where a number, for example 150, should be placed. They asked each child to place several different numbers on the number lines, each on a fresh new piece of paper.</p>
+<p><img src="images/lab15-q2.png" class="img-fluid"></p>
+<p>The researchers then measured the placement of each mark on a linear scale. The results, averaged over all 93 kids for each group, are given in the file “numberline.csv”.</p>
+<ol type="a">
+<li><p>Plot the fourth graders’ guesses against the true value. Is this relationship linear? If not, find a transformation of <span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span> that converts the relationship into an approximately linear one.</p></li>
+<li><p>Plot the second-graders’ guesses against the true value. Is this relationship linear? If not, find a transformation of <span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span> that converts the relationship into an approximately linear one. Fit a linear regression to both the transformed and untransformed data. Examine the residual plots for both the transformed and untransformed data.</p></li>
+</ol>
+<p>Hint: if you get stuck on which transformation to use, unhide the plot below to reveal curves fit to both relationships without any transformation.</p>
+<details>
+<summary>
+Show figure
+</summary>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lab10_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</details>
+<ol start="3" type="a">
+<li>Assume that the difference between the shapes of these curves is real. What would you conclude about the difference in the way 2<sup>nd</sup> graders and 4<sup>th</sup> graders perceive numbers?</li>
+</ol>
+</section>
+<section id="brain-body-mass-allometry-in-mammals" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="brain-body-mass-allometry-in-mammals"><span class="header-section-number">10.3.2</span> 2. Brain-body mass allometry in mammals</h3>
+<p>Larger animals tend to have larger brains. But is the increase in brain size proportional to the increase in body size? A set of data on body and brain size of 62 mammal species was collated by Allison and Cicchetti (1976), and these data are in the data set “mammals.csv”. The file contains columns giving the species name, the average body mass (in kg) and average brain size (in g) for each species. These are the same data used in the second half of the app about residuals that you used in the activities earlier in this lab.</p>
+<ol type="a">
+<li><p>Plot transformed brain size against body size using code from last week</p></li>
+<li><p>What line best predicts (transformed) brain size from (transformed) body size?</p></li>
+<li><p>Make a residual plot using the regression fitted to the transformed variables. Do the data look like they match the assumptions of linear regression?</p></li>
 </ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -830,14 +854,11 @@ probability of success
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lab05.html" class="pagination-link" aria-label="Statistical Null Hypothesis Testing">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistical Null Hypothesis Testing</span></span>
+      <a href="./lab09.html" class="pagination-link" aria-label="Correlation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab07.html" class="pagination-link" aria-label="Frequency and Contingency Analysis">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Frequency and Contingency Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
