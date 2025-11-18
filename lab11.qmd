@@ -11,51 +11,19 @@ library(DT)
 
 
 
-
-## Goals
-
-* Use *R* to perform analysis of variance (ANOVA) to compare the means of multiple groups.
-* Perform Tukey-Kramer tests to look at unplanned contrasts between all pairs of groups.
-* Use Kruskal-Wallis tests to test for difference between groups without assumptions of normality.
-
-
-### Getting started
-
-**Note**: Wherever images say "lab02", replace that with the current value "lab13".
-
-1. We have set a class Workspace called lab13-00#. Join the Workspace by clicking on the link on Laulima (you only need to do this once; after today you'll automatically have access). 
-
-
-2. **Important**: Login with your userid@hawaii.edu account, not a personal gmail account. If you accidentally, use your personal account, let me know. I will delete it while you register with the university account.
-
-![](../images/rstudio-cloud-11.png)
-
-3. Once you're logged in, the lab13-00# Workspace will looking something like this:
-
-![](../images/rstudio-cloud-08.png)
-
-Each item listed under "All Projects" is a "Project" within the lab13-00# Workspace. Each week I will create a Project template that you will copy and work from (you cannot edit the original). 
-
-4. To create your own, click "START" to the left of "lab13".
-
-![](../images/rstudio-cloud-10.png)
-
-5. Once the Project is copied and deployed, rename the Project from "lab13" to include your name like this: 
-
-"lab13-muir-chris"
-
-![](../images/rstudio-cloud-09.png)
-
-**Disclaimer: These labs rely heavily on those developed by Mike Whitlock for his BIOL 300 course at UBC <https://www.zoology.ubc.ca/~whitlock/bio300/>.** In some cases I have used his material *verbatim*, in other cases I have heavily modified them.
-
-
-### Learning the Tools
+## Learning the Tools
 
 
 For the examples in this tutorial, we will again return to the Titanic data set. We’ll group passengers by the passenger class they traveled under (a categorical variable) and ask whether different passenger classes differed in their mean age (a numerical variable).
 
-```{r, echo = TRUE, eval = TRUE}
-titanic_data <- read_csv("data/titanic.csv" )
+```{r, echo = FALSE, eval = TRUE}
+titanic_data <- read.csv("data/titanic.csv" )
+```
+
+```{r}
+#| eval: false
+
+titanic_data <- read.csv("biol220_class/students/username/data/titanic.csv")
 ```
 
 Let’s first look at the data to get a sense of how well it fits the assumptions of ANOVA. Multiple histogram are useful for this purpose. As we saw in previous weeks, we can use `ggplot()` and facets to make this plot:
@@ -71,37 +39,13 @@ ggplot(titanic_data, aes(x = age)) +
 
 These data look sufficiently normal and with similar spreads that ANOVA would be appropriate.
 
-To confirm these visual impressions, it would be useful to construct a table of the means and standard deviations of each group. There are numerous ways to do this in *R*, but one of the neatest is uses functions from the package **dplyr**. 
 
-The package **dplyr** has several useful features for manipulating data sets. For our current purposes, we will find two functions particularly useful: `group_by()` and `summarise()`. These two functions are well named and work together well, first to organize the data by groups, and second to summarize the results for each group.
-
-First, use `group_by()` to organize your data frame by the appropriate grouping variable. For example, here we want to organize the `titanic_data` by `passenger_class`:
-
-```{r}
-titanic_by_passenger_class <- group_by(titanic_data, passenger_class)
-```
-
-After applying `group_by()` to a data frame, we can summarizethe data using `summarise()`. (The “s” in `summarise()` is not a typo—the creator of the package is from New Zealand. But you can also use `summarize()` to do the same thing.) With `summarise()`, we can apply any type of function that summarizes data (e.g. `mean()`, `median()`, `var()`, etc.), and receive that summary group by group. For example, to calculate the mean age of each `passenger_class`, we can use:
-
-```{r}
-summarise(titanic_by_passenger_class, group_mean = mean(age, na.rm = TRUE))
-```
-
-As input, we give the name of the grouped table created by `group_by()` and the function we want to apply to each group. In this case we used `mean(age, na.rm = TRUE)`. “`group_mean`” is a name we give to that summary variable (it could have been any name we wanted). The output looks like a table and includes the names of the groups being summarized. (A “`tibble`” is not how New Zealanders spell “table”, but is a type of table like a data frame.) “3 x 2” here refers to the number of rows x columns in the “`tibble`” output.
-
-We can give `summarise()` many summary functions at once, and it will create columns in the output table for each one. For example, if we want to output both the mean and the standard deviation, we can add `sd = sd(age, na.rm = TRUE)` to the function above.
-
-```{r}
-summarise(titanic_by_passenger_class, group_mean = mean(age, na.rm = TRUE), group_sd = sd(age, na.rm = TRUE))
-```
-
-Note that the standard deviations are very similar, which means that these data fit the equal variance assumption of ANOVA.
 
 ### ANOVA
 
-Analysis of variance (or ANOVA) is not quite as simple in *R* as one might hope. Doing ANOVA takes at least two steps. First, we fit the ANOVA model to the data using the function `lm()`. This step carries out a bunch of intermediate calculations. Second, we use the results of first step to do the ANOVA calculations and place them in an ANOVA table using the function `anova()`. The function name `lm()` stands for “linear model”; this is actually a very powerful function that allows a variety of calculations. One-way ANOVA is a type of linear model.
+Analysis of variance (or ANOVA) for categorical explanatory data works very similarly to ANOVA applied to regression analysis. In both cases, we use the `lm` function to make a model. For ANOVA with categorical data we then supply the output of the `lm` function to the `anova` function which completes the analysis of variance.
 
-The function `lm()` needs a formula and a data frame as arguments (like in thw two-sample *t*-test). The formula is a statement specifying the “model” that we are asking *R* to fit to the data. A model formula always takes the form of a response variable, followed by a tilde (`~`), and then at least one explanatory variable. In the case of a one-way ANOVA, this model statement will take the form
+As we know, the function `lm()` needs a formula and a data frame as arguments. The formula always takes the form of a response variable, followed by a tilde (`~`), and then at least one explanatory variable. In the case of a one-way ANOVA, this model statement will take the form
 
 > `numerical_variable ~ categorical_variable`
 
@@ -151,39 +95,12 @@ You can see for the output that a Kruskal-Wallis test also strongly rejects the 
 
 ## Questions
 
-### 1. Cuckoo eggs
+1. The European cuckoo does not look after its own eggs, but instead lays them in the nests of birds of other species. Previous studies showed that cuckoos sometimes have evolved to lay eggs that are colored similarly to the host bird species' eggs. Is the same true of egg size---do cuckoos lay eggs similar in size to the size of the eggs of their hosts? The data file "cuckooeggs.csv" in the data folder contains data on the lengths of cuckoo eggs laid in the nests of a variety of host species. Here we compare the mean size of cuckoo eggs found in the nests of different host species.
+    a. Plot a multiple histogram showing cuckoo egg lengths by host species.
+    c. Look at the graph. For these data, would ANOVA be a valid method to test for differences between host species in the lengths of cuckoo eggs in their nests?
+    d. Use ANOVA to test for a difference between host species in the mean size of the cuckoo eggs in their nests. What is your conclusion?
+    e. Assuming that ANOVA rejected the null hypotheses of no mean differences, use a Tukey-Kramer test to decide which pairs of host species are significantly different from each other in cuckoo egg mean length. What is your conclusion?
 
-The European cuckoo does not look after its own eggs, but instead lays them in the nests of birds of other species. Previous studies showed that cuckoos sometimes have evolved to lay eggs that are colored similarly to the host bird species' eggs. Is the same true of egg size -- do cuckoos lay eggs similar in size to the size of the eggs of their hosts? The data file "cuckooeggs.csv" contains data on the lengths of cuckoo eggs laid in the nests of a variety of host species. Here we compare the mean size of cuckoo eggs found in the nests of different host species.
-
-a. Plot a multiple histogram showing cuckoo egg lengths by host species.
-
-b. Calculate a table that shows the mean and standard deviation of length of
-cuckoo eggs for each host species.
-
-c. Look at the graph and the table. For these data, would ANOVA be a valid method to test for differences between host species in the lengths of cuckoo eggs in their nests?
-
-d. Use ANOVA to test for a difference between host species in the mean size of the cuckoo eggs in their nests. What is your conclusion?
-
-e. Assuming that ANOVA rejected the null hypotheses of no mean differences, use a Tukey-Kramer test to decide which pairs of host species are significantly different from each other in cuckoo egg mean length. What is your conclusion?
-
-### 2. Maizlaria
-
-The pollen of the maize (corn) plant is a source of food to larval mosquitoes of the species *Anopheles arabiensis*, the main vector of malaria in Ethiopia. The production of maize has increased substantially in certain areas of Ethiopia recently, and over the same time period, malaria has entered in to new areas where it was previously rare. This raises the question, is the increase of maize cultivation partly responsible for the increase in malaria?
-
-One line of evidence is to look for an association between maize production and malaria incidence at different geographically dispersed sites (Kebede *et al*. 2005). The data set "malaria vs maize.csv" contains information on several high-altitude sites in Ethiopia, with information about the level of cultivation of maize (low, medium or high in the variable `maize_yield`) and the rate of malaria per 10,000 people (`incidence_rate_per_ten_thousand`).
-
-a. Plot a multiple histogram to show the relationship between level of maize production and the incidence of malaria.
-
-b. ANOVA is a logical choice of method to test differences in the mean rate of malaria between sites differing in level of maize production. Calculate the standard deviation of the incidence rate for each level of maize yield. Do these data seem to conform to the assumptions of ANOVA? Describe any violations of assumptions you identify.
-
-c. Compute the log of the incidence rate and redraw the multiple histograms for different levels of maize yield. Calculate the standard deviation of the log incidence rate for each level of maize yield. Does the log-transformed data better meet the assumptions of ANOVA than did the untransformed data?
-
-d. Test for an association between maize yield and malaria incidence.
-
-### 3. Lifetime flies
-
-Animals that are infected with a pathogen often have disturbed circadian rhythms. (A circadian rhythm is an endogenous daily cycle in a behavior or physiological trait that persists in the absence of time cues.) Shirasu-Hiza *et al.* (2007) wanted to know whether it was possible that the circadian timing mechanism itself could have an effect on disease. To test this idea they sampled from three groups of fruit flies: one "normal", one with a mutation in the timing gene *tim01*, and one group that had the *tim01* mutant in a heterozygous state. They exposed these flies to a dangerous bacteria, *Streptococcus pneumoniae*, and measured how long the flies lived afterwards, in days. The date file "circadian mutant health.csv" shows some of their data.
-
-a. Plot a histogram of each of the three groups. Do these data match the assumptions of an ANOVA?
-
-b. Use a Kruskal-Wallis test to ask whether lifespan differs between the three groups of flies.
+2. Animals that are infected with a pathogen often have disturbed circadian rhythms. (A circadian rhythm is an endogenous daily cycle in a behavior or physiological trait that persists in the absence of time cues.) Shirasu-Hiza *et al.* (2007) wanted to know whether it was possible that the circadian timing mechanism itself could have an effect on disease. To test this idea they sampled from three groups of fruit flies: one "normal", one with a mutation in the timing gene *tim01*, and one group that had the *tim01* mutant in a heterozygous state. They exposed these flies to a dangerous bacteria, *Streptococcus pneumoniae*, and measured how long the flies lived afterwards, in days. The date file "circadian mutant health.csv" shows some of their data.
+    a. Plot a histogram of each of the three groups. Do these data match the assumptions of an ANOVA?
+    b. Use a Kruskal-Wallis test to ask whether lifespan differs between the three groups of flies.

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Regerssion – Labs for Intro Biostatistics</title>
+<title>11&nbsp; Analysis of Variance – Labs for Intro Biostatistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lab11.html" rel="next">
-<link href="./lab09.html" rel="prev">
+<link href="./lab10.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -111,35 +110,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -152,7 +122,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab10.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regerssion</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab11.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -239,13 +209,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab10.html" class="sidebar-item-text sidebar-link active">
+  <a href="./lab10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regerssion</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab11.html" class="sidebar-item-text sidebar-link">
+  <a href="./lab11.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
   </div>
 </li>
@@ -259,17 +229,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals"><span class="header-section-number">10.1</span> Goals</a></li>
-  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link" data-scroll-target="#learning-the-tools"><span class="header-section-number">10.2</span> Learning the Tools</a>
+  <li><a href="#learning-the-tools" id="toc-learning-the-tools" class="nav-link active" data-scroll-target="#learning-the-tools"><span class="header-section-number">11.1</span> Learning the Tools</a>
   <ul class="collapse">
-  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression"><span class="header-section-number">10.2.1</span> Linear regression</a></li>
-  <li><a href="#residual-plots" id="toc-residual-plots" class="nav-link" data-scroll-target="#residual-plots"><span class="header-section-number">10.2.2</span> Residual plots</a></li>
+  <li><a href="#anova" id="toc-anova" class="nav-link" data-scroll-target="#anova"><span class="header-section-number">11.1.1</span> ANOVA</a></li>
+  <li><a href="#tukey-kramer-test" id="toc-tukey-kramer-test" class="nav-link" data-scroll-target="#tukey-kramer-test"><span class="header-section-number">11.1.2</span> Tukey-Kramer test</a></li>
+  <li><a href="#kruskal-wallis" id="toc-kruskal-wallis" class="nav-link" data-scroll-target="#kruskal-wallis"><span class="header-section-number">11.1.3</span> Kruskal-Wallis</a></li>
   </ul></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">10.3</span> Questions</a>
-  <ul class="collapse">
-  <li><a href="#numerical-estimation-in-grade-schoolers" id="toc-numerical-estimation-in-grade-schoolers" class="nav-link" data-scroll-target="#numerical-estimation-in-grade-schoolers"><span class="header-section-number">10.3.1</span> 1. Numerical estimation in grade schoolers</a></li>
-  <li><a href="#brain-body-mass-allometry-in-mammals" id="toc-brain-body-mass-allometry-in-mammals" class="nav-link" data-scroll-target="#brain-body-mass-allometry-in-mammals"><span class="header-section-number">10.3.2</span> 2. Brain-body mass allometry in mammals</a></li>
-  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">11.2</span> Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -278,7 +244,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regerssion</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></h1>
 </div>
 
 
@@ -295,168 +261,115 @@ window.Quarto = {
 </header>
 
 
-<section id="goals" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="goals"><span class="header-section-number">10.1</span> Goals</h2>
-<ul>
-<li>Estimate slopes of regressions</li>
-<li>Test regression models</li>
-<li>Plot regression lines</li>
-<li>Examine residual plots for deviations from the assumptions of linear regression</li>
-</ul>
-</section>
-<section id="learning-the-tools" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">10.2</span> Learning the Tools</h2>
-<p>We will revisit the data set from Example 2.3B in Whitlock and Schluter that we used last week to introduce correlation. These data investigate the relationship between how ornamented a father guppy is (<code>fatherOrnamentation</code>) and how attractive to females are his sons (<code>sonAttractiveness</code>). Load the data from the .csv file:</p>
+<section id="learning-the-tools" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="learning-the-tools"><span class="header-section-number">11.1</span> Learning the Tools</h2>
+<p>For the examples in this tutorial, we will again return to the Titanic data set. We’ll group passengers by the passenger class they traveled under (a categorical variable) and ask whether different passenger classes differed in their mean age (a numerical variable).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>guppy_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"biol220_class/students/username/data/chap02e3bGuppyFatherSonAttractiveness.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>titanic_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"biol220_class/students/username/data/titanic.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s plot the data again before we start.</p>
+<p>Let’s first look at the data to get a sense of how well it fits the assumptions of ANOVA. Multiple histogram are useful for this purpose. As we saw in previous weeks, we can use <code>ggplot()</code> and facets to make this plot:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(guppy_data, <span class="fu">aes</span>(<span class="at">x =</span> fatherOrnamentation, <span class="at">y =</span> sonAttractiveness)) <span class="sc">+</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Father's ornamentation"</span>) <span class="sc">+</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Son's attractiveness"</span>) <span class="sc">+</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(titanic_data, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"tomato"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> passenger_class, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab10_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lab11_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Note that these data seem to have a moderately strong, positive relationship.</p>
-<section id="linear-regression" class="level3" data-number="10.2.1">
-<h3 data-number="10.2.1" class="anchored" data-anchor-id="linear-regression"><span class="header-section-number">10.2.1</span> Linear regression</h3>
-<p>Regression in <em>R</em> is a two-step process similar to the steps used in ANOVA last week. In fact, we again start by using <code>lm()</code> to fit a linear model to the data. (Both ANOVA and regression are special cases of linear models, which also can be used to generate much more complicated analyses than these.) We then give the output of <code>lm()</code> to the function <code>summary()</code> to see many useful results of the analysis.</p>
-<p>Using the <code>lm()</code> function to calculate regression is similar to the steps used for ANOVA. The first argument is a formula, in the form <code>response_variable ~ explanatory_variable</code>. In this case we want to predict son’s attractiveness from father’s ornamentation, so our formula will be <code>sonAttractiveness ~ fatherOrnamentation</code>. The second input argument is the name of the data frame with the data. We will want to assign the results to a new object with a name (we chose “<code>guppy_regression</code>”), so that we can use the results in later calculations with <code>summary()</code>.</p>
+<p>These data look sufficiently normal and with similar spreads that ANOVA would be appropriate.</p>
+<section id="anova" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="anova"><span class="header-section-number">11.1.1</span> ANOVA</h3>
+<p>Analysis of variance (or ANOVA) for categorical explanatory data works very similarly to ANOVA applied to regression analysis. In both cases, we use the <code>lm</code> function to make a model. For ANOVA with categorical data we then supply the output of the <code>lm</code> function to the <code>anova</code> function which completes the analysis of variance.</p>
+<p>As we know, the function <code>lm()</code> needs a formula and a data frame as arguments. The formula always takes the form of a response variable, followed by a tilde (<code>~</code>), and then at least one explanatory variable. In the case of a one-way ANOVA, this model statement will take the form</p>
+<blockquote class="blockquote">
+<p><code>numerical_variable ~ categorical_variable</code></p>
+</blockquote>
+<p>For example, to compare differences in mean age among passenger classes on the Titanic, this formula is:</p>
+<blockquote class="blockquote">
+<p><code>age ~ passenger_class</code></p>
+</blockquote>
+<p>This formula tells <em>R</em> to “fit” a model in which the ages of passengers are grouped by the variable <code>passenger_class.</code></p>
+<p>The name of the data frame containing the variables stated in the formula is the second argument of <code>lm()</code>. Finally, to complete the <code>lm()</code> command, it is necessary to save the intermediate results by assigning them to a new object, which <code>anova()</code> can then use to make the ANOVA table. For example, here we assign the results of <code>lm()</code> to a new object named “<code>titanicANOVA</code>”:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>guppy_regression <span class="ot">&lt;-</span> <span class="fu">lm</span>(sonAttractiveness <span class="sc">~</span> fatherOrnamentation, <span class="at">data =</span> guppy_data)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Let’s look at the output of lm() in this case.</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>guppy_regression</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = sonAttractiveness ~ fatherOrnamentation, data = guppy_data)
-
-Coefficients:
-        (Intercept)  fatherOrnamentation  
-           0.005084             0.982285  </code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>titanicANOVA <span class="ot">&lt;-</span> <span class="fu">lm</span>(age <span class="sc">~</span> passenger_class, <span class="at">data =</span> titanic_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>This tells us that the estimate of the slope of the regression line is 0.982285, and the <em>y</em>-intercept is estimated to be 0.005084. Therefore the line that is estimated to be the best fit to these data is</p>
-<p><span class="math display">\[\text{sonAttractiveness} = (0.982285 \times \text{fatherOrnamentation} + 0.005084.\]</span> We can find other useful information by looking at the <code>summary()</code> of the <code>lm()</code> result:</p>
+<p>The function <code>anova()</code> takes the results of <code>lm()</code> as input and returns an ANOVA table as output:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(guppy_regression)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(titanicANOVA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = sonAttractiveness ~ fatherOrnamentation, data = guppy_data)
+<pre><code>Analysis of Variance Table
 
-Residuals:
-     Min       1Q   Median       3Q      Max 
--0.66888 -0.14647 -0.02119  0.27727  0.51324 
-
-Coefficients:
-                    Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)         0.005084   0.118988   0.043    0.966    
-fatherOrnamentation 0.982285   0.216499   4.537 6.78e-05 ***
+Response: age
+                 Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+passenger_class   2  26690 13344.8  75.903 &lt; 2.2e-16 ***
+Residuals       630 110764   175.8                      
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>This table shows the results of a test of the null hypothesis that the mean ages are the same among the three groups. The <em>P</em>-value is very small, and so we reject the null hypothesis of no differences in mean age among the passenger classes.</p>
+</section>
+<section id="tukey-kramer-test" class="level3" data-number="11.1.2">
+<h3 data-number="11.1.2" class="anchored" data-anchor-id="tukey-kramer-test"><span class="header-section-number">11.1.2</span> Tukey-Kramer test</h3>
+<p>A single-factor ANOVA can tell us that at least one group has a different mean from another group, but it does not inform us which group means are different from which other group means. A Tukey-Kramer test lets us test the null hypothesis of no difference between the population means for all pairs of groups. The Tukey-Kramer test (also known as a Tukey Honest Significance Test, or Tukey HSD), is implemented in <em>R</em> in the function <code>TukeyHSD()</code>.</p>
+<p>We will use the results of an ANOVA done with <code>lm()</code> as above, that we stored in the variable <code>titanicANOVA</code>. To do a Tukey-Kramer test on these data, we need to first apply the function <code>aov()</code> to <code>titanicANOVA</code>, and then we need to apply the function <code>TukeyHSD</code> to the result. We can do this in a single command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>(titanicANOVA))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
 
-Residual standard error: 0.3212 on 34 degrees of freedom
-Multiple R-squared:  0.3771,    Adjusted R-squared:  0.3588 
-F-statistic: 20.59 on 1 and 34 DF,  p-value: 6.784e-05</code></pre>
+Fit: aov(formula = titanicANOVA)
+
+$passenger_class
+              diff        lwr        upr     p adj
+2nd-1st -11.367459 -14.345803  -8.389115 0.0000000
+3rd-1st -15.148115 -18.192710 -12.103521 0.0000000
+3rd-2nd  -3.780656  -6.871463  -0.689849 0.0116695</code></pre>
 </div>
 </div>
-<p>We see the estimates of the slope and intercept repeated here, in the <code>Coefficients</code> table under <code>Estimate</code>. Now, we also are given the standard error and <em>P</em>-value for each of these numbers in that same table. For these data, the <em>P</em>-value for the null hypothesis that the true slope is zero is <span class="math inline">\(6.78 \times 10 ^ {–5}\)</span>.</p>
-<p>Plotting this line on the scatterplot is fairly straightforward in <code>ggplot()</code>. We can use the same plot function as above, with a new layer added with “<code>+ geom_smooth(method = lm)</code>”:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(guppy_data, <span class="fu">aes</span>(<span class="at">x =</span> fatherOrnamentation, <span class="at">y =</span> sonAttractiveness)) <span class="sc">+</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Father's ornamentation"</span>) <span class="sc">+</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Son's attractiveness"</span>) <span class="sc">+</span> </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab10_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This layer adds both the best-fitting regression line and also the 95% confidence interval for the line shown in gray shading. The outer edges of the shaded area represent the confidence bands, indicating the 95% confidence intervals for the mean of the <em>Y</em>-variable (son’s attractiveness) at each value of the X-variable (father’s ornamentation). If you want a plot without this confidence interval, add the argument <code>se = FALSE</code> to the <code>geom_smooth()</code> function, as in <code>geom_smooth(method = lm, se = FALSE)</code>.</p>
+<p>The key part of this output is the table at the bottom. It estimates the difference between the means of groups (for example, the 2nd passenger class compared to the 1st passenger class) and calculates a 95% confidence interval for the difference between the corresponding population means. (“<code>lwr</code>” and “<code>upr</code>” correspond to the lower and upper bounds of that confidence interval for the difference in means.) Finally, it give the <em>P</em>-value from a test of the null hypothesis of no difference between the means (the column headed with “<code>p adj</code>”). In the case of the Titanic data, <em>P</em> is less than 0.05 in all pairs, and we therefore reject every null hypothesis. We conclude that the population mean ages of all passenger classes are significantly different from each other.</p>
 </section>
-<section id="residual-plots" class="level3" data-number="10.2.2">
-<h3 data-number="10.2.2" class="anchored" data-anchor-id="residual-plots"><span class="header-section-number">10.2.2</span> Residual plots</h3>
-<p>To check that the assumptions of regression apply for your data set, it is can be really helpful to look at a residual plot. A residual is the difference between the actual value of the <em>y</em> variable and the predicted value based on the regression line.</p>
-<p><em>R</em> can calculate the residuals from a model with the <code>residuals()</code> function. Simply give this function the results from the <code>lm()</code> function, such as the guppy_regression that we calculated above. A vector of all the residuals for this regression line would be calculated by</p>
+<section id="kruskal-wallis" class="level3" data-number="11.1.3">
+<h3 data-number="11.1.3" class="anchored" data-anchor-id="kruskal-wallis"><span class="header-section-number">11.1.3</span> Kruskal-Wallis</h3>
+<p>A Kruskal-Wallis test is a non-parametric analog of a one-way ANOVA. It does not assume that the variable has a normal distribution. (Instead, it tests whether the variable has the same distribution with the same mean in each group.)</p>
+<p>To run a Kruskal-Wallis test, use the R function <code>kruskal.test()</code>. The input for this function is the same as we used for <code>lm()</code> above. It includes a model formula statement and the name of the data frame to be used.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">residuals</span>(guppy_regression)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>To make a residual plot, we’ll make a new column called <code>guppy_data$resid</code>. As you long as you’re careful, the order of points in <code>residuals(guppy_regression)</code> matches the order of the original data, but it’s to mess this up if you don’t know what you’re doing. With a residual plot, we plot the residuals of each data point as a function of the explanatory variable.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>guppy_data<span class="sc">$</span>resid <span class="ot">&lt;-</span> <span class="fu">residuals</span>(guppy_regression)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(guppy_data, <span class="fu">aes</span>(<span class="at">x =</span> fatherOrnamentation, <span class="at">y =</span> resid)) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab10_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(age <span class="sc">~</span> passenger_class, <span class="at">data =</span> titanic_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Kruskal-Wallis rank sum test
+
+data:  age by passenger_class
+Kruskal-Wallis chi-squared = 116.08, df = 2, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
-</div>
-<p>The command <code>+ geom_hline(yintercept = 0)</code> adds the horizontal line at 0 to the plot so that it is easier to see the baseline.</p>
-<p>This residual plot shows no major deviation from the assumptions of linear regression. There is no strong tendency for the variance of the residuals (indicated by the amount of scatter in the vertical dimension) to increase or decrease with increasing <span class="math inline">\(x\)</span>. The residuals show no outliers or other evidence of not being normally distributed for each value of <span class="math inline">\(x\)</span>.</p>
+<p>You can see for the output that a Kruskal-Wallis test also strongly rejects the null hypothesis of equality of age for all passenger class groups with the Titanic data.</p>
 </section>
 </section>
-<section id="questions" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">10.3</span> Questions</h2>
-<section id="numerical-estimation-in-grade-schoolers" class="level3" data-number="10.3.1">
-<h3 data-number="10.3.1" class="anchored" data-anchor-id="numerical-estimation-in-grade-schoolers"><span class="header-section-number">10.3.1</span> 1. Numerical estimation in grade schoolers</h3>
-<p>Opfer and Siegler (2007) asked second- and fourth-grade school children to mark on a number line where a given number would fall. Each child was given a drawing of a number line with two ends marked at 0 and 1000, and was then asked to make an X on that line where a number, for example 150, should be placed. They asked each child to place several different numbers on the number lines, each on a fresh new piece of paper.</p>
-<p><img src="images/lab15-q2.png" class="img-fluid"></p>
-<p>The researchers then measured the placement of each mark on a linear scale. The results, averaged over all 93 kids for each group, are given in the file “numberline.csv”.</p>
+<section id="questions" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="questions"><span class="header-section-number">11.2</span> Questions</h2>
+<ol type="1">
+<li>The European cuckoo does not look after its own eggs, but instead lays them in the nests of birds of other species. Previous studies showed that cuckoos sometimes have evolved to lay eggs that are colored similarly to the host bird species’ eggs. Is the same true of egg size—do cuckoos lay eggs similar in size to the size of the eggs of their hosts? The data file “cuckooeggs.csv” in the data folder contains data on the lengths of cuckoo eggs laid in the nests of a variety of host species. Here we compare the mean size of cuckoo eggs found in the nests of different host species.
 <ol type="a">
-<li><p>Plot the fourth graders’ guesses against the true value. Is this relationship linear? If not, find a transformation of <span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span> that converts the relationship into an approximately linear one.</p></li>
-<li><p>Plot the second-graders’ guesses against the true value. Is this relationship linear? If not, find a transformation of <span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span> that converts the relationship into an approximately linear one. Fit a linear regression to both the transformed and untransformed data. Examine the residual plots for both the transformed and untransformed data.</p></li>
-</ol>
-<p>Hint: if you get stuck on which transformation to use, unhide the plot below to reveal curves fit to both relationships without any transformation.</p>
-<details>
-<summary>
-Show figure
-</summary>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="lab10_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
-</figure>
-</div>
-</div>
-</div>
-</details>
-<ol start="3" type="a">
-<li>Assume that the difference between the shapes of these curves is real. What would you conclude about the difference in the way 2<sup>nd</sup> graders and 4<sup>th</sup> graders perceive numbers?</li>
-</ol>
-</section>
-<section id="brain-body-mass-allometry-in-mammals" class="level3" data-number="10.3.2">
-<h3 data-number="10.3.2" class="anchored" data-anchor-id="brain-body-mass-allometry-in-mammals"><span class="header-section-number">10.3.2</span> 2. Brain-body mass allometry in mammals</h3>
-<p>Larger animals tend to have larger brains. But is the increase in brain size proportional to the increase in body size? A set of data on body and brain size of 62 mammal species was collated by Allison and Cicchetti (1976), and these data are in the data set “mammals.csv”. The file contains columns giving the species name, the average body mass (in kg) and average brain size (in g) for each species. These are the same data used in the second half of the app about residuals that you used in the activities earlier in this lab.</p>
+<li>Plot a multiple histogram showing cuckoo egg lengths by host species.</li>
+<li>Look at the graph. For these data, would ANOVA be a valid method to test for differences between host species in the lengths of cuckoo eggs in their nests?</li>
+<li>Use ANOVA to test for a difference between host species in the mean size of the cuckoo eggs in their nests. What is your conclusion?</li>
+<li>Assuming that ANOVA rejected the null hypotheses of no mean differences, use a Tukey-Kramer test to decide which pairs of host species are significantly different from each other in cuckoo egg mean length. What is your conclusion?</li>
+</ol></li>
+<li>Animals that are infected with a pathogen often have disturbed circadian rhythms. (A circadian rhythm is an endogenous daily cycle in a behavior or physiological trait that persists in the absence of time cues.) Shirasu-Hiza <em>et al.</em> (2007) wanted to know whether it was possible that the circadian timing mechanism itself could have an effect on disease. To test this idea they sampled from three groups of fruit flies: one “normal”, one with a mutation in the timing gene <em>tim01</em>, and one group that had the <em>tim01</em> mutant in a heterozygous state. They exposed these flies to a dangerous bacteria, <em>Streptococcus pneumoniae</em>, and measured how long the flies lived afterwards, in days. The date file “circadian mutant health.csv” shows some of their data.
 <ol type="a">
-<li><p>Plot transformed brain size against body size using code from last week</p></li>
-<li><p>What line best predicts (transformed) brain size from (transformed) body size?</p></li>
-<li><p>Make a residual plot using the regression fitted to the transformed variables. Do the data look like they match the assumptions of linear regression?</p></li>
+<li>Plot a histogram of each of the three groups. Do these data match the assumptions of an ANOVA?</li>
+<li>Use a Kruskal-Wallis test to ask whether lifespan differs between the three groups of flies.</li>
+</ol></li>
 </ol>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -861,14 +774,11 @@ Show figure
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lab09.html" class="pagination-link" aria-label="Correlation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Correlation</span></span>
+      <a href="./lab10.html" class="pagination-link" aria-label="Regerssion">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regerssion</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab11.html" class="pagination-link" aria-label="Analysis of Variance">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
